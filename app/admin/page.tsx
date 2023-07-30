@@ -1,5 +1,8 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import { Card, LineChart, Title, BarChart } from "@tremor/react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export const dynamic = "force-dynamic";
 
@@ -22,16 +25,46 @@ const page = async ({ searchParams }: ServerPageProps) => {
     .limit(40)
     .order("created_at", { ascending: false });
 
-  const [{ data: leads, error: leadsError, count }] = await Promise.all([
+   const tableData = supabase.from("flowrate_counts").select("*").order("flowrate", { ascending: true });
+
+  const [{ data: leads, error: leadsError, count }, {data:table, error}] = await Promise.all([
     quotesData,
+    tableData
   ]);
 
   console.log(count);
 
   return (
-    <div className="container">
-      <h1>Admin Page</h1>
-    </div>
+    <main className="container py-10">
+      <div className="w-full flex justify-between items-center">
+      <h1 className="text-3xl font-medium">Admin Dashboard</h1>
+      <Link href={{
+        pathname: "/admin/leads",
+        query: {
+          page: "1",
+          page_size: "500",
+          search: ""
+        }
+      }}>
+        <Button type="button" className="bg-blue-600 text-white">
+          Leads
+        </Button>
+      </Link>
+      </div>
+      <Card className="mt-4 px-6 text-black">
+        <Title>Flowrate Summary</Title>
+        <BarChart
+          color="emerald"
+          className="mt-6"
+          data={table!}
+          index="flowrate"
+          colors={["emerald", "gray"]}
+          showGridLines={true}
+          categories={["count"]}
+          yAxisWidth={30}
+        />
+      </Card>
+    </main>
   );
 };
 export default page;
