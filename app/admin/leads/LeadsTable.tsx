@@ -13,7 +13,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, CircleDashed, MoreHorizontal } from "lucide-react";
+import { ArrowUpDown, ChevronDown, CircleDashed, Link2, MoreHorizontal } from "lucide-react";
 import { CSVLink } from "react-csv";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -186,6 +186,21 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
       return <div className="text-right font-medium">{amount}</div>;
     },
   },
+  {
+    accessorKey: "actions",
+    enableHiding: true,
+    header: () => <div className="text-right">Actions</div>,
+    cell: ({ row }) => {
+      const id = row.original.id;
+      return (
+        <Link href={`/admin/leads/${id}`}>
+          <Button type="button">
+            <Link2 className="h-4 w-4" />
+          </Button>
+        </Link>
+      )
+    }
+  }
 ];
 
 const LeadsTable = ({
