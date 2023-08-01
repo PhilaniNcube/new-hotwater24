@@ -56,6 +56,11 @@ const MobileNav = ({is_admin}:{is_admin:boolean}) => {
               FAQs
             </Button>
           </Link>
+          <Link href="/news" passHref>
+            <Button onClick={() => setIsOpen(false)} variant="link">
+              News
+            </Button>
+          </Link>
         </div>
       </SheetContent>
     </Sheet>

@@ -79,6 +79,12 @@ const Navbar = async () => {
             >
               FAQs
             </Link>
+            <Link
+              href="/news"
+              className="text-sm md:text-md focus:text-sky-600 px-6"
+            >
+              News
+            </Link>
           </nav>
           {data && (
             <div className="flex items-center space-x-4">

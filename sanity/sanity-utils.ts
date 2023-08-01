@@ -11,7 +11,7 @@ import { Article } from "./types";
 export async function getArticles():Promise<Article[]> {
 
   return await client.fetch(
-    groq`*[_type == "article"]{
+    groq`*[_type == "article"] | order(_createdAt desc){
       _id,
       _createdAt,
       title,
