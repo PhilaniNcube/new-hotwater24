@@ -332,7 +332,7 @@ const PersonalDetails = ({
           {/* Places */}
           <div className="flex flex-col w-full md:w-1/2 relative isolate">
             <Label className="text-md font-bold">Street Address</Label>
-            <Input value={value} onChange={(e) => setValue(e.target.value)} />
+            <Input value={value} onChange={(e) => setValue(e.target.value)} disabled={!ready} />
             {status === "OK" &&
               data &&
               data.length > 0 &&
