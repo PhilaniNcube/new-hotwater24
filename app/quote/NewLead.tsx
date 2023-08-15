@@ -85,7 +85,7 @@ const NewLead = ({products}:Props) => {
       teenagers: 0,
       adults: 0,
       houseType: "",
-      ownership: false,
+      ownership: true,
       gasSupply: "",
       gasStove: false,
       gasWaterHeating: true,

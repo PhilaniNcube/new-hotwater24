@@ -6,6 +6,26 @@ import React, { FormEvent, Fragment, useState } from "react";
 import { motion } from "framer-motion";
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { LeadStageProps } from "../NewLead";
+import {useLoadScript} from '@react-google-maps/api'
+import usePlacesAutocomplete from "use-places-autocomplete";
+import { Check, ChevronsUpDown } from "lucide-react";
+import { cn } from "@/lib/utils";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 
 const PersonalDetails = ({
@@ -17,7 +37,23 @@ const PersonalDetails = ({
 }: LeadStageProps) => {
   console.log("Step", page, quoteInfo);
 
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
+    libraries: ["places"],
+  });
+
+  console.log("isLoaded", isLoaded, loadError)
+
+  const {
+    ready,
+    value,
+    setValue,
+    suggestions: { status, data },
+    clearSuggestions,
+  } = usePlacesAutocomplete({ callbackName: "YOUR_CALLBACK_NAME", debounce: 200 });
+
   const supabase = createClientComponentClient<Database>();
+
 
   const [loading, setLoading] = useState(false);
 
@@ -68,6 +104,8 @@ const PersonalDetails = ({
     comments,
     financing,
   } = quoteInfo;
+
+  const [open, setOpen] = useState(false);
 
 
 
@@ -214,10 +252,10 @@ const PersonalDetails = ({
       <div className="py-8 px-6 lg:px-16 max-w-5xl mx-auto shadow-lg rounded bg-gray-200 h-1/2 mb-6">
         <div className="flex flex-col md:flex-row md:justify-between md:space-x-24 my-4">
           <div className="flex flex-col w-full md:w-1/2">
-            <label className="text-md font-bold" htmlFor="firstName">
+            <Label className="text-md font-bold" htmlFor="firstName">
               First name
-            </label>
-            <input
+            </Label>
+            <Input
               type="text"
               name="firstName"
               required
@@ -232,10 +270,10 @@ const PersonalDetails = ({
             />
           </div>
           <div className="flex flex-col mt-3 md:mt-0 w-full md:w-1/2">
-            <label className="text-md font-bold" htmlFor="lastName">
+            <Label className="text-md font-bold" htmlFor="lastName">
               Last name
-            </label>
-            <input
+            </Label>
+            <Input
               type="text"
               name="lastName"
               required
@@ -252,10 +290,10 @@ const PersonalDetails = ({
         </div>
         <div className="flex flex-col md:flex-row md:justify-between md:space-x-24 my-4">
           <div className="flex flex-col w-full md:w-1/2">
-            <label className="text-md font-bold" htmlFor="email">
+            <Label className="text-md font-bold" htmlFor="email">
               Email
-            </label>
-            <input
+            </Label>
+            <Input
               type="email"
               name="email"
               required
@@ -270,10 +308,10 @@ const PersonalDetails = ({
             />
           </div>
           <div className="flex flex-col mt-3 md:mt-0 w-full md:w-1/2">
-            <label className="text-md font-bold" htmlFor="telephone">
+            <Label className="text-md font-bold" htmlFor="telephone">
               Telephone/Cellphone
-            </label>
-            <input
+            </Label>
+            <Input
               type="tel"
               name="telephone"
               required
@@ -290,7 +328,36 @@ const PersonalDetails = ({
         </div>
 
         <div className="flex flex-col md:flex-row md:justify-between md:space-x-24 my-4">
-          <div className="flex flex-col w-full md:w-1/2">
+          {/* Places */}
+          <div className="flex flex-col w-full md:w-1/2 relative isolate">
+            <Label className="text-md font-bold">Search Address</Label>
+            <Input value={value} onChange={(e) => setValue(e.target.value)} />
+            {status === "OK" &&
+              data &&
+              data.length > 0 &&
+              data.map((prediction) => (
+                <div className="bg-white absolute bottom-0 translate-y-[25px] left-0 right-0 p-2 shadow-sm rounded border border-slate-200 overflow-clip">
+                  <pre
+                    onClick={() => {
+                      setValue(prediction.description, false);
+                      clearSuggestions();
+                      setQuoteInfo({
+                        ...quoteInfo,
+                        streetAddress: prediction.description.split(",")[0],
+                        suburb: prediction.description.split(",")[1],
+                        city: prediction.description.split(",")[2],
+                      });
+                    }}
+                    key={prediction.place_id}
+                    className="text-xs hover:bg-gray-100 cursor-pointer line-clamp-2"
+                  >
+                    {prediction.description}
+                  </pre>
+                </div>
+              ))}
+          </div>
+
+          {/* <div className="flex flex-col w-full md:w-1/2">
             <label className="text-md font-bold" htmlFor="streetAddress">
               Street address
             </label>
@@ -307,12 +374,12 @@ const PersonalDetails = ({
                 })
               }
             />
-          </div>
+          </div> */}
           <div className="flex flex-col w-full md:w-1/2">
-            <label className="text-md font-bold" htmlFor="suburb">
+            <Label className="text-md font-bold" htmlFor="suburb">
               Suburb
-            </label>
-            <input
+            </Label>
+            <Input
               type="text"
               name="suburb"
               required
@@ -330,10 +397,10 @@ const PersonalDetails = ({
 
         <div className="flex flex-col md:flex-row md:justify-between md:space-x-24 my-4">
           <div className="flex flex-col w-full">
-            <label className="text-md font-bold" htmlFor="city">
+            <Label className="text-md font-bold" htmlFor="city">
               City
-            </label>
-            <input
+            </Label>
+            <Input
               type="text"
               name="city"
               required
@@ -349,10 +416,10 @@ const PersonalDetails = ({
           </div>
 
           <div className="flex flex-col w-full">
-            <label className="text-md font-bold" htmlFor="postalCode">
+            <Label className="text-md font-bold" htmlFor="postalCode">
               Postal code
-            </label>
-            <input
+            </Label>
+            <Input
               type="text"
               name="postalCode"
               required
@@ -424,13 +491,13 @@ const PersonalDetails = ({
         *** */}
 
         <div className="flex flex-col w-full">
-          <label className="text-md font-bold" htmlFor="comments">
+          <Label className="text-md font-bold" htmlFor="comments">
             Comments
-          </label>
-          <textarea
+          </Label>
+          <Textarea
             rows={4}
             name="comments"
-            className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
+            className="rounded-md border border-gray-300 bg-white pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
             value={quoteInfo.comments}
             onChange={(e) =>
               setQuoteInfo({
@@ -438,7 +505,7 @@ const PersonalDetails = ({
                 comments: e.target.value,
               })
             }
-          ></textarea>
+          ></Textarea>
         </div>
       </div>
       <div className="flex items-center justify-center space-x-6 mt-4 mb-12">
