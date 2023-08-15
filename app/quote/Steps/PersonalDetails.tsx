@@ -52,6 +52,7 @@ const PersonalDetails = ({
     clearSuggestions,
   } = usePlacesAutocomplete({ callbackName: "YOUR_CALLBACK_NAME", debounce: 200 });
 
+
   const supabase = createClientComponentClient<Database>();
 
 
@@ -105,7 +106,7 @@ const PersonalDetails = ({
     financing,
   } = quoteInfo;
 
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
 
 
 
@@ -330,7 +331,7 @@ const PersonalDetails = ({
         <div className="flex flex-col md:flex-row md:justify-between md:space-x-24 my-4">
           {/* Places */}
           <div className="flex flex-col w-full md:w-1/2 relative isolate">
-            <Label className="text-md font-bold">Search Address</Label>
+            <Label className="text-md font-bold">Street Address</Label>
             <Input value={value} onChange={(e) => setValue(e.target.value)} />
             {status === "OK" &&
               data &&
