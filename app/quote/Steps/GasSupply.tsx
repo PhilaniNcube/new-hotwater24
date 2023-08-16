@@ -9,23 +9,23 @@ import { CheckCircleIcon } from "lucide-react";
 
 const cylinders = [
   {
-    name: "Cylinder Size",
+    name: "You have a gas cylinder that is less than 19kg in size",
     size: "Less than 19kg Cylinder",
   },
   {
-    name: "Cylinder Size",
+    name: "You have one gas cylinder that is 19kg in size",
     size: "1 x 19kg Cylinder",
   },
   {
-    name: "Cylinder Size",
+    name: "You have 2 19kg gas cylinders",
     size: "2 x 19kg Cylinder",
   },
   {
-    name: "Cylinder Size",
+    name: "You have one gas cylinder that is 48kg in size",
     size: "1 x 48kg Cylinder",
   },
   {
-    name: "Cylinder Size",
+    name: "You have 2 48kg gas cylinders",
     size: "2 x 48kg Cylinder",
   },
 ];
@@ -106,7 +106,7 @@ const GasSupply = ({
                                       checked ? "text-white" : "text-gray-900"
                                     }`}
                                   >
-                                    {cylinder.name}
+                                    {cylinder.size}
                                   </RadioGroup.Label>
                                   <RadioGroup.Description
                                     as="span"
@@ -114,7 +114,7 @@ const GasSupply = ({
                                       checked ? "text-sky-100" : "text-gray-500"
                                     }`}
                                   >
-                                    <span>{cylinder.size}</span>
+                                    <span>{cylinder.name}</span>
                                   </RadioGroup.Description>
                                 </div>
                               </div>

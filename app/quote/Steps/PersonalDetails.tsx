@@ -332,7 +332,7 @@ const PersonalDetails = ({
           {/* Places */}
           <div className="flex flex-col w-full md:w-1/2 relative isolate">
             <Label className="text-md font-bold">Street Address</Label>
-            <Input value={value} onChange={(e) => setValue(e.target.value)} disabled={!ready} />
+            <Input value={value} onChange={(e) => setValue(e.target.value)} disabled={!ready}  />
             {status === "OK" &&
               data &&
               data.length > 0 &&
@@ -533,13 +533,13 @@ const PersonalDetails = ({
                   d="M15 19l-7-7 7-7"
                 />
               </svg>
-              <button
+              <Button
                 disabled={loading}
                 type="submit"
                 className="bg-sky-500 hover:bg-sky-600 text-center text-white text-2xl font-medium rounded-full py-4 px-8 shadow-sky-400 shadow-md hover:shadow"
               >
                 {loading ? "Saving..." : "Continue"}
-              </button>
+              </Button>
             </Fragment>
           ) : (
             <Fragment>

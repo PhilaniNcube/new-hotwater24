@@ -52,7 +52,7 @@ export default function Confirm({
             </h1>
             <p className=" md:w-9/12 lg:w-11/12 xl:w-10/12 2xl:9/12 text-base leading-normal text-gray-600 mt-5">
               We have taken note of your interest. You have received an email
-              with the summary of your information and we will contact you to
+              with the summary of your information and we will be contacing you in the next 1 to 3 days
               further discuss your requirements and give our free advise. If you
               do not see your e-mail, please check your spam folder for your
               email.

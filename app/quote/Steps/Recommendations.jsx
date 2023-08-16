@@ -124,7 +124,9 @@ const Recommendations = ({
             ref={ref}
           >
             <Bar
+
               options={{
+
                 plugins: {
                   legend: {
                     position: "top",
@@ -133,7 +135,6 @@ const Recommendations = ({
                 locale: "ZA",
                 responsive: true,
                 maintainAspectRatio: false,
-
                 scales: {
                   x: {
                     stacked: true,
