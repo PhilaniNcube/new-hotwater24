@@ -142,6 +142,7 @@ const NewLead = ({products}:Props) => {
   return (
     <div className="h-full">
       {" "}
+
       <div className="relative h-full">
         {page === 1 && (
           <Family

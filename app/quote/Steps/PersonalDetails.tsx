@@ -27,6 +27,8 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
+const libraries = ['places']
+
 
 const PersonalDetails = ({
   quoteInfo,
@@ -37,12 +39,12 @@ const PersonalDetails = ({
 }: LeadStageProps) => {
   console.log("Step", page, quoteInfo);
 
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
-    libraries: ["places"],
-  });
+  // const { isLoaded, loadError } = useLoadScript({
+  //   googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
+  //   libraries: libraries,
+  // });
 
-  console.log("isLoaded", isLoaded, loadError)
+  // console.log("isLoaded", isLoaded, loadError)
 
   const {
     ready,
@@ -50,7 +52,9 @@ const PersonalDetails = ({
     setValue,
     suggestions: { status, data },
     clearSuggestions,
-  } = usePlacesAutocomplete({ callbackName: "YOUR_CALLBACK_NAME", debounce: 200 });
+  } = usePlacesAutocomplete({  debounce: 200 });
+
+  console.log({ ready, value, status, data });
 
 
   const supabase = createClientComponentClient<Database>();
