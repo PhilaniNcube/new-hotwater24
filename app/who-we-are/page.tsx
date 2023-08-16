@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { bebas } from "../fonts";
+import Choose from "@/components/Choose";
 
 const page = () => {
   return (
@@ -50,17 +51,7 @@ const page = () => {
             best gas water heating solution for your home
           </p>
 
-          <Link href="/quote/start" passHref>
-            <Button
-              // onClick={start}
-              className="bg-blue-600 text-white flex space-x-2 py-2 px-4 shadow-lg hover:shadow-sm focus:focus-ring-sky-400 items-center mt-4 rounded-full w-fit uppercase"
-            >
-              Choose Your Geyser
-              <span>
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </span>
-            </Button>
-          </Link>
+         <Choose />
         </div>
       </div>
     </main>

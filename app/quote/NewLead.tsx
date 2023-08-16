@@ -13,6 +13,7 @@ import GasUse from "./Steps/GasUse";
 import WaterHeating from "./Steps/WaterHeating";
 import WaterOutlets from "./Steps/WaterOutlests";
 import OffGridStep from "./Steps/OffGridStep";
+import analytics from "@/utils/analytics";
 
 export type LeadStageProps = {
   quoteInfo: {
@@ -130,7 +131,7 @@ const NewLead = ({products}:Props) => {
 
       const nextPage = () => {
         if (page === 13) return;
-        // analytics.track(`step_${page}`);
+        analytics.track(`step_${page}`);
         setPage((page) => page + 1);
       };
       const prevPage = () => {

@@ -26,6 +26,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import analytics from "@/utils/analytics";
 
 const libraries = ['places']
 
@@ -118,7 +119,7 @@ const PersonalDetails = ({
     e.preventDefault();
     setLoading(true);
 
-    // analytics.track("generate_lead");
+    analytics.track("generate_lead");
 
     try {
       const quote = await supabase

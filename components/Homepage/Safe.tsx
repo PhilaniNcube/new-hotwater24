@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import ChooseWhite from "../ChooseWhite";
 
 export default function Safe() {
   return (
@@ -42,14 +43,7 @@ export default function Safe() {
             </div>
 
             <div className="md:mt-12 mt-20">
-              <Link href="/quote/start" passHref>
-                <button className="bg-gray-50 text-slate-800 px-6 shadow-md shadow-gray-600 hover:shadow  justify-center text-center font-bold flex space-x-2 py-2  items-center mt-6 rounded-full uppercase">
-                  Choose Your Geyser
-                  <span>
-                   <ArrowRight />
-                  </span>
-                </button>
-              </Link>
+             <ChooseWhite />
             </div>
           </div>
         </div>

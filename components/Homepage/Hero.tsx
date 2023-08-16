@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { ArrowRightIcon } from "lucide-react";
 import { Button } from "../ui/button";
+import ChooseWhite from "../ChooseWhite";
 
 const Hero = () => {
   return (
@@ -32,14 +33,7 @@ const Hero = () => {
             switch to gas
           </p>
 
-          <Link href="/quote/start" passHref>
-            <Button className="bg-gray-50 text-slate-800 flex justify-center items-center max-w-[280px] text-center font-bold py-2 text-xs md:text-md lg:text-base mt-6 rounded-full uppercase hover:bg-blue-600 hover:text-white">
-              <span>Choose Your Gas Geyser</span>
-              <span>
-                <ArrowRightIcon className="w-4 h-4 ml-2" />
-              </span>
-            </Button>
-          </Link>
+          <ChooseWhite />
         </div>
       </div>
     </div>

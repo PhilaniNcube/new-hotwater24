@@ -1,3 +1,4 @@
+import Choose from "@/components/Choose";
 import { ArrowRight, FlagIcon, Users2Icon } from "lucide-react";
 import Link from "next/link";
 import { RiFilePaperLine } from "react-icons/ri";
@@ -69,17 +70,7 @@ const page = () => {
           By clicking on the button below we instantly recommend you with the
           best gas water heating solution for your home
         </p>
-        <Link href="/quote/start" passHref>
-          <button
-            // onClick={start}
-            className="bg-gray-800 text-white flex space-x-2 py-2 px-4 shadow-gray-600 shadow-lg hover:shadow-sm focus:focus-ring-sky-400 items-center mt-4 mb-8 rounded-full w-fit font-medium uppercase"
-          >
-            Choose Your Geyser!
-            <span>
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </span>
-          </button>
-        </Link>
+       <Choose />
       </div>
 
       <section className="relative isolate">
@@ -125,17 +116,7 @@ const page = () => {
                   with the best gas water heating solution for your home
                 </p>
 
-                <Link href="/quote/start" passHref>
-                  <button
-                    // onClick={start}
-                    className="bg-gray-900 font-medium hover:bg-gray-800 text-white flex space-x-2 py-2 px-4 items-center mt-4 rounded-full shadow-lg hover:shadow-sm uppercase"
-                  >
-                    Choose Your Geyser!
-                    <span>
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </span>
-                  </button>
-                </Link>
+               <Choose />
               </div>
             </div>
           </div>
@@ -195,17 +176,7 @@ const page = () => {
                 </div>
               </div>
 
-              <Link href="/quote/start" passHref>
-                <button
-                  // onClick={start}
-                  className="bg-gray-800 text-white flex space-x-2 py-2 px-4 shadow-gray-600 shadow-lg hover:shadow-sm focus:focus-ring-sky-400 items-center mt-4 rounded-full w-fit uppercase"
-                >
-                  Choose Your Geyser!
-                  <span>
-                    <ArrowRight />
-                  </span>
-                </button>
-              </Link>
+              <Choose />
             </div>
           </div>
         </div>
