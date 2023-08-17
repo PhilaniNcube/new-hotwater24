@@ -90,7 +90,7 @@ const Navbar = async () => {
               News
             </Link>
           </nav>
-          {admin  && (
+          {session && (
             <div className="flex items-center space-x-4">
               <Link href="/admin" passHref className="flex space-x-2">
                 <User size={20} />
