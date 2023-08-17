@@ -354,7 +354,7 @@ const PersonalDetails = ({
               value={value}
               autoComplete="off"
               onChange={(e) => setValue(e.target.value)}
-              disabled={!ready}
+              // disabled={!ready}
             />
             {status === "OK" &&
               data &&
