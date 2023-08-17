@@ -27,6 +27,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import analytics from "@/utils/analytics";
+import Script from "next/script";
 
 const libraries = ['places']
 
@@ -246,6 +247,9 @@ const PersonalDetails = ({
       onSubmit={handleSubmit}
       className="max-w-6xl mx-auto my-16 lg:my-8 px-6 lg:px-12"
     >
+      <Script
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+      ></Script>
       <h1 className="mt-8 font-sans text-center font-bold text-2xl">
         Personal contact information
       </h1>
