@@ -85,7 +85,7 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
 
         const day = format(cellDate, "PP")
 
-        return  (<div className="lowercase">{day}</div>)
+        return  (<div className="uppercase">{day}</div>)
     }
 
   },
