@@ -54,7 +54,10 @@ const PersonalDetails = ({
     setValue,
     suggestions: { status, data },
     clearSuggestions,
-  } = usePlacesAutocomplete({  debounce: 200 });
+  } = usePlacesAutocomplete({
+    callbackName: "init",
+    debounce: 200,
+  });
 
   console.log({ ready, value, status, data });
 
@@ -248,7 +251,8 @@ const PersonalDetails = ({
       className="max-w-6xl mx-auto my-16 lg:my-8 px-6 lg:px-12"
     >
       <Script
-        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+        defer={true}
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places&callback=init`}
       ></Script>
       <h1 className="mt-8 font-sans text-center font-bold text-2xl">
         Personal contact information
@@ -352,13 +356,13 @@ const PersonalDetails = ({
 
         <div className="flex flex-col md:flex-row md:justify-between md:space-x-24 my-4">
           {/* Places */}
-          {/* <div className="flex flex-col w-full md:w-1/2 relative isolate">
+          <div className="flex flex-col w-full md:w-1/2 relative isolate">
             <Label className="text-md font-bold">Street Address</Label>
             <Input
               value={value}
               autoComplete="off"
               onChange={(e) => setValue(e.target.value)}
-              // disabled={!ready}
+              disabled={!ready}
             />
             {status === "OK" &&
               data &&
@@ -383,9 +387,9 @@ const PersonalDetails = ({
                   </pre>
                 </div>
               ))}
-          </div> */}
+          </div>
 
-          <div className="flex flex-col w-full md:w-1/2">
+          {/* <div className="flex flex-col w-full md:w-1/2">
             <Label className="text-md font-bold" htmlFor="streetAddress">
               Street address
             </Label>
@@ -402,7 +406,7 @@ const PersonalDetails = ({
                 })
               }
             />
-          </div>
+          </div> */}
           <div className="flex flex-col w-full md:w-1/2">
             <Label className="text-md font-bold" htmlFor="suburb">
               Suburb
