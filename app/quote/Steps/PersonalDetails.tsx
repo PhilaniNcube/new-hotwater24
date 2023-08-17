@@ -352,7 +352,7 @@ const PersonalDetails = ({
 
         <div className="flex flex-col md:flex-row md:justify-between md:space-x-24 my-4">
           {/* Places */}
-          <div className="flex flex-col w-full md:w-1/2 relative isolate">
+          {/* <div className="flex flex-col w-full md:w-1/2 relative isolate">
             <Label className="text-md font-bold">Street Address</Label>
             <Input
               value={value}
@@ -383,13 +383,13 @@ const PersonalDetails = ({
                   </pre>
                 </div>
               ))}
-          </div>
+          </div> */}
 
-          {/* <div className="flex flex-col w-full md:w-1/2">
-            <label className="text-md font-bold" htmlFor="streetAddress">
+          <div className="flex flex-col w-full md:w-1/2">
+            <Label className="text-md font-bold" htmlFor="streetAddress">
               Street address
-            </label>
-            <input
+            </Label>
+            <Input
               type="text"
               name="streetAddress"
               required
@@ -402,7 +402,7 @@ const PersonalDetails = ({
                 })
               }
             />
-          </div> */}
+          </div>
           <div className="flex flex-col w-full md:w-1/2">
             <Label className="text-md font-bold" htmlFor="suburb">
               Suburb
