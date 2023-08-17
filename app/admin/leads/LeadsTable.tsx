@@ -37,6 +37,7 @@ import {
 } from "@/components/ui/table";
 import Link from "next/link";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { format } from "date-fns";
 
 type LeadsTableProps = {
   leads: Database["public"]["Tables"]["quotes"]["Row"][];
@@ -80,7 +81,11 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
     },
     cell: ({ row }) => {
         const cellDate = new Date(row.getValue("created_at"));
-        return  (<div className="lowercase">{cellDate.toISOString()}</div>)
+
+
+        const day = format(cellDate, "PP")
+
+        return  (<div className="lowercase">{day}</div>)
     }
 
   },
