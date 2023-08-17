@@ -17,7 +17,7 @@ const Navbar = async () => {
 
     const {data: admin, error:adminsError} = await supabase.from('admins').select('*').eq('user_id', session?.user.id).single()
 
-    console.log(data);
+    console.log("Navbar", session);
 
   return (
     <header className="">
@@ -93,8 +93,8 @@ const Navbar = async () => {
           {session && (
             <div className="flex items-center space-x-4">
               <Link href="/admin" passHref className="flex space-x-2">
-                <User size={20} />
-                <span>Admin</span>
+                <User size={20} className="text-white" />
+                <span className="text-white">Admin</span>
               </Link>
             </div>
           )}
