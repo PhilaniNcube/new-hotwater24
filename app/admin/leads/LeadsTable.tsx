@@ -66,6 +66,25 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
     enableHiding: false,
   },
   {
+    accessorKey: "created_at",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Date
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+        const cellDate = new Date(row.getValue("created_at"));
+        return  (<div className="lowercase">{cellDate.toISOString()}</div>)
+    }
+
+  },
+  {
     accessorKey: "houseType",
     header: "House Type",
     cell: ({ row }) => (
@@ -168,9 +187,7 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
         </Button>
       );
     },
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("city")}</div>
-    ),
+    cell: ({ row }) => <div className="capitalize">{row.getValue("city")}</div>,
   },
   {
     accessorKey: "flowRate",
@@ -198,9 +215,9 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
             <Link2 className="h-4 w-4" />
           </Button>
         </Link>
-      )
-    }
-  }
+      );
+    },
+  },
 ];
 
 const LeadsTable = ({
