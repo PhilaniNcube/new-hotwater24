@@ -6,6 +6,7 @@ import { RiWhatsappLine } from "react-icons/ri";
 import { User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MobileNav from "./MobileNav";
+import LogoutButton from "@/components/LogoutButton";
 
 const Navbar = async () => {
 
@@ -16,6 +17,12 @@ const Navbar = async () => {
     const {data: {session}} = await supabase.auth.getSession()
 
     const {data: admin, error:adminsError} = await supabase.from('admins').select('*').eq('user_id', session?.user.id).single()
+
+    const logout = async () => {
+      await supabase.auth.signOut()
+    }
+
+
 
     console.log("Navbar", session);
 
@@ -91,11 +98,16 @@ const Navbar = async () => {
             </Link>
           </nav>
           {session && (
-            <div className="flex items-center space-x-4">
-              <Link href="/admin" passHref className="flex space-x-2">
+            <div className="flex items-center space-x-4 ">
+              <Link
+                href="/admin"
+                passHref
+                className="flex space-x-2 bg-blue-800 px-3 py-2 rounded"
+              >
                 <User size={20} className="text-white" />
                 <span className="text-white">Admin</span>
               </Link>
+              <LogoutButton />
             </div>
           )}
         </div>

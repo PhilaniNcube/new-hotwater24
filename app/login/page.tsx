@@ -9,6 +9,8 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 
+export const dynamic = "force-dynamic";
+
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -32,10 +34,12 @@ export default function Login() {
     e.preventDefault()
 
     if(view === "sign-in") {
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    const {data,error} = await supabase.auth.signInWithOtp({
+        email: email,
+        // password,
+      });
+
+      console.log({data,error});
 
       if (error) {
         toast({
