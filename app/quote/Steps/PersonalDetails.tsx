@@ -11,12 +11,12 @@ import usePlacesAutocomplete from "use-places-autocomplete";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "@/components/ui/command";
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Popover,
   PopoverContent,
@@ -277,7 +277,7 @@ const PersonalDetails = ({
           </div>
           <div className="flex flex-col mt-3 md:mt-0 w-full md:w-1/2">
             <Label className="text-md font-bold" htmlFor="lastName">
-              Last name
+              Surname
             </Label>
             <Input
               type="text"
@@ -317,19 +317,31 @@ const PersonalDetails = ({
             <Label className="text-md font-bold" htmlFor="telephone">
               Telephone/Cellphone
             </Label>
-            <Input
-              type="tel"
-              name="telephone"
-              required
-              className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
-              value={quoteInfo.telephoneNumber}
-              onChange={(e) =>
-                setQuoteInfo({
-                  ...quoteInfo,
-                  telephoneNumber: e.target.value,
-                })
-              }
-            />
+            <div className="flex items-center">
+              {/* <Select>
+                <SelectTrigger className="w-[30px]">
+                  <SelectValue placeholder="Code" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="light">Light</SelectItem>
+                  <SelectItem value="dark">Dark</SelectItem>
+                  <SelectItem value="system">System</SelectItem>
+                </SelectContent>
+              </Select> */}
+              <Input
+                type="tel"
+                name="telephone"
+                required
+                className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
+                value={quoteInfo.telephoneNumber}
+                onChange={(e) =>
+                  setQuoteInfo({
+                    ...quoteInfo,
+                    telephoneNumber: e.target.value,
+                  })
+                }
+              />
+            </div>
           </div>
         </div>
 
@@ -337,7 +349,11 @@ const PersonalDetails = ({
           {/* Places */}
           <div className="flex flex-col w-full md:w-1/2 relative isolate">
             <Label className="text-md font-bold">Street Address</Label>
-            <Input value={value} onChange={(e) => setValue(e.target.value)} disabled={!ready}  />
+            <Input
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              disabled={!ready}
+            />
             {status === "OK" &&
               data &&
               data.length > 0 &&
