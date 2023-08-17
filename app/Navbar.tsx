@@ -13,6 +13,10 @@ const Navbar = async () => {
 
     const {data, error} = await supabase.rpc("is_admin").single();
 
+    const {data: {session}} = await supabase.auth.getSession()
+
+    const {data: admin, error:adminsError} = await supabase.from('admins').select('*').eq('user_id', session?.user.id).single()
+
     console.log(data);
 
   return (
@@ -86,7 +90,7 @@ const Navbar = async () => {
               News
             </Link>
           </nav>
-          {data && (
+          {admin  && (
             <div className="flex items-center space-x-4">
               <Link href="/admin" passHref className="flex space-x-2">
                 <User size={20} />
