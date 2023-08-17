@@ -332,6 +332,7 @@ const PersonalDetails = ({
                 type="tel"
                 name="telephone"
                 required
+                placeholder="+27 81 300 5555"
                 className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
                 value={quoteInfo.telephoneNumber}
                 onChange={(e) =>
@@ -351,6 +352,7 @@ const PersonalDetails = ({
             <Label className="text-md font-bold">Street Address</Label>
             <Input
               value={value}
+              autoComplete="off"
               onChange={(e) => setValue(e.target.value)}
               disabled={!ready}
             />
