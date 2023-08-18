@@ -355,58 +355,62 @@ const PersonalDetails = ({
         </div>
 
         <div className="flex flex-col md:flex-row md:justify-between md:space-x-24 my-4">
-          {/* Places */}
-          <div className="flex flex-col w-full md:w-1/2 relative isolate">
-            <Label className="text-md font-bold">Street Address</Label>
-            <Input
-              value={value}
-              autoComplete="off"
-              onChange={(e) => setValue(e.target.value)}
-              disabled={!ready}
-            />
-            {status === "OK" &&
-              data &&
-              data.length > 0 &&
-              data.map((prediction) => (
-                <div className="bg-white absolute bottom-0 translate-y-[25px] left-0 right-0 p-2 shadow-sm rounded border border-slate-200 overflow-clip">
-                  <pre
-                    onClick={() => {
-                      setValue(prediction.description, false);
-                      clearSuggestions();
-                      setQuoteInfo({
-                        ...quoteInfo,
-                        streetAddress: prediction.description.split(",")[0],
-                        suburb: prediction.description.split(",")[1],
-                        city: prediction.description.split(",")[2],
-                      });
-                    }}
-                    key={prediction.place_id}
-                    className="text-xs hover:bg-gray-100 cursor-pointer line-clamp-2"
-                  >
-                    {prediction.description}
-                  </pre>
-                </div>
-              ))}
-          </div>
+          {ready ? (
+            <div className="flex flex-col w-full md:w-1/2 relative isolate">
+              <Label className="text-md font-bold">Street Address</Label>
+              <Input
+                value={value}
+                autoComplete="off"
+                onChange={(e) => setValue(e.target.value)}
+                disabled={!ready}
+              />
+              {status === "OK" &&
+                data &&
+                data.length > 0 &&
+                data.map((prediction) => (
+                  <div className="bg-white absolute bottom-0 translate-y-[25px] left-0 right-0 p-2 shadow-sm rounded border border-slate-200 overflow-clip">
+                    <pre
+                      onClick={() => {
+                        setValue(prediction.description, false);
+                        clearSuggestions();
+                        setQuoteInfo({
+                          ...quoteInfo,
+                          streetAddress: prediction.description.split(",")[0],
+                          suburb: prediction.description.split(",")[1],
+                          city: prediction.description.split(",")[2],
+                        });
+                      }}
+                      key={prediction.place_id}
+                      className="text-xs hover:bg-gray-100 cursor-pointer line-clamp-2"
+                    >
+                      {prediction.description}
+                    </pre>
+                  </div>
+                ))}
+            </div>
+          ) : (
+            <div className="flex flex-col w-full md:w-1/2">
+              <Label className="text-md font-bold" htmlFor="streetAddress">
+                Street address
+              </Label>
+              <Input
+                type="text"
+                name="streetAddress"
+                required
+                className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
+                value={quoteInfo.streetAddress}
+                onChange={(e) =>
+                  setQuoteInfo({
+                    ...quoteInfo,
+                    streetAddress: e.target.value,
+                  })
+                }
+              />
+            </div>
+          )}
 
-          {/* <div className="flex flex-col w-full md:w-1/2">
-            <Label className="text-md font-bold" htmlFor="streetAddress">
-              Street address
-            </Label>
-            <Input
-              type="text"
-              name="streetAddress"
-              required
-              className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
-              value={quoteInfo.streetAddress}
-              onChange={(e) =>
-                setQuoteInfo({
-                  ...quoteInfo,
-                  streetAddress: e.target.value,
-                })
-              }
-            />
-          </div> */}
+          {/* Places */}
+
           <div className="flex flex-col w-full md:w-1/2">
             <Label className="text-md font-bold" htmlFor="suburb">
               Suburb
