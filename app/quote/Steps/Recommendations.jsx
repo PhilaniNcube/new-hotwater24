@@ -44,26 +44,31 @@ const Recommendations = ({
   const labels = ["Total Cost"];
 
   useEffect(() => {
-    if (quoteInfo.flowRate <= 12) {
-      setGeyserPrice(6900);
+    if (quoteInfo.flowRate <= 9) {
+      setGeyserPrice(4500);
       setInstallation(5500);
-      setPlumbing(5000);
+      setPlumbing(3750);
+      setGeyserSize(9);
+    } else if (quoteInfo.flowRate <= 12) {
+      setGeyserPrice(7200);
+      setInstallation(5500);
+      setPlumbing(3750);
       setGeyserSize(12);
-    } else if (quoteInfo.flowRate <= 17) {
-      setGeyserPrice(8970);
-      setInstallation(6500);
-      setPlumbing(5000);
+    } else if (quoteInfo.flowRate <= 18) {
+      setGeyserPrice(8700);
+      setInstallation(5850);
+      setPlumbing(3750);
       setGeyserSize(16);
-    } else if (quoteInfo.flowRate <= 22) {
-      setGeyserPrice(12880);
-      setInstallation(7000);
-      setPlumbing(5000);
+    } else if (quoteInfo.flowRate <= 23) {
+      setGeyserPrice(12950);
+      setInstallation(8050);
+      setPlumbing(3950);
       setGeyserSize(20);
-    } else if (quoteInfo.flowRate <= 30) {
-      setGeyserPrice(14030);
-      setInstallation(7000);
-      setPlumbing(5000);
-      setGeyserSize(26);
+    } else if(quoteInfo.flowRate <= 45) {
+      setGeyserPrice(14950);
+      setInstallation(8050);
+      setPlumbing(3950);
+      setGeyserSize(20);
     }
   }, []);
 
@@ -72,19 +77,19 @@ const Recommendations = ({
 
     datasets: [
       {
-        label: "Geyser",
+        label: "Gas geyser",
         data: [geyserPrice],
         backgroundColor: "#0ea5e9",
         barThickness: 100,
       },
       {
-        label: "Installation",
+        label: "Gas installation",
         data: [installation],
         backgroundColor: "#ea580c",
         barThickness: 100,
       },
       {
-        label: "Plumbing",
+        label: "Plumbing work",
         data: [plumbing],
         backgroundColor: "#c03d32",
         barThickness: 100,
@@ -110,7 +115,8 @@ const Recommendations = ({
             <span className="text-2xl font-bold">{geyserSize}L/Min</span>
           </p>
           <p className="text-center text-lg mb-6 text-gray-700  font-medium max-w-[60ch] mx-auto">
-            The estimated total cost based on this size geyser is:
+            The initial estimated total cost of the gas geyser installation is
+            mentioned in the below picture:
             <br />{" "}
             <span className="text-2xl font-bold">
               {` ${formatter.format(
@@ -118,18 +124,28 @@ const Recommendations = ({
               )}`}
               *{" "}
             </span>{" "}
+            <span className="text-xs underline">Incl VAT</span>
           </p>
           <div
-            className="flex max-w-7xl min-w-[200px] w-[380px] px-6 min-h-[400px] max-h-[450px] mx-auto items-center flex-col bg-gray-100 py-3 mb-8 relative"
+            className="flex max-w-[700px] min-w-[200px] px-6 min-h-[600px] mx-auto items-center flex-col bg-gray-600 py-3 mb-8 relative"
             ref={ref}
           >
             <Bar
-
+              style={{
+                maxWidth: "500px",
+                minHeight: "300px",
+                maxHeight: "380px",
+              }}
               options={{
-
                 plugins: {
                   legend: {
                     position: "top",
+                    align: "start",
+                    labels:{
+                      fontWeight: "bold",
+                      borderRadius: 10,
+                      boxPadding: 3,
+                    }
                   },
                 },
                 locale: "ZA",
@@ -148,12 +164,27 @@ const Recommendations = ({
               data={data}
             />
           </div>
-          <p className="text-sm text-center text-gray-600 max-w-[600px] mx-auto">
-            *This total estimated cost is based on the information as provided.
-            It includes the cost for the gas geyser, gas installation and
-            plumbing work and excludes the cost for a gas cage, gas cylinder(s)
-            and gas supply.
-          </p>
+          <div className="flex flex-col items-start max-w-2xl mx-auto">
+            <p className="text-sm  text-gray-600 max-w-[600px] mx-auto font-medium">
+              *The initial estimated total cost is based on the information
+              provided and includes the cost of the:
+            </p>
+            <ol className="text-sm list-decimal  text-gray-600 max-w-[600px] mx-auto">
+              <li>
+                gas geyser (size of the gas geyser is calculated by the number
+                of hot water outlets indicated).
+              </li>
+              <li>
+                the gas installation and 3. the plumbing work. This cost does
+                not include the cost for a gas cage, gas cylinder(s) and gas
+                refill.
+              </li>
+            </ol>
+            <p className="text-sm  text-gray-600 max-w-[600px] mx-auto font-medium">
+              If you would like to consider financing, please do select the
+              option below and we will take you further through the process.
+            </p>
+          </div>
           <p className="text-lg md:text-3xl font-bold mt-4 text-center text-gray-600 mx-auto">
             Would you consider financing?
           </p>

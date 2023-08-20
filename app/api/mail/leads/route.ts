@@ -643,7 +643,7 @@ body {font-family: 'Poppins', sans-serif;}
     <tbody>
       <tr>
         <td style="padding:15px 0px 15px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f; font-size: 12px"><strong>${
-          flowRate <= 30 ? "Geyser Size" : "Flow Rate"
+          flowRate <= 45 ? "Geyser Size" : "Flow Rate"
         }</strong></span></div><div></div></div></td>
       </tr>
     </tbody>
@@ -651,7 +651,7 @@ body {font-family: 'Poppins', sans-serif;}
     <tbody>
       <tr>
         <td style="padding:0px 0px 15px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f; font-size: 30px"><strong>${
-          flowRate <= 30 ? geyserSize : flowRate
+          flowRate <= 45 ? geyserSize : flowRate
         } L/Min</strong></span></div><div></div></div></td>
       </tr>
     </tbody>
@@ -691,7 +691,7 @@ body {font-family: 'Poppins', sans-serif;}
     <tbody>
       <tr>
         <td style="padding:15px 0px 5px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f; font-size: 30px"><strong>${
-          flowRate <= 30
+          flowRate <= 45
             ? formatter.format(
                 roundUp(geyserPrice + installationCost + plumbingCost)
               )
