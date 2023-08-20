@@ -255,7 +255,7 @@ const Recommendations = ({
 
               <div className="w-full ">
                 <img
-                  className="w-full object-cover h-[40vh] aspect-video mx-auto"
+                  className="w-[300px] object-cover aspect-video mx-auto"
                   alt="bathroom"
                   src="/images/new_shower.jpg"
                 />
