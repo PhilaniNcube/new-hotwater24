@@ -169,7 +169,7 @@ const Recommendations = ({
           </div>{" "}
           <div className="flex flex-col items-start max-w-2xl mx-auto">
             <p className="text-sm mb-2 text-gray-600 max-w-[700px] mx-auto font-medium">
-              * This cost does not include the cost for a gas cage, gas
+              *This cost does not include the cost for a gas cage, gas
               cylinder(s) and gas refill. The initial estimated total cost is
               based on the information provided and includes the cost of the
             </p>
