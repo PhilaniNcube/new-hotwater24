@@ -53,7 +53,7 @@ export default function Confirm({
               We have taken note of your interest for a gas geyser installation
               for your property. You have received an email with the summary of
               the information you entered. We will be contacting you within the
-              next 48hours and send you our proposal, which entails all the
+              next 48 hours and send you our proposal, which entails all the
               initial information you need (including an initial cost estimate).
             </p>
             <p className=" md:w-9/12 lg:w-11/12 xl:w-10/12 2xl:9/12 text-base leading-normal text-gray-600 mt-5">
