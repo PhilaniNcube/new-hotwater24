@@ -693,7 +693,7 @@ body {font-family: 'Poppins', sans-serif;}
         <td style="padding:15px 0px 5px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f; font-size: 30px"><strong>${
           flowRate <= 45
             ? formatter.format(
-                roundUp(geyserPrice + installationCost + plumbingCost)
+                geyserPrice + installationCost + plumbingCost
               )
             : "Awaiting calculations"
         }*</strong></span></div><div></div></div></td>

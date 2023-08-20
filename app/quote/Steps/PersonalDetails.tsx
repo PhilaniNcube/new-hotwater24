@@ -67,7 +67,7 @@ const PersonalDetails = ({
 
   const [loading, setLoading] = useState(false);
 
-  const [countryCode, setCountryCode] = useState("27");
+  const [countryCode, setCountryCode] = useState("+27");
   const [areaCode, setAreaCode] = useState("");
   const [number, setNumber] = useState("");
 
@@ -345,7 +345,7 @@ const PersonalDetails = ({
                 type="text"
                 name="countryCode"
                 required
-                placeholder="country"
+                placeholder="+27"
                 className="rounded-md border border-gray-300 pl-4 py-2 max-w-[60px] text-base text-gray-600 focus:outline-none focus:border-gray-700 "
                 value={countryCode}
                 onChange={(e) => setCountryCode(e.target.value)}

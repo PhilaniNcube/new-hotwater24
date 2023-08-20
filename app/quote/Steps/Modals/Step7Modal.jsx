@@ -46,7 +46,7 @@ const Step7Modal = ({
               <button
                 className="focus:outline-none ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded px-8 py-2 text-sm"
                 onClick={() => {
-                  setOtherGasGeyser(null);
+                  setOtherGasGeyser("");
                   setShow(false);
                 }}
               >

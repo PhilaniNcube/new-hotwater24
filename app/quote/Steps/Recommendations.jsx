@@ -2,6 +2,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import React, { Fragment, useState, useEffect, useRef } from "react";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 import useMeasure from "react-use-measure";
 import {
   Chart as ChartJS,
@@ -16,6 +21,7 @@ import { Bar } from "react-chartjs-2";
 import formatter from "@/lib/format";
 import roundUp, { roundUpThousand } from "@/lib/roundUp";
 import { motion } from "framer-motion";
+import { ShieldQuestionIcon } from "lucide-react";
 
 ChartJS.register(
   CategoryScale,
@@ -119,10 +125,8 @@ const Recommendations = ({
             mentioned in the below picture:
             <br />{" "}
             <span className="text-2xl font-bold">
-              {` ${formatter.format(
-                roundUp(geyserPrice + installation + plumbing)
-              )}`}
-              *{" "}
+              {` ${formatter.format(geyserPrice + installation + plumbing)}`}
+             {" "}*
             </span>{" "}
             <span className="text-xs underline">Incl VAT</span>
           </p>
@@ -141,11 +145,11 @@ const Recommendations = ({
                   legend: {
                     position: "top",
                     align: "start",
-                    labels:{
+                    labels: {
                       fontWeight: "bold",
                       borderRadius: 10,
                       boxPadding: 3,
-                    }
+                    },
                   },
                 },
                 locale: "ZA",
@@ -163,27 +167,20 @@ const Recommendations = ({
               }}
               data={data}
             />
-          </div>
+          </div>{" "}
           <div className="flex flex-col items-start max-w-2xl mx-auto">
-            <p className="text-sm  text-gray-600 max-w-[600px] mx-auto font-medium">
+            <p className="text-sm mb-2 text-gray-600 max-w-[700px] mx-auto font-medium">
               *The initial estimated total cost is based on the information
-              provided and includes the cost of the:
+              provided and includes the cost of the <span></span>
             </p>
-            <ol className="text-sm list-decimal  text-gray-600 max-w-[600px] mx-auto">
+            <ol className="text-sm list-decimal  text-gray-600 max-w-[700px] mx-auto">
               <li>
-                gas geyser (size of the gas geyser is calculated by the number
-                of hot water outlets indicated).
+                Gas geyser (size of the gas geyser is calculated by the number
+                of hot water outlets indicated)
               </li>
-              <li>
-                the gas installation and 3. the plumbing work. This cost does
-                not include the cost for a gas cage, gas cylinder(s) and gas
-                refill.
-              </li>
+              <li>Gas installation</li>
+              <li>Plumbing work</li>
             </ol>
-            <p className="text-sm  text-gray-600 max-w-[600px] mx-auto font-medium">
-              If you would like to consider financing, please do select the
-              option below and we will take you further through the process.
-            </p>
           </div>
           <p className="text-lg md:text-3xl font-bold mt-4 text-center text-gray-600 mx-auto">
             Would you consider financing?

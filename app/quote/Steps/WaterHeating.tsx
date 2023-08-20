@@ -129,7 +129,7 @@ const WaterHeating = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
           className="relative h-[200px] w-[250px] rounded shadow-lg bg-gray-100 flex flex-col items-center justify-center hover:shadow-md cursor-pointer"
           onClick={() => setShow(true)}
         >
-          {quoteInfo.otherGeyser !== null && (
+          {quoteInfo.otherGeyser !== "" && (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-8 w-8 absolute top-2 right-2 text-sky-500"
