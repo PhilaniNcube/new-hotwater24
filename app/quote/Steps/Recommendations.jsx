@@ -54,7 +54,7 @@ const Recommendations = ({
       setGeyserPrice(4500);
       setInstallation(5500);
       setPlumbing(3750);
-      setGeyserSize(9);
+      setGeyserSize(8);
     } else if (quoteInfo.flowRate <= 12) {
       setGeyserPrice(7200);
       setInstallation(5500);
@@ -125,8 +125,7 @@ const Recommendations = ({
             mentioned in the below picture:
             <br />{" "}
             <span className="text-2xl font-bold">
-              {` ${formatter.format(geyserPrice + installation + plumbing)}`}
-             {" "}*
+              {` ${formatter.format(geyserPrice + installation + plumbing)}`} *
             </span>{" "}
             <span className="text-xs underline">Incl VAT</span>
           </p>
@@ -170,8 +169,9 @@ const Recommendations = ({
           </div>{" "}
           <div className="flex flex-col items-start max-w-2xl mx-auto">
             <p className="text-sm mb-2 text-gray-600 max-w-[700px] mx-auto font-medium">
-              *The initial estimated total cost is based on the information
-              provided and includes the cost of the <span></span>
+              * This cost does not include the cost for a gas cage, gas
+              cylinder(s) and gas refill. The initial estimated total cost is
+              based on the information provided and includes the cost of the
             </p>
             <ol className="text-sm list-decimal  text-gray-600 max-w-[700px] mx-auto">
               <li>
@@ -181,10 +181,17 @@ const Recommendations = ({
               <li>Gas installation</li>
               <li>Plumbing work</li>
             </ol>
+
           </div>
-          <p className="text-lg md:text-3xl font-bold mt-4 text-center text-gray-600 mx-auto">
+          <p className="text-lg font-bold mt-4 text-center text-gray-600 mx-auto">
+            If you would like to consider financing please do select the option
+            below and we will take you further through the process.
+          </p>
+          {/*
+              <p className="text-lg md:text-3xl font-bold mt-4 text-center text-gray-600 mx-auto">
             Would you consider financing?
           </p>
+              */}
           <div className="max-w-7xl mx-auto mt-3 px-4 text-auto"></div>
           <div className="flex items-center justify-center space-x-6 mt-6 mb-8">
             {
@@ -266,12 +273,13 @@ const Recommendations = ({
           <div className="max-w-6xl mx-auto px-4">
             <p className="text-lg text-center text-gray-700 font-bold">
               Thank you for answering our questions! As the number of hot water
-              outlets exceed the maximum capacity for a single gas geyser, we
-              need to look at possibly subdividing the hot water supply for your
-              property.
+              outlets as indicated exceed the maximum capacity for a single gas
+              geyser, we need to look at possibly subdividing the hot water
+              supply for your property.
             </p>
             <div className="grid grid-cols-1 mt-4">
-              <div className="hidden w-full flex-col justify-center px-4">
+              {/**
+           <div className="hidden w-full flex-col justify-center px-4">
                 <p className="text-sm md:text-xl font-medium text-gray-600 my-3">
                   But no worries as we can find a solution for you.
                 </p>
@@ -280,6 +288,7 @@ const Recommendations = ({
                   water supply for your property into 2 or more sections.
                 </p>
               </div>
+          **/}
 
               <div className="w-full ">
                 <img
@@ -292,13 +301,14 @@ const Recommendations = ({
           </div>
 
           <div className="max-w-6xl mx-auto flex flex-col items-center justify-center mt-4">
-            <p className="my-4 text-gray-700 font-medium text-sm md:text-lg px-8 text-center">
-              Would you like us to inform you on the costs involved for such a
-              water heating solution? Please click &apos;Yes, please&apos; and
-              complete the contact information form on the next page and we will
-              send you our proposal shortly.
+            <p className="text-lg text-center text-gray-700 font-bold">
+              Therefore we cannot supply you with an immediate initial costing
+              proposal. By continuing the process (by clinking "Yes please"), we
+              will ask you to complete some personal information and send you
+              our proposal. If you don't want to continue the process, please
+              click "No thanks".
             </p>
-            <div className="flex flex-col md:flex-row md:space-x-4 space-y-3 md:space-y-0">
+            <div className="flex flex-col md:flex-row md:space-x-4 space-y-3 md:space-y-0 mt-4">
               <svg
                 onClick={prevPage}
                 xmlns="http://www.w3.org/2000/svg"
