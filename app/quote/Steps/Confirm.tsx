@@ -2,8 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
+
 import { motion } from 'framer-motion';
 import { LeadStageProps } from '../NewLead';
 
