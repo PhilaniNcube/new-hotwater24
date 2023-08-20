@@ -125,6 +125,17 @@ const PersonalDetails = ({
 
     analytics.track("generate_lead");
 
+    if(quoteInfo.streetAddress === '' && data.length > 0) {
+
+      setQuoteInfo({
+        ...quoteInfo,
+        streetAddress: data[0].description.split(",")[0],
+        suburb: data[0].description.split(",")[1],
+        city: data[0].description.split(",")[2],
+      })
+
+    }
+
     try {
       const quote = await supabase
         .from("quotes")
