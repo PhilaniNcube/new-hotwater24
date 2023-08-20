@@ -249,7 +249,7 @@ const PersonalDetails = ({
       }
 
       setLoading(false);
-      // nextPage();
+      nextPage();
     } catch (error) {
       console.log(error);
     }
@@ -354,7 +354,7 @@ const PersonalDetails = ({
                 type="text"
                 name="areaCode"
                 required
-                placeholder="Area"
+                placeholder="(0)82"
                 className="rounded-md border border-gray-300 pl-4 py-2 text-base max-w-[70px] text-gray-600 focus:outline-none focus:border-gray-700 "
                 value={areaCode}
                 onChange={(e) => setAreaCode(e.target.value)}
@@ -363,7 +363,7 @@ const PersonalDetails = ({
                 type="text"
                 name="Number"
                 required
-                placeholder="number"
+                placeholder="123-4567"
                 className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
                 value={number}
                 onChange={(e) => setNumber(e.target.value)}

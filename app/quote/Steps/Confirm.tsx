@@ -51,11 +51,15 @@ export default function Confirm({
               THANK YOU {quoteInfo.firstName}!
             </h1>
             <p className=" md:w-9/12 lg:w-11/12 xl:w-10/12 2xl:9/12 text-base leading-normal text-gray-600 mt-5">
-              We have taken note of your interest. You have received an email
-              with the summary of your information and we will be contacing you in the next 1 to 3 days
-              further discuss your requirements and give our free advise. If you
-              do not see your e-mail, please check your spam folder for your
-              email.
+              We have taken note of your interest for a gas geyser installation
+              for your property. You have received an email with the summary of
+              the information you entered. We will be contacting you within the
+              next 48hours and send you our proposal, which entails all the
+              initial information you need (including an initial cost estimate).
+            </p>
+            <p className=" md:w-9/12 lg:w-11/12 xl:w-10/12 2xl:9/12 text-base leading-normal text-gray-600 mt-5">
+              If you did not receive the confirmation e-mail, please check your
+              spam folder.
             </p>
           </div>
         </div>
