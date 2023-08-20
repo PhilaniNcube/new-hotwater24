@@ -67,6 +67,10 @@ const PersonalDetails = ({
 
   const [loading, setLoading] = useState(false);
 
+  const [countryCode, setCountryCode] = useState("27");
+  const [areaCode, setAreaCode] = useState("");
+  const [number, setNumber] = useState("");
+
   const {
     children,
     adults,
@@ -125,14 +129,14 @@ const PersonalDetails = ({
 
     analytics.track("generate_lead");
 
-    if(quoteInfo.streetAddress === '' && data.length > 0) {
+    if(quoteInfo.streetAddress === '') {
 
       setQuoteInfo({
         ...quoteInfo,
         streetAddress: data[0].description.split(",")[0],
-        suburb: data[0].description.split(",")[1],
-        city: data[0].description.split(",")[2],
-      })
+        suburb: data[0].description.split(",")[1].trim(),
+        city: data[0].description.split(",")[2].trim(),
+      });
 
     }
 
@@ -171,7 +175,7 @@ const PersonalDetails = ({
             streetAddress: streetAddress,
             city: city,
             suburb: suburb,
-            telephoneNumber: telephoneNumber,
+            telephoneNumber: `${countryCode} ${areaCode} ${number}`,
             postalCode: postalCode,
             completeSolution: completeSolution,
             product_id: product_id || undefined,
@@ -225,7 +229,7 @@ const PersonalDetails = ({
             streetAddress: streetAddress,
             suburb: suburb,
             city: city,
-            telephoneNumber: telephoneNumber,
+            telephoneNumber: `${countryCode} ${areaCode} ${number}`,
             postalCode: postalCode,
             completeSolution: completeSolution,
             product_id: product_id || null,
@@ -245,7 +249,7 @@ const PersonalDetails = ({
       }
 
       setLoading(false);
-      nextPage();
+      // nextPage();
     } catch (error) {
       console.log(error);
     }
@@ -333,33 +337,36 @@ const PersonalDetails = ({
             />
           </div>
           <div className="flex flex-col mt-3 md:mt-0 w-full md:w-1/2">
-            <Label className="text-md font-bold" htmlFor="telephone">
+            <Label className="text-md font-bold" htmlFor="countryCode">
               Telephone/Cellphone
             </Label>
-            <div className="flex items-center">
-              {/* <Select>
-                <SelectTrigger className="w-[30px]">
-                  <SelectValue placeholder="Code" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="light">Light</SelectItem>
-                  <SelectItem value="dark">Dark</SelectItem>
-                  <SelectItem value="system">System</SelectItem>
-                </SelectContent>
-              </Select> */}
+            <div className="flex items-center space-x-2">
               <Input
-                type="tel"
-                name="telephone"
+                type="text"
+                name="countryCode"
                 required
-                placeholder="+27 81 300 5555"
+                placeholder="country"
+                className="rounded-md border border-gray-300 pl-4 py-2 max-w-[60px] text-base text-gray-600 focus:outline-none focus:border-gray-700 "
+                value={countryCode}
+                onChange={(e) => setCountryCode(e.target.value)}
+              />
+              <Input
+                type="text"
+                name="areaCode"
+                required
+                placeholder="Area"
+                className="rounded-md border border-gray-300 pl-4 py-2 text-base max-w-[70px] text-gray-600 focus:outline-none focus:border-gray-700 "
+                value={areaCode}
+                onChange={(e) => setAreaCode(e.target.value)}
+              />
+              <Input
+                type="text"
+                name="Number"
+                required
+                placeholder="number"
                 className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
-                value={quoteInfo.telephoneNumber}
-                onChange={(e) =>
-                  setQuoteInfo({
-                    ...quoteInfo,
-                    telephoneNumber: e.target.value,
-                  })
-                }
+                value={number}
+                onChange={(e) => setNumber(e.target.value)}
               />
             </div>
           </div>
