@@ -74,7 +74,7 @@ const Recommendations = ({
       setGeyserPrice(14950);
       setInstallation(8050);
       setPlumbing(3950);
-      setGeyserSize(20);
+      setGeyserSize(26);
     }
   }, []);
 
@@ -171,7 +171,7 @@ const Recommendations = ({
             <p className="text-sm mb-2 text-gray-600 max-w-[700px] mx-auto font-medium">
               *This cost does not include the cost for a gas cage, gas
               cylinder(s) and gas refill. The initial estimated total cost is
-              based on the information provided and includes the cost of the
+              based on the information provided and includes the cost of the:
             </p>
             <ol className="text-sm list-decimal  text-gray-600 max-w-[700px] mx-auto">
               <li>
@@ -181,10 +181,9 @@ const Recommendations = ({
               <li>Gas installation</li>
               <li>Plumbing work</li>
             </ol>
-
           </div>
           <p className="text-lg font-bold mt-4 text-center text-gray-600 mx-auto">
-            If you would like to consider financing please do select the option
+            If you would like to consider financing, please do select the option
             below and we will take you further through the process.
           </p>
           {/*
@@ -302,11 +301,12 @@ const Recommendations = ({
 
           <div className="max-w-6xl mx-auto flex flex-col items-center justify-center mt-4">
             <p className="text-lg text-center text-gray-700 font-bold">
-              Therefore we cannot supply you with an immediate initial costing
-              proposal. By continuing the process (by clinking "Yes please"), we
-              will ask you to complete some personal information and send you
-              our proposal. If you don't want to continue the process, please
-              click "No thanks".
+              However you might have to look at installing 2 gas geysers that
+              will supply your property to gas for your warm water solution. By
+              clicking "Yes please" below we will take you further through the
+              process and we will send you our proposal based on 2 gas geysers.
+              If you don't want to continue the process, please click "No
+              thanks".
             </p>
             <div className="flex flex-col md:flex-row md:space-x-4 space-y-3 md:space-y-0 mt-4">
               <svg

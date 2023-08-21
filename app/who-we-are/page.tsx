@@ -8,24 +8,30 @@ import Choose from "@/components/Choose";
 
 const page = () => {
   return (
-    <main className="relative isolate">
-      <Image
-        src="/images/hot-shower.jpg"
-        className=" aspect-[3/1] object-cover"
-        width={1920}
-        height={1080}
-        alt="Background Image"
-      />
-      <div className="absolute inset-0">
-        <div className="container pt-16 relative z-10">
+    <main className="bg-black">
+      <div className="relative">
+        <Image
+          src="/images/hot-shower.jpg"
+          className=" aspect-[3/1] object-cover"
+          width={1920}
+          height={1080}
+          alt="Background Image"
+        />{" "}
+        <div className="absolute inset-0 bg-black bg-opacity-50">
+           <div className="container pt-16 h-full flex justify-center items-center relative z-10">
           <h1
             className={cn(
-              `text-white font-light text-3xl lg:text-5xl uppercase tracking-wider mb-2`,
+              `text-white font-light text-3xl lg:text-5xl text-center uppercase tracking-wider mb-2`,
               `${bebas.className}`
             )}
           >
             About <span className="font-bold">Us</span>
-          </h1>
+          </h1></div>
+        </div>
+      </div>
+      <div className="w-full py-10">
+        <div className="container pt-16 relative z-10">
+
 
           <p className="text-sm max-w-[55ch] text-white pb-2">
             We are Hotwater24, the specialist to assist and advise you on the
@@ -51,7 +57,7 @@ const page = () => {
             best gas water heating solution for your home
           </p>
 
-         <Choose />
+          <Choose />
         </div>
       </div>
     </main>
