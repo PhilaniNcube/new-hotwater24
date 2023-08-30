@@ -18,7 +18,7 @@ const page = () => {
           alt="Background Image"
         />{" "}
         <div className="absolute inset-0 bg-black bg-opacity-50">
-           <div className="container pt-16 h-full flex justify-center items-center relative z-10">
+           <div className="container relative z-10 flex items-center justify-center h-full pt-16">
           <h1
             className={cn(
               `text-white font-light text-3xl lg:text-5xl text-center uppercase tracking-wider mb-2`,
@@ -30,7 +30,7 @@ const page = () => {
         </div>
       </div>
       <div className="w-full py-10">
-        <div className="container pt-16 relative z-10">
+        <div className="container relative z-10 pt-16">
 
 
           <p className="text-sm max-w-[55ch] text-white pb-2">

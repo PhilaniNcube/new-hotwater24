@@ -9,26 +9,26 @@ function Index({ quote }) {
 
   return (
     <Fragment>
-      <div className="w-full bg-gray-200 py-4">
-        <div className="container mx-auto px-6 flex items-start justify-center">
+      <div className="w-full py-4 bg-gray-200">
+        <div className="container flex items-start justify-center px-6 mx-auto">
           <div className="w-full">
             {/* Card is full width. Use in 12 col grid for best view. */}
             {/* Card code block start */}
-            <div className="flex flex-col lg:flex-row mx-auto w-full bg-white shadow rounded">
-              <div className="w-full lg:w-1/3 p-6">
+            <div className="flex flex-col w-full mx-auto bg-white rounded shadow lg:flex-row">
+              <div className="w-full p-6 lg:w-1/3">
                 <div className="flex items-center">
                   <div className="w-12 h-12 rounded shadow">
                     <img
-                      className="w-full h-full overflow-hidden object-cover rounded"
+                      className="object-cover w-full h-full overflow-hidden rounded"
                       src="/images/avatar.svg"
                       alt="logo"
                     />
                   </div>
                   <div className="ml-3">
-                    <h5 className="text-gray-800 font-medium text-base">
+                    <h5 className="text-base font-medium text-gray-800">
                       {quote.firstName} {quote.lastName}
                     </h5>
-                    <p className="text-gray-600  text-xs font-normal">
+                    <p className="text-xs font-normal text-gray-600">
                       {quote.email}
                     </p>
                   </div>
@@ -36,95 +36,93 @@ function Index({ quote }) {
 
                 <div className="flex items-center justify-between mt-8">
                   <div>
-                    <h2 className="text-sm xl:text-lg text-gray-600  font-bold tracking-normal">
+                    <h2 className="text-sm font-bold tracking-normal text-gray-600 xl:text-lg">
                       {quote.flowRate <= 30
                         ? `Geyser Size: ${quote.geyserSize} L/Min`
                         : `Flow Rate: ${quote.flowRate} L/Min`}
                     </h2>
 
-                    <h3 className="font-bold text-lg text-gray-600 border-b pb-3 border-gray-400">
+                    <h3 className="pb-3 text-lg font-bold text-gray-600 border-b border-gray-400">
                       {quote.flowRate <= 30 &&
                         ` Estimated Cost:
                       ${formatter.format(
-                        roundUp(
-                          quote.geyserPrice +
-                            quote.installationCost +
-                            quote.plumbingCost
-                        )
+                        quote.geyserPrice +
+                          quote.installationCost +
+                          quote.plumbingCost
                       )}`}
                     </h3>
-                    <h3 className="font-bold text-lg text-gray-600 mt-3">
+                    <h3 className="mt-3 text-lg font-bold text-gray-600">
                       Monthly Savings: {formatter.format(quote.monthlySavings)}
                     </h3>
-                    <h3 className="font-bold text-lg text-gray-600">
+                    <h3 className="text-lg font-bold text-gray-600">
                       Yearly Savings: {formatter.format(quote.yearlySavings)}
                     </h3>
                   </div>
                 </div>
 
                 <div className="mt-4">
-                  <div className="mb-2 flex items-center justify-between">
-                    <p className="text-gray-600  text-sm font-normal leading-3 tracking-normal">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-sm font-normal leading-3 tracking-normal text-gray-600">
                       Bathubs
                     </p>
-                    <p className="text-xs text-sky-700  font-normal leading-3 tracking-normal">
+                    <p className="text-xs font-normal leading-3 tracking-normal text-sky-700">
                       {quote.bathtub}
                     </p>
                   </div>
 
                   {/***
                      * ********************************
-                     *   <div className="mb-2 flex items-center justify-between">
-                    <p className="text-gray-600  text-sm font-normal leading-3 tracking-normal">
+                     *   <div className="flex items-center justify-between mb-2">
+                    <p className="text-sm font-normal leading-3 tracking-normal text-gray-600">
                       Dishwashers
                     </p>
-                    <p className="text-xs text-sky-700  font-normal leading-3 tracking-normal">
+                    <p className="text-xs font-normal leading-3 tracking-normal text-sky-700">
                       {quote.dishwasher}
                     </p>
                   </div>
                      *
                      */}
 
-                  <div className="mb-2 flex items-center justify-between">
-                    <p className="text-gray-600  text-sm font-normal leading-3 tracking-normal">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-sm font-normal leading-3 tracking-normal text-gray-600">
                       Rain Showers
                     </p>
-                    <p className="text-xs text-sky-700  font-normal leading-3 tracking-normal">
+                    <p className="text-xs font-normal leading-3 tracking-normal text-sky-700">
                       {quote.rainShower}
                     </p>
                   </div>
 
-                  <div className="mb-2 flex items-center justify-between">
-                    <p className="text-gray-600  text-sm font-normal leading-3 tracking-normal">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-sm font-normal leading-3 tracking-normal text-gray-600">
                       Kitchen Sinks
                     </p>
-                    <p className="text-xs text-sky-700  font-normal leading-3 tracking-normal">
+                    <p className="text-xs font-normal leading-3 tracking-normal text-sky-700">
                       {quote.kitchenSink}
                     </p>
                   </div>
-                  <div className="mb-2 flex items-center justify-between">
-                    <p className="text-gray-600  text-sm font-normal leading-3 tracking-normal">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-sm font-normal leading-3 tracking-normal text-gray-600">
                       Bathroom Sinks
                     </p>
-                    <p className="text-xs text-sky-700  font-normal leading-3 tracking-normal">
+                    <p className="text-xs font-normal leading-3 tracking-normal text-sky-700">
                       {quote.bathroomSink}
                     </p>
                   </div>
-                  <div className="mb-2 flex items-center justify-between">
-                    <p className="text-gray-600  text-sm font-normal leading-3 tracking-normal">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-sm font-normal leading-3 tracking-normal text-gray-600">
                       Standard Showers
                     </p>
-                    <p className="text-xs text-sky-700  font-normal leading-3 tracking-normal">
+                    <p className="text-xs font-normal leading-3 tracking-normal text-sky-700">
                       {quote.standardShower}
                     </p>
                   </div>
 
                   {/****
-                    *    <div className="mb-2 flex items-center justify-between">
-                    <p className="text-gray-600  text-sm font-normal leading-3 tracking-normal">
+                    *    <div className="flex items-center justify-between mb-2">
+                    <p className="text-sm font-normal leading-3 tracking-normal text-gray-600">
                       Washing Machine
                     </p>
-                    <p className="text-xs text-sky-700  font-normal leading-3 tracking-normal">
+                    <p className="text-xs font-normal leading-3 tracking-normal text-sky-700">
                       {quote.washingmachine}
                     </p>
                   </div>
@@ -133,52 +131,52 @@ function Index({ quote }) {
                     */}
                 </div>
               </div>
-              <div className="w-full lg:w-1/3 p-6 border-t border-b lg:border-t-0 lg:border-b-0 sm:border-l sm:border-r border-gray-300">
-                <h3 className="text-lg text-gray-600 font-bold mt-1 mb-1">
+              <div className="w-full p-6 border-t border-b border-gray-300 lg:w-1/3 lg:border-t-0 lg:border-b-0 sm:border-l sm:border-r">
+                <h3 className="mt-1 mb-1 text-lg font-bold text-gray-600">
                   Address:
                 </h3>
-                <p className="text-gray-600  text-sm font-normal">
+                <p className="text-sm font-normal text-gray-600">
                   {`Street Address: ${quote.streetAddress}`}
                 </p>
-                <p className="text-gray-600  text-sm font-normal">
+                <p className="text-sm font-normal text-gray-600">
                   {`Suburb: ${quote.suburb}`}
                 </p>
-                <p className="text-gray-600  text-sm font-normal">
+                <p className="text-sm font-normal text-gray-600">
                   {`Postal Code: ${quote.postalCode}`}
                 </p>
-                <p className="text-gray-600  text-sm font-normal">
+                <p className="text-sm font-normal text-gray-600">
                   {`City: ${quote.city}`}
                 </p>
-                <p className="text-gray-600  text-sm font-normal">
+                <p className="text-sm font-normal text-gray-600">
                   {`Phone Number: ${quote.telephoneNumber}`}
                 </p>
 
-                <div className="mt-2 mb-2 bg-gray-100 shadow rounded p-4 relative">
+                <div className="relative p-4 mt-2 mb-2 bg-gray-100 rounded shadow">
                   <ul>
-                    <li className="text-xs text-gray-600  font-normal tracking-normal">
+                    <li className="text-xs font-normal tracking-normal text-gray-600">
                       Home Ownership -{" "}
-                      <span className="uppercase font-bold">
+                      <span className="font-bold uppercase">
                         {quote.ownership ? `Owner` : "Renter"}
                       </span>
                     </li>
-                    <li className="text-xs text-gray-600  font-normal tracking-normal">
+                    <li className="text-xs font-normal tracking-normal text-gray-600">
                       Property Type -{" "}
-                      <span className="uppercase font-bold">
+                      <span className="font-bold uppercase">
                         {quote.houseType}
                       </span>
                     </li>
 
-                    <li className="text-xs text-gray-600  font-normal tracking-normal">
+                    <li className="text-xs font-normal tracking-normal text-gray-600">
                       Current Gas Supply -{" "}
-                      <span className="uppercase font-bold">
+                      <span className="font-bold uppercase">
                         {quote.gasSupply}
                       </span>
                     </li>
-                    <li className="text-xs text-gray-600  font-normal tracking-normal">
+                    <li className="text-xs font-normal tracking-normal text-gray-600">
                       {quote.flowRate <= 30 ? (
                         <Fragment>
                           Quote Required -{" "}
-                          <span className="uppercase font-bold">
+                          <span className="font-bold uppercase">
                             {quote.installation}
                           </span>
                         </Fragment>
@@ -186,7 +184,7 @@ function Index({ quote }) {
                         <Fragment>
                           {" "}
                           Request Information -{` `}
-                          <span className="uppercase font-bold">
+                          <span className="font-bold uppercase">
                             {quote.installation}
                           </span>
                         </Fragment>
@@ -195,52 +193,52 @@ function Index({ quote }) {
                   </ul>
                 </div>
               </div>
-              <div className="w-full  lg:w-1/3 px-6 pt-4">
+              <div className="w-full px-6 pt-4 lg:w-1/3">
                 {/**
-                <h3 className="text-gray-600 font-bold text-lg">
+                <h3 className="text-lg font-bold text-gray-600">
                   Household Size:
                 </h3>
 
-                <div className="flex items-center border-t-2 justify-between py-2">
+                <div className="flex items-center justify-between py-2 border-t-2">
                   <div>
-                    <h2 className="text-gray-800  leading-5 text-center">
+                    <h2 className="leading-5 text-center text-gray-800">
                       Children
                     </h2>
-                    <h2 className="text-gray-600  font-bold text-lg leading-6 mb-1 text-center">
+                    <h2 className="mb-1 text-lg font-bold leading-6 text-center text-gray-600">
                       {quote.children}
                     </h2>
                   </div>
                   <div>
-                    <h2 className="text-gray-800  leading-5 text-center">
+                    <h2 className="leading-5 text-center text-gray-800">
                       Teenagers
                     </h2>
-                    <h2 className="text-gray-600  font-bold text-lg leading-6 mb-1 text-center">
+                    <h2 className="mb-1 text-lg font-bold leading-6 text-center text-gray-600">
                       {quote.teenagers}
                     </h2>
                   </div>
                   <div>
-                    <h2 className="text-gray-800  leading-5 text-center">
+                    <h2 className="leading-5 text-center text-gray-800">
                       Adults
                     </h2>
-                    <h2 className="text-gray-600  font-bold text-lg leading-6 mb-1 text-center">
+                    <h2 className="mb-1 text-lg font-bold leading-6 text-center text-gray-600">
                       {quote.adults}
                     </h2>
                   </div>
                 </div>
               */}
 
-                <h3 className="text-gray-600 font-bold text-lg">
+                <h3 className="text-lg font-bold text-gray-600">
                   Intended Gas Use:
                 </h3>
                 <div className="flex items-center justify-between py-4 border-t-2 border-gray-200">
                   <div>
-                    <h2 className="text-gray-600  font-medium leading-6 mb-1 text-center">
+                    <h2 className="mb-1 font-medium leading-6 text-center text-gray-600">
                       Cooking
                     </h2>
-                    <p className="text-gray-800 text-sm leading-5 text-center">
+                    <p className="text-sm leading-5 text-center text-gray-800">
                       {quote.gasStove ? (
-                        <span className="text-lg bg-green-700 text-white">
-                          <AiFillCheckSquare className="text-lg bg-green-700 text-white" />
+                        <span className="text-lg text-white bg-green-700">
+                          <AiFillCheckSquare className="text-lg text-white bg-green-700" />
                         </span>
                       ) : (
                         <span className="text-lg text-white bg-red-500">
@@ -250,13 +248,13 @@ function Index({ quote }) {
                     </p>
                   </div>
                   <div>
-                    <h2 className="text-gray-600  font-medium leading-6 mb-1 text-center">
+                    <h2 className="mb-1 font-medium leading-6 text-center text-gray-600">
                       Water
                     </h2>
-                    <p className="text-gray-800 text-sm leading-5 text-center">
+                    <p className="text-sm leading-5 text-center text-gray-800">
                       {quote.gasWaterHeating ? (
-                        <span className="text-lg bg-green-700 text-white">
-                          <AiFillCheckSquare className="text-lg bg-green-700 text-white" />
+                        <span className="text-lg text-white bg-green-700">
+                          <AiFillCheckSquare className="text-lg text-white bg-green-700" />
                         </span>
                       ) : (
                         <span className="text-lg text-white bg-red-500">
@@ -266,13 +264,13 @@ function Index({ quote }) {
                     </p>
                   </div>
                   <div>
-                    <h2 className="text-gray-600  font-medium leading-6 mb-1 text-center">
+                    <h2 className="mb-1 font-medium leading-6 text-center text-gray-600">
                       Heating
                     </h2>
-                    <div className="text-gray-800 text-sm leading-5 text-center">
+                    <div className="text-sm leading-5 text-center text-gray-800">
                       {quote.gasHeating ? (
-                        <span className="text-lg bg-green-700 text-white">
-                          <AiFillCheckSquare className="text-lg bg-green-700 text-white" />
+                        <span className="text-lg text-white bg-green-700">
+                          <AiFillCheckSquare className="text-lg text-white bg-green-700" />
                         </span>
                       ) : (
                         <span className="text-lg text-white bg-red-500">
@@ -283,18 +281,18 @@ function Index({ quote }) {
                   </div>
                 </div>
 
-                <h3 className="text-gray-600 font-bold text-lg">
+                <h3 className="text-lg font-bold text-gray-600">
                   Current Geyser:
                 </h3>
                 <div className="flex items-center justify-between py-4 border-t-2 border-gray-200">
                   <div>
-                    <h2 className="text-gray-600  font-medium leading-6 mb-1 text-center">
+                    <h2 className="mb-1 font-medium leading-6 text-center text-gray-600">
                       Electric
                     </h2>
-                    <p className="text-gray-800 text-sm leading-5 text-center">
+                    <p className="text-sm leading-5 text-center text-gray-800">
                       {quote.electricGeyser ? (
-                        <span className="text-lg bg-green-700 text-white">
-                          <AiFillCheckSquare className="text-lg bg-green-700 text-white" />
+                        <span className="text-lg text-white bg-green-700">
+                          <AiFillCheckSquare className="text-lg text-white bg-green-700" />
                         </span>
                       ) : (
                         <span className="text-lg text-white bg-red-500">
@@ -304,13 +302,13 @@ function Index({ quote }) {
                     </p>
                   </div>
                   <div>
-                    <h2 className="text-gray-600  font-medium leading-6 mb-1 text-center">
+                    <h2 className="mb-1 font-medium leading-6 text-center text-gray-600">
                       Solar
                     </h2>
-                    <p className="text-gray-800 text-sm leading-5 text-center">
+                    <p className="text-sm leading-5 text-center text-gray-800">
                       {quote.solarGeyser ? (
-                        <span className="text-lg bg-green-700 text-white">
-                          <AiFillCheckSquare className="text-lg bg-green-700 text-white" />
+                        <span className="text-lg text-white bg-green-700">
+                          <AiFillCheckSquare className="text-lg text-white bg-green-700" />
                         </span>
                       ) : (
                         <span className="text-lg text-white bg-red-500">
@@ -320,13 +318,13 @@ function Index({ quote }) {
                     </p>
                   </div>
                   <div>
-                    <h2 className="text-gray-600  font-medium leading-6 mb-1 text-center">
+                    <h2 className="mb-1 font-medium leading-6 text-center text-gray-600">
                       Gas
                     </h2>
-                    <p className="text-gray-800 text-sm leading-5 text-center">
+                    <p className="text-sm leading-5 text-center text-gray-800">
                       {quote.gasGeyser ? (
-                        <span className="text-lg bg-green-700 text-white">
-                          <AiFillCheckSquare className="text-lg bg-green-700 text-white" />
+                        <span className="text-lg text-white bg-green-700">
+                          <AiFillCheckSquare className="text-lg text-white bg-green-700" />
                         </span>
                       ) : (
                         <span className="text-lg text-white bg-red-500">
@@ -336,13 +334,13 @@ function Index({ quote }) {
                     </p>
                   </div>
                   <div>
-                    <h2 className="text-gray-600  font-medium leading-6 mb-1 text-center">
+                    <h2 className="mb-1 font-medium leading-6 text-center text-gray-600">
                       Other
                     </h2>
-                    <p className="text-gray-800 text-sm leading-5 text-center">
+                    <p className="text-sm leading-5 text-center text-gray-800">
                       {quote.otherGeyser ? (
-                        <span className="text-lg bg-green-700 text-white">
-                          <AiFillCheckSquare className="text-lg bg-green-700 text-white" />
+                        <span className="text-lg text-white bg-green-700">
+                          <AiFillCheckSquare className="text-lg text-white bg-green-700" />
                         </span>
                       ) : (
                         <span className="text-lg text-white bg-red-500">
