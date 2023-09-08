@@ -337,7 +337,7 @@ const PersonalDetails = ({
             />
           </div>
           <div className="flex flex-col mt-3 md:mt-0 w-full md:w-1/2">
-            <Label className="text-md font-bold" htmlFor="countryCode">
+            <Label className="text-md font-bold" htmlFor="phone">
               Telephone/Cellphone
             </Label>
             <div className="flex items-center space-x-2">
