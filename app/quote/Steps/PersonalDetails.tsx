@@ -175,7 +175,7 @@ const PersonalDetails = ({
             streetAddress: streetAddress,
             city: city,
             suburb: suburb,
-            telephoneNumber: `${countryCode} ${areaCode} ${number}`,
+            telephoneNumber: telephoneNumber,
             postalCode: postalCode,
             completeSolution: completeSolution,
             product_id: product_id || undefined,
@@ -229,7 +229,7 @@ const PersonalDetails = ({
             streetAddress: streetAddress,
             suburb: suburb,
             city: city,
-            telephoneNumber: `${countryCode} ${areaCode} ${number}`,
+            telephoneNumber: telephoneNumber,
             postalCode: postalCode,
             completeSolution: completeSolution,
             product_id: product_id || null,
@@ -343,30 +343,17 @@ const PersonalDetails = ({
             <div className="flex items-center space-x-2">
               <Input
                 type="text"
-                name="countryCode"
+                name="phone"
                 required
-                placeholder="+27"
-                className="rounded-md border border-gray-300 pl-2 py-2 max-w-[50px] text-base text-gray-600 focus:outline-none focus:border-gray-700 "
-                value={countryCode}
-                onChange={(e) => setCountryCode(e.target.value)}
-              />
-              <Input
-                type="text"
-                name="areaCode"
-                required
-                placeholder="(0)82"
-                className="rounded-md border border-gray-300 pl-4 py-2 text-base max-w-[65px] text-gray-600 focus:outline-none focus:border-gray-700 "
-                value={areaCode}
-                onChange={(e) => setAreaCode(e.target.value)}
-              />
-              <Input
-                type="text"
-                name="Number"
-                required
-                placeholder="123-4567"
-                className="rounded-md border border-gray-300 pl-2 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
-                value={number}
-                onChange={(e) => setNumber(e.target.value)}
+                placeholder="+27811225467"
+                className="rounded-md border border-gray-300 pl-2 py-2  text-base text-gray-600 focus:outline-none focus:border-gray-700 "
+                value={telephoneNumber}
+                onChange={(e) =>
+                  setQuoteInfo({
+                    ...quoteInfo,
+                    telephoneNumber: e.target.value,
+                  })
+                }
               />
             </div>
           </div>
