@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { Fragment } from 'react';
-import { Check, AiFillCloseSquare } from 'react-icons/ai';
+import { AiFillCloseSquare } from 'react-icons/ai';
 import formatter from '../../lib/format';
 import roundUp from '../../lib/roundUp';
 import { Check } from 'lucide-react';
