@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { Fragment } from 'react';
-import { AiFillCheckSquare, AiFillCloseSquare } from 'react-icons/ai';
+import { Check, AiFillCloseSquare } from 'react-icons/ai';
 import formatter from '../../lib/format';
 import roundUp from '../../lib/roundUp';
+import { Check } from 'lucide-react';
 
 function LeadCard({ quote }) {
   return (
@@ -64,7 +65,8 @@ function LeadCard({ quote }) {
                         : quote.financing}
                     </h3>
                     <h3 className="font-bold text-lg text-gray-600 border-b pb-3 border-gray-400">
-                     Off Grid Solution:  {quote.completeSolution === null ||
+                      Off Grid Solution:{" "}
+                      {quote.completeSolution === null ||
                       quote.completeSolution === false
                         ? "No"
                         : "Yes"}
@@ -266,7 +268,7 @@ function LeadCard({ quote }) {
                     <p className="text-gray-800 text-sm leading-5 text-center">
                       {quote.gasStove ? (
                         <span className="text-lg bg-green-700 text-white">
-                          <AiFillCheckSquare className="text-lg bg-green-700 text-white" />
+                          <Check className="text-lg bg-green-700 text-white" />
                         </span>
                       ) : (
                         <span className="text-lg text-white bg-red-500">
@@ -282,7 +284,7 @@ function LeadCard({ quote }) {
                     <p className="text-gray-800 text-sm leading-5 text-center">
                       {quote.gasWaterHeating ? (
                         <span className="text-lg bg-green-700 text-white">
-                          <AiFillCheckSquare className="text-lg bg-green-700 text-white" />
+                          <Check className="text-lg bg-green-700 text-white" />
                         </span>
                       ) : (
                         <span className="text-lg text-white bg-red-500">
@@ -298,7 +300,7 @@ function LeadCard({ quote }) {
                     <div className="text-gray-800 text-sm leading-5 text-center">
                       {quote.gasHeating ? (
                         <span className="text-lg bg-green-700 text-white">
-                          <AiFillCheckSquare className="text-lg bg-green-700 text-white" />
+                          <Check className="text-lg bg-green-700 text-white" />
                         </span>
                       ) : (
                         <span className="text-lg text-white bg-red-500">
@@ -320,7 +322,7 @@ function LeadCard({ quote }) {
                     <p className="text-gray-800 text-sm leading-5 text-center">
                       {quote.electricGeyser ? (
                         <span className="text-lg bg-green-700 text-white">
-                          <AiFillCheckSquare className="text-lg bg-green-700 text-white" />
+                          <Check className="text-lg bg-green-700 text-white" />
                         </span>
                       ) : (
                         <span className="text-lg text-white bg-red-500">
@@ -336,7 +338,7 @@ function LeadCard({ quote }) {
                     <p className="text-gray-800 text-sm leading-5 text-center">
                       {quote.solarGeyser ? (
                         <span className="text-lg bg-green-700 text-white">
-                          <AiFillCheckSquare className="text-lg bg-green-700 text-white" />
+                          <Check className="text-lg bg-green-700 text-white" />
                         </span>
                       ) : (
                         <span className="text-lg text-white bg-red-500">
@@ -352,7 +354,7 @@ function LeadCard({ quote }) {
                     <p className="text-gray-800 text-sm leading-5 text-center">
                       {quote.gasGeyser ? (
                         <span className="text-lg bg-green-700 text-white">
-                          <AiFillCheckSquare className="text-lg bg-green-700 text-white" />
+                          <Check className="text-lg bg-green-700 text-white" />
                         </span>
                       ) : (
                         <span className="text-lg text-white bg-red-500">
@@ -368,7 +370,7 @@ function LeadCard({ quote }) {
                     <p className="text-gray-800 text-sm leading-5 text-center">
                       {quote.otherGeyser ? (
                         <span className="text-lg bg-green-700 text-white">
-                          <AiFillCheckSquare className="text-lg bg-green-700 text-white" />
+                          <Check className="text-lg bg-green-700 text-white" />
                         </span>
                       ) : (
                         <span className="text-lg text-white bg-red-500">

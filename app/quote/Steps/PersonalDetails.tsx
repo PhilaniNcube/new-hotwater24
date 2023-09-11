@@ -533,7 +533,7 @@ const PersonalDetails = ({
 
         <div className="flex flex-col w-full">
           <Label className="text-md font-bold" htmlFor="comments">
-            Comments
+            Comments <span className="text-xs ml-2">(please may you add any information/ questions/ remarks you would like to share with us in order to support your enquiry)</span>
           </Label>
           <Textarea
             rows={4}
