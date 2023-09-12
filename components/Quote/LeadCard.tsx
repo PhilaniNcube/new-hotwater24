@@ -5,7 +5,11 @@ import formatter from '../../lib/format';
 import roundUp from '../../lib/roundUp';
 import { Check } from 'lucide-react';
 
-function LeadCard({ quote }) {
+type LeadCardProps = {
+   quote: Database['public']['Tables']['quotes']['Row']
+}
+
+function LeadCard({ quote }:LeadCardProps) {
   return (
     <Fragment>
       <div className="w-full bg-gray-200 py-4">
