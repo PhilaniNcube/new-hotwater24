@@ -183,8 +183,9 @@ const Recommendations = ({
             </ol>
           </div>
           <p className="text-lg font-bold mt-4 text-center text-gray-600 mx-auto">
-            If you would like to consider financing, please do select the option
-            below and we will take you further through the process.
+            If you would like to consider a payment plan/installment, please do
+            select the option below and we will take you further through the
+            process.
           </p>
           {/*
               <p className="text-lg md:text-3xl font-bold mt-4 text-center text-gray-600 mx-auto">
@@ -210,7 +211,7 @@ const Recommendations = ({
                     d="M15 19l-7-7 7-7"
                   />
                 </svg>
-                <div className="flex flex-col md:flex-row md:space-x-4 space-y-3 md:space-y-0">
+                <div className="flex flex-col md:flex-row space-x-4 space-y-3 md:space-y-0">
                   <span
                     onClick={() => {
                       setQuoteInfo({
@@ -220,13 +221,13 @@ const Recommendations = ({
                         plumbingCost: plumbing,
                         geyserPrice: geyserPrice,
                         geyserSize: geyserSize,
-                        financing: "No FInancing",
+                        financing: "No Payment Plan",
                       });
                       nextPage();
                     }}
-                    className="bg-sky-500 items-center flex justify-center hover:bg-sky-600 text-center text-white text-sm font-medium rounded-full py-4 px-8 shadow-sky-400 cursor-pointer shadow-md hover:shadow"
+                    className="bg-sky-500 items-center flex justify-center hover:bg-sky-600 text-center text-white text-sm font-medium rounded-full py-4 px-8 mr-2 shadow-sky-400 cursor-pointer shadow-md hover:shadow"
                   >
-                    No Financing
+                    No Payment Plan
                   </span>
                   <span
                     onClick={() => {
@@ -237,31 +238,15 @@ const Recommendations = ({
                         plumbingCost: plumbing,
                         geyserPrice: geyserPrice,
                         geyserSize: geyserSize,
-                        financing: "Part Financing",
+                        financing: "Yes Payment Plan",
                       });
                       nextPage();
                     }}
                     className="bg-sky-500 items-center flex justify-center hover:bg-sky-600 text-center text-white text-sm font-medium rounded-full py-4 px-8 shadow-sky-400 cursor-pointer shadow-md hover:shadow"
                   >
-                    Yes, Partly Financed
+                    Yes Payment Plan
                   </span>
-                  <span
-                    onClick={() => {
-                      setQuoteInfo({
-                        ...quoteInfo,
-                        installation: "geyser only",
-                        installationCost: installation,
-                        plumbingCost: plumbing,
-                        geyserPrice: geyserPrice,
-                        geyserSize: geyserSize,
-                        financing: "Full Financing",
-                      });
-                      nextPage();
-                    }}
-                    className="bg-sky-500 items-center flex justify-center hover:bg-sky-600 text-center text-white text-sm font-medium rounded-full py-4 px-8 shadow-sky-400 cursor-pointer shadow-md hover:shadow"
-                  >
-                    Yes, Full Financing
-                  </span>
+
                 </div>
               </Fragment>
             }
