@@ -11,6 +11,8 @@ export async function middleware(req: NextRequest) {
 
   const {data:{session}} = await supabase.auth.getSession()
 
+  console.log("Middleware", {session})
+
 
   // Refresh session if expired - required for Server Components
   // https://supabase.com/docs/guides/auth/auth-helpers/nextjs#managing-session-with-middleware

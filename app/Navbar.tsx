@@ -16,6 +16,8 @@ const Navbar = async () => {
 
     const {data: {session}} = await supabase.auth.getSession()
 
+    console.log(session)
+
     const {data: admin, error:adminsError} = await supabase.from('admins').select('*').eq('user_id', session?.user.id).single()
 
     const logout = async () => {
@@ -23,8 +25,6 @@ const Navbar = async () => {
     }
 
 
-
-    console.log("Navbar", session);
 
   return (
     <header className="">
@@ -97,7 +97,7 @@ const Navbar = async () => {
               News
             </Link>
           </nav>
-          {session && (
+          {session ? (
             <div className="flex items-center space-x-4 ">
               <Link
                 href="/admin"
@@ -109,8 +109,10 @@ const Navbar = async () => {
               </Link>
               <LogoutButton />
             </div>
-          )}
-        </div>
+          ) : (
+            null
+            )}
+            </div>
         {/* Desktop Nav Ends */}
         {/* Mobile Nav Starts */}
         <div className="flex md:hidden justify-between items-center container">

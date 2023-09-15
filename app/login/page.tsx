@@ -33,40 +33,19 @@ export default function Login() {
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    if(view === "sign-in") {
-    const {data,error} = await supabase.auth.signInWithOtp({
-        email: email,
-        // password,
-      });
+     await supabase.auth.signInWithOtp({
+       email
+     });
 
-      console.log({data,error});
+  alert("Please check your email address for a login link")
 
-      if (error) {
-        toast({
-          title: "Error",
-          description: error.message,
+       toast({
+          title: "Please check your email address for a login link",
           variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Success",
-          description: "Please check your email for login link",
-          variant: "destructive",
-        });
-      }
-    }  else {
-      let { data, error } = await supabase.auth.resetPasswordForEmail(email);
-      console.log({ error });
-
-      if(data) {
-        toast({
-          title: "Success",
-          description: "Please check your email for password reset link"
-        })
-      }
+       })
     }
 
-  }
+
 
   const toggleView = () => {
     if(view === "sign-in") {
@@ -83,6 +62,7 @@ export default function Login() {
         <div className="w-full flex flex-col space-y-3">
           <Label htmlFor="email">Email</Label>
           <Input
+            required
             type="email"
             id="email"
             name="email"
@@ -90,7 +70,7 @@ export default function Login() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        {view === "sign-in" ? (
+        {/* {view === "sign-in" ? (
           <div className="w-full mt-3 flex flex-col space-y-3">
             <Label htmlFor="password">Password</Label>
             <Input
@@ -101,7 +81,7 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-        ) : null}
+        ) : null} */}
 
         <Button type="submit" className="mt-3 w-full">
           {view === "sign-in" ? "Log In" : "Reset Password"}
