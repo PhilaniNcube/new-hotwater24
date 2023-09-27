@@ -7,7 +7,7 @@ import { start } from "../../utils/gtm";
 function Savings() {
   const [bill, setBill] = useState(100);
 
-  let savings = bill * 0.2;
+  let savings = bill * 0.25;
 
   let year = savings * 12;
 
@@ -36,7 +36,7 @@ function Savings() {
           </div>
         </div>
         <p className="w-5/6 pt-5 pb-20 mx-auto text-xl text-center text-gray-600">
-          You can save up to 20% on your monthly electricity bill by switching
+          You can save up to 25% on your monthly electricity bill by switching
           to a gas geyser system.
         </p>
       </div>
