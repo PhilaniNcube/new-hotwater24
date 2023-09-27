@@ -263,13 +263,13 @@ const PersonalDetails = ({
       animate={{ x: 0 }}
       exit={{ x: "-100%" }}
       onSubmit={handleSubmit}
-      className="max-w-6xl mx-auto my-16 lg:my-8 px-6 lg:px-12"
+      className="max-w-6xl px-6 mx-auto my-16 lg:my-8 lg:px-12"
     >
       <Script
         defer={true}
         src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places&callback=init`}
       ></Script>
-      <h1 className="mt-8 font-sans text-center font-bold text-2xl">
+      <h1 className="mt-8 font-sans text-2xl font-bold text-center">
         Personal contact information
       </h1>
 
@@ -278,17 +278,17 @@ const PersonalDetails = ({
         with you with the recommended solution for your home.
       </p>
 
-      <div className="py-8 px-6 lg:px-16 max-w-5xl mx-auto shadow-lg rounded bg-gray-200 h-1/2 mb-6">
-        <div className="flex flex-col md:flex-row md:justify-between md:space-x-24 my-4">
+      <div className="max-w-5xl px-6 py-8 mx-auto mb-6 bg-gray-200 rounded shadow-lg lg:px-16 h-1/2">
+        <div className="flex flex-col my-4 md:flex-row md:justify-between md:space-x-24">
           <div className="flex flex-col w-full md:w-1/2">
-            <Label className="text-md font-bold" htmlFor="firstName">
+            <Label className="font-bold text-md" htmlFor="firstName">
               First name
             </Label>
             <Input
               type="text"
               name="firstName"
               required
-              className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
+              className="py-2 pl-4 text-base text-gray-600 border border-gray-300 rounded-md focus:outline-none focus:border-gray-700 "
               value={quoteInfo.firstName}
               onChange={(e) =>
                 setQuoteInfo({
@@ -298,15 +298,15 @@ const PersonalDetails = ({
               }
             />
           </div>
-          <div className="flex flex-col mt-3 md:mt-0 w-full md:w-1/2">
-            <Label className="text-md font-bold" htmlFor="lastName">
+          <div className="flex flex-col w-full mt-3 md:mt-0 md:w-1/2">
+            <Label className="font-bold text-md" htmlFor="lastName">
               Surname
             </Label>
             <Input
               type="text"
               name="lastName"
               required
-              className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700"
+              className="py-2 pl-4 text-base text-gray-600 border border-gray-300 rounded-md focus:outline-none focus:border-gray-700"
               value={quoteInfo.lastName}
               onChange={(e) =>
                 setQuoteInfo({
@@ -317,16 +317,16 @@ const PersonalDetails = ({
             />
           </div>
         </div>
-        <div className="flex flex-col md:flex-row md:justify-between md:space-x-24 my-4">
+        <div className="flex flex-col my-4 md:flex-row md:justify-between md:space-x-24">
           <div className="flex flex-col w-full md:w-1/2">
-            <Label className="text-md font-bold" htmlFor="email">
+            <Label className="font-bold text-md" htmlFor="email">
               Email
             </Label>
             <Input
               type="email"
               name="email"
               required
-              className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700"
+              className="py-2 pl-4 text-base text-gray-600 border border-gray-300 rounded-md focus:outline-none focus:border-gray-700"
               value={quoteInfo.email}
               onChange={(e) =>
                 setQuoteInfo({
@@ -336,8 +336,8 @@ const PersonalDetails = ({
               }
             />
           </div>
-          <div className="flex flex-col mt-3 md:mt-0 w-full md:w-1/2">
-            <Label className="text-md font-bold" htmlFor="phone">
+          <div className="flex flex-col w-full mt-3 md:mt-0 md:w-1/2">
+            <Label className="font-bold text-md" htmlFor="phone">
               Telephone/Cellphone
             </Label>
             <div className="flex items-center space-x-2">
@@ -346,7 +346,7 @@ const PersonalDetails = ({
                 name="phone"
                 required
                 placeholder="+27811225467"
-                className="rounded-md border border-gray-300 pl-2 py-2  text-base text-gray-600 focus:outline-none focus:border-gray-700 "
+                className="py-2 pl-2 text-base text-gray-600 border border-gray-300 rounded-md focus:outline-none focus:border-gray-700 "
                 value={telephoneNumber}
                 onChange={(e) =>
                   setQuoteInfo({
@@ -359,10 +359,29 @@ const PersonalDetails = ({
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row md:justify-between md:space-x-24 my-4">
-          {ready ? (
-            <div className="flex flex-col w-full md:w-1/2 relative isolate">
-              <Label className="text-md font-bold">Street Address</Label>
+        <div className="flex flex-col my-4 md:flex-row md:justify-between md:space-x-24">
+          <div className="flex flex-col w-full md:w-1/2">
+            <Label className="font-bold text-md" htmlFor="streetAddress">
+              Street address
+            </Label>
+            <Input
+              type="text"
+              name="streetAddress"
+              required
+              className="py-2 pl-4 text-base text-gray-600 border border-gray-300 rounded-md focus:outline-none focus:border-gray-700 "
+              value={quoteInfo.streetAddress}
+              onChange={(e) =>
+                setQuoteInfo({
+                  ...quoteInfo,
+                  streetAddress: e.target.value,
+                })
+              }
+            />
+          </div>
+
+          {/* {ready ? (
+            <div className="relative flex flex-col w-full md:w-1/2 isolate">
+              <Label className="font-bold text-md">Street Address</Label>
               <Input
                 value={value}
                 autoComplete="off"
@@ -386,7 +405,7 @@ const PersonalDetails = ({
                         });
                       }}
                       key={prediction.place_id}
-                      className="text-xs hover:bg-gray-100 cursor-pointer line-clamp-2"
+                      className="text-xs cursor-pointer hover:bg-gray-100 line-clamp-2"
                     >
                       {prediction.description}
                     </pre>
@@ -395,14 +414,14 @@ const PersonalDetails = ({
             </div>
           ) : (
             <div className="flex flex-col w-full md:w-1/2">
-              <Label className="text-md font-bold" htmlFor="streetAddress">
+              <Label className="font-bold text-md" htmlFor="streetAddress">
                 Street address
               </Label>
               <Input
                 type="text"
                 name="streetAddress"
                 required
-                className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
+                className="py-2 pl-4 text-base text-gray-600 border border-gray-300 rounded-md focus:outline-none focus:border-gray-700 "
                 value={quoteInfo.streetAddress}
                 onChange={(e) =>
                   setQuoteInfo({
@@ -412,19 +431,19 @@ const PersonalDetails = ({
                 }
               />
             </div>
-          )}
+          )} */}
 
           {/* Places */}
 
           <div className="flex flex-col w-full md:w-1/2">
-            <Label className="text-md font-bold" htmlFor="suburb">
+            <Label className="font-bold text-md" htmlFor="suburb">
               Suburb
             </Label>
             <Input
               type="text"
               name="suburb"
               required
-              className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
+              className="py-2 pl-4 text-base text-gray-600 border border-gray-300 rounded-md focus:outline-none focus:border-gray-700 "
               value={quoteInfo.suburb}
               onChange={(e) =>
                 setQuoteInfo({
@@ -436,16 +455,16 @@ const PersonalDetails = ({
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row md:justify-between md:space-x-24 my-4">
+        <div className="flex flex-col my-4 md:flex-row md:justify-between md:space-x-24">
           <div className="flex flex-col w-full">
-            <Label className="text-md font-bold" htmlFor="city">
+            <Label className="font-bold text-md" htmlFor="city">
               City
             </Label>
             <Input
               type="text"
               name="city"
               required
-              className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
+              className="py-2 pl-4 text-base text-gray-600 border border-gray-300 rounded-md focus:outline-none focus:border-gray-700 "
               value={quoteInfo.city}
               onChange={(e) =>
                 setQuoteInfo({
@@ -457,14 +476,14 @@ const PersonalDetails = ({
           </div>
 
           <div className="flex flex-col w-full">
-            <Label className="text-md font-bold" htmlFor="postalCode">
+            <Label className="font-bold text-md" htmlFor="postalCode">
               Postal code
             </Label>
             <Input
               type="text"
               name="postalCode"
               required
-              className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
+              className="py-2 pl-4 text-base text-gray-600 border border-gray-300 rounded-md focus:outline-none focus:border-gray-700 "
               value={quoteInfo.postalCode}
               onChange={(e) =>
                 setQuoteInfo({
@@ -477,7 +496,7 @@ const PersonalDetails = ({
         </div>
 
         {/****
-         <div className="flex flex-col md:flex-row md:justify-between md:space-x-24 my-4">
+         <div className="flex flex-col my-4 md:flex-row md:justify-between md:space-x-24">
           <div className="flex flex-col w-full">
             <label className="text-xs font-bold" htmlFor="contactDay">
               What day can we contact you?
@@ -486,7 +505,7 @@ const PersonalDetails = ({
               type="text"
               name="contactDay"
               required
-              className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
+              className="py-2 pl-4 text-base text-gray-600 border border-gray-300 rounded-md focus:outline-none focus:border-gray-700 "
               value={quoteInfo.contactDay}
               onChange={(e) =>
                 setQuoteInfo({
@@ -512,7 +531,7 @@ const PersonalDetails = ({
               type="text"
               name="contactTime"
               required
-              className="rounded-md border border-gray-300 pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
+              className="py-2 pl-4 text-base text-gray-600 border border-gray-300 rounded-md focus:outline-none focus:border-gray-700 "
               value={quoteInfo.contactTime}
               onChange={(e) =>
                 setQuoteInfo({
@@ -532,13 +551,17 @@ const PersonalDetails = ({
         *** */}
 
         <div className="flex flex-col w-full">
-          <Label className="text-md font-bold" htmlFor="comments">
-            Comments <span className="text-xs ml-2">(please may you add any information/ questions/ remarks you would like to share with us in order to support your enquiry)</span>
+          <Label className="font-bold text-md" htmlFor="comments">
+            Comments{" "}
+            <span className="ml-2 text-xs">
+              (please may you add any information/ questions/ remarks you would
+              like to share with us in order to support your enquiry)
+            </span>
           </Label>
           <Textarea
             rows={4}
             name="comments"
-            className="rounded-md border border-gray-300 bg-white pl-4 py-2 text-base text-gray-600 focus:outline-none focus:border-gray-700 "
+            className="py-2 pl-4 text-base text-gray-600 bg-white border border-gray-300 rounded-md focus:outline-none focus:border-gray-700 "
             value={quoteInfo.comments}
             onChange={(e) =>
               setQuoteInfo({
@@ -549,8 +572,8 @@ const PersonalDetails = ({
           ></Textarea>
         </div>
       </div>
-      <div className="flex items-center justify-center space-x-6 mt-4 mb-12">
-        <div className="flex items-center justify-center space-x-6 my-3">
+      <div className="flex items-center justify-center mt-4 mb-12 space-x-6">
+        <div className="flex items-center justify-center my-3 space-x-6">
           {quoteInfo.firstName !== "" ||
           quoteInfo.lastName !== "" ||
           quoteInfo.email !== "" ||
@@ -561,7 +584,7 @@ const PersonalDetails = ({
               <svg
                 onClick={prevPage}
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-16 w-16 bg-red-500 cursor-pointer text-white rounded-full shadow-red-500 shadow-lg hover:shadow-md hover:bg-red-600"
+                className="w-16 h-16 text-white bg-red-500 rounded-full shadow-lg cursor-pointer shadow-red-500 hover:shadow-md hover:bg-red-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -576,7 +599,7 @@ const PersonalDetails = ({
               <Button
                 disabled={loading}
                 type="submit"
-                className="bg-sky-500 hover:bg-sky-600 text-center text-white text-2xl font-medium rounded-full py-4 px-8 shadow-sky-400 shadow-md hover:shadow"
+                className="px-8 py-4 text-2xl font-medium text-center text-white rounded-full shadow-md bg-sky-500 hover:bg-sky-600 shadow-sky-400 hover:shadow"
               >
                 {loading ? "Saving..." : "Continue"}
               </Button>
@@ -586,7 +609,7 @@ const PersonalDetails = ({
               <svg
                 onClick={prevPage}
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-16 w-16 bg-red-500 text-white rounded-full cursor-pointer shadow-red-500 shadow-lg hover:shadow-md hover:bg-red-600"
+                className="w-16 h-16 text-white bg-red-500 rounded-full shadow-lg cursor-pointer shadow-red-500 hover:shadow-md hover:bg-red-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -598,7 +621,7 @@ const PersonalDetails = ({
                   d="M15 19l-7-7 7-7"
                 />
               </svg>
-              <p className="text-md text-sky-600 font-bold text-center">
+              <p className="font-bold text-center text-md text-sky-600">
                 Please answer the question
               </p>
             </Fragment>
