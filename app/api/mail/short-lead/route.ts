@@ -299,7 +299,7 @@ We will contact you shortly if additional information is required from you in or
               <tbody>
                 <tr>
                 <td align="center" bgcolor="#042362" class="inner-td" style="border-radius:6px; font-size:16px; text-align:center; background-color:inherit;">
-                  <a href="https://hotwater24.com/catalogue" style="background-color:#042362; border:1px solid #ffffff; border-color:#ffffff; border-radius:0px; border-width:1px; color:#ffffff; display:inline-block; font-size:12px; font-weight:700; letter-spacing:0px; line-height:normal; padding:12px 40px 12px 40px; text-align:center; text-decoration:none; border-style:solid; font-family:inherit;" target="_blank">Shop Online</a>
+
                 </td>
                 </tr>
               </tbody>
