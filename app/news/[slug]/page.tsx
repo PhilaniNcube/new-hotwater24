@@ -24,13 +24,13 @@ const page = async ({params: {slug}}: {params:{slug:string}}) => {
           className="w-full object-cover aspect-video"
         />
         <div className="flex flex-col gap-2">
-          <p className="text-slate-700">
+          <p className="text-slate-700 font-medium">
             Submitted: {format(new Date(article._createdAt), "PPPP")}
           </p>
           <p className="text-xs text-slate-500">
             Original Article: <Link href={article.link} className="text-blue-500 underline">Link</Link>
           </p>
-          <div className="text-slate-600 font-medium tracking-wide">
+          <div className="text-slate-600 font-normal">
             <PortableText value={article.content} />
           </div>
           <Link href="/news">
