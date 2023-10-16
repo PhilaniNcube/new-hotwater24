@@ -15,22 +15,22 @@ const page = async ({params: {slug}}: {params:{slug:string}}) => {
       <h1 className={`${bebas.className} text-2xl md:texxt-3xl text-slate-800`}>
         {article.title}
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <Image
           src={article.image}
           width={1280}
           height={768}
           alt={article.title}
-          className="w-full object-cover aspect-video"
+          className="object-cover w-full aspect-video"
         />
         <div className="flex flex-col gap-2">
-          <p className="text-slate-700 font-medium">
+          <p className="font-medium text-slate-700">
             Submitted: {format(new Date(article._createdAt), "PPPP")}
           </p>
           <p className="text-xs text-slate-500">
             Original Article: <Link href={article.link} className="text-blue-500 underline">Link</Link>
           </p>
-          <div className="text-slate-600 font-normal">
+          <div className="font-normal text-slate-600 content">
             <PortableText value={article.content} />
           </div>
           <Link href="/news">
