@@ -18,42 +18,56 @@ export default async function GeyserPackages() {
         Which package best suits your household?
       </h2>
       <div className="grid gap-4 p-4 md:grid-cols-3">
-        {packages.map((item) => (
-          <div key={item._id} className="p-4 border border-gray-200 rounded-lg">
-            <p className="text-sm text-center text-gray-500">
-              {item.description}
-            </p>
-            <h3 className="text-lg font-bold text-center uppercase">
-              {item.title}
-            </h3>
-            <p className="mt-2 font-medium text-center text-md">
-              {item.subTitle}
-            </p>
+        {packages.map((item, index) => {
+          if(index > 0 && index < 4) {
+            return (
+              <div
+                key={item._id}
+                className="p-4 border border-gray-200 rounded-lg"
+              >
+                <p className="text-sm text-center text-gray-500">
+                  {item.description}
+                </p>
+                <h3 className="text-lg font-bold text-center uppercase">
+                  {item.title}
+                </h3>
+                <p className="mt-2 font-medium text-center text-md">
+                  {item.subTitle}
+                </p>
 
-            <h4 className="text-lg font-semibold text-center">
-              {item.maxFlowRate}
-            </h4>
-            <p className="text-2xl font-bold text-center">
-              {formatCurrency(item.geyser.price + item.plumbing.price + item.installation.price + item.certificateOfCompliance.price)}
-            </p>
+                <h4 className="text-lg font-semibold text-center">
+                  {item.maxFlowRate}
+                </h4>
+                <p className="text-2xl font-bold text-center">
+                  {formatCurrency(
+                      item.geyser.price +
+                      item.plumbing.price +
+                      item.installation.price +
+                      item.certificateOfCompliance.price
+                  )}
+                </p>
 
-            <div className="flex justify-center">
-              <Link href={`/packages/${item.slug}`}>
-                <Button className="mt-4 bg-blue-600 rounded-full">
-                  In need more info
-                </Button>
-              </Link>
-            </div>
-            <Image
-              alt="Geyser 100L Image"
-              className="object-cover w-full my-4 overflow-hidden rounded-lg "
-              height={500}
-              src={item.image}
-              width={500}
-            />
-            <p className="mt-2 text-center text-md">*{item.warranty}</p>
-          </div>
-        ))}
+                <div className="flex justify-center">
+                  <Link href={`/packages/${item.slug}`}>
+                    <Button className="mt-4 bg-blue-600 rounded-full">
+                      In need more info
+                    </Button>
+                  </Link>
+                </div>
+                <Image
+                  alt="Geyser 100L Image"
+                  className="object-cover w-full my-4 overflow-hidden rounded-lg "
+                  height={500}
+                  src={item.image}
+                  width={500}
+                />
+                <p className="mt-2 text-xs text-justify">*{item.warranty}</p>
+              </div>
+            );
+          } else {
+            return null
+          }
+        })}
       </div>
     </section>
   );

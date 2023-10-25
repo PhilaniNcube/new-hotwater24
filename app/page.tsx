@@ -22,7 +22,7 @@ export default async function Index() {
     <NewHero />
     <WhyGoGas />
     <WhatAreYouWaitingFor />
-    {/* <GeyserPackages /> */}
+    <GeyserPackages />
     <ButtonCtaSection />
     <InstallationTimeline />
     <QualityGeysers />

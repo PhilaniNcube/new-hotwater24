@@ -23,7 +23,7 @@ import { RiWhatsappLine } from "react-icons/ri";
 
 const Desktop = ({packages}: {packages: Geyser[]}) => {
   return (
-    <section className="sticky top-0 left-0 right-0 z-50 hidden py-3 shadow-md md:block backdrop-blur-sm">
+    <section className="sticky top-0 left-0 right-0  hidden py-3 shadow-md md:block bg-white/80 backdrop-blur-sm z-50">
       <nav className="container flex items-center justify-between">
         <div className="flex items-center gap-x-9">
           <Link href="/" passHref>
