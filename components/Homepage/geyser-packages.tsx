@@ -31,12 +31,12 @@ export default async function GeyserPackages() {
             </p>
 
             <h4 className="text-lg font-semibold text-center">
-              {item.capacity}L
+              {item.maxFlowRate}
             </h4>
             <p className="text-2xl font-bold text-center">
-              {formatCurrency(item.price)}
+              {formatCurrency(item.geyser.price + item.plumbing.price + item.installation.price + item.certificateOfCompliance.price)}
             </p>
-            <p className="mt-2 text-center text-md">{item.whatIsIncluded}</p>
+
             <div className="flex justify-center">
               <Link href={`/packages/${item.slug}`}>
                 <Button className="mt-4 bg-blue-600 rounded-full">
@@ -51,7 +51,7 @@ export default async function GeyserPackages() {
               src={item.image}
               width={500}
             />
-            <p className="mt-2 text-center text-md">*{item.geyserWarranty}</p>
+            <p className="mt-2 text-center text-md">*{item.warranty}</p>
           </div>
         ))}
       </div>
