@@ -1,0 +1,64 @@
+import Image from "next/image";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import Link from "next/link";
+import { Button } from "../ui/button";
+
+const QualityGeysers = () => {
+  return (
+    <section className="container py-6">
+      <h2 className="text-2xl font-bold text-center text-slate-800">
+        Quality gas geysers
+      </h2>
+      <div className="grid grid-cols-1 gap-8 py-5 md:grid-cols-2">
+        <article className="w-full">
+          <Card>
+            <CardHeader>
+              <Image
+                src="/images/dewhot_logo.webp"
+                width={1366}
+                height={768}
+                alt="Dewhot Logo"
+                className="object-cover w-1/3 mx-auto"
+              />
+              <CardTitle className="sr-only">Dewhot</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription className="font-medium text-center text-md">
+                With a commitment to quality and reliability, Dewhot&apos;s
+                double testing policy ensures a satisfying customer experience.
+              </CardDescription>
+            </CardContent>
+          </Card>
+        </article>
+        <article>
+          <Card>
+            <CardHeader>
+              <Image
+                src="/images/rinnai_logo.webp"
+                width={1366}
+                height={768}
+                alt="Rinnai Logo"
+                className="object-cover w-1/3 mx-auto"
+              />
+              <CardTitle className="sr-only">Rinnai</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription className="font-medium text-center text-md">
+                Rinnai is proud to be the No.1 choice for Continuous Flow Hot
+                Water, so you will never run out of hot water.
+              </CardDescription>
+            </CardContent>
+          </Card>
+        </article>
+      </div>
+      <div className="flex justify-center">
+        <Link href="/packages">
+          <Button type="button" className="bg-blue-600 rounded-full">
+            Choose your gas geyser
+          </Button>
+        </Link>
+      </div>
+    </section>
+  );
+};
+export default QualityGeysers;

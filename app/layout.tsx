@@ -2,6 +2,8 @@ import Script from 'next/script';
 import Footer from './Footer'
 import Navbar from './Navbar'
 import './globals.css'
+import Desktop from '@/components/Navigation/Desktop';
+import { getGeysers } from '@/sanity/sanity-utils';
 
 export const dynamic = "force-dynamic";
 
@@ -11,11 +13,14 @@ export const metadata = {
   description: '',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
+  const geysers = await getGeysers();
+
   return (
     <html lang="en">
       <Script
@@ -31,7 +36,7 @@ export default function RootLayout({
         `}
       </Script>
       <body>
-        <Navbar />
+        <Desktop packages={geysers} />
         {children}
         <Footer />
       </body>
