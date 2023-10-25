@@ -1,7 +1,9 @@
-const page = () => {
+import PackagesGrid from "@/components/Packages/packages-grid";
+
+const page = async () => {
   return (
-      <main>
-        Packages
+      <main className="container py-10">
+       <PackagesGrid />
       </main>
     );
 };
