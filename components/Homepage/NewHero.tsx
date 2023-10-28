@@ -1,4 +1,5 @@
 
+import { FlameIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -20,29 +21,44 @@ export default function NewHero() {
                 Expert gas guys bringing hot water to homes 24/7
               </h1>
             </div>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              <div className="p-4 bg-gray-100 rounded-md shadow-sm dark:bg-zinc-800">
-                <p className="text-xs text-zinc-500 md:text-sm dark:text-zinc-400">
+            <div className="">
+              <div className="p-1 flex items-center font-medium">
+                <span className="flex p-2 mr-2 items-center justify-center rounded-full text-white bg-red-500">
+                  <FlameIcon className="w-6 h-6" size={24} />
+                </span>
+                <p className="text-md text-zinc-500 dark:text-zinc-400">
                   Quality gas geysers
                 </p>
               </div>
-              <div className="p-4 bg-gray-100 rounded-md shadow-sm dark:bg-zinc-800">
-                <p className="text-xs text-zinc-500 md:text-sm dark:text-zinc-400">
+              <div className="p-1 flex items-center font-medium">
+                <span className="flex p-2 mr-2 items-center justify-center rounded-full text-white bg-red-500">
+                  <FlameIcon className="w-6 h-6" size={24} />
+                </span>
+                <p className="text-md text-zinc-500 dark:text-zinc-400">
                   Certified installers
                 </p>
               </div>
-              <div className="p-4 bg-gray-100 rounded-md shadow-sm dark:bg-zinc-800">
-                <p className="text-xs text-zinc-500 md:text-sm dark:text-zinc-400">
+              <div className="p-1 flex items-center font-medium">
+                <span className="flex p-2 mr-2 items-center justify-center rounded-full text-white bg-red-500">
+                  <FlameIcon className="w-6 h-6" size={24} />
+                </span>
+                <p className="text-md text-zinc-500 dark:text-zinc-400">
                   Full warranty
                 </p>
               </div>
-              <div className="p-4 bg-gray-100 rounded-md shadow-sm dark:bg-zinc-800">
-                <p className="text-xs text-zinc-500 md:text-sm dark:text-zinc-400">
+              <div className="p-1 flex items-center font-medium">
+                <span className="flex p-2 mr-2 items-center justify-center rounded-full text-white bg-red-500">
+                  <FlameIcon className="w-6 h-6" size={24} />
+                </span>
+                <p className="text-md text-zinc-500 dark:text-zinc-400">
                   Certificate of Compliance
                 </p>
               </div>
-              <div className="p-4 bg-gray-100 rounded-md shadow-sm dark:bg-zinc-800">
-                <p className="text-xs text-zinc-500 md:text-sm dark:text-zinc-400">
+              <div className="p-1 flex items-center font-medium">
+                <span className="flex p-2 mr-2 items-center justify-center rounded-full text-white bg-red-500">
+                  <FlameIcon className="w-6 h-6" size={24} />
+                </span>
+                <p className="text-md text-zinc-500 dark:text-zinc-400">
                   Easy payment plan
                 </p>
               </div>
@@ -55,7 +71,7 @@ export default function NewHero() {
                 Get a Quote
               </Link>
               <Link
-                className="inline-flex items-center justify-center h-10 px-8 text-sm font-medium text-white transition-colors bg-blue-600 border rounded-full shadow-sm border-slate-300 hover:bg-zinc-100 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:pointer-events-none disabled:opacity-50 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:focus-visible:ring-zinc-300"
+                className="inline-flex items-center justify-center h-10 px-8 text-sm font-medium text-white transition-colors bg-red-600 border rounded-full shadow-sm border-slate-300 hover:bg-zinc-100 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:pointer-events-none disabled:opacity-50 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:focus-visible:ring-zinc-300"
                 href="/packages"
               >
                 Choose your geyser geyser
