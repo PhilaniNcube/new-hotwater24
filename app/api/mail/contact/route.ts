@@ -1,7 +1,7 @@
-import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 import sgMail from '@sendgrid/mail';
+import { CookieOptions, createServerClient } from '@supabase/ssr';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
 
@@ -9,7 +9,25 @@ export const dynamic = 'force-dynamic'
 
 export async function POST(req:NextRequest) {
   // Create a Supabase client configured to use cookies
-  const supabase = createRouteHandlerClient({ cookies })
+    const cookieStore = cookies()
+
+  const supabase = createServerClient<Database>(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get(name: string) {
+          return cookieStore.get(name)?.value
+        },
+        set(name: string, value: string, options: CookieOptions) {
+          cookieStore.set({ name, value, ...options })
+        },
+        remove(name: string, options: CookieOptions) {
+          cookieStore.set({ name, value: '', ...options })
+        },
+      },
+    }
+  )
   const body = await req.json();
 
   const {name, email, message} = body

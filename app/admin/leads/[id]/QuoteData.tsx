@@ -2,8 +2,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { FormEvent, Fragment, useState } from "react";
 import { useRouter } from "next/navigation";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import LeadCard from "@/components/Quote/LeadCard";
+import { createBrowserClient } from "@supabase/ssr";
 
 type LeadProps = {
   lead: Database['public']['Tables']['quotes']['Row'];
@@ -11,9 +11,11 @@ type LeadProps = {
 
 function QuoteData({ lead }:LeadProps) {
 
+   const supabase = createBrowserClient<Database>(
+     process.env.NEXT_PUBLIC_SUPABASE_URL!,
+     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+   );
 
-
-  const supabase = createClientComponentClient<Database>();
   const router = useRouter();
 
   const {

@@ -36,8 +36,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Link from "next/link";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { format } from "date-fns";
+import { createBrowserClient } from "@supabase/ssr";
 
 type LeadsTableProps = {
   leads: Database["public"]["Tables"]["quotes"]["Row"][];
@@ -236,7 +236,10 @@ const LeadsTable = ({
 
   const [downloadData, setDownloadData] = React.useState<null | string>(null);
 
-   const supabase = createClientComponentClient<Database>();
+     const supabase = createBrowserClient<Database>(
+       process.env.NEXT_PUBLIC_SUPABASE_URL!,
+       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+     );
 
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(

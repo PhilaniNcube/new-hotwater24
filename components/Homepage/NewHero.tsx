@@ -4,17 +4,17 @@ import Link from "next/link";
 
 export default function NewHero() {
   return (
-    <section className="w-full py-12">
-      <div className="container px-4 md:px-6">
-        <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+    <section className="w-full">
+      <div className="px-0">
+        <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
           <Image
             alt="Geyser"
-            className="object-cover object-bottom mx-auto overflow-hidden aspect-video rounded-xl sm:w-full lg:order-last lg:aspect-square"
-            height={864}
-            src="/images/geyser.png"
-            width={1376}
+            className="object-cover object-bottom mx-auto overflow-hidden w-full"
+            height={654}
+            src="/images/banner.jpg"
+            width={960}
           />
-          <div className="flex flex-col justify-center space-y-4">
+          <div className="flex flex-col justify-center space-y-4 container">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter text-slate-800 sm:text-5xl xl:text-6xl/none">
                 Expert gas guys bringing hot water to homes 24/7

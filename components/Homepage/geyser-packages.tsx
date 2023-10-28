@@ -17,9 +17,9 @@ export default async function GeyserPackages() {
       <h2 className="text-xl font-bold text-center text-slate-800">
         Which package best suits your household?
       </h2>
-      <div className="grid gap-4 p-4 md:grid-cols-3">
+      <div className="grid gap-4 p-4 md:grid-cols-3 lg:grid-cols-4">
         {packages.map((item, index) => {
-          if(index > 0 && index < 4) {
+          if(index > 0 && index < 5) {
             return (
               <div
                 key={item._id}

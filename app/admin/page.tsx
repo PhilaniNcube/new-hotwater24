@@ -1,8 +1,8 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { Card, LineChart, Title, BarChart } from "@tremor/react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { createServerClient } from "@supabase/ssr";
 
 export const dynamic = "force-dynamic";
 
@@ -17,7 +17,19 @@ type ServerPageProps = {
 const page = async ({ searchParams }: ServerPageProps) => {
   console.log({ searchParams });
 
-  const supabase = createServerComponentClient<Database>({ cookies });
+    const cookieStore = cookies();
+
+    const supabase = createServerClient<Database>(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          get(name: string) {
+            return cookieStore.get(name)?.value;
+          },
+        },
+      }
+    );
 
   const quotesData = supabase
     .from("quotes")

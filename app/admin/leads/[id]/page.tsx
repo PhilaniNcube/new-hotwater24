@@ -1,11 +1,23 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import QuoteData from "./QuoteData";
 import { redirect } from "next/navigation";
+import { createServerClient } from "@supabase/ssr";
 
 const page = async ({params: {id}}:{params:{id:string}}) => {
 
-  const supabase = createServerComponentClient<Database>({ cookies });
+    const cookieStore = cookies();
+
+    const supabase = createServerClient<Database>(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          get(name: string) {
+            return cookieStore.get(name)?.value;
+          },
+        },
+      }
+    );
 
   const {data:lead, error} = await supabase.from("quotes").select("*").eq("id", id).single();
 

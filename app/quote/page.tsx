@@ -1,11 +1,25 @@
 import Script from "next/script";
 import NewLead from "./NewLead";
 import { cookies } from "next/headers";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { createServerClient } from "@supabase/ssr";
+
 
 const page = async () => {
 
-  const supabase = createServerComponentClient<Database>({ cookies });
+    const cookieStore = cookies();
+
+    const supabase = createServerClient<Database>(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          get(name: string) {
+            return cookieStore.get(name)?.value;
+          },
+        },
+      }
+    );
+
 
   const {data:products, error} = await supabase.from('products').select('*')
 

@@ -4,7 +4,6 @@
 import { useRouter } from "next/navigation";
 import React, { FormEvent, Fragment, useState } from "react";
 import { motion } from "framer-motion";
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { LeadStageProps } from "../NewLead";
 import {useLoadScript} from '@react-google-maps/api'
 import usePlacesAutocomplete from "use-places-autocomplete";
@@ -28,6 +27,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import analytics from "@/utils/analytics";
 import Script from "next/script";
+import { createBrowserClient } from "@supabase/ssr";
 
 const libraries = ['places']
 
@@ -62,14 +62,14 @@ const PersonalDetails = ({
   console.log({ ready, value, status, data });
 
 
-  const supabase = createClientComponentClient<Database>();
+    const supabase = createBrowserClient<Database>(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    );
 
 
   const [loading, setLoading] = useState(false);
 
-  const [countryCode, setCountryCode] = useState("+27");
-  const [areaCode, setAreaCode] = useState("");
-  const [number, setNumber] = useState("");
 
   const {
     children,
