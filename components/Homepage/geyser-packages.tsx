@@ -14,42 +14,37 @@ export default async function GeyserPackages() {
 
   return (
     <section className="container py-8">
-      <h2 className="text-xl font-bold text-center text-slate-800">
+      <h2 className="text-2xl lg:text-3xl font-bold text-center text-slate-800">
         Which package best suits your household?
       </h2>
       <div className="grid gap-4 p-4 md:grid-cols-3 lg:grid-cols-4">
         {packages.map((item, index) => {
-          if(index > 0 && index < 5) {
+          if (index > 0 && index < 5) {
             return (
               <div
                 key={item._id}
                 className="p-4 border border-gray-200 rounded-lg"
               >
-                <p className="text-sm text-center text-gray-500">
-                  {item.description}
-                </p>
                 <h3 className="text-lg font-bold text-center uppercase">
                   {item.title}
                 </h3>
                 <p className="mt-2 font-medium text-center text-md">
                   {item.subTitle}
                 </p>
-
                 <h4 className="text-lg font-semibold text-center">
                   {item.maxFlowRate}
                 </h4>
                 <p className="text-2xl font-bold text-center">
                   {formatCurrency(
-                      item.geyser.price +
+                    item.geyser.price +
                       item.plumbing.price +
                       item.installation.price +
                       item.certificateOfCompliance.price
                   )}
                 </p>
-
                 <div className="flex justify-center">
                   <Link href={`/packages/${item.slug}`}>
-                    <Button className="mt-4 bg-blue-600 rounded-full">
+                    <Button className="mt-4 bg-red-600 rounded-full">
                       In need more info
                     </Button>
                   </Link>
@@ -60,15 +55,22 @@ export default async function GeyserPackages() {
                   height={500}
                   src={item.image}
                   width={500}
-                />
+                />{" "}
+                <p className="text-sm text-center text-gray-800 font-medium">
+                  {item.description}
+                </p>
                 <p className="mt-2 text-xs text-justify">*{item.warranty}</p>
               </div>
             );
           } else {
-            return null
+            return null;
           }
         })}
-      </div>
+      </div>{" "}
+      <h2 className="text-md my-3 font-medium text-center text-red-800">
+        Please note, Hotwater24 use a wide range of different brands and sizes
+        of gas geysers that will suit your specification!
+      </h2>
     </section>
   );
 }

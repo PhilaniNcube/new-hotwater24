@@ -7,7 +7,7 @@ import { Button } from "../ui/button";
  */
 export default function InstallationTimeline() {
   return (
-    <div className="container py-4 overflow-auto">
+    <div className="container py-4 overflow-auto relative isolate">
       <div className="relative flex flex-col justify-between my-4 space-x-8 lg:flex-row">
         <div
           className="absolute top-0 hidden w-full border-t-2 border-gray-300 lg:block"
@@ -97,7 +97,7 @@ export default function InstallationTimeline() {
       </div>
 
       <Link href="/quote/start" className="flex justify-center w-full">
-        <Button className="mx-auto mt-3 text-center bg-blue-600 rounded-full w-44" type="button">Get Started</Button>
+        <Button className="mx-auto mt-3 text-center bg-red-600 rounded-full w-44" type="button">Get Started</Button>
       </Link>
     </div>
   );
