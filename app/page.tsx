@@ -8,6 +8,7 @@ import GeyserPackages from '@/components/Homepage/geyser-packages'
 import ButtonCtaSection from '@/components/Homepage/button-cta-section'
 import InstallationTimeline from '@/components/Homepage/installation-timeline'
 import QualityGeysers from '@/components/Homepage/quality-geysers'
+import Testimonials from '@/components/Homepage/testimonials'
 
 export const dynamic = 'force-dynamic'
 
@@ -26,6 +27,7 @@ export default async function Index() {
     <ButtonCtaSection />
     <InstallationTimeline />
     <QualityGeysers />
+    <Testimonials />
     <Safe />
    </main>
   )

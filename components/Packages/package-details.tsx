@@ -69,10 +69,7 @@ export default async function PackageDetails({ geyser }: { geyser: Geyser }) {
           </TableBody>
         </Table>
         <div className="flex flex-col gap-2 mt-6">
-          <Button size="lg">Add to Cart</Button>
-          <Button size="lg" variant="secondary">
-            Buy Now
-          </Button>
+
         </div>
       </div>
       <div className="grid gap-3 items-start">
