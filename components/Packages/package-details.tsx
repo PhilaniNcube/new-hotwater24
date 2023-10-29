@@ -34,6 +34,45 @@ export default async function PackageDetails({ geyser }: { geyser: Geyser }) {
           <p>
             {geyser.description} - <br /> Outlets: {geyser.outlets}
           </p>
+          <Table>
+            <TableBody>
+              <TableRow>
+                <TableCell>{geyser.geyser.description}</TableCell>
+                <TableCell>{formatCurrency(geyser.geyser.price)}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>{geyser.installation.description}</TableCell>
+                <TableCell>
+                  {formatCurrency(geyser.installation.price)}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>
+                  {geyser.certificateOfCompliance.description}
+                </TableCell>
+                <TableCell>
+                  {formatCurrency(geyser.certificateOfCompliance.price)}
+                </TableCell>
+              </TableRow>
+
+              <TableRow>
+                <TableCell>{geyser.plumbing.description}</TableCell>
+                <TableCell>{formatCurrency(geyser.plumbing.price)}</TableCell>
+              </TableRow>
+              <TableRow className="font-bold text-xl">
+                <TableCell>Total</TableCell>
+                <TableCell>
+
+                  {formatCurrency(
+                    geyser.geyser.price +
+                      geyser.plumbing.price +
+                      geyser.installation.price +
+                      geyser.certificateOfCompliance.price
+                  )}
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
         </div>
         <h2 className="font-bold text-2xl mt-4">Specifications</h2>
         <PortableText value={geyser.specifications} />
@@ -69,7 +108,10 @@ export default async function PackageDetails({ geyser }: { geyser: Geyser }) {
           </TableBody>
         </Table>
         <div className="flex flex-col gap-2 mt-6">
-
+          <p className="text-sm text-red-700">
+            Please note, Hotwater24 use a wide range of different brands and
+            sizes of gas geysers that will suit your specification!
+          </p>
         </div>
       </div>
       <div className="grid gap-3 items-start">
