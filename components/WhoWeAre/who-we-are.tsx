@@ -44,7 +44,7 @@ export default function WhoWeAre() {
           <Link href="/packages">
             <Button className="rounded-full w-fit md:w-[200px] bg-red-600">View Our Packages</Button>
           </Link>
-          <Link href="/packages">
+          <Link href="/quote/start">
             <Button className="rounded-full w-fit md:w-[200px] bg-blue-600">Get A Quote</Button>
           </Link>
         </div>
