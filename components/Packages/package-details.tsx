@@ -62,7 +62,6 @@ export default async function PackageDetails({ geyser }: { geyser: Geyser }) {
               <TableRow className="font-bold text-xl">
                 <TableCell>Total</TableCell>
                 <TableCell>
-
                   {formatCurrency(
                     geyser.geyser.price +
                       geyser.plumbing.price +
