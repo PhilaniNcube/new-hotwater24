@@ -1,3 +1,7 @@
+import Link from "next/link";
+import { Button } from "../ui/button";
+import { ArrowRight } from "lucide-react";
+
 /**
  * v0 by Vercel.
  * @see https://v0.dev/t/Ez7uSlNnnV8
@@ -51,6 +55,14 @@ export default function ChooseLpg() {
             By clicking on the button below we instantly recommend you with the
             best gas water heating solution for your home
           </p>
+          <div className="mt-4">
+            <Link href="/quote/start">
+              <Button type="button" className="rounded-full bg-red-600 min-w-[150px]">
+                <span>Get a Quote</span>
+                <ArrowRight className="ml-2" />
+              </Button>
+            </Link>
+          </div>
         </div>
         <div className="space-y-8 xl:space-y-10">
           <img
