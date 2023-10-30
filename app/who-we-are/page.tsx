@@ -13,6 +13,7 @@ const page = () => {
     <main className="">
      <WhoWeAreHero />
      <WhoWeAre />
+
     </main>
   );
 };

@@ -1,9 +1,7 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/6PTZHsw6c5T
- */
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
-import { BadgeDollarSign, CheckIcon, CogIcon, HomeIcon, LightbulbIcon, StarsIcon, ThumbsDown } from "lucide-react";
+import { BadgeDollarSign, CheckIcon, Clock10Icon, CogIcon, HomeIcon, LightbulbIcon, StarsIcon, ThumbsDown } from "lucide-react";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
 export default function ChooseUsHero() {
   return (
@@ -17,7 +15,7 @@ export default function ChooseUsHero() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <Card>
             <CardHeader>
-              <CheckIcon className="text-green-500" />
+              <Clock10Icon className="text-green-500" />
               <CardTitle>40+ years’ experience with gas</CardTitle>
             </CardHeader>
             <CardContent>
@@ -59,7 +57,7 @@ export default function ChooseUsHero() {
           </Card>
           <Card>
             <CardHeader>
-             <HomeIcon className="text-red-500" />
+              <HomeIcon className="text-red-500" />
               <CardTitle>Off-The-Grid Solutions</CardTitle>
             </CardHeader>
             <CardContent>
@@ -87,7 +85,7 @@ export default function ChooseUsHero() {
           </Card>
           <Card>
             <CardHeader>
-             <BadgeDollarSign className="text-green-500" />
+              <BadgeDollarSign className="text-green-500" />
               <CardTitle>We Make It Affordable</CardTitle>
             </CardHeader>
             <CardContent>
@@ -97,6 +95,18 @@ export default function ChooseUsHero() {
               </p>
             </CardContent>
           </Card>
+        </div>
+        <div className="my-6 flex flex-col md:flex-row items-center w-full justify-center gap-6">
+          <Link href="/savings">
+            <Button className="rounded-full bg-blue-600 min-w-[190px]">
+              Calculating savings
+            </Button>
+          </Link>
+          <Link href="/packages">
+            <Button className="rounded-full bg-red-600 min-w-[190px]">
+              Choose your gas geyser
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
