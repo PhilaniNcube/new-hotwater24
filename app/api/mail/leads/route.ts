@@ -103,7 +103,7 @@ body {font-family: 'Poppins', sans-serif;}
   </table><table class="wrapper" role="module" data-type="image" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="cb31e9b8-b045-4c38-a478-ed2a6e2dc166">
     <tbody width="100%">
       <tr width="100%">
-        <td style="font-size:6px; line-height:10px; padding:0px 10px 0px 10px;" valign="top" align="center">
+        <td style="font-size:6px; line-height:10px; padding:1px 10px 1px 10px;" valign="top" align="center">
         <a href="http://cdn.mcauto-images-production.sendgrid.net/622b9324edf69236/b96619d1-872f-4b3f-ba0d-0908a77a2320/600x225.jpg"><img class="max-width" border="0" style="display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px; width:100%; height:auto !important;" alt="header" data-proportionally-constrained="true" data-responsive="true" src="http://cdn.mcauto-images-production.sendgrid.net/622b9324edf69236/b96619d1-872f-4b3f-ba0d-0908a77a2320/600x225.jpg"></a></td>
       </tr>
     </tbody>
