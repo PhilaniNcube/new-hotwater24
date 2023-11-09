@@ -35,13 +35,15 @@ try {
 
   console.log({data})
 
-  return NextResponse.json({status: 200, data: data})
+
 
 
 } catch (error) {
   console.log(error)
-  return NextResponse.json({ status: 401 })
 
+
+} finally {
+  return NextResponse.json({message: 'success'})
 }
 
 
