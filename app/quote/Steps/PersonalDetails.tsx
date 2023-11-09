@@ -248,17 +248,18 @@ const PersonalDetails = ({
         });
       }
 
-      const url = new URL(`https://hotwater24.com/api/simvoly`);
+      const url = new URL(`https://www.hotwater24.com/api/simvoly`);
 
 
       const crmRes = await fetch(url, {
         method: "POST",
 
-        headers: { "Content-Type": "application/json",
-                   "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
-                    "Access-Control-Allow-Methods": "POST",
-                    "Access-Control-Max-Age": "3600",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "*",
+          "Access-Control-Allow-Methods": "POST",
+          "Access-Control-Max-Age": "3600",
       },
         body: JSON.stringify({
           first_name: firstName,
