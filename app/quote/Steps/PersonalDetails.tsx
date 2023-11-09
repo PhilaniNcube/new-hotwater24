@@ -248,10 +248,15 @@ const PersonalDetails = ({
         });
       }
 
+      const url = new URL(`https://hotwater24.com/api/simvoly`);
 
-      const crmRes = await fetch(`https://hotwater24.com/api/simvoly`, {
+
+      const crmRes = await fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+
+        headers: { "Content-Type": "application/json",
+
+      },
         body: JSON.stringify({
           first_name: firstName,
           last_name: lastName,
