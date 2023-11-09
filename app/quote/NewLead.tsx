@@ -68,14 +68,12 @@ export type LeadStageProps = {
   prevPage: () => void;
   setQuoteInfo: (quoteInfo: any) => void;
   setPage?: (page: number) => void;
-  products?: Database["public"]["Tables"]["products"]["Row"][];
+
 };
 
-type Props = {
-  products: Database['public']['Tables']['products']['Row'][];
-}
 
-const NewLead = ({products}:Props) => {
+
+const NewLead = () => {
 
   const searchParams = useSearchParams()
 
@@ -256,7 +254,7 @@ const NewLead = ({products}:Props) => {
             nextPage={nextPage}
             prevPage={prevPage}
             page={page}
-            products={products}
+
           />
         )}
       </div>

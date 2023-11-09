@@ -1,13 +1,9 @@
 import Script from "next/script";
 import NewLead from "./NewLead";
-import { cookies } from "next/headers";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+
 
 const page = async () => {
 
-  const supabase = createServerComponentClient<Database>({ cookies });
-
-  const {data:products, error} = await supabase.from('products').select('*')
 
 
   return (
@@ -64,7 +60,7 @@ const page = async () => {
         }}
       />
 
-      <NewLead products={products!} />
+      <NewLead  />
     </main>
   );
 };

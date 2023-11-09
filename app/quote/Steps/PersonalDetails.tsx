@@ -248,6 +248,23 @@ const PersonalDetails = ({
         });
       }
 
+
+      const crmRes = await fetch(`http://localhost:3000/api/simvoly`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          address: streetAddress,
+          city: city,
+          phone: telephoneNumber,
+        }),
+      });
+
+      const result = await crmRes.json();
+      console.log(result);
+
       setLoading(false);
       nextPage();
     } catch (error) {
