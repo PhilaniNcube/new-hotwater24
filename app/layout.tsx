@@ -1,9 +1,13 @@
 import Script from 'next/script';
 import Footer from './Footer'
-import Navbar from './Navbar'
 import './globals.css'
 import Desktop from '@/components/Navigation/Desktop';
 import { getGeysers } from '@/sanity/sanity-utils';
+import { lato } from './fonts';
+import GasGenius from '@/components/Homepage/GasGenius';
+
+
+
 
 export const dynamic = "force-dynamic";
 
@@ -35,7 +39,8 @@ export default async function RootLayout({
           gtag('config', 'G-9S7607VTDS');
         `}
       </Script>
-      <body>
+      <body className={lato.className}>
+        <GasGenius />
         <Desktop packages={geysers} />
         {children}
         <Footer />

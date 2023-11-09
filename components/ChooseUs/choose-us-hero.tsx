@@ -2,21 +2,30 @@ import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
 import { BadgeDollarSign, CheckIcon, Clock10Icon, CogIcon, HomeIcon, LightbulbIcon, StarsIcon, ThumbsDown } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
+import { antonio } from "@/app/fonts";
 
 export default function ChooseUsHero() {
   return (
     <div className="w-full py-12">
       <div className="container px-4 md:px-6">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
+          <h1
+            className={cn(
+              "text-3xl font-bold text-slate-800 tracking-tighter md:text-4xl lg:text-6xl",
+              antonio.className
+            )}
+          >
             Why Choose Us
           </h1>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card>
+          <Card className="bg-red-600 text-white">
             <CardHeader>
-              <Clock10Icon className="text-green-500" />
-              <CardTitle>40+ years’ experience with gas</CardTitle>
+              <Clock10Icon className="text-white" />
+              <CardTitle className={antonio.className}>
+                40+ years’ experience with gas
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm">
@@ -27,10 +36,12 @@ export default function ChooseUsHero() {
               </p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="bg-red-600 text-white">
             <CardHeader>
-              <LightbulbIcon className="text-yellow-500" />
-              <CardTitle>Cleaner energy source</CardTitle>
+              <LightbulbIcon className="text-white" />
+              <CardTitle className={antonio.className}>
+                Cleaner energy source
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm">
@@ -41,10 +52,10 @@ export default function ChooseUsHero() {
               </p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="bg-red-600 text-white">
             <CardHeader>
-              <CogIcon className="text-blue-500" />
-              <CardTitle>Full Service</CardTitle>
+              <CogIcon className="text-white" />
+              <CardTitle className={antonio.className}>Full Service</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm">
@@ -55,10 +66,12 @@ export default function ChooseUsHero() {
               </p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="bg-red-600 text-white">
             <CardHeader>
-              <HomeIcon className="text-red-500" />
-              <CardTitle>Off-The-Grid Solutions</CardTitle>
+              <HomeIcon className="text-white" />
+              <CardTitle className={antonio.className}>
+                Off-The-Grid Solutions
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm">
@@ -69,10 +82,12 @@ export default function ChooseUsHero() {
               </p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="bg-red-600 text-white">
             <CardHeader>
-              <StarsIcon className="text-yellow-500" />
-              <CardTitle>Quality Products</CardTitle>
+              <StarsIcon className="text-white" />
+              <CardTitle className={antonio.className}>
+                Quality Products
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm">
@@ -83,10 +98,12 @@ export default function ChooseUsHero() {
               </p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="bg-red-600 text-white">
             <CardHeader>
-              <BadgeDollarSign className="text-green-500" />
-              <CardTitle>We Make It Affordable</CardTitle>
+              <BadgeDollarSign className="text-white" />
+              <CardTitle className={antonio.className}>
+                We Make It Affordable
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm">
@@ -96,7 +113,7 @@ export default function ChooseUsHero() {
             </CardContent>
           </Card>
         </div>
-        <div className="my-6 flex flex-col md:flex-row items-center w-full justify-center gap-6">
+        <div className="my-6 flex flex-col md:flex-row items-center w-full  justify-center gap-6">
           <Link href="/savings">
             <Button className="rounded-full bg-blue-600 min-w-[190px]">
               Calculating savings

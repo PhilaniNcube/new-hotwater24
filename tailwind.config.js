@@ -19,7 +19,10 @@ module.exports = {
     extend: {
       fontFamily: {
         roboto: ["var(--font-roboto)"],
+        sans: ["var(--font-antonio)"],
         bebas: ["var(--font-bebas)"],
+        lato: ["var(--font-lato)"],
+        antonio: ["var(--font-antonio)"],
       },
       colors: {
         border: "hsl(var(--border))",

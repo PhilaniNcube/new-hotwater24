@@ -17,7 +17,7 @@ export default function ButtonCtaSection() {
           </Button>
         </Link>
         <Link href="/payment_plan">
-          <Button className="flex items-center justify-center h-12 text-xs text-white bg-green-500 rounded-full shadow-lg sm:text-base sm:w-44">
+          <Button className="flex items-center justify-center h-12 text-xs text-white bg-blue-600 rounded-full shadow-lg sm:text-base sm:w-44">
             <DollarSignIcon className="mr-2" size={24} />
             Payment Plan
           </Button>

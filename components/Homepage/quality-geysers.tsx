@@ -2,11 +2,17 @@ import Image from "next/image";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
+import { antonio } from "@/app/fonts";
 
 const QualityGeysers = () => {
   return (
     <section className="container py-6">
-      <h2 className="text-2xl font-bold text-center text-slate-800">
+      <h2
+        className={cn(
+          "text-3xl lg:text-4xl font-bold text-center text-slate-800"
+        , antonio.className)}
+      >
         Quality gas geysers
       </h2>
       <div className="grid grid-cols-1 gap-8 py-5 md:grid-cols-3">

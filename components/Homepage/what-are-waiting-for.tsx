@@ -2,16 +2,18 @@
  * v0 by Vercel.
  * @see https://v0.dev/t/zuxGuoPlVGF
  */
+import { antonio } from "@/app/fonts";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 
 export default function WhatAreYouWaitingFor() {
   return (
-    <section className="w-full py-12">
-      <div className="container flex flex-col items-center gap-4">
+    <section className="w-full py-12 px-8">
+      <div className="container flex p-6 md:p-8 shadow justify-center lg:p-12 rounded-full bg-red-600 items-center gap-4 ">
         <div className="space-y-3 text-center">
-          <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+          <h2 className={cn("text-3xl text-white font-bold tracking-tighter md:text-4xl", antonio.className)}>
             What Are You Waiting For?
           </h2>
         </div>

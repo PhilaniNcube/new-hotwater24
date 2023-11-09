@@ -2,17 +2,19 @@
  * v0 by Vercel.
  * @see https://v0.dev/t/uFR3NMUdsrp
  */
+import { antonio } from "@/app/fonts";
 import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
+import { cn } from "@/lib/utils";
 
 export default function Testimonials() {
   return (
     <section className="mt-4">
-      <h2 className="text-2xl font-bold text-center mb-3 dark:text-white">
+      <h2 className={cn("text-2xl lg:text-4xl font-bold text-center mb-3 dark:text-white", antonio.className)}>
         Our Happy Customers
       </h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 container">
         <div className="flex flex-col items-center text-center">
-          <h3 className="font-semibold mt-4">Phillip Erasmus</h3>
+          <h3 className={cn("font-semibold mt-4",antonio.className)}>Phillip Erasmus</h3>
 
           <blockquote className="mt-2 italic text-zinc-500 dark:text-zinc-400">
             "Can surely recommend you! On time and quality installation. Follow
@@ -21,7 +23,7 @@ export default function Testimonials() {
           </blockquote>
         </div>
         <div className="flex flex-col items-center text-center">
-          <h3 className="font-semibold mt-4">Nish Govender</h3>
+          <h3 className={cn("font-semibold mt-4",antonio.className)}>Nish Govender</h3>
 
           <blockquote className="mt-2 italic text-zinc-500 dark:text-zinc-400">
             "Ronald from Hotwater24 offers exceptional front-end service. The
@@ -30,7 +32,7 @@ export default function Testimonials() {
           </blockquote>
         </div>
         <div className="flex flex-col items-center text-center">
-          <h3 className="font-semibold mt-4">Zama Mbatha</h3>
+          <h3 className={cn("font-semibold mt-4",antonio.className)}>Zama Mbatha</h3>
 
           <blockquote className="mt-2 italic text-zinc-500 dark:text-zinc-400">
             "Job well done to the Hotwater24 team, from beginning to end, they
@@ -40,7 +42,7 @@ export default function Testimonials() {
           </blockquote>
         </div>
         <div className="flex flex-col items-center text-center">
-          <h3 className="font-semibold mt-4">Tersia Block</h3>
+          <h3 className={cn("font-semibold mt-4",antonio.className)}>Tersia Block</h3>
 
           <blockquote className="mt-2 italic text-zinc-500 dark:text-zinc-400">
             "Excellent service installation. From the first engagement with
