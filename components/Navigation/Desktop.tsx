@@ -51,7 +51,7 @@ const Desktop = ({packages}: {packages: Geyser[]}) => {
                           href="/payment_plan"
                         >
                           <div className="mt-4 mb-2 text-lg font-medium">
-                            Payment Plans
+                            Payment Plan
                           </div>
                           <p className="text-xs leading-tight text-muted-foreground">
                             Enjoy flexible purchasing with our payment plan
@@ -72,7 +72,7 @@ const Desktop = ({packages}: {packages: Geyser[]}) => {
                             <NavigationMenuLink
                               className={navigationMenuTriggerStyle()}
                             >
-                              {item.title}
+                             {item.maxFlowRate.split('l')[0]}L {item.title}
                             </NavigationMenuLink>
                           </Link>
                         </NavigationMenuItem>

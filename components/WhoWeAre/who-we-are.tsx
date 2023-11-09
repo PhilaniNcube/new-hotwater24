@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
+import { antonio } from "@/app/fonts";
 
 /**
  * v0 by Vercel.
@@ -10,7 +12,11 @@ export default function WhoWeAre() {
     <section className="w-full py-12">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center text-center space-y-6">
-          <h2 className="text-3xl font-bold text-slate-800 tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+          <h2
+            className={cn(
+              "text-2xl font-bold text-slate-800 tracking-tighter md:text-4xl"
+            ,antonio.className)}
+          >
             Who We Are?
           </h2>
           <ul className="mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -42,10 +48,14 @@ export default function WhoWeAre() {
         </div>
         <div className="flex flex-col md:flex-row justify-center items-center gap-3 mt-8 w-full">
           <Link href="/packages">
-            <Button className="rounded-full w-fit md:w-[200px] bg-red-600">View Our Packages</Button>
+            <Button className="rounded-full w-fit md:w-[200px] bg-red-600">
+              View Our Packages
+            </Button>
           </Link>
           <Link href="/quote/start">
-            <Button className="rounded-full w-fit md:w-[200px] bg-blue-600">Get A Quote</Button>
+            <Button className="rounded-full w-fit md:w-[200px] bg-blue-600">
+              Get A Quote
+            </Button>
           </Link>
         </div>
       </div>

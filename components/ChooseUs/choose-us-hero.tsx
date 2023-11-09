@@ -9,7 +9,7 @@ export default function ChooseUsHero() {
   return (
     <div className="w-full py-12">
       <div className="container px-4 md:px-6">
-        <div className="text-center mb-8">
+        {/* <div className="text-center mb-8">
           <h1
             className={cn(
               "text-3xl font-bold text-slate-800 tracking-tighter md:text-4xl lg:text-6xl",
@@ -18,7 +18,7 @@ export default function ChooseUsHero() {
           >
             Why Choose Us
           </h1>
-        </div>
+        </div> */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <Card className="bg-red-600 text-white">
             <CardHeader>

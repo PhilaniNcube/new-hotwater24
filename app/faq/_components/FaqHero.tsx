@@ -6,7 +6,7 @@ import Image from "next/image";
  * v0 by Vercel.
  * @see https://v0.dev/t/b6wdkCMNqBB
  */
-export default function WhoWeAreHero() {
+export default function FaqHero() {
   return (
     <section className="w-full grid grid-cols-1 md:grid-cols-2 relative isolate pb-8">
       <Image
@@ -21,19 +21,14 @@ export default function WhoWeAreHero() {
           <div className="space-y-2 py-10 md:py-4">
             <h1
               className={cn(
-                "text-3xl text-slate-800 font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none"
-              ,antonio.className)}
+                "text-3xl text-slate-800 font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none",
+                antonio.className
+              )}
             >
-              Over 40 years of experience and knowledge
+              Frequently Asked Questions
             </h1>
             <p className="mx-auto max-w-[700px] text-slate-700 text-base md:text-lg dark:text-zinc-400">
-              With over 40 years of experience and knowledge in the Dutch gas
-              installation business, we understand your needs. Either when it is
-              a need for comfort (on demand hot water 24/7 for your family) or a
-              need out of necessity (tired of load shedding, cold water and high
-              energy bills from Eskom) and want to get “off-the-grid” and
-              independent from Eskom and save money on your monthly energy bill
-              at the same time!
+              Common Questions about Our Gas Geysers Installation and Usage
             </p>
           </div>
         </div>

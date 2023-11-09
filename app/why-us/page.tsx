@@ -5,10 +5,12 @@ import ChooseLpg from "@/components/ChooseUs/why-choose-lpg";
 import { ArrowRight, FlagIcon, Users2Icon } from "lucide-react";
 import Link from "next/link";
 import { RiFilePaperLine } from "react-icons/ri";
+import WhyUsHero from "./_components/WhyUsHero";
 
 const page = () => {
   return (
     <main className="relative">
+      <WhyUsHero />
       <ChooseUsHero />
       <ChooseLpg />
       <SafeInstallations />
