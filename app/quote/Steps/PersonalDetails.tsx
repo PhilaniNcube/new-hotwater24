@@ -249,7 +249,7 @@ const PersonalDetails = ({
       }
 
 
-      const crmRes = await fetch(`${process.env.WEBSITE_URL}/api/simvoly`, {
+      const crmRes = await fetch(`https://hotwater24.com/api/simvoly`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
