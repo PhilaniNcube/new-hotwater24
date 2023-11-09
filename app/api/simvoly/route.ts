@@ -35,12 +35,16 @@ try {
 
   console.log({data})
 
+  if (data.success === false) {
+    throw new Error(data.message)
+  }
 
+  return NextResponse.json({message: 'success', data: data})
 
 
 } catch (error) {
   console.log(error)
-
+  return NextResponse.json({message: 'There was an error', error: error})
 
 } finally {
   return NextResponse.json({message: 'success'})
