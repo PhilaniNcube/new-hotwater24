@@ -255,7 +255,10 @@ const PersonalDetails = ({
         method: "POST",
 
         headers: { "Content-Type": "application/json",
-
+                   "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                    "Access-Control-Allow-Methods": "POST",
+                    "Access-Control-Max-Age": "3600",
       },
         body: JSON.stringify({
           first_name: firstName,
