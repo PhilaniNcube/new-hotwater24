@@ -249,9 +249,9 @@ const PersonalDetails = ({
       }
 
 
-      const crmRes = await fetch(`http://localhost:3000/api/simvoly`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const crmRes = await fetch(`${process.env.WEBSITE_URL}/api/simvoly`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           first_name: firstName,
           last_name: lastName,
