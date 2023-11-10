@@ -11,13 +11,13 @@ export default function ButtonCtaSection() {
     <section className="flex items-center justify-center py-8">
       <div className="flex space-x-4">
         <Link href="/quote/start">
-          <Button className="flex items-center justify-center h-12 text-xs text-white bg-red-600 rounded-full shadow-lg sm:text-base sm:w-44">
+          <Button className="flex items-center justify-center h-12 text-sm text-white bg-red-600 rounded-full shadow-lg  sm:w-44">
             <Loader className="mr-2" size={24} />
             Get A Quote
           </Button>
         </Link>
         <Link href="/payment_plan">
-          <Button className="flex items-center justify-center h-12 text-xs text-white bg-brand rounded-full shadow-lg sm:text-base sm:w-44">
+          <Button className="flex items-center justify-center h-12 text-sm text-white bg-brand rounded-full shadow-lg  sm:w-44">
             <DollarSignIcon className="mr-2" size={24} />
             Payment Plan
           </Button>

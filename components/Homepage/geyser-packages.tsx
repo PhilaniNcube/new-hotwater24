@@ -18,12 +18,12 @@ export default async function GeyserPackages() {
     <section className="container py-8">
       <h2
         className={cn(
-          "text-3xl lg:text-4xl font-bold text-center text-slate-900"
+          "text-3xl lg:text-4xl font-bold text-center text-slate-900 my-3"
         , antonio.className)}
       >
         Which package best suits your household?
       </h2>
-      <div className="grid gap-4 p-4 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid gap-4 p-4 md:grid-cols-3 lg:grid-cols-4 mt-6">
         {packages.map((item, index) => {
           if (index > 0 && index < 5) {
             return (

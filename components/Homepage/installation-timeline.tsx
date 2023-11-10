@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { CarIcon, Clock2Icon, HelpCircle, PenLine, Shovel } from "lucide-react";
+import { AwardIcon, CarIcon, Clock2Icon, Droplet, DropletIcon, HelpCircle, LucideDroplets, PenLine, Shovel } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { antonio } from "@/app/fonts";
 
@@ -74,7 +74,7 @@ export default function InstallationTimeline() {
         </div>
         <div className="relative z-50 flex flex-col w-2/3 mb-8 space-y-4 rounded sm:w-1/2 lg:w-1/5">
           <div className="bg-red-600 p-3 rounded-full w-fit ">
-            <Shovel className="h-20 w-20  text-white" />
+            <AwardIcon className="h-20 w-20  text-white" />
           </div>
           <div className="px-3 py-2 space-y-4">
             <div className="text-sm tracking-wider text-gray-600">Step 4</div>
@@ -94,7 +94,7 @@ export default function InstallationTimeline() {
         </div>
         <div className="relative z-50 flex flex-col w-2/3 mb-8 space-y-4 rounded sm:w-1/2 lg:w-1/5">
           <div className="bg-red-600 p-3 rounded-full w-fit ">
-            <Clock2Icon className="h-20 w-20  text-white" />
+            <Droplet className="h-20 w-20  text-white" />
           </div>
           <div className="px-3 py-2 space-y-4">
             <div className="text-sm tracking-wider text-gray-600">Step 5</div>
