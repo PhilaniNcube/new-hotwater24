@@ -36,11 +36,11 @@ const Footer = () => {
           </div>
           <div className="flex flex-col justify-start items-start">
             <div className="text-gray-400 mt-4 flex flex-col justify-start items-end">
-              <img
+              {/* <img
                 className="w-5/6 object-cover"
                 src="/images/footer.png"
                 alt="paygate logos"
-              />
+              /> */}
             </div>
           </div>
         </div>

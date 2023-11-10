@@ -823,14 +823,7 @@ const page = () => {
                   </li>
                 </ul>
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
-                Does HW24 offer financing?
-              </p>
-              <article className="text-base text-gray-600 font-medium">
-                Yes, we do offer financing through Mobicred. Please contact us
-                by e-mail (info@hotwater24.com) or visit our website
-                (www.hotwater24.com) for any questions on financing options.
-              </article>
+
               <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
                 How much does it cost?
               </p>

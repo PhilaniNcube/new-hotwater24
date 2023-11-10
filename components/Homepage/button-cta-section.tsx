@@ -16,7 +16,7 @@ export default function ButtonCtaSection() {
             Get A Quote
           </Button>
         </Link>
-        <Link href="/payment_plan">
+        <Link href="/payment-plan">
           <Button className="flex items-center justify-center h-12 text-sm text-white bg-brand rounded-full shadow-lg  sm:w-44">
             <DollarSignIcon className="mr-2" size={24} />
             Payment Plan

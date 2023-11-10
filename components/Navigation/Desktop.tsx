@@ -48,7 +48,7 @@ const Desktop = ({packages}: {packages: Geyser[]}) => {
                       <NavigationMenuLink asChild>
                         <Link
                           className="flex flex-col justify-end w-full h-full p-6 no-underline rounded-md outline-none select-none bg-gradient-to-b from-muted/50 to-muted focus:shadow-md"
-                          href="/payment_plan"
+                          href="/payment-plan"
                         >
                           <div className="mt-4 mb-2 text-lg font-medium">
                             Payment Plan
