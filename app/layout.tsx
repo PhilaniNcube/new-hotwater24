@@ -5,6 +5,7 @@ import Desktop from '@/components/Navigation/Desktop';
 import { getGeysers } from '@/sanity/sanity-utils';
 import { lato } from './fonts';
 import GasGenius from '@/components/Homepage/GasGenius';
+import Mobile from '@/components/Navigation/Mobile';
 
 
 
@@ -42,6 +43,7 @@ export default async function RootLayout({
       <body className={lato.className}>
         <GasGenius />
         <Desktop packages={geysers} />
+        <Mobile packages={geysers} />
         {children}
         <Footer />
       </body>

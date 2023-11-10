@@ -3,6 +3,8 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { formatCurrency } from "@/utils/format";
+import { cn } from "@/lib/utils";
+import { antonio } from "@/app/fonts";
 
 const PackagesGrid = async () => {
 
@@ -34,8 +36,15 @@ const PackagesGrid = async () => {
               width="500"
             />
             <div className="bg-white p-4 dark:bg-zinc-950">
-              <h3 className="font-semibold text-lg md:text-xl">{item.title}</h3>
-              <h4 className="font-semibold text-base md:text-lg">
+              <h3
+                className={cn(
+                  "font-semibold text-lg md:text-xl text-center",
+                  antonio.className
+                )}
+              >
+                {item.title}
+              </h3>
+              <h4 className={cn("font-semibold text-base text-center md:text-xl text-red-600", antonio.className)}>
                 {formatCurrency(
                   item.geyser.price +
                     item.plumbing.price +
