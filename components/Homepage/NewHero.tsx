@@ -20,7 +20,7 @@ export default function NewHero() {
             />
             <div className="flex flex-col gap-2 justify-center items-center mt-4 min-[400px]:flex-row">
               <Link
-                className="inline-flex items-center justify-center h-10 px-8 text-sm font-medium transition-colors rounded-full shadow bg-slate-800 text-zinc-50 hover:bg-zinc-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-50/90 dark:focus-visible:ring-zinc-300"
+                className="inline-flex items-center justify-center h-10 px-8 text-sm font-medium transition-colors rounded-full shadow bg-brand text-zinc-50 hover:bg-zinc-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-50/90 dark:focus-visible:ring-zinc-300"
                 href="/quote/start"
               >
                 Get a Quote
@@ -38,11 +38,12 @@ export default function NewHero() {
             <div className="space-y-2">
               <h1
                 className={cn(
-                  "text-3xl font-bold tracking-tighter text-slate-800 sm:text-5xl xl:text-6xl/none max-w-[15ch] leading-7",
+                  "text-3xl flex flex-col gap-2 font-bold text-slate-800 md:text-5xl leading-loose",
                   antonio.className
                 )}
               >
-                Expert gas guys bringing hot water to homes 24/7
+                <span>Expert gas guys bringing</span>{" "}
+                <span>hot water to homes 24/7</span>
               </h1>
             </div>
             <div className="">

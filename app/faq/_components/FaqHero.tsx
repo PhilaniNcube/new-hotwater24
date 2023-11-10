@@ -21,7 +21,7 @@ export default function FaqHero() {
           <div className="space-y-2 py-10 md:py-4">
             <h1
               className={cn(
-                "text-3xl text-slate-800 font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none",
+                "text-3xl text-slate-800 font-bold  sm:text-4xl md:text-5xl flex flex-col gap-2",
                 antonio.className
               )}
             >
