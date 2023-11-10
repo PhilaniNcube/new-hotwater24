@@ -58,7 +58,7 @@ const page = async ({ searchParams }: ServerPageProps) => {
           search: ""
         }
       }}>
-        <Button type="button" className="bg-blue-600 text-white">
+        <Button type="button" className="bg-brand text-white">
           Leads
         </Button>
       </Link>

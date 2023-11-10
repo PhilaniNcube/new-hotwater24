@@ -166,7 +166,7 @@ export default function SafeInstallations() {
           <Link href="/packages">
             <Button
               type="button"
-              className="min-w-[180px] rounded-full bg-blue-600"
+              className="min-w-[180px] rounded-full bg-brand"
             >
               Choose your gas geyser
             </Button>{" "}

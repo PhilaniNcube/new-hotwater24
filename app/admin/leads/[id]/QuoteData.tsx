@@ -168,7 +168,7 @@ function QuoteData({ lead }:LeadProps) {
           </button>
           <button
             onClick={createLink}
-            className="bg-blue-600 px-12 py-2 rounded text-white my-4 text-base font-medium"
+            className="bg-brand px-12 py-2 rounded text-white my-4 text-base font-medium"
           >
             Generate Payment Link
           </button>

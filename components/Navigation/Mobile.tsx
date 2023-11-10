@@ -22,7 +22,7 @@ const Mobile = ({ packages }: { packages: Geyser[] }) => {
    const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="flex shadow sticky top-0 left-0 right-0 lg:hidden">
+    <header className="flex shadow sticky top-0 left-0 right-0 lg:hidden bg-white">
       <div className="container py-3 flex items-center justify-between">
         <Link href="/">
           <div className="flex items-center space-x-2 cursor-pointer">

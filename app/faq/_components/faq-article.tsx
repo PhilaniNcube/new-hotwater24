@@ -91,7 +91,7 @@ export default function FaqArticle() {
           very sensible thing to do:{" "}
           <Link
             href="https://www.hotwater24.com/why-us"
-            className="text-blue-600 font-bold"
+            className="text-brand font-bold"
           >
             Why Us
           </Link>

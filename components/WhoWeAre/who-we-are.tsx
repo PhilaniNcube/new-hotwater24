@@ -53,7 +53,7 @@ export default function WhoWeAre() {
             </Button>
           </Link>
           <Link href="/quote/start">
-            <Button className="rounded-full w-fit md:w-[200px] bg-blue-600">
+            <Button className="rounded-full w-fit md:w-[200px] bg-brand">
               Get A Quote
             </Button>
           </Link>
