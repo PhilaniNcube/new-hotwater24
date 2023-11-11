@@ -18,10 +18,19 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
 import { RiWhatsappLine } from "react-icons/ri";
+import AreasSelector from "./AreasSelector";
 
+type Props = {
+  packages: Geyser[];
+  cities: {
+    id: number;
+    name: string;
+    slug: string;
+    created_at: string;
+  }[];
+}
 
-
-const Desktop = ({packages}: {packages: Geyser[]}) => {
+const Desktop = ({ packages, cities }: Props) => {
   return (
     <section className="sticky top-0 left-0 right-0  hidden py-3 shadow-md lg:block bg-white/80 backdrop-blur-sm z-50">
       <nav className="container flex items-center justify-between">
@@ -72,7 +81,7 @@ const Desktop = ({packages}: {packages: Geyser[]}) => {
                             <NavigationMenuLink
                               className={navigationMenuTriggerStyle()}
                             >
-                             {item.maxFlowRate.split('l')[0]}L {item.title}
+                              {item.maxFlowRate.split("l")[0]}L {item.title}
                             </NavigationMenuLink>
                           </Link>
                         </NavigationMenuItem>
@@ -112,16 +121,19 @@ const Desktop = ({packages}: {packages: Geyser[]}) => {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-        <Link
-          href="https://wa.me/27793414075?text=I'm%20interested%20in%20your%20products"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Button type="button" className="bg-green-500 rounded-full">
-            <RiWhatsappLine className="mr-1 text-2xl" />
-            Get In Touch
-          </Button>
-        </Link>
+        <div className="flex gap-4 items-center">
+          <AreasSelector cities={cities} />
+          <Link
+            href="https://wa.me/27793414075?text=I'm%20interested%20in%20your%20products"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Button type="button" className="bg-green-500 rounded-full">
+              <RiWhatsappLine className="mr-1 text-2xl" />
+              Get In Touch
+            </Button>
+          </Link>
+        </div>
       </nav>
     </section>
   );

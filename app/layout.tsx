@@ -6,6 +6,8 @@ import { getGeysers } from '@/sanity/sanity-utils';
 import { lato } from './fonts';
 import GasGenius from '@/components/Homepage/GasGenius';
 import Mobile from '@/components/Navigation/Mobile';
+import { cookies } from 'next/headers';
+import { createServerClient } from '@supabase/ssr';
 
 
 
@@ -26,6 +28,25 @@ export default async function RootLayout({
 
   const geysers = await getGeysers();
 
+        const cookieStore = cookies();
+
+        const supabase = createServerClient<Database>(
+          process.env.NEXT_PUBLIC_SUPABASE_URL!,
+          process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+          {
+            cookies: {
+              get(name: string) {
+                return cookieStore.get(name)?.value;
+              },
+            },
+          }
+        );
+
+        const { data, error } = await supabase
+          .from("cities")
+          .select("*").order("name", { ascending: true })
+
+
   return (
     <html lang="en">
       <Script
@@ -42,8 +63,8 @@ export default async function RootLayout({
       </Script>
       <body className={lato.className}>
         <GasGenius />
-        <Desktop packages={geysers} />
-        <Mobile packages={geysers} />
+        <Desktop packages={geysers} cities={data!} />
+        <Mobile packages={geysers} cities={data!} />
         {children}
         <Footer />
       </body>

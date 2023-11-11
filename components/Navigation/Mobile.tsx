@@ -17,9 +17,18 @@ import {
 } from "@/components/ui/sheet";
 import { MenuIcon } from "lucide-react";
 
-const Mobile = ({ packages }: { packages: Geyser[] }) => {
+type Props = {
+  packages: Geyser[];
+  cities: {
+    id: number;
+    name: string;
+    slug: string;
+    created_at: string;
+  }[];
+};
 
-   const [isOpen, setIsOpen] = useState(false);
+const Mobile = ({ packages, cities }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="flex shadow sticky top-0 left-0 right-0 lg:hidden bg-white">
