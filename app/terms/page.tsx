@@ -79,7 +79,7 @@ const TermsPage = () => {
       </p>
       <h2 className="text-lg">Hotwater24 contact details </h2>
       <p className="text-md">
-        Company Physical Address: 9 Kramer Road, Kramerville, Sandton, 2190.
+
         Email: info@hotwater24.com Telephone: +27(0)79 341 4075
       </p>
     </div>

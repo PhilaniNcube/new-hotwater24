@@ -20,8 +20,8 @@ export default async function PackageDetails({ geyser }: { geyser: Geyser }) {
   return (
     <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-start py-6">
       <div className="grid gap-4 items-start">
-        <h1 className="font-bold text-3xl">{geyser.title}</h1>
-        <h2 className="text-4xl text-white w-fit skew-x-12 px-4 py-3 bg-red-600 font-bold">
+        <h1 className="font-bold text-3xl"><span className="uppercase">{geyser.maxFlowRate.split('/')[0]}</span> {geyser.title}</h1>
+        <h2 className="text-4xl text-white w-fit skew-x-12 px-4 py-3 bg-red-600 font-bold" suppressHydrationWarning>
           Total:{" "}
           {formatCurrency(
             geyser.geyser.price +

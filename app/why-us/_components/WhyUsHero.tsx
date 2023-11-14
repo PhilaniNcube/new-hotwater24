@@ -21,15 +21,17 @@ export default function WhyUsHero() {
           <div className="space-y-2 py-10 md:py-4">
             <h1
               className={cn(
-                "text-3xl text-slate-800 font-bold  sm:text-4xl md:text-5xl flex flex-col gap-2",
+                "text-3xl text-slate-800 font-bold  sm:text-4xl md:text-5xl flex flex-col gap-2 mb-6",
                 antonio.className
               )}
             >
-              Why Choose Us
+              <span>Safe and reliable</span>
+              <span>installations</span>
             </h1>
-            {/* <p className="mx-auto max-w-[700px] text-slate-700 text-base md:text-lg dark:text-zinc-400">
-              Common Questions about Our Gas Geysers Installation and Usage
-            </p> */}
+            <p className="mx-auto max-w-[700px] text-slate-700 text-base md:text-lg dark:text-zinc-400">
+              Ensuring a safe and quality installation by a Certified LP Gas
+              Installer is our top priority.
+            </p>
           </div>
         </div>
       </div>
