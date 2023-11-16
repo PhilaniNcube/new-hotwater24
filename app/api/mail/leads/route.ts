@@ -64,11 +64,11 @@ export async function POST(req:NextRequest) {
    <!--user entered Head Start--><link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet"><style>
 body {font-family: 'Poppins', sans-serif;}
 </style><!--End Head user entered-->
-      <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size:14px; font-family:inherit; color:#000000; background-color:#e5dcd2;">
+      <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size:14px; font-family:inherit; color:#000000; background-color:#ffffff;">
         <div class="webkit">
-          <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#e5dcd2">
+          <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#ffffff">
             <tr>
-              <td valign="top" bgcolor="#e5dcd2" width="100%">
+              <td valign="top" bgcolor="#ffffff" width="100%">
                 <table width="100%" role="content-container" class="outer" align="center" cellpadding="0" cellspacing="0" border="0">
                   <tr>
                     <td width="100%">
@@ -80,11 +80,11 @@ body {font-family: 'Poppins', sans-serif;}
     <center>
     <table><tr><td width="550">
   <![endif]-->
-     <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size:14px; font-family:inherit; color:#000000; background-color:#e5dcd2;">
+     <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size:14px; font-family:inherit; color:#000000; background-color:#ffffff;">
         <div class="webkit">
-          <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#e5dcd2">
+          <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#ffffff">
             <tr>
-              <td valign="top" bgcolor="#e5dcd2" width="100%">
+              <td valign="top" bgcolor="#ffffff" width="100%">
                 <table width="100%" role="content-container" class="outer" align="center" cellpadding="0" cellspacing="0" border="0">
                   <tr>
                     <td width="100%">
@@ -100,10 +100,10 @@ body {font-family: 'Poppins', sans-serif;}
       </td>
     </tr>
   </table><table class="wrapper" role="module" data-type="image" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="cb31e9b8-b045-4c38-a478-ed2a6e2dc166">
-    <tbody>
-      <tr>
-        <td style="font-size:6px; line-height:10px; padding:0px 10px 0px 10px;" valign="top" align="center">
-        <a href="	http://cdn.mcauto-images-production.sendgrid.net/622b9324edf69236/cc9f1deb-95ef-4bac-8ec3-858187a3ef07/1488x302.png"><img class="max-width" border="0" style="display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max-width:80% !important; width:80%; height:auto !important;" width="440" alt="" data-proportionally-constrained="true" data-responsive="true" src="http://cdn.mcauto-images-production.sendgrid.net/622b9324edf69236/cc9f1deb-95ef-4bac-8ec3-858187a3ef07/1488x302.png"></a></td>
+    <tbody width="100%">
+      <tr width="100%">
+        <td style="font-size:6px; line-height:10px; padding:1px 10px 1px 10px;" valign="top" align="center">
+        <a href="http://cdn.mcauto-images-production.sendgrid.net/622b9324edf69236/b96619d1-872f-4b3f-ba0d-0908a77a2320/600x225.jpg"><img class="max-width" border="0" style="display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px; width:100%; height:auto !important;" alt="header" data-proportionally-constrained="true" data-responsive="true" src="http://cdn.mcauto-images-production.sendgrid.net/622b9324edf69236/b96619d1-872f-4b3f-ba0d-0908a77a2320/600x225.jpg"></a></td>
       </tr>
     </tbody>
   </table><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="8fd711e6-aecf-4663-bf53-6607f08b57e9" data-mc-module-version="2019-10-22">
@@ -113,7 +113,8 @@ body {font-family: 'Poppins', sans-serif;}
 <div style="font-family: inherit; text-align: center"><br></div><div></div></div></td>
       </tr>
     </tbody>
-  </table><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="8fd711e6-aecf-4663-bf53-6607f08b57e9.1" data-mc-module-version="2019-10-22">
+  </table>
+  <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="8fd711e6-aecf-4663-bf53-6607f08b57e9.1" data-mc-module-version="2019-10-22">
     <tbody>
       <tr>
         <td style="padding:0px 0px 20px 20px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: inherit"><span style="color: #80817f; font-size: 12px"><strong>Name: </strong>${firstName} ${lastName}</span></div>
