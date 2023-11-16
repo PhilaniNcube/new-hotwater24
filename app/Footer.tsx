@@ -1,4 +1,4 @@
-import { Mail, Phone } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import { RiWhatsappLine } from "react-icons/ri";
 
@@ -35,12 +35,33 @@ const Footer = () => {
             <Link href="/terms">Terms and Conditions</Link>
           </div>
           <div className="flex flex-col justify-start items-start">
-            <div className="text-gray-400 mt-4 flex flex-col justify-start items-end">
-              <img
+            <div className="text-gray-100 mt-4 flex flex-col justify-start gap-3 items-end">
+              <Link
+                href="https://www.linkedin.com/company/hotwater24"
+                target="_blank"
+                className="hover:text-blue-500"
+              >
+                <Linkedin />
+              </Link>
+              <Link
+                className="hover:text-blue-500"
+                href="https://www.facebook.com/HotW24"
+                target="_blank"
+              >
+                <Facebook />
+              </Link>
+              <Link
+                className="hover:text-blue-500"
+                href="https://www.instagram.com/hot_water_24/"
+                target="_blank"
+              >
+                <Instagram />
+              </Link>
+              {/* <img
                 className="w-5/6 object-cover"
                 src="/images/footer.png"
                 alt="paygate logos"
-              />
+              /> */}
             </div>
           </div>
         </div>

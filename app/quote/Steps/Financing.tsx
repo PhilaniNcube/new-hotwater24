@@ -32,17 +32,6 @@ const Financing = ({
         calculate your monthly cost.
       </p>
 
-      <div className="w-full flex justify-center text-center">
-        {" "}
-        <a
-          href={`https://mobicred.co.za/app-widget`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="py-3 px-4 text-md text-center"
-        >
-          https://mobicred.co.za/app-widget
-        </a>
-      </div>
 
       <p className="text-md text-center my-3">
         Please indicate below if you would like to use Mobicred financing?

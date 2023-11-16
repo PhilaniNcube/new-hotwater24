@@ -3,6 +3,8 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ChooseWhite from "../ChooseWhite";
+import { cn } from "@/lib/utils";
+import { antonio } from "@/app/fonts";
 
 export default function Safe() {
   return (
@@ -21,7 +23,11 @@ export default function Safe() {
           />
           <div className="text-xl relative bg-gradient-to-r from-gray-700 to-transparent w-full h-full z-40 top-0 md:p-16 p-6 flex flex-col justify-between rounded-md ">
             <div>
-              <h1 className="md:text-5xl text-3xl font-bold md:leading-10 leading-9 text-white sm:w-auto w-64">
+              <h1
+                className={cn(
+                  "md:text-4xl text-3xl font-bold md:leading-10 leading-9 text-white sm:w-auto w-64",
+                antonio.className)}
+              >
                 Safe and reliable installation by accredited professionals
               </h1>
               <p className="text-lg leading-6 text-white xl:w-5/12 lg:w-8/12 md:w-10/12  2xl:pr-12 mt-4">
@@ -43,7 +49,7 @@ export default function Safe() {
             </div>
 
             <div className="md:mt-12 mt-20">
-             <ChooseWhite />
+              <ChooseWhite />
             </div>
           </div>
         </div>

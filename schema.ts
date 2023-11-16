@@ -558,6 +558,27 @@ export interface Database {
         }
         Relationships: []
       }
+      cities: {
+        Row: {
+      id:number
+      created_at:string
+      name:string
+      slug:string
+        }
+        Insert: {
+        id?:number
+      created_at?:string
+      name:string
+      slug:string
+        }
+        Update: {
+        id?:number
+      created_at?:string
+      name:string
+      slug:string
+        }
+        Relationships: []
+      }
     }
     Views: {
       flowrate_counts: {

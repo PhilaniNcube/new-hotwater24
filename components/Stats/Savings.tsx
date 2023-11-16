@@ -3,6 +3,8 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { start } from "../../utils/gtm";
+import { cn } from "@/lib/utils";
+import { antonio } from "@/app/fonts";
 
 function Savings() {
   const [bill, setBill] = useState(100);
@@ -14,7 +16,11 @@ function Savings() {
   return (
     <div className="container py-4 mx-auto">
       <div className="pt-2 pb-8 bg-gray-100 xl:px-20 lg:px-20 md:px-12 sm:pb-0">
-        <h1 className="w-5/6 mx-auto text-2xl font-extrabold text-center text-gray-800 xl:text-3xl">
+        <h1
+          className={cn(
+            "w-5/6 mx-auto text-2xl font-extrabold text-center text-gray-800 xl:text-3xl"
+          ,antonio.className)}
+        >
           Calculate Your Potential Savings From Switching To Gas
         </h1>
         <div className="max-w-6xl px-4 py-2 mx-auto my-4 rounded-md shadow-md bg-slate-50">

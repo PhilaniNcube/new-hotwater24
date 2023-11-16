@@ -1,3 +1,5 @@
+import { antonio } from "@/app/fonts";
+import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -5,7 +7,7 @@ const page = () => {
   return (
     <main className="container py-10">
       <div className="pt-4 w-full">
-        <h1 className="font-sans text-2xl text-center font-semibold text-gray-800">
+        <h1 className={cn("text-2xl lg:text-4xl text-center font-semibold text-gray-800",antonio.className)}>
           Let us help you choose your gas geyser!
         </h1>
 

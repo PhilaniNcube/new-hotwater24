@@ -1,9 +1,5 @@
-// TODO: Duplicate or move this file outside the `_examples` folder to make it a route
 
-import {
-  createServerActionClient,
-  createServerComponentClient,
-} from '@supabase/auth-helpers-nextjs'
+import { CookieOptions, createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
@@ -11,7 +7,20 @@ import { redirect } from 'next/navigation'
 export const dynamic = 'force-dynamic'
 
 export default async function ProtectedRoute() {
-  const supabase = createServerComponentClient({ cookies })
+    const cookieStore = cookies();
+
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          get(name: string) {
+            return cookieStore.get(name)?.value;
+          },
+        },
+      }
+    );
+
 
   const {
     data: { user },
@@ -25,7 +34,25 @@ export default async function ProtectedRoute() {
 
   const signOut = async () => {
     'use server'
-    const supabase = createServerActionClient({ cookies })
+     const cookieStore = cookies();
+
+     const supabase = createServerClient(
+       process.env.NEXT_PUBLIC_SUPABASE_URL!,
+       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+       {
+         cookies: {
+           get(name: string) {
+             return cookieStore.get(name)?.value;
+           },
+           set(name: string, value: string, options: CookieOptions) {
+             cookieStore.set({ name, value, ...options });
+           },
+           remove(name: string, options: CookieOptions) {
+             cookieStore.set({ name, value: "", ...options });
+           },
+         },
+       }
+     );
     await supabase.auth.signOut()
     redirect('/login')
   }

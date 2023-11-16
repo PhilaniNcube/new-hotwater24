@@ -1,4 +1,3 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,18 +6,30 @@ import { User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MobileNav from "./MobileNav";
 import LogoutButton from "@/components/LogoutButton";
+import { createServerClient } from "@supabase/ssr";
 
 const Navbar = async () => {
 
-    const supabase = createServerComponentClient<Database>({ cookies });
+      const cookieStore = cookies();
+
+      const supabase = createServerClient<Database>(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        {
+          cookies: {
+            get(name: string) {
+              return cookieStore.get(name)?.value;
+            },
+          },
+        }
+      );
 
     const {data, error} = await supabase.rpc("is_admin").single();
 
     const {data: {session}} = await supabase.auth.getSession()
 
-    console.log(session)
+    console.log(session?.user)
 
-    const {data: admin, error:adminsError} = await supabase.from('admins').select('*').eq('user_id', session?.user.id).single()
 
     const logout = async () => {
       await supabase.auth.signOut()

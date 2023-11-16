@@ -1,5 +1,5 @@
 import { createClient, groq } from "next-sanity";
-import { Article } from "./types";
+import { Article, Geyser } from "./types";
 
   const client = createClient({
     projectId: "anh1uho1",
@@ -35,6 +35,66 @@ export async function getArticle(slug:string):Promise<Article> {
       "image": image.asset->url,
       link,
       content
+    }`,
+    {slug}
+  )
+}
+
+
+export async function getGeysers(): Promise<Geyser[]> {
+
+  return await client.fetch(
+    groq`*[_type == "geysers"] | order(_createdAt asc){
+      _id,
+      _createdAt,
+      title,
+      "slug": slug.current,
+      subTitle,
+      description,
+      outlets,
+     geyser,
+     plumbing,
+     certificateOfCompliance,
+     installation,
+      warranty,
+      specifications,
+      maxFlowRate,
+      minFlowRate,
+      minWaterPressure,
+      maxWaterPressure,
+      dimensions,
+      brand,
+      "image": image.asset->url,
+    }`
+  )
+
+}
+
+
+export async function getGeyser(slug:string):Promise<Geyser> {
+
+  return await client.fetch(
+    groq`*[_type == "geysers" && slug.current == $slug][0]{
+     _id,
+      _createdAt,
+      title,
+      "slug": slug.current,
+      subTitle,
+      description,
+      outlets,
+    geyser,
+     plumbing,
+     certificateOfCompliance,
+     installation,
+      warranty,
+      specifications,
+      maxFlowRate,
+      minFlowRate,
+      minWaterPressure,
+      maxWaterPressure,
+      dimensions,
+      brand,
+      "image": image.asset->url,
     }`,
     {slug}
   )

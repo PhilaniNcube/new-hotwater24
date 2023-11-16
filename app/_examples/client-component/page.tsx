@@ -1,15 +1,17 @@
 'use client'
 
-// TODO: Duplicate or move this file outside the `_examples` folder to make it a route
 
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createBrowserClient } from '@supabase/ssr';
 import { useEffect, useState } from 'react'
 
 export default function ClientComponent() {
   const [todos, setTodos] = useState<any[]>([])
 
   // Create a Supabase client configured to use cookies
-  const supabase = createClientComponentClient()
+   const supabase = createBrowserClient<Database>(
+     process.env.NEXT_PUBLIC_SUPABASE_URL!,
+     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+   );
 
   useEffect(() => {
     const getTodos = async () => {

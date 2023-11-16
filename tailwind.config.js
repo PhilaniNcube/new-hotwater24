@@ -19,12 +19,16 @@ module.exports = {
     extend: {
       fontFamily: {
         roboto: ["var(--font-roboto)"],
+        sans: ["var(--font-antonio)"],
         bebas: ["var(--font-bebas)"],
+        lato: ["var(--font-lato)"],
+        antonio: ["var(--font-antonio)"],
       },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        brand: "rgb(49,160,219)",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
