@@ -92,15 +92,9 @@ dependencies:
   '@sendgrid/mail':
     specifier: ^7.7.0
     version: 7.7.0
-<<<<<<< HEAD
   '@supabase/ssr':
     specifier: ^0.0.4
     version: 0.0.4(@supabase/supabase-js@2.38.4)
-=======
-  '@supabase/auth-helpers-nextjs':
-    specifier: ^0.7.4
-    version: 0.7.4(@supabase/supabase-js@2.32.0)
->>>>>>> master
   '@supabase/supabase-js':
     specifier: ^2.38.4
     version: 2.38.4
