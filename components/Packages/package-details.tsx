@@ -15,13 +15,20 @@ import {
   Table,
 } from "@/components/ui/table";
 import { PortableText } from "@portabletext/react";
+import Link from "next/link";
 
 export default async function PackageDetails({ geyser }: { geyser: Geyser }) {
   return (
     <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-start py-6">
       <div className="grid gap-4 items-start">
-        <h1 className="font-bold text-3xl"><span className="uppercase">{geyser.maxFlowRate.split('/')[0]}</span> {geyser.title}</h1>
-        <h2 className="text-4xl text-white w-fit skew-x-12 px-4 py-3 bg-red-600 font-bold" suppressHydrationWarning>
+        <h1 className="font-bold text-3xl">
+          <span className="uppercase">{geyser.maxFlowRate.split("/")[0]}</span>{" "}
+          {geyser.title}
+        </h1>
+        <h2
+          className="text-4xl text-white w-fit skew-x-12 px-4 py-3 bg-red-600 font-bold"
+          suppressHydrationWarning
+        >
           Total:{" "}
           {formatCurrency(
             geyser.geyser.price +
@@ -106,6 +113,21 @@ export default async function PackageDetails({ geyser }: { geyser: Geyser }) {
             </TableRow>
           </TableBody>
         </Table>
+        <div className="my-6 flex flex-col md:flex-row items-center w-full  justify-center gap-6">
+          <Link
+            href={`https://wa.me/27793414075?text=I'm%20contacting%20you%20from%20your%20website%20hotwater24.com%20and%20I%20would%20like%20to%20request%20a%20quote%20for%20${geyser.title}%20-%20${geyser.maxFlowRate}%20on%20this%20page%20https://hotwater24.com/packages/${geyser.slug}`}
+            target="_blank"
+          >
+            <Button className="rounded-full bg-brand min-w-[190px]">
+              Request a quote now
+            </Button>
+          </Link>
+          <Link href="/packages">
+            <Button className="rounded-full bg-red-600 min-w-[190px]">
+              View our packages
+            </Button>
+          </Link>
+        </div>
         <div className="flex flex-col gap-2 mt-6">
           <p className="text-sm text-red-700">
             Please note, Hotwater24 use a wide range of different brands and
