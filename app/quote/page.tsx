@@ -1,15 +1,11 @@
 import Script from "next/script";
 import NewLead from "./NewLead";
-<<<<<<< HEAD
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
-=======
->>>>>>> master
 
 
 const page = async () => {
 
-<<<<<<< HEAD
     const cookieStore = cookies();
 
     const supabase = createServerClient<Database>(
@@ -26,8 +22,6 @@ const page = async () => {
 
 
   const {data:products, error} = await supabase.from('products').select('*')
-=======
->>>>>>> master
 
 
   return (
