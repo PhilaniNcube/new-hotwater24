@@ -2,10 +2,6 @@ import { antonio } from "@/app/fonts";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/b6wdkCMNqBB
- */
 export default function WhoWeAreHero() {
   return (
     <section className="w-full grid grid-cols-1 md:grid-cols-2 relative isolate pb-8">
