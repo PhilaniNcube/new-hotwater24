@@ -116,7 +116,7 @@ export default function ChooseUsHero() {
         <div className="my-6 flex flex-col md:flex-row items-center w-full  justify-center gap-6">
           <Link href="/savings">
             <Button className="rounded-full bg-brand min-w-[190px]">
-              Calculating savings
+              Calculate your saving
             </Button>
           </Link>
           <Link href="/packages">

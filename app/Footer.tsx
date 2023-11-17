@@ -9,29 +9,35 @@ const Footer = () => {
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-6 lg:grid-cols-3">
           <div className="flex flex-col items-start justify-start">
             <h3 className="font-bold text-lg md:text-xl">Contact Details</h3>
-            <p className="text-sm flex space-x-2 items-center">
+            <Link
+              href="mailto:info@hotwater.com"
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm flex space-x-2 items-center"
+            >
               <Mail size={16} /> info@hotwater24.com
-            </p>
+            </Link>
             <p className="text-sm flex space-x-2 items-center">
               <Phone size={16} />
               +27 (0)79 341 4075
             </p>
-            <a
+            <Link
               href="https://wa.me/27793414075?text=I'm%20interested%20in%20your%20products"
               target="_blank"
               rel="noreferrer"
               className="text-sm flex space-x-2 items-center"
             >
               <RiWhatsappLine size={16} /> Whatsapp
-            </a>
+            </Link>
           </div>
           <div className="flex flex-col items-start justify-start">
             <h3 className="font-bold text-lg md:text-xl">Quick Links</h3>
             <Link href="/">Home</Link>
+            <Link href="/packages">Our Packages</Link>
             <Link href="/who-we-are">Who We Are</Link>
-            <Link href="/why-us">Why Us</Link>
-            <Link href="/our-approach">Our Approach</Link>
-            <Link href="/contact">Contact Us</Link>
+            <Link href="/why-us">Why Choose Us</Link>
+            <Link href="/faq">FAQs</Link>
+            <Link href="/news">News</Link>
             <Link href="/terms">Terms and Conditions</Link>
           </div>
           <div className="flex flex-col justify-start items-start">
