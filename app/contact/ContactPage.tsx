@@ -86,6 +86,10 @@ export default function ContactComponent() {
             >
               Send
             </button>
+            <p className="my-2 text-xs">
+              By filling in this form you give us consent to email you – but you can unsubscribe at any
+              time
+            </p>
           </form>
         </div>
       </div>

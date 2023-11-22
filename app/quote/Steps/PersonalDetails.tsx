@@ -596,6 +596,10 @@ const PersonalDetails = ({
               })
             }
           ></Textarea>
+          <p className="my-2 text-xs">
+            By filling in this form you give us consent to email you – but you
+            can unsubscribe at any time
+          </p>
         </div>
       </div>
       <div className="flex items-center justify-center mt-4 mb-12 space-x-6">
