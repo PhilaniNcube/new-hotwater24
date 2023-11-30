@@ -9,7 +9,7 @@ export default function ChooseUsHero() {
   return (
     <div className="w-full py-12">
       <div className="container px-4 md:px-6">
-        {/* <div className="text-center mb-8">
+        {/* <div className="mb-8 text-center">
           <h1
             className={cn(
               "text-3xl font-bold text-slate-800 tracking-tighter md:text-4xl lg:text-6xl",
@@ -19,8 +19,8 @@ export default function ChooseUsHero() {
             Why Choose Us
           </h1>
         </div> */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card className="bg-red-600 text-white">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Card className="text-white bg-red-600">
             <CardHeader>
               <Clock10Icon className="text-white" />
               <CardTitle className={antonio.className}>
@@ -36,7 +36,7 @@ export default function ChooseUsHero() {
               </p>
             </CardContent>
           </Card>
-          <Card className="bg-red-600 text-white">
+          <Card className="text-white bg-red-600">
             <CardHeader>
               <LightbulbIcon className="text-white" />
               <CardTitle className={antonio.className}>
@@ -52,7 +52,7 @@ export default function ChooseUsHero() {
               </p>
             </CardContent>
           </Card>
-          <Card className="bg-red-600 text-white">
+          <Card className="text-white bg-red-600">
             <CardHeader>
               <CogIcon className="text-white" />
               <CardTitle className={antonio.className}>Full Service</CardTitle>
@@ -66,7 +66,7 @@ export default function ChooseUsHero() {
               </p>
             </CardContent>
           </Card>
-          <Card className="bg-red-600 text-white">
+          <Card className="text-white bg-red-600">
             <CardHeader>
               <HomeIcon className="text-white" />
               <CardTitle className={antonio.className}>
@@ -82,7 +82,7 @@ export default function ChooseUsHero() {
               </p>
             </CardContent>
           </Card>
-          <Card className="bg-red-600 text-white">
+          <Card className="text-white bg-red-600">
             <CardHeader>
               <StarsIcon className="text-white" />
               <CardTitle className={antonio.className}>
@@ -92,13 +92,14 @@ export default function ChooseUsHero() {
             <CardContent>
               <p className="text-sm">
                 We have partnered with the leading Continuous Flow Hot Water gas
-                geyser, Rinnai, offering a product warranty of 10 years for Heat
-                Exchangers, 3-year warranty on gas section and gas related parts
-                and 1 year warranty on electrical parts.
+                geyser suppliers that support South African climates, including
+                Dewhot, Rinnai and Paloma. They are all trusted and well
+                established brands, offering excellent product quality and
+                product warranties.
               </p>
             </CardContent>
           </Card>
-          <Card className="bg-red-600 text-white">
+          <Card className="text-white bg-red-600">
             <CardHeader>
               <BadgeDollarSign className="text-white" />
               <CardTitle className={antonio.className}>
@@ -113,7 +114,7 @@ export default function ChooseUsHero() {
             </CardContent>
           </Card>
         </div>
-        <div className="my-6 flex flex-col md:flex-row items-center w-full  justify-center gap-6">
+        <div className="flex flex-col items-center justify-center w-full gap-6 my-6 md:flex-row">
           <Link href="/savings">
             <Button className="rounded-full bg-brand min-w-[190px]">
               Calculate your saving
