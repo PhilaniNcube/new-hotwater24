@@ -18,8 +18,9 @@ export default async function GeyserPackages() {
     <section className="container py-8">
       <h2
         className={cn(
-          "text-3xl lg:text-4xl font-bold text-center text-slate-900 my-3"
-        , antonio.className)}
+          "text-3xl lg:text-4xl font-bold text-center text-slate-900 my-3",
+          antonio.className
+        )}
       >
         Which package best suits your household?
       </h2>
@@ -31,47 +32,49 @@ export default async function GeyserPackages() {
                 key={item._id}
                 className="p-4 border border-gray-200 rounded-lg"
               >
-                <h3
-                  className={cn(
-                    "text-lg md:text-3xl font-bold uppercase",
-                    antonio.className
-                  )}
-                >
-                  {item.title} <br />
-                  <span className="text-red-600">{item.maxFlowRate}</span>
-                </h3>
-                {/* <p className="mt-2 font-medium text-center text-md">
-                  {item.subTitle}
-                </p> */}
-                {/* <h4 className="text-lg font-semibold text-center">
-                  {item.maxFlowRate}
-                </h4> */}{" "}
-                <ul className="list-disc text-[10px] px-4 my-2">
-                  <li className="">{item.outlets}</li>
-                  <li className="">{item.description}</li>
-                </ul>
-                <div className="bg-red-600 text-white rounded-bl-full w-fit mx-auto py-1 px-7">
-                  <p
+                <Link href={`/packages/${item.slug}`} className="cursor-pointer">
+                  <h3
                     className={cn(
-                      "text-2xl font-bold text-center",
+                      "text-lg md:text-3xl font-bold uppercase",
                       antonio.className
                     )}
                   >
-                    {formatCurrency(
-                      item.geyser.price +
-                        item.plumbing.price +
-                        item.installation.price +
-                        item.certificateOfCompliance.price
-                    )}
-                  </p>
-                </div>
-                <Image
-                  alt="Geyser 100L Image"
-                  className="object-cover w-full my-4 overflow-hidden rounded-lg "
-                  height={500}
-                  src={item.image}
-                  width={500}
-                />{" "}
+                    {item.title} <br />
+                    <span className="text-red-600">{item.maxFlowRate}</span>
+                  </h3>
+                  {/* <p className="mt-2 font-medium text-center text-md">
+                  {item.subTitle}
+                </p> */}
+                  {/* <h4 className="text-lg font-semibold text-center">
+                  {item.maxFlowRate}
+                </h4> */}{" "}
+                  <ul className="list-disc text-xs px-4 my-2 ">
+                    <li className="line-clamp-1">{item.outlets}</li>
+                    <li className="line-clamp-1">{item.description}</li>
+                  </ul>
+                  <div className="bg-red-600 text-white rounded-bl-full w-fit mx-auto py-1 px-7">
+                    <p
+                      className={cn(
+                        "text-2xl font-bold text-center",
+                        antonio.className
+                      )}
+                    >
+                      {formatCurrency(
+                        item.geyser.price +
+                          item.plumbing.price +
+                          item.installation.price +
+                          item.certificateOfCompliance.price
+                      )}
+                    </p>
+                  </div>
+                  <Image
+                    alt="Geyser 100L Image"
+                    className="object-cover w-full my-4 overflow-hidden rounded-lg "
+                    height={500}
+                    src={item.image}
+                    width={500}
+                  />
+                </Link>{" "}
                 <div className="flex justify-center">
                   <Link href={`/packages/${item.slug}`}>
                     <Button className="mt-4 bg-red-600 rounded-full">
@@ -82,7 +85,7 @@ export default async function GeyserPackages() {
                 {/* <p className="text-sm text-center text-gray-800 font-medium">
                   {item.description}
                 </p> */}
-                <p className="mt-2 text-xs text-justify">*{item.warranty}</p>
+                {/* <p className="mt-2 text-xs text-justify">*{item.warranty}</p> */}
               </div>
             );
           } else {
@@ -91,7 +94,7 @@ export default async function GeyserPackages() {
         })}
       </div>{" "}
       <h2 className="text-md my-3 font-medium text-center text-red-800">
-        Please note, Hotwater24 use a wide range of different brands and sizes
+        Please note, Hotwater24 uses a wide range of different brands and sizes
         of gas geysers that will suit your specification!
       </h2>
     </section>

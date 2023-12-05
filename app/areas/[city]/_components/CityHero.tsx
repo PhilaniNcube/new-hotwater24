@@ -28,7 +28,7 @@ export default function CityHero({city}:{city:string}) {
                 className="inline-flex items-center justify-center h-10 px-8 text-sm font-medium text-white transition-colors bg-red-600 border rounded-full shadow-sm border-slate-300 hover:bg-zinc-100 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:pointer-events-none disabled:opacity-50 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:focus-visible:ring-zinc-300"
                 href="/packages"
               >
-                Choose your geyser geyser
+                Choose your gas geyser
               </Link>
             </div>
           </div>
