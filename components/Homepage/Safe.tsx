@@ -48,9 +48,7 @@ export default function Safe() {
               />
             </div>
 
-            <div className="md:mt-12 mt-20">
-              <ChooseWhite />
-            </div>
+
           </div>
         </div>
       </div>
