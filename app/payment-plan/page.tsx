@@ -5,7 +5,7 @@ import Plan from "./_components/Plan";
 const page = () => {
   return <main>
     <PaymentPlanHero />
-    <Plan />
+    {/* <Plan /> */}
     <NotSure />
   </main>;
 };
