@@ -11,6 +11,14 @@ import { antonio } from "@/app/fonts";
 export default function InstallationTimeline() {
   return (
     <div className="container py-4 overflow-auto relative isolate">
+      <h2
+        className={cn(
+          "text-3xl lg:text-4xl font-bold text-center text-slate-800 py-6",
+          antonio.className
+        )}
+      >
+        How It Works
+      </h2>
       <div className="relative flex flex-col justify-between my-4 space-x-8 lg:flex-row">
         <div className="relative z-50 flex flex-col w-2/3 mb-8 space-y-4 rounded sm:w-1/2 lg:w-1/5">
           <div className="bg-red-600 p-3 rounded-full w-fit ">
