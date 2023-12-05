@@ -20,13 +20,13 @@ export default function NewHero() {
             />
             <div className="flex flex-col gap-2 justify-center items-center mt-4 min-[400px]:flex-row">
               <Link
-                className="inline-flex items-center justify-center h-10 px-8 text-sm font-medium transition-colors rounded-full shadow bg-brand text-zinc-50 hover:bg-zinc-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-50/90 dark:focus-visible:ring-zinc-300"
+                className="flex items-center justify-center h-12 text-sm text-white bg-red-600 rounded-full shadow-lg  sm:w-44"
                 href="/quote/start"
               >
                 Get a Quote
               </Link>
               <Link
-                className="inline-flex items-center justify-center h-10 px-8 text-sm font-medium text-white transition-colors bg-red-600 border rounded-full shadow-sm border-slate-300 hover:bg-zinc-100 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:pointer-events-none disabled:opacity-50 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:focus-visible:ring-zinc-300"
+                className="flex items-center justify-center h-12 text-sm text-white bg-brand rounded-full shadow-lg  sm:w-44"
                 href="/packages"
               >
                 Choose your gas geyser

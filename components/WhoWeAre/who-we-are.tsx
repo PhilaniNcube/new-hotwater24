@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import { antonio } from "@/app/fonts";
+import { Loader } from "lucide-react";
 
 /**
  * v0 by Vercel.
@@ -14,8 +15,9 @@ export default function WhoWeAre() {
         <div className="flex flex-col items-center text-center space-y-6">
           <h2
             className={cn(
-              "text-2xl font-bold text-slate-800 tracking-tighter md:text-4xl"
-            ,antonio.className)}
+              "text-2xl font-bold text-slate-800 tracking-tighter md:text-4xl",
+              antonio.className
+            )}
           >
             Who We Are?
           </h2>
@@ -48,12 +50,13 @@ export default function WhoWeAre() {
         </div>
         <div className="flex flex-col md:flex-row justify-center items-center gap-3 mt-8 w-full">
           <Link href="/packages">
-            <Button className="rounded-full w-fit md:w-[200px] bg-red-600">
+            <Button className="flex items-center justify-center h-12 text-sm text-white bg-red-600 rounded-full shadow-lg  sm:w-44">
               View Our Packages
             </Button>
           </Link>
           <Link href="/quote/start">
-            <Button className="rounded-full w-fit md:w-[200px] bg-brand">
+            <Button className="flex items-center justify-center h-12 text-sm text-white bg-red-600 rounded-full shadow-lg  sm:w-44">
+
               Get A Quote
             </Button>
           </Link>
