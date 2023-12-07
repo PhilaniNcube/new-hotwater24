@@ -24,13 +24,13 @@ export default async function GeyserPackages() {
       >
         Which package best suits your household?
       </h2>
-      <div className="grid gap-4 p-4 md:grid-cols-3 lg:grid-cols-4 mt-6">
+      <div className="grid gap-4 lg:gap-8 p-4 md:grid-cols-3 lg:grid-cols-4 mt-6">
         {packages.map((item, index) => {
           if (index > 0 && index < 5) {
             return (
               <div
                 key={item._id}
-                className="p-4 border border-gray-200 rounded-lg"
+                className="p-4 shadow hover:shadow-2xl hover:-translate-y-6 transition-all duration-1000 ease-in-out rounded-lg"
               >
                 <Link href={`/packages/${item.slug}`} className="cursor-pointer">
                   <h3
