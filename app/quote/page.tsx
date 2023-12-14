@@ -1,12 +1,15 @@
 import Script from "next/script";
 import NewLead from "./NewLead";
+import { getGeysers } from "@/sanity/sanity-utils";
 
 
 
 const page = async () => {
 
 
+  const geysers = await getGeysers();
 
+  console.log(geysers)
 
 
 
@@ -64,7 +67,7 @@ const page = async () => {
         }}
       />
 
-      <NewLead  />
+      <NewLead geysers={geysers}  />
     </main>
   );
 };

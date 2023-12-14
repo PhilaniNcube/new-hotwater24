@@ -14,6 +14,7 @@ import WaterHeating from "./Steps/WaterHeating";
 import WaterOutlets from "./Steps/WaterOutlests";
 import OffGridStep from "./Steps/OffGridStep";
 import analytics from "@/utils/analytics";
+import { Geyser } from "@/sanity/types";
 
 export type LeadStageProps = {
   quoteInfo: {
@@ -73,7 +74,7 @@ export type LeadStageProps = {
 
 
 
-const NewLead = () => {
+const NewLead = ({geysers}:{geysers: Geyser[]}) => {
 
   const searchParams = useSearchParams()
 
@@ -224,6 +225,7 @@ const NewLead = () => {
             nextPage={nextPage}
             prevPage={prevPage}
             page={page}
+            geysers={geysers}
           />
         )}
 

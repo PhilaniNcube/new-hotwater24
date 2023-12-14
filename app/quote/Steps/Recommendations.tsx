@@ -22,6 +22,13 @@ import formatter from "@/lib/format";
 import roundUp, { roundUpThousand } from "@/lib/roundUp";
 import { motion } from "framer-motion";
 import { ShieldQuestionIcon } from "lucide-react";
+import { LeadStageProps } from "../NewLead";
+import { Geyser } from "@/sanity/types";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { antonio } from "@/app/fonts";
+import { formatCurrency } from "@/utils/format";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 ChartJS.register(
   CategoryScale,
@@ -32,22 +39,46 @@ ChartJS.register(
   Legend
 );
 
+interface RecommendationsProps extends LeadStageProps {
+  geysers: Geyser[]
+}
+
+
+
 const Recommendations = ({
   quoteInfo,
   nextPage,
   prevPage,
   page,
   setQuoteInfo,
-}) => {
+  geysers
+}: RecommendationsProps) => {
   const [ref, { height, width }] = useMeasure();
   console.log("Step 8", quoteInfo);
 
-  const [geyserPrice, setGeyserPrice] = useState();
-  const [geyserSize, setGeyserSize] = useState();
-  const [installation, setInstallation] = useState();
-  const [plumbing, setPlumbing] = useState();
+  const [geyserPrice, setGeyserPrice] = useState(0);
+  const [geyserSize, setGeyserSize] = useState(0);
+  const [installation, setInstallation] = useState(0);
+  const [plumbing, setPlumbing] = useState(0);
 
   const labels = ["Total Cost"];
+
+
+
+  // write a function that filters that returns the geysers with the closest maxFlowRate to the calculate quoteInfo.flowRate property
+
+  const filteredGeysers = geysers.filter((geyser) =>
+    Number(geyser.maxFlowRate.split("l")[0]) >= quoteInfo.flowRate + 1
+  );
+
+
+
+  let sortedFilter = filteredGeysers.toSorted((a, b ) => Number(a.maxFlowRate.split("l")[0]) - Number(b.maxFlowRate.split("l")[0]));
+
+  console.log(sortedFilter)
+
+  let displayedGeyser = sortedFilter[0]
+
 
   useEffect(() => {
     if (quoteInfo.flowRate <= 9) {
@@ -70,7 +101,7 @@ const Recommendations = ({
       setInstallation(8050);
       setPlumbing(3950);
       setGeyserSize(20);
-    } else if(quoteInfo.flowRate <= 45) {
+    } else if (quoteInfo.flowRate <= 45) {
       setGeyserPrice(14950);
       setInstallation(8050);
       setPlumbing(3950);
@@ -112,7 +143,7 @@ const Recommendations = ({
       exit={{ x: "-100%" }}
       className="mt-8 min-h-[90vh]"
     >
-      {geyserSize <= 35 ? (
+      {(geyserSize !== null && displayedGeyser ||  sortedFilter.length !== 0)  ? (
         <Fragment>
           {" "}
           <p className="text-center text-lg text-gray-700 mb-3 font-medium max-w-[60ch] mx-auto">
@@ -120,7 +151,96 @@ const Recommendations = ({
             size gas geyser for your property: <br />{" "}
             <span className="text-2xl font-bold">{geyserSize}L/Min</span>
           </p>
-          <p className="text-center text-lg mb-6 text-gray-700  font-medium max-w-[60ch] mx-auto">
+          <div
+            key={displayedGeyser._id}
+            className="relative group overflow-hidden rounded-lg"
+          >
+            <div className="w-full flex items-center justify-center">
+              <Image
+                alt={displayedGeyser.title}
+                className="object-cover w-1/2 lg:w-1/3"
+                height="500"
+                src={displayedGeyser.image}
+                width="500"
+              />
+            </div>
+            <div className="bg-white p-4 ">
+              <h3
+                className={cn(
+                  "font-semibold text-4xl text-center",
+                  antonio.className
+                )}
+              >
+                {displayedGeyser.title}
+              </h3>
+              <p className="text-center text-lg font-medium py-2">
+                Price includes :
+              </p>
+              <Table>
+                <TableBody>
+                  <TableRow>
+                    <TableCell>{displayedGeyser.geyser.description}</TableCell>
+                    <TableCell>
+                      {formatCurrency(displayedGeyser.geyser.price)}
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      {displayedGeyser.installation.description}
+                    </TableCell>
+                    <TableCell>
+                      {formatCurrency(displayedGeyser.installation.price)}
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      {displayedGeyser.certificateOfCompliance.description}
+                    </TableCell>
+                    <TableCell>
+                      {formatCurrency(
+                        displayedGeyser.certificateOfCompliance.price
+                      )}
+                    </TableCell>
+                  </TableRow>
+
+                  <TableRow>
+                    <TableCell>
+                      {displayedGeyser.plumbing.description}
+                    </TableCell>
+                    <TableCell>
+                      {formatCurrency(displayedGeyser.plumbing.price)}
+                    </TableCell>
+                  </TableRow>
+                  <TableRow className="font-bold text-xl">
+                    <TableCell>Total</TableCell>
+                    <TableCell>
+                      {formatCurrency(
+                        displayedGeyser.geyser.price +
+                          displayedGeyser.plumbing.price +
+                          displayedGeyser.installation.price +
+                          displayedGeyser.certificateOfCompliance.price
+                      )}
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+              {/* <h4
+                className={cn(
+                  "font-semibold text-4xl text-center text-red-600",
+                  antonio.className
+                )}
+              >
+                {formatCurrency(
+                  displayedGeyser.geyser.price +
+                    displayedGeyser.plumbing.price +
+                    displayedGeyser.installation.price +
+                    displayedGeyser.certificateOfCompliance.price
+                )}
+              </h4> */}
+              {/* <Button variant="default">Add to Cart</Button> */}
+            </div>
+          </div>
+          {/* <p className="text-center text-lg mb-6 text-gray-700  font-medium max-w-[60ch] mx-auto">
             The initial estimated total cost of the gas geyser installation is
             mentioned in the below picture:
             <br />{" "}
@@ -128,8 +248,8 @@ const Recommendations = ({
               {` ${formatter.format(geyserPrice + installation + plumbing)}`} *
             </span>{" "}
             <span className="text-xs underline">Incl VAT</span>
-          </p>
-          <div
+          </p> */}
+          {/* <div
             className="flex max-w-[700px] min-w-[200px] px-6 min-h-[600px] mx-auto items-center flex-col bg-gray-600 py-3 mb-8 relative"
             ref={ref}
           >
@@ -145,7 +265,6 @@ const Recommendations = ({
                     position: "top",
                     align: "start",
                     labels: {
-                      fontWeight: "bold",
                       borderRadius: 10,
                       boxPadding: 3,
                     },
@@ -166,21 +285,21 @@ const Recommendations = ({
               }}
               data={data}
             />
-          </div>{" "}
+          </div> */}
           <div className="flex flex-col items-start max-w-2xl mx-auto">
-            <p className="text-sm mb-2 text-gray-600 max-w-[700px] mx-auto font-medium">
+            {/* <p className="text-sm mb-2 text-gray-600 max-w-[700px] mx-auto font-medium">
               *This cost does not include the cost for a gas cage, gas
               cylinder(s) and gas refill. The initial estimated total cost is
               based on the information provided and includes the cost of the:
-            </p>
-            <ol className="text-sm list-decimal  text-gray-600 max-w-[700px] mx-auto">
+            </p> */}
+            {/* <ol className="text-sm list-decimal  text-gray-600 max-w-[700px] mx-auto">
               <li>
                 Gas geyser (size of the gas geyser is calculated by the number
                 of hot water outlets indicated)
               </li>
               <li>Gas installation</li>
               <li>Plumbing work</li>
-            </ol>
+            </ol> */}
           </div>
           <p className="text-lg font-bold mt-4 text-center text-gray-600 mx-auto">
             If you would like to consider a payment plan/installment, please do
@@ -246,7 +365,6 @@ const Recommendations = ({
                   >
                     Yes Payment Plan
                   </span>
-
                 </div>
               </Fragment>
             }
