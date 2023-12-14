@@ -149,7 +149,8 @@ const Recommendations = ({
           <p className="text-center text-lg text-gray-700 mb-3 font-medium max-w-[60ch] mx-auto">
             Based on the information provided we have calculated the following
             size gas geyser for your property: <br />{" "}
-            <span className="text-2xl font-bold">{geyserSize}L/Min</span>
+            <span className="text-2xl font-bold">{geyserSize}L/Min</span> <br />
+            We recommend the following gas geyser package for your property:
           </p>
           <div
             key={displayedGeyser._id}
