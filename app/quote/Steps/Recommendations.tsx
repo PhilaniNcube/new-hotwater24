@@ -72,7 +72,7 @@ const Recommendations = ({
   );
 
 
-
+  //@ts-nocheck
   let sortedFilter = filteredGeysers.toSorted((a, b ) => Number(a.maxFlowRate.split("l")[0]) - Number(b.maxFlowRate.split("l")[0]));
 
   console.log(sortedFilter)
@@ -160,9 +160,9 @@ const Recommendations = ({
               <Image
                 alt={displayedGeyser.title}
                 className="object-cover w-1/2 lg:w-1/3"
-                height="500"
-                src={displayedGeyser.image}
-                width="500"
+                height="1000"
+                src="/images/dewhot.png"
+                width="600"
               />
             </div>
             <div className="bg-white p-4 ">
