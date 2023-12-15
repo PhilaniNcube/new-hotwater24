@@ -28,7 +28,7 @@ const PackagesGrid = async () => {
               alt={item.title}
               className="object-cover w-full"
               height="500"
-              src={item.image}
+              src="/images/dewhot.webp"
               style={{
                 aspectRatio: "200/200",
                 objectFit: "cover",

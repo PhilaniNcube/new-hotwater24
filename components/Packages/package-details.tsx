@@ -140,7 +140,7 @@ export default async function PackageDetails({ geyser }: { geyser: Geyser }) {
           alt="Gas Geyser"
           className="aspect-square object-cover border border-zinc-200 w-full rounded-lg overflow-hidden dark:border-zinc-800"
           height="600"
-          src={geyser.image}
+          src="/images/dewhot.webp"
           width="600"
         />
       </div>
