@@ -135,13 +135,13 @@ export default async function PackageDetails({ geyser }: { geyser: Geyser }) {
           </p>
         </div>
       </div>
-      <div className="grid gap-3 items-start">
+      <div className="flex justify-center items-center w-full">
         <Image
           alt="Gas Geyser"
-          className="aspect-square object-cover border border-zinc-200 w-full rounded-lg overflow-hidden dark:border-zinc-800"
+          className="aspect-auto md:w-1/2 object-cover border border-zinc-200 w-full rounded-lg overflow-hidden dark:border-zinc-800"
           height="600"
           src="/images/dewhot.webp"
-          width="600"
+          width="1000"
         />
       </div>
     </div>

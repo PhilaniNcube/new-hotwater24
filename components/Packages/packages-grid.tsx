@@ -24,17 +24,16 @@ const PackagesGrid = async () => {
             >
               <span className="sr-only">View</span>
             </Link>
-            <Image
-              alt={item.title}
-              className="object-cover w-full"
-              height="500"
-              src="/images/dewhot.webp"
-              style={{
-                aspectRatio: "200/200",
-                objectFit: "cover",
-              }}
-              width="500"
-            />
+            <div className="w-full flex justify-center items-center">
+              <Image
+                alt={item.title}
+                className="object-cover w-full md:w-2/3 "
+                height="1000"
+                src="/images/dewhot.webp"
+                width="600"
+              />
+            </div>
+
             <div className="bg-white p-4 dark:bg-zinc-950">
               <h3
                 className={cn(
@@ -44,7 +43,12 @@ const PackagesGrid = async () => {
               >
                 {item.title}
               </h3>
-              <h4 className={cn("font-semibold text-base text-center md:text-xl text-red-600", antonio.className)}>
+              <h4
+                className={cn(
+                  "font-semibold text-base text-center md:text-xl text-red-600",
+                  antonio.className
+                )}
+              >
                 {formatCurrency(
                   item.geyser.price +
                     item.plumbing.price +
