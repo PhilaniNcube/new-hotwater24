@@ -161,7 +161,7 @@ const Recommendations = ({
                 alt={displayedGeyser.title}
                 className="object-cover w-1/2 lg:w-1/3"
                 height="1000"
-                src="/images/dewhot.png"
+                src="/images/dewhot.webp"
                 width="600"
               />
             </div>
