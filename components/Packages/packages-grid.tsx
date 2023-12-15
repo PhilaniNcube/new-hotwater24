@@ -29,9 +29,11 @@ const PackagesGrid = async () => {
                 alt={item.title}
                 className="object-cover w-full md:w-2/3 "
                 height="1000"
-                src="/images/dewhot.webp"
+                src={item.image}
                 width="600"
-              />
+                />
+
+
             </div>
 
             <div className="bg-white p-4 dark:bg-zinc-950">

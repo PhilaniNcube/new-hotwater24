@@ -152,20 +152,19 @@ const Recommendations = ({
             <span className="text-2xl font-bold">{geyserSize}L/Min</span> <br />
             We recommend the following gas geyser package for your property:
           </p>
-          <div
-            key={displayedGeyser._id}
-            className="relative group overflow-hidden rounded-lg"
-          >
+
+
+          <div className="relative group overflow-hidden rounded-lg flex flex-col md:flex-row gap-4">
             <div className="w-full flex items-center justify-center">
               <Image
                 alt={displayedGeyser.title}
                 className="object-cover w-1/2 md:w-2/5 lg:w-1/5"
                 height="1000"
-                src="/images/dewhot.webp"
+                src={displayedGeyser.image}
                 width="600"
               />
             </div>
-            <div className="bg-white p-4 ">
+            <div className="w-full p-4 ">
               <h3
                 className={cn(
                   "font-semibold text-4xl text-center",
@@ -225,20 +224,8 @@ const Recommendations = ({
                   </TableRow>
                 </TableBody>
               </Table>
-              {/* <h4
-                className={cn(
-                  "font-semibold text-4xl text-center text-red-600",
-                  antonio.className
-                )}
-              >
-                {formatCurrency(
-                  displayedGeyser.geyser.price +
-                    displayedGeyser.plumbing.price +
-                    displayedGeyser.installation.price +
-                    displayedGeyser.certificateOfCompliance.price
-                )}
-              </h4> */}
-              {/* <Button variant="default">Add to Cart</Button> */}
+
+
             </div>
           </div>
           {/* <p className="text-center text-lg mb-6 text-gray-700  font-medium max-w-[60ch] mx-auto">

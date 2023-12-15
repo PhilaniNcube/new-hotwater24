@@ -17,7 +17,7 @@ import {
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 
-export default async function PackageDetails({ geyser }: { geyser: Geyser }) {
+export default function PackageDetails({ geyser }: { geyser: Geyser }) {
   return (
     <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-start py-6">
       <div className="grid gap-4 items-start">
@@ -140,7 +140,7 @@ export default async function PackageDetails({ geyser }: { geyser: Geyser }) {
           alt="Gas Geyser"
           className="aspect-auto md:w-1/2 object-cover border border-zinc-200 w-full rounded-lg overflow-hidden dark:border-zinc-800"
           height="600"
-          src="/images/dewhot.webp"
+          src={geyser.image}
           width="1000"
         />
       </div>
