@@ -175,7 +175,7 @@ const Recommendations = ({
             <div className="w-full flex items-center justify-center">
               <Image
                 alt={displayedGeyser.title!}
-                className="object-cover w-1/2 lg:w-3/5"
+                className="object-cover w-1/2 lg:w-2/6"
                 height="1000"
                 src={displayedGeyser.image!}
                 width="600"
