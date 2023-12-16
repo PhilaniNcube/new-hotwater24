@@ -16,7 +16,7 @@ const PackagesGrid = async () => {
         return (
           <div
             key={item._id}
-            className="relative group overflow-hidden rounded-lg"
+            className="relative group shadow hover:shadow-2xl hover:-translate-y-6 transition-all duration-300 ease-in-out rounded-lg"
           >
             <Link
               href={`/packages/${item.slug}`}
