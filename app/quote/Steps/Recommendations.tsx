@@ -68,7 +68,7 @@ const Recommendations = ({
   // write a function that filters that returns the geysers with the closest maxFlowRate to the calculate quoteInfo.flowRate property
 
   const filteredGeysers = geysers.filter((geyser) =>
-    Number(geyser.maxFlowRate.split("l")[0]) >= quoteInfo.flowRate + 1
+    Number(geyser.maxFlowRate.split("l")[0]) >= quoteInfo.flowRate
   );
 
 
@@ -158,7 +158,7 @@ const Recommendations = ({
             <div className="w-full flex items-center justify-center">
               <Image
                 alt={displayedGeyser.title}
-                className="object-cover w-1/2 md:w-2/5 lg:w-1/5"
+                className="object-cover w-1/2 lg:w-3/5"
                 height="1000"
                 src={displayedGeyser.image}
                 width="600"
