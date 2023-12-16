@@ -31,9 +31,7 @@ const PackagesGrid = async () => {
                 height="1000"
                 src={item.image}
                 width="600"
-                />
-
-
+              />
             </div>
 
             <div className="bg-white p-4 dark:bg-zinc-950">
@@ -43,7 +41,7 @@ const PackagesGrid = async () => {
                   antonio.className
                 )}
               >
-                {item.title}
+                {item.title} - {item.maxFlowRate}
               </h3>
               <h4
                 className={cn(
@@ -58,7 +56,14 @@ const PackagesGrid = async () => {
                     item.certificateOfCompliance.price
                 )}
               </h4>
-              {/* <Button variant="default">Add to Cart</Button> */}
+              <h3
+                className={cn(
+                  "font-semibold text-md text-center",
+                  antonio.className
+                )}
+              >
+                {item.outlets}
+              </h3>
             </div>
           </div>
         );

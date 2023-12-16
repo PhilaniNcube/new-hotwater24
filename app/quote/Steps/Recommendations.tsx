@@ -77,7 +77,26 @@ const Recommendations = ({
 
   console.log(sortedFilter)
 
-  let displayedGeyser = sortedFilter[0]
+  let  getDisplayedGeyser = () => {
+
+    if(quoteInfo.flowRate <= 9) {
+      return geysers.find((geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 8)
+    } else if(quoteInfo.flowRate <= 12) {
+      return geysers.find((geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 12)
+    } else if(quoteInfo.flowRate <= 18) {
+      return geysers.find((geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 16)
+    } else if(quoteInfo.flowRate <= 23) {
+      return geysers.find((geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 20)
+    } else if(quoteInfo.flowRate <= 45) {
+      return geysers.find((geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 26)
+    } else {
+      return null
+    }
+
+  }
+
+  const displayedGeyser = getDisplayedGeyser()
+  console.log("Display Geyser" , displayedGeyser?.brand)
 
 
   useEffect(() => {
@@ -143,7 +162,7 @@ const Recommendations = ({
       exit={{ x: "-100%" }}
       className="mt-8 min-h-[90vh]"
     >
-      {(geyserSize !== null && displayedGeyser ||  sortedFilter.length !== 0)  ? (
+      {quoteInfo.flowRate <= 45 && displayedGeyser ? (
         <Fragment>
           {" "}
           <p className="text-center text-lg text-gray-700 mb-3 font-medium max-w-[60ch] mx-auto">
@@ -152,15 +171,13 @@ const Recommendations = ({
             <span className="text-2xl font-bold">{geyserSize}L/Min</span> <br />
             We recommend the following gas geyser package for your property:
           </p>
-
-
           <div className="relative group overflow-hidden rounded-lg flex flex-col md:flex-row gap-4">
             <div className="w-full flex items-center justify-center">
               <Image
-                alt={displayedGeyser.title}
+                alt={displayedGeyser.title!}
                 className="object-cover w-1/2 lg:w-3/5"
                 height="1000"
-                src={displayedGeyser.image}
+                src={displayedGeyser.image!}
                 width="600"
               />
             </div>
@@ -224,8 +241,6 @@ const Recommendations = ({
                   </TableRow>
                 </TableBody>
               </Table>
-
-
             </div>
           </div>
           {/* <p className="text-center text-lg mb-6 text-gray-700  font-medium max-w-[60ch] mx-auto">
