@@ -27,7 +27,7 @@ const PackagesGrid = async () => {
             <div className="w-full flex justify-center items-center">
               <Image
                 alt={item.title}
-                className="object-cover w-full md:w-2/3 "
+                className="object-cover w-full md:w-3/4"
                 height="1000"
                 src={item.image}
                 width="600"
