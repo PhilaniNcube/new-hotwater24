@@ -6,6 +6,36 @@ import Link from "next/link";
 import {PortableText} from "@portabletext/react"
 import { Button } from "@/components/ui/button";
 
+import type { Metadata, ResolvingMetadata } from "next";
+
+type Props = {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const slug = params.slug;
+
+  // fetch data
+ const article = await getArticle(slug);
+
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: article.title,
+    keywords:
+      "Gas Geyser, Gas Geyser Installation, Gas Geyser Installation Prices, Gas Water Heater, Gas Geyser Prices, and Gas Water Heating System.",
+    openGraph: {
+      images: [`${article.image}`, ...previousImages],
+    },
+  };
+}
+
 const page = async ({params: {slug}}: {params:{slug:string}}) => {
 
   const article = await getArticle(slug)
