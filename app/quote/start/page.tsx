@@ -2,6 +2,27 @@ import { antonio } from "@/app/fonts";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Get A Quote | Howtwater24",
+  description:
+    "Hotwater 24 are gas experts bringing hot water to homes 24/7 with Gas Geyser solutions. Our expert team specialises in seamless Gas Geyser installations, ensuring optimum efficiency and performance. Discover competitive Gas Geyser installation prices tailored to your household needs in a few minutes using our quick and easy questionnaire. Trust us for unbeatable Gas Geyser prices and a reliable Gas Water Heating System for you and your family.",
+  keywords:
+    "Gas Geyser, Gas Geyser Installation, Gas Geyser Installation Prices, Gas Water Heater, Gas Geyser Prices, and Gas Water Heating System",
+  robots: "index, follow",
+
+  openGraph: {
+    title: "Get A Quote | Howtwater24",
+    description:
+      "Hotwater 24 are gas experts bringing hot water to homes 24/7 with Gas Geyser solutions. Our expert team specialises in seamless Gas Geyser installations, ensuring optimum efficiency and performance. Discover competitive Gas Geyser installation prices tailored to your household needs in a few minutes using our quick and easy questionnaire. Trust us for unbeatable Gas Geyser prices and a reliable Gas Water Heating System for you and your family.",
+      images: ["/images/banner.jpg" ],
+    type: "website",
+    locale: "en_ZA",
+  },
+};
+
+
 
 const page = () => {
   return (
