@@ -46,7 +46,7 @@ const page = () => {
           us for unbeatable Gas Geyser prices and a reliable Gas Water Heating
           System for you and your family.
         </p> */}
-        <p className="px-8 text-sm font-bold text-center md:text-md lg:px-20">
+        <p className="px-8 text-sm font-bold text-center md:text-md lg:px-20 mt-2">
           Please answer the following questions (takes less than 2 minutes of
           your time) and we will send you our expert recommendation!
         </p>
