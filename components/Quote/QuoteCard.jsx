@@ -156,7 +156,7 @@ function Index({ quote }) {
                     <li className="text-xs font-normal tracking-normal text-gray-600">
                       Home Ownership -{" "}
                       <span className="font-bold uppercase">
-                        {quote.ownership ? `Owner` : "Renter"}
+                        {quote.ownership ? "Owner" : "Renter"}
                       </span>
                     </li>
                     <li className="text-xs font-normal tracking-normal text-gray-600">
@@ -183,7 +183,7 @@ function Index({ quote }) {
                       ) : (
                         <Fragment>
                           {" "}
-                          Request Information -{` `}
+                          Request Information -{" "}
                           <span className="font-bold uppercase">
                             {quote.installation}
                           </span>

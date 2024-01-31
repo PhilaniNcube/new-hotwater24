@@ -24,13 +24,13 @@ export default async function GeyserPackages() {
       >
         Which package best suits your household?
       </h2>
-      <div className="grid gap-4 lg:gap-8 p-4 md:grid-cols-3 lg:grid-cols-4 mt-6">
+      <div className="grid gap-4 p-4 mt-6 lg:gap-8 md:grid-cols-3 lg:grid-cols-4">
         {packages.map((item, index) => {
           if (index > 0 && index < 5) {
             return (
               <div
                 key={item._id}
-                className="p-4 shadow hover:shadow-2xl hover:-translate-y-6 transition-all duration-1000 ease-in-out rounded-lg"
+                className="p-4 transition-all duration-1000 ease-in-out rounded-lg shadow hover:shadow-2xl hover:-translate-y-6"
               >
                 <Link href={`/packages/${item.slug}`} className="cursor-pointer">
                   <h3
@@ -48,11 +48,11 @@ export default async function GeyserPackages() {
                   {/* <h4 className="text-lg font-semibold text-center">
                   {item.maxFlowRate}
                 </h4> */}{" "}
-                  <ul className="list-disc text-xs px-4 my-2 ">
+                  <ul className="px-4 my-2 text-xs list-disc ">
                     <li className="line-clamp-1">{item.outlets}</li>
                     <li className="line-clamp-1">{item.description}</li>
                   </ul>
-                  <div className="bg-red-600 text-white rounded-bl-full w-fit mx-auto py-1 px-7">
+                  <div className="py-1 mx-auto text-white bg-red-600 rounded-bl-full w-fit px-7">
                     <p
                       className={cn(
                         "text-2xl font-bold text-center",
@@ -82,18 +82,19 @@ export default async function GeyserPackages() {
                     </Button>
                   </Link>
                 </div>
-                {/* <p className="text-sm text-center text-gray-800 font-medium">
+                {/* <p className="text-sm font-medium text-center text-gray-800">
                   {item.description}
                 </p> */}
                 {/* <p className="mt-2 text-xs text-justify">*{item.warranty}</p> */}
               </div>
             );
-          } else {
+          // biome-ignore lint/style/noUselessElse: <explanation>
+}  else {
             return null;
           }
         })}
       </div>{" "}
-      <h2 className="text-md my-3 font-medium text-center text-red-800">
+      <h2 className="my-3 font-medium text-center text-red-800 text-md">
         Please note, Hotwater24 uses a wide range of different brands and sizes
         of gas geysers that will suit your specification!
       </h2>
