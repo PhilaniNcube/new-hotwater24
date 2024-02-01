@@ -1,5 +1,8 @@
 import PackagesGrid from "@/components/Packages/packages-grid";
-import { Metadata } from "next";
+import { getGeysers } from "@/sanity/sanity-utils";
+import { Metadata, MetadataRoute } from "next";
+
+const BASE_URL = "https://htowater24.com";
 
 export const metadata: Metadata = {
 	title: "Hotwater24 | Gas Geyser Packages",
@@ -13,6 +16,10 @@ export const metadata: Metadata = {
 			"Take a look at the affordable gas geyser packages for instant hot water",
 	},
 };
+
+
+
+
 
 const page = async () => {
   return (
