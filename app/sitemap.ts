@@ -1,8 +1,30 @@
+import { getArticles, getGeysers } from '@/sanity/sanity-utils'
 import { MetadataRoute } from 'next'
 
 const BASE_URL = 'https://hotwater24.com'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+
+  const articles = await getArticles()
+  // create a sitemap object for each article
+  const articleSitemaps = articles.map((article) => ({
+    url: `${BASE_URL}/news/${article.slug}`,
+    // changeFrequency: 'monthly',
+    lastModified: new Date(),
+
+  }))
+
+
+  const packages = await getGeysers()
+  // create a sitemap object for each package
+  const packageSitemaps = packages.map((item) => ({
+    url: `${BASE_URL}/packages/${item.slug}`,
+    changeFrequency: 'monthly',
+    lastModified: new Date(),
+
+  }))
+
+
   return [
     {
       url: `${BASE_URL}`,
@@ -82,5 +104,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.5,
     },
+    ...articleSitemaps,
+    ...packageSitemaps
+
   ]
 }
