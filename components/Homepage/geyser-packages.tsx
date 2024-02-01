@@ -32,7 +32,7 @@ export default async function GeyserPackages() {
                 key={item._id}
                 className="p-4 transition-all duration-1000 ease-in-out rounded-lg shadow hover:shadow-2xl hover:-translate-y-6"
               >
-                <Link href={`/packages/${item.slug}`} className="cursor-pointer">
+                <Link prefetch={false} href={`/packages/${item.slug}`} className="cursor-pointer">
                   <h3
                     className={cn(
                       "text-lg md:text-3xl font-bold uppercase",
@@ -73,10 +73,12 @@ export default async function GeyserPackages() {
                     height={500}
                     src={item.image}
                     width={500}
+                    loading="lazy"
+                    quality={70}
                   />
                 </Link>{" "}
                 <div className="flex justify-center">
-                  <Link href={`/packages/${item.slug}`}>
+                  <Link prefetch={false} href={`/packages/${item.slug}`}>
                     <Button className="mt-4 bg-red-600 rounded-full">
                       I need more info
                     </Button>

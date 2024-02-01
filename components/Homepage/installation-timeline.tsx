@@ -10,7 +10,7 @@ import { antonio } from "@/app/fonts";
  */
 export default function InstallationTimeline() {
   return (
-    <div className="container py-4 overflow-auto relative isolate">
+    <div className="container relative py-4 overflow-auto isolate">
       <h2
         className={cn(
           "text-3xl lg:text-4xl font-bold text-center text-slate-800 py-6",
@@ -21,8 +21,8 @@ export default function InstallationTimeline() {
       </h2>
       <div className="relative flex flex-col justify-between my-4 space-x-8 lg:flex-row">
         <div className="relative z-50 flex flex-col w-2/3 mb-8 space-y-4 rounded sm:w-1/2 lg:w-1/5">
-          <div className="bg-red-600 p-3 rounded-full w-fit ">
-            <HelpCircle className="h-20 w-20  text-white" />
+          <div className="p-3 bg-red-600 rounded-full w-fit ">
+            <HelpCircle className="w-20 h-20 text-white" />
           </div>
           <div className="px-3 py-2 space-y-4">
             <div className="text-sm tracking-wider text-gray-600">Step 1</div>
@@ -41,8 +41,8 @@ export default function InstallationTimeline() {
           </div>
         </div>
         <div className="relative z-50 flex flex-col w-2/3 mb-8 space-y-4 rounded sm:w-1/2 lg:w-1/5">
-          <div className="bg-red-600 p-3 rounded-full w-fit ">
-            <CarIcon className="h-20 w-20  text-white" />
+          <div className="p-3 bg-red-600 rounded-full w-fit ">
+            <CarIcon className="w-20 h-20 text-white" />
           </div>
           <div className="px-3 py-2 space-y-4">
             <div className="text-sm tracking-wider text-gray-600">Step 2</div>
@@ -61,8 +61,8 @@ export default function InstallationTimeline() {
           </div>
         </div>
         <div className="relative z-50 flex flex-col w-2/3 mb-8 space-y-4 rounded sm:w-1/2 lg:w-1/5">
-          <div className="bg-red-600 p-3 rounded-full w-fit ">
-            <PenLine className="h-20 w-20  text-white" />
+          <div className="p-3 bg-red-600 rounded-full w-fit ">
+            <PenLine className="w-20 h-20 text-white" />
           </div>
           <div className="px-3 py-2 space-y-4">
             <div className="text-sm tracking-wider text-gray-600">Step 3</div>
@@ -81,8 +81,8 @@ export default function InstallationTimeline() {
           </div>
         </div>
         <div className="relative z-50 flex flex-col w-2/3 mb-8 space-y-4 rounded sm:w-1/2 lg:w-1/5">
-          <div className="bg-red-600 p-3 rounded-full w-fit ">
-            <AwardIcon className="h-20 w-20  text-white" />
+          <div className="p-3 bg-red-600 rounded-full w-fit ">
+            <AwardIcon className="w-20 h-20 text-white" />
           </div>
           <div className="px-3 py-2 space-y-4">
             <div className="text-sm tracking-wider text-gray-600">Step 4</div>
@@ -101,8 +101,8 @@ export default function InstallationTimeline() {
           </div>
         </div>
         <div className="relative z-50 flex flex-col w-2/3 mb-8 space-y-4 rounded sm:w-1/2 lg:w-1/5">
-          <div className="bg-red-600 p-3 rounded-full w-fit ">
-            <Droplet className="h-20 w-20  text-white" />
+          <div className="p-3 bg-red-600 rounded-full w-fit ">
+            <Droplet className="w-20 h-20 text-white" />
           </div>
           <div className="px-3 py-2 space-y-4">
             <div className="text-sm tracking-wider text-gray-600">Step 5</div>
@@ -122,7 +122,7 @@ export default function InstallationTimeline() {
         </div>
       </div>
 
-      <Link href="/quote/start" className="flex justify-center w-full">
+      <Link prefetch={false} href="/quote/start" className="flex justify-center w-full">
         <Button
           className="mx-auto mt-3 text-center bg-red-600 rounded-full w-44"
           type="button"
