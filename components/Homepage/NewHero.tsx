@@ -15,7 +15,7 @@ export default function NewHero() {
 								alt="Geyser"
 								className="object-cover object-bottom w-full mx-auto overflow-hidden"
 								height={654}
-								src="/images/banner.jpg"
+								src="/images/banner.webp"
 								width={960}
 								priority
 							/>
