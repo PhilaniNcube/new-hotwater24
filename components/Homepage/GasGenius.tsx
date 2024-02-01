@@ -9,9 +9,9 @@ const GasGenius = () => {
       className="cursor-pointer"
     >
       <Image
-        src="/images/genius.png"
-        width={2481}
-        height={2481}
+        src="/images/genius.webp"
+        width={300}
+        height={300}
         alt="Genius"
         className="fixed bottom-20 right-4 z-[50] w-[50px] md:w-[80px] lg:w-[120px] object-cover hover:-translate-y-1 transition-transform duration-150"
       />
