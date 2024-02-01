@@ -1,13 +1,28 @@
 import Link from "next/link";
 import Script from "next/script";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Hotwater24 | Frequently Asked Questions",
+	description:
+		"What do I need to know before buying a gas geyser?",
+	keywords:
+		"gas geyser installations, gas geyser installation prices, gas geyser installation near me, how does a gas geyser work, gas geyser installation cost, gas geyser installation cape town, gas geyser installation durbanville, gas geyser installation brackenfell, gas geyser installation bellville, gas geyser installation kraaifontein, gas geyser installation kuilsriver, gas geyser installation parow, gas geyser installation goodwood, gas geyser installation monte vista, gas geyser installation edgemead, gas geyser installation plattekloof, gas geyser installation panorama, gas geyser installation welgemoed, gas geyser installation tygervalley, gas geyser installation durbanville hills, gas geyser installation sonstraal heights, gas geyser installation sonstraal, how does a gas geyser work",
+	openGraph: {
+		title: "Hotwater24 | Frequently Asked Questions",
+		description:
+			"What do I need to know before buying a gas geyser?",
+	},
+};
 
 const page = () => {
   return (
     <main>
       <Script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -56,24 +71,24 @@ const page = () => {
           }),
         }}
       />
-      <section className=" mt-4 px-4 container">
+      <section className="container px-4 mt-4 ">
         <div className="grid grid-cols-8 gap-2">
-          <section className="col-span-8 md:col-span-6 min-h-screen my-3">
+          <section className="min-h-screen col-span-8 my-3 md:col-span-6">
             <Image
               src="/images/faq.jpg"
               alt="faq"
-              className="w-4/6 object-cover rounded-md"
+              className="object-cover w-4/6 rounded-md"
               width={1920}
               height={1080}
             />
             <div className="mt-4">
-              <h1 className="text-2xl md:text-4xl text-slate-800 mb-4">
+              <h1 className="mb-4 text-2xl md:text-4xl text-slate-800">
                 Frequently Asked Questions
               </h1>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 What is a gas geyser?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 A Gas Geyser, also known as a Gas Water Heater, is a water
                 heating system that runs on gas. The traditional gas geyser does
                 not have a reservoir to store hot water. Instead, it heats the
@@ -82,10 +97,10 @@ const page = () => {
                 geyser will deactivate when the tap is closed and stop producing
                 hot water.
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 How does a gas geyser work?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 As soon as a hot water tap is opened, water flows through the
                 pipes at a sufficient flow. That flow triggers a sensor inside
                 the gas geyser, igniting the gas burner. The water flows through
@@ -97,8 +112,8 @@ const page = () => {
                 {({ open }) => (
                   <Fragment>
                     <Disclosure.Button>
-                      <div className="flex flex-row items-center bg-slate-100 px-4 py-2 rounded-lg space-x-4 shadow">
-                        <span className="text-md font-medium text-gray-700">
+                      <div className="flex flex-row items-center px-4 py-2 space-x-4 rounded-lg shadow bg-slate-100">
+                        <span className="font-medium text-gray-700 text-md">
                           More Info
                         </span>
                         <ChevronUpIcon
@@ -111,7 +126,7 @@ const page = () => {
 
                     <Disclosure.Panel
                       as="div"
-                      className="text-sm text-gray-600 mt-2 pl-3 max-w-2xl"
+                      className="max-w-2xl pl-3 mt-2 text-sm text-gray-600"
                     >
                       <article>
                         A particular flow rate is required to activate the gas
@@ -178,10 +193,10 @@ const page = () => {
                   </Fragment>
                 )}
               </Disclosure> */}
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 What type of gas do your gas geysers use?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 Gas geysers use Liquefied Petroleum Gas (LPG), a combination of
                 butane, propane, or a mix. LPG is a clean burning and efficient
                 hydrocarbon gas produced by-product of oil refining or natural
@@ -193,8 +208,8 @@ const page = () => {
                 {({ open }) => (
                   <Fragment>
                     <Disclosure.Button>
-                      <div className="flex flex-row items-center bg-slate-100 px-4 py-2 rounded-lg space-x-4 shadow">
-                        <span className="text-md font-medium text-gray-700">
+                      <div className="flex flex-row items-center px-4 py-2 space-x-4 rounded-lg shadow bg-slate-100">
+                        <span className="font-medium text-gray-700 text-md">
                           More Info
                         </span>
                         <ChevronUpIcon
@@ -207,7 +222,7 @@ const page = () => {
 
                     <Disclosure.Panel
                       as="div"
-                      className="text-sm text-gray-600 mt-2 pl-3 max-w-2xl"
+                      className="max-w-2xl pl-3 mt-2 text-sm text-gray-600"
                     >
                       <article>
                         A litre of LPG expands to approximately 270 times its
@@ -222,19 +237,19 @@ const page = () => {
                 )}
               </Disclosure>
 
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 What is LPG used for?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 Hundreds of millions of people currently use LPG and depend on
                 it for thousands of applications in commercial business,
                 industry, transportation, farming, power generation, cooking,
                 heating, and recreational purposes.
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 Is LPG safe to use?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 <strong>YES</strong>, LPG is very safe to use for your property.
                 However, ensure that all the necessary guidelines are followed
                 during installation, including the issue of CoC (Certificate of
@@ -245,8 +260,8 @@ const page = () => {
                 {({ open }) => (
                   <Fragment>
                     <Disclosure.Button>
-                      <div className="flex flex-row items-center bg-slate-100 px-4 py-2 rounded-lg space-x-4 shadow">
-                        <span className="text-md font-medium text-gray-700">
+                      <div className="flex flex-row items-center px-4 py-2 space-x-4 rounded-lg shadow bg-slate-100">
+                        <span className="font-medium text-gray-700 text-md">
                           More Info
                         </span>
                         <ChevronUpIcon
@@ -259,7 +274,7 @@ const page = () => {
 
                     <Disclosure.Panel
                       as="div"
-                      className="text-sm text-gray-600 mt-2 pl-3 max-w-2xl"
+                      className="max-w-2xl pl-3 mt-2 text-sm text-gray-600"
                     >
                       <article>
                         Familiarise yourself with some of the safety aspects of
@@ -269,7 +284,7 @@ const page = () => {
                       <p className="text-sm font-medium">
                         Here are a few safety tips when using LPG in your home.
                       </p>
-                      <ul className="list-disc pl-6 text-xs">
+                      <ul className="pl-6 text-xs list-disc">
                         <li>
                           Never leave your gas stove unattended when cooking.
                         </li>
@@ -288,37 +303,37 @@ const page = () => {
                 )}
               </Disclosure> */}
 
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 Why use LPG?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 Please click on this link so you can read all about why using
                 LPG is a very sensible thing to do:
-                <Link href="/why-us" className="text-sky-500 text-xs">
+                <Link href="/why-us" className="text-xs text-sky-500">
                    https://www.hotwater24.com/why-us
                 </Link>
               </article>
 
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 Do I need a Certificate of Compliance/Conformity (CoC) for my
                 gas installation?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 A CoC is proof that your gas installation is safe and complies
                 with the rules and regulations laid out in the South African
                 National Standards (SANS) 10087-1.
               </article>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 The law requires that you be always in possession of a CoC for
                 gas installations, as does your insurance company. If your
                 property suffers damage from a gas fault, your insurance company
                 will expect you to produce a valid certificate. Not being able
                 to produce one may invalidate your claim.
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 When must a CoC be issued?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 A Certificate of Conformity (CoC) must be issued for a PERMANENT
                 installation:
               </article>
@@ -333,10 +348,10 @@ const page = () => {
                   installation. (When you sell your property).
                 </li>
               </ul>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 What is a permanent gas installation?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 Legislation deems a permanent gas installation to be a gas
                 installation that is a fixture in a building, immovable and not
                 of a temporary nature. This would include all built-in gas
@@ -344,7 +359,7 @@ const page = () => {
                 Hot water systems. Movable gas heaters and gas braais on wheels
                 are seen as temporary and do not require a CoC.
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 How long is a CoC valid for?
               </p>
               <ul className="pl-6 text-sm text-gray-600 list-disc">
@@ -361,18 +376,18 @@ const page = () => {
                   property is sold.
                 </li>
               </ul>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 How regularly must an LPG installation be serviced?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 According to legislation, the manifold system (which includes
                 the regulator/s) should be inspected and serviced at intervals
                 not exceeding five years.
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 Am I allowed to have a gas cylinder inside my house?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 Yes, according to the SA National Standards (SANS).
               </article>
               <ul className="pl-6 text-sm text-gray-600 list-disc">
@@ -388,10 +403,10 @@ const page = () => {
                   house and necessary ventilation.
                 </li>
               </ul>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 What makes gas geysers different?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 Gas geysers are the most energy-efficient geysers available.
                 Unlike the traditional electric geyser that acts as a reservoir
                 for your water, heating it constantly over time - gas geysers
@@ -399,10 +414,10 @@ const page = () => {
                 gas geysers heat water on demand. Meaning they only heat water
                 when your hot water tap is turned on.
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 Why should I choose a gas geyser over an electric geyser?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 Well, for starters, gas geysers supply endless hot water as long
                 as you have gas
               </article>
@@ -410,8 +425,8 @@ const page = () => {
                 {({ open }) => (
                   <Fragment>
                     <Disclosure.Button>
-                      <div className="flex flex-row items-center bg-slate-100 px-4 py-2 rounded-lg space-x-4 shadow">
-                        <span className="text-md font-medium text-gray-700">
+                      <div className="flex flex-row items-center px-4 py-2 space-x-4 rounded-lg shadow bg-slate-100">
+                        <span className="font-medium text-gray-700 text-md">
                           More Info
                         </span>
                         <ChevronUpIcon
@@ -424,9 +439,9 @@ const page = () => {
 
                     <Disclosure.Panel
                       as="div"
-                      className="text-sm text-gray-600 mt-2 pl-3 max-w-2xl"
+                      className="max-w-2xl pl-3 mt-2 text-sm text-gray-600"
                     >
-                      <ul className="list-disc pl-6 text-xs">
+                      <ul className="pl-6 text-xs list-disc">
                         <li>
                           Fact, gas is A LOT cheaper than electricity. This is
                           because gas is a much cheaper resource than
@@ -455,37 +470,37 @@ const page = () => {
                         </li>
                       </ul>
                       <div className="grid grid-cols-2 mt-4 border-4 border-gray-700">
-                        <span className="border-b border-r  border-gray-400 px-4 py-1">
+                        <span className="px-4 py-1 border-b border-r border-gray-400">
                           <h4 className="font-bold">Gas</h4>
                         </span>
-                        <span className="border-b  border-l border-gray-400 px-4 py-1">
+                        <span className="px-4 py-1 border-b border-l border-gray-400">
                           <h4 className="font-bold">Electric</h4>
                         </span>
-                        <span className="border-b border-r  border-gray-400 px-4 py-1">
+                        <span className="px-4 py-1 border-b border-r border-gray-400">
                           <p>Heats water instantly/ on-demand</p>
                         </span>
-                        <span className="border-b  border-l border-gray-400 px-4 py-1">
+                        <span className="px-4 py-1 border-b border-l border-gray-400">
                           <p>Slower to heat water than gas models</p>
                         </span>
-                        <span className="border-b border-r  border-gray-400 px-4 py-1">
+                        <span className="px-4 py-1 border-b border-r border-gray-400">
                           <p>
                             Lower operating costs than with electric models
                             (Saving 20%!)
                           </p>
                         </span>
-                        <span className="border-b  border-l border-gray-400 px-4 py-1">
+                        <span className="px-4 py-1 border-b border-l border-gray-400">
                           <p>Higher operating costs</p>
                         </span>
-                        <span className="border-b border-r  border-gray-400 px-4 py-1">
+                        <span className="px-4 py-1 border-b border-r border-gray-400">
                           <p>Operates during power failures</p>
                         </span>
-                        <span className="border-b  border-l border-gray-400 px-4 py-1">
+                        <span className="px-4 py-1 border-b border-l border-gray-400">
                           <p>Will not heat up water during power failure</p>
                         </span>
-                        <span className="border-b border-r  border-gray-400 px-4 py-1">
+                        <span className="px-4 py-1 border-b border-r border-gray-400">
                           <p>Energy-efficient</p>
                         </span>
-                        <span className="border-b  border-l border-gray-400 px-4 py-1">
+                        <span className="px-4 py-1 border-b border-l border-gray-400">
                           <p>Longer recovery times</p>
                         </span>
                       </div>
@@ -493,15 +508,15 @@ const page = () => {
                   </Fragment>
                 )}
               </Disclosure> */}
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 Are gas geysers safe for home use?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 YES. ABSOLUTELY! Gas geysers are 100% safe, provided you work
                 with professional experts, registered suppliers, and installers
                 like us.
               </article>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 There is no shortcut around this – Precautious and adequate
                 safety measures must be taken to select, install, and use any
                 gas geyser. ALL our gas geysers have safety features: a flame
@@ -509,7 +524,7 @@ const page = () => {
                 stability device, a combustion safety device, and an oxygen
                 depletion sensor device.
               </article>
-              <ul className="list-disc text-gray-600 pl-6">
+              <ul className="pl-6 text-gray-600 list-disc">
                 <li>
                   <p className="text-base font-bold">
                     Install in a well-ventilated area.
@@ -587,11 +602,11 @@ const page = () => {
                   </p>
                 </li>
               </ul>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 Why are gas geysers great?
               </p>
-              <article className="text-base text-gray-600 font-medium">
-                <ol className="list-decimal pl-6" role="list">
+              <article className="text-base font-medium text-gray-600">
+                <ol className="pl-6 list-decimal" >
                   <li>
                     Gas water geysers provide Just in Time heating! Use It Right
                     Now! Hot water. They don&apos;t store the hot water to
@@ -614,141 +629,141 @@ const page = () => {
                   </li>
                 </ol>
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 What sizes are available?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 12, 16, 20 and 26 Litre gas geysers
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 What uses do the different sizes have?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 The tables below provide a general indication of the usage of
                 each hot water tap in a typical household and can help you
                 establish what you may need to consider.
               </article>
 
-              <p className="text-xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium text-slate-700">
                 Multiple-use application guide -{" "}
                 <span className="font-light">
                   can run multiple outlets simultaneously
                 </span>
               </p>
               <div>
-                <table className="w-full shadow text-left bg-white dark:bg-gray-800">
+                <table className="w-full text-left bg-white shadow dark:bg-gray-800">
                   <thead>
                     <tr className="border-b border-gray-300 dark:border-gray-700">
-                      <th className="py-5 sm:pl-10 pl-2 w-1/4 text-base text-gray-800 dark:text-gray-100">
+                      <th className="w-1/4 py-5 pl-2 text-base text-gray-800 sm:pl-10 dark:text-gray-100">
                         Application
                       </th>
-                      <th className="py-5 w-1/4 text-base text-gray-800 dark:text-gray-100">
+                      <th className="w-1/4 py-5 text-base text-gray-800 dark:text-gray-100">
                         Usage
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td className="sm:pl-10 pl-2 pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pl-2 pr-2 text-xs text-gray-800 sm:pl-10 dark:text-gray-100 sm:text-sm">
                         Shower & Basin
                       </td>
-                      <td className="pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pr-2 text-xs text-gray-800 dark:text-gray-100 sm:text-sm">
                         12 litres
                       </td>
                     </tr>
                     <tr className="bg-gray-200 dark:bg-gray-700">
-                      <td className="sm:pl-10 pl-2 pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pl-2 pr-2 text-xs text-gray-800 sm:pl-10 dark:text-gray-100 sm:text-sm">
                         2 Showers & Basin
                       </td>
-                      <td className="pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pr-2 text-xs text-gray-800 dark:text-gray-100 sm:text-sm">
                         16 litres
                       </td>
                     </tr>
                     <tr>
-                      <td className="sm:pl-10 pl-2 pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pl-2 pr-2 text-xs text-gray-800 sm:pl-10 dark:text-gray-100 sm:text-sm">
                         Basin & Bath
                       </td>
-                      <td className="pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pr-2 text-xs text-gray-800 dark:text-gray-100 sm:text-sm">
                         16 litres
                       </td>
                     </tr>
                     <tr className="bg-gray-200 dark:bg-gray-700">
-                      <td className="sm:pl-10 pl-2 pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pl-2 pr-2 text-xs text-gray-800 sm:pl-10 dark:text-gray-100 sm:text-sm">
                         Shower, Basin & Bath
                       </td>
-                      <td className="pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pr-2 text-xs text-gray-800 dark:text-gray-100 sm:text-sm">
                         20 litres
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <p className="text-xl font-medium text-slate-700 mt-12 py-2">
+              <p className="py-2 mt-12 text-xl font-medium text-slate-700">
                 Single-use application guide -{" "}
                 <span className="font-light">
                   outlets cannot run simultaneously
                 </span>
               </p>
               <div>
-                <table className="w-full shadow text-left bg-white dark:bg-gray-800">
+                <table className="w-full text-left bg-white shadow dark:bg-gray-800">
                   <thead>
                     <tr className="border-b border-gray-300 dark:border-gray-700">
-                      <th className="py-5 sm:pl-10 pl-2 w-1/4 text-base text-gray-800 dark:text-gray-100">
+                      <th className="w-1/4 py-5 pl-2 text-base text-gray-800 sm:pl-10 dark:text-gray-100">
                         Application
                       </th>
-                      <th className="py-5 w-1/4 text-base text-gray-800 dark:text-gray-100">
+                      <th className="w-1/4 py-5 text-base text-gray-800 dark:text-gray-100">
                         Usage
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td className="sm:pl-10 pl-2 pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pl-2 pr-2 text-xs text-gray-800 sm:pl-10 dark:text-gray-100 sm:text-sm">
                         Basin or Camping shower
                       </td>
-                      <td className="pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pr-2 text-xs text-gray-800 dark:text-gray-100 sm:text-sm">
                         5 – 8 litres
                       </td>
                     </tr>
                     <tr className="bg-gray-200 dark:bg-gray-700">
-                      <td className="sm:pl-10 pl-2 pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pl-2 pr-2 text-xs text-gray-800 sm:pl-10 dark:text-gray-100 sm:text-sm">
                         Small Showerhead
                       </td>
-                      <td className="pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pr-2 text-xs text-gray-800 dark:text-gray-100 sm:text-sm">
                         8 litres
                       </td>
                     </tr>
                     <tr>
-                      <td className="sm:pl-10 pl-2 pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pl-2 pr-2 text-xs text-gray-800 sm:pl-10 dark:text-gray-100 sm:text-sm">
                         Medium Showerhead
                       </td>
-                      <td className="pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pr-2 text-xs text-gray-800 dark:text-gray-100 sm:text-sm">
                         10 litres
                       </td>
                     </tr>
                     <tr className="bg-gray-200 dark:bg-gray-700">
-                      <td className="sm:pl-10 pl-2 pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pl-2 pr-2 text-xs text-gray-800 sm:pl-10 dark:text-gray-100 sm:text-sm">
                         Large Showerhead
                       </td>
-                      <td className="pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pr-2 text-xs text-gray-800 dark:text-gray-100 sm:text-sm">
                         12 litres
                       </td>
                     </tr>
                     <tr>
-                      <td className="sm:pl-10 pl-2 pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pl-2 pr-2 text-xs text-gray-800 sm:pl-10 dark:text-gray-100 sm:text-sm">
                         Bath
                       </td>
-                      <td className="pr-2 py-5 text-gray-800 dark:text-gray-100 text-xs sm:text-sm">
+                      <td className="py-5 pr-2 text-xs text-gray-800 dark:text-gray-100 sm:text-sm">
                         16 litres
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 How do I figure out the best size for my home?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 Creating a comprehensive list of your primary requirements will
                 help you decide on the best model and size of gas geyser you may
                 need for your household. The size of the geyser you choose
@@ -757,7 +772,7 @@ const page = () => {
                 Generally, a bath will require a geyser of 12 - 16L and a shower
                 of about 6L, minimum.
               </article>
-              <ul className="list-disc text-gray-600 pl-6">
+              <ul className="pl-6 text-gray-600 list-disc">
                 <li>
                   <p className="text-base font-bold">The Bucket Test</p>
                   <p>
@@ -770,7 +785,7 @@ const page = () => {
                     consider. We advise simply using your tub as a good gauge
                     since it generally demands the highest water flow.
                   </p>
-                  <ol className="list-decimal pl-6 text-xs">
+                  <ol className="pl-6 text-xs list-decimal">
                     <li>Grab a 20-litre bucket</li>
                     <li>
                       Place it under all the taps you require running hot water
@@ -798,12 +813,12 @@ const page = () => {
                   </p>
                 </li>
               </ul>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 Is one gas geyser enough for my entire house?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 YES! But there are a few things you need to consider:
-                <ul className="list-disc text-sm font-normal pl-6">
+                <ul className="pl-6 text-sm font-normal list-disc">
                   <li>
                     It depends on the distance from the gas geyser to where you
                     want to use it.
@@ -824,25 +839,25 @@ const page = () => {
                 </ul>
               </article>
 
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 How much does it cost?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 Hardware prices range from approximately R 5,2K for the 12-litre
                 models to 12K for the 26-litre gas geyser. Please note that it
                 is complicated to provide an accurate estimate for installation,
                 as this depends on the size of your property, the mileage, and
                 how your property is set up.
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 Gas supply: Cages & Cylinders
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 Please be aware that the price mentioned above excludes the
                 supply of gas, gas cylinders or gas cylinder cages. Depending on
                 the current setup, you might also need a gas cylinder, gas cage
                 and gas supply.
-                <ul className="list-disc text-sm font-normal pl-6">
+                <ul className="pl-6 text-sm font-normal list-disc">
                   <li>
                     <span className="font-bold">Prices on gas cages </span>
                     (single or double 19kg and 48kg) range from R1.8K (single
@@ -858,7 +873,7 @@ const page = () => {
                     R35 to R40 per kg.
                   </li>
                 </ul>
-                <p className="text-lg font-medium text-slate-700 py-2">
+                <p className="py-2 text-lg font-medium text-slate-700">
                   Plumbing
                 </p>
                 Our plumbing jobs range between R2,5 – R4kk depending on
@@ -866,15 +881,15 @@ const page = () => {
                 (info@hotwater24.com) or visit our website (www.hotwater24.com)
                 for any questions or pricing issues.
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 Can I use a gas geyser off-the-grid?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 Gas geysers DO require electricity as it needs a spark to ignite
                 the burner. However, the answer is Yes! Absolutely!. During
                 power outages/load-shedding, consider a battery-operated or
                 Uninterrupted Power Supply (UPS) operated gas heating system.{" "}
-                <ul className="list-disc text-sm font-normal pl-6">
+                <ul className="pl-6 text-sm font-normal list-disc">
                   <li>
                     Our 12L and 16L gas geyser models are battery operated,
                     meaning that the battery (Duracell D) ignites a small amount
@@ -887,17 +902,17 @@ const page = () => {
                   </li>
                 </ul>
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 Where is the best location for my gas cylinder and gas geyser?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 Ensure that your gas geyser is installed by a qualified person
                 following the installation instructions, and in compliance with
                 Standards SANS837 (for NG) and SANS10087 (for LPG), as
                 applicable under local regulations and all local codes, bylaws
                 and regulatory authority requirements. If in doubt, check with
                 the relevant authority before undertaking the installation.{" "}
-                <ul className="list-disc font-normal text-gray-600 pl-6">
+                <ul className="pl-6 font-normal text-gray-600 list-disc">
                   <li>
                     <p className="text-base font-bold">Gas geyser location</p>
                     <p>
@@ -912,11 +927,11 @@ const page = () => {
                   </li>
                 </ul>
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 How much do I save switching from an electric geyser to a gas
                 geyser?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 Save up to 40-50% on your monthly electricity bills!! With the
                 current electricity prices as well as the gas prices, the saving
                 for an average household family (4 people) with average use
@@ -934,40 +949,40 @@ const page = () => {
                 </Link>
                 read our blog to learn more.{" "}
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 Does a gas geyser make noise?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 A gas geyser makes extraordinarily little noise when in use.
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 What is the average use of gas when using a gas geyser?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 The average use for an average household family (4 people)
                 showering 5-10mins per day shower, twice a day, is estimated to
                 be 20kg of LPG a month
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 Who can I ask to install, service or maintain a gas geyser?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 US, Hotwater24! We only work with certified installers
                 registered with the LPG Association of South Africa. For safety
                 and quality purposes of the installation work performed, every
                 installation comes with a CoC (Certificate of Compliance) to
                 guarantee your safety.
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 What size cylinder is best for your gas geyser?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 We recommend that you use a 19kg+ cylinder
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 Why choose a gas geyser over a solar geyser?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 Although solar geysers work well and are very efficient at
                 heating water, there are times when either the demand for hot
                 water is greater than the capacity of your solar geyser,
@@ -976,18 +991,18 @@ const page = () => {
                 once a day), or for periods of bad or overcast conditions when
                 your solar geyser has not been able to produce enough hot water.
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 When switching to a gas geyser, do I need to get rid of my old
                 electrical geyser?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 NO! However, your electric geyser will need to be decommissioned
                 by a professional, registered and certified plumber.
               </article>
-              <p className="text-xl md:text-2xl font-medium text-slate-700 py-2">
+              <p className="py-2 text-xl font-medium md:text-2xl text-slate-700">
                 Can I convert my electrical geyser to a gas geyser?
               </p>
-              <article className="text-base text-gray-600 font-medium">
+              <article className="text-base font-medium text-gray-600">
                 NO!
               </article>
             </div>
