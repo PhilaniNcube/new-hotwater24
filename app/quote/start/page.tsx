@@ -46,7 +46,7 @@ const page = () => {
           us for unbeatable Gas Geyser prices and a reliable Gas Water Heating
           System for you and your family.
         </p> */}
-        <p className="px-8 text-sm font-bold text-center md:text-md lg:px-20 mt-2">
+        <p className="px-8 mt-2 text-sm font-bold text-center md:text-md lg:px-20">
           Please answer the following questions (takes less than 2 minutes of
           your time) and we will send you our expert recommendation!
         </p>
@@ -93,6 +93,7 @@ const page = () => {
         <div className="flex justify-center mb-12">
           <Link href="/quote" passHref>
             <button
+              type="button"
               // onClick={start}
               className="px-8 py-3 text-2xl font-medium text-center text-white rounded-full shadow-md bg-sky-500 hover:bg-sky-700 shadow-sky-400 hover:shadow"
             >
