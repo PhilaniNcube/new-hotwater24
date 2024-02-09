@@ -37,15 +37,7 @@ const page = () => {
           Let us help you choose your gas geyser that is suitable for your home!
         </h1>
 
-        {/* <p className="px-8 mb-2 text-sm text-center md:text-md lg:px-20">
-          Hotwater 24 are gas experts bringing hot water to homes 24/7 with Gas
-          Geyser solutions. Our expert team specialises in seamless Gas Geyser
-          installations, ensuring optimum efficiency and performance. Discover
-          competitive Gas Geyser installation prices tailored to your household
-          needs in a few minutes using our quick and easy questionnaire. Trust
-          us for unbeatable Gas Geyser prices and a reliable Gas Water Heating
-          System for you and your family.
-        </p> */}
+
         <p className="px-8 mt-2 text-sm font-bold text-center md:text-md lg:px-20">
           Please answer the following questions (takes less than 2 minutes of
           your time) and we will send you our expert recommendation!
@@ -89,6 +81,16 @@ const page = () => {
             <p className="px-3 py-8 text-sm text-center">Our Recommendation</p>
           </div>
         </div>
+
+            <p className="px-8 mb-2 text-sm text-center md:text-md lg:px-20">
+          Hotwater 24 are gas experts bringing hot water to homes 24/7 with Gas
+          Geyser solutions. Our expert team specialises in seamless Gas Geyser
+          installations, ensuring optimum efficiency and performance. Discover
+          competitive Gas Geyser installation prices tailored to your household
+          needs in a few minutes using our quick and easy questionnaire. Trust
+          us for unbeatable Gas Geyser prices and a reliable Gas Water Heating
+          System for you and your family.
+        </p>
 
         <div className="flex justify-center mb-12">
           <Link href="/quote" passHref>
