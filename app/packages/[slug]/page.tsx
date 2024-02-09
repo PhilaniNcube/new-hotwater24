@@ -20,7 +20,7 @@ export async function generateMetadata(
 	const previousImages = (await parent).openGraph?.images || [];
 
 	return {
-		// metadataBase: new URL("https://hotwater24.com"),
+		metadataBase: new URL("https://www.hotwater24.com"),
 		title: `${geyser.title} | Hotwater24`,
 		description: geyser.description,
 		keywords:
