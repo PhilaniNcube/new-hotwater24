@@ -52,8 +52,8 @@ const page = async () => {
                 height={768}
                 alt={article.title}
                 className={cn(
-                  "w-full  object-center object-cover",
-                  index === 0 ? "h-[500px]" : "aspect-video"
+                  "w-full object-center object-cover",
+                  index === 0 ? "" : "aspect-video"
                 )}
               />
               <div className="flex flex-col flex-1 w-full gap-2">
