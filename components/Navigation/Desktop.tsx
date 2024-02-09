@@ -32,7 +32,7 @@ type Props = {
 
 const Desktop = ({ packages, cities }: Props) => {
   return (
-    <section className="sticky top-0 left-0 right-0  hidden py-3 shadow-md lg:block bg-white/80 backdrop-blur-sm z-50">
+    <section className="sticky top-0 left-0 right-0 z-50 hidden py-3 shadow-md lg:block bg-white/80 backdrop-blur-sm">
       <nav className="container flex items-center justify-between">
         <div className="flex items-center gap-x-9">
           <Link href="/" passHref>
@@ -71,7 +71,7 @@ const Desktop = ({ packages, cities }: Props) => {
                       </NavigationMenuLink>
                     </li>
                     {packages.map((item) => (
-                      <li>
+                      <li key={item._id}>
                         <NavigationMenuItem>
                           <Link
                             href={`/packages/${item.slug}`}
@@ -121,7 +121,7 @@ const Desktop = ({ packages, cities }: Props) => {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-        <div className="flex gap-4 items-center">
+        <div className="flex items-center gap-4">
           <AreasSelector cities={cities} />
           <Link
             href="https://wa.me/27793414075?text=I'm%20interested%20in%20your%20products"

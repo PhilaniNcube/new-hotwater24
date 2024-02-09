@@ -28,8 +28,8 @@ const AreasSelector = ({ cities }: AreasProps) => {
   return (
     <div>
       <DropdownMenu>
-        <DropdownMenuTrigger>
-          <Button className="bg-brand text-white">Areas</Button>
+        <DropdownMenuTrigger asChild>
+          <Button className="text-white bg-brand">Areas</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <ScrollArea className="w-44 h-96">
