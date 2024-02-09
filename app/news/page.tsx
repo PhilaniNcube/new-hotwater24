@@ -42,7 +42,8 @@ const page = async () => {
         {news.map((article, index) => (
           <Link
             href={`/news/${article.slug}`}
-            className="first:col-span-2 @container col-span-1 "
+            className="first:col-span-2 @container col-span-1"
+            key={article._id}
           >
             <div className="flex flex-col gap-2">
               <Image
