@@ -21,14 +21,14 @@ export default function NewHero() {
 							/>
 							<div className="flex flex-col gap-2 justify-center items-center mt-4 min-[400px]:flex-row">
 								<Link
-									className="flex items-center justify-center h-12 text-sm text-white bg-red-600 rounded-full shadow-lg sm:w-44"
+									className="flex items-center justify-center h-12 px-4 text-sm text-white bg-red-600 rounded-full shadow-lg sm:w-fit min-w-[190px]"
 									href="/quote/start"
 									prefetch={false}
 								>
 									Get a Quote
 								</Link>
 								<Link
-									className="flex items-center justify-center h-12 text-sm text-white rounded-full shadow-lg bg-brand sm:w-44"
+									className="flex items-center justify-center h-12 px-4 text-sm text-white rounded-full shadow-lg bg-brand sm:w-fit min-w-[190px]"
 									href="/packages"
 								>
 									Choose your gas geyser

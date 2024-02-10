@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function WhatAreYouWaitingFor() {
   return (
     <section className="w-full px-8 py-12">
-      <div className="container flex items-center justify-center gap-4 p-6 bg-red-600 rounded-full shadow md:p-8 lg:p-12 ">
+      <div className="container flex flex-col items-center justify-center gap-4 p-6 bg-red-600 rounded-full shadow md:flex-row md:p-8 lg:p-12 ">
         <div className="space-y-3 text-center">
           <h2 className={cn("text-3xl text-white font-bold tracking-tighter md:text-4xl", antonio.className)}>
             What Are You Waiting For?

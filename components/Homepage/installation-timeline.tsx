@@ -19,7 +19,7 @@ export default function InstallationTimeline() {
       >
         How It Works
       </h2>
-      <div className="relative flex flex-col justify-between my-4 space-x-8 lg:flex-row">
+      <div className="relative flex flex-col justify-between gap-8 my-4 lg:flex-row">
         <div className="relative z-50 flex flex-col w-2/3 mb-8 space-y-4 rounded sm:w-1/2 lg:w-1/5">
           <div className="p-3 bg-red-600 rounded-full w-fit ">
             <HelpCircle className="w-20 h-20 text-white" />
