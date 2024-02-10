@@ -126,6 +126,11 @@ const geysers = {
       type: 'string'
     },
     {
+      name: 'price',
+      title: 'Geyser Price',
+      type: 'number',
+    },
+    {
       name: 'image',
       title: 'Geyser Image',
       type: 'image',

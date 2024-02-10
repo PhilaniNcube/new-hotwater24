@@ -11,12 +11,12 @@ const PackagesGrid = async () => {
   const packages = await getGeysers();
 
   return <div className="w-full">
-    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+    <section className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
       {packages.map((item, index) => {
         return (
           <div
             key={item._id}
-            className="relative group shadow hover:shadow-2xl hover:-translate-y-6 transition-all duration-300 ease-in-out rounded-lg"
+            className="relative transition-all duration-300 ease-in-out rounded-lg shadow group hover:shadow-2xl hover:-translate-y-6"
           >
             <Link
               href={`/packages/${item.slug}`}
@@ -24,7 +24,7 @@ const PackagesGrid = async () => {
             >
               <span className="sr-only">View</span>
             </Link>
-            <div className="w-full flex justify-center items-center">
+            <div className="flex items-center justify-center w-full">
               <Image
                 alt={item.title}
                 className="object-cover w-full md:w-3/4"
@@ -34,7 +34,7 @@ const PackagesGrid = async () => {
               />
             </div>
 
-            <div className="bg-white p-4 dark:bg-zinc-950">
+            <div className="p-4 bg-white dark:bg-zinc-950">
               <h3
                 className={cn(
                   "font-semibold text-lg md:text-xl text-center",
@@ -49,11 +49,8 @@ const PackagesGrid = async () => {
                   antonio.className
                 )}
               >
-                {formatCurrency(
-                  item.geyser.price +
-                    item.plumbing.price +
-                    item.installation.price +
-                    item.certificateOfCompliance.price
+               From{" "} {formatCurrency(
+                  item.price
                 )}
               </h4>
               <h3
