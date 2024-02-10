@@ -31,8 +31,8 @@ const Mobile = ({ packages, cities }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="flex shadow sticky top-0 left-0 right-0 lg:hidden bg-white">
-      <div className="container py-3 flex items-center justify-between">
+    <header className="sticky top-0 left-0 right-0 flex bg-white shadow lg:hidden">
+      <div className="container flex items-center justify-between py-3">
         <Link href="/">
           <div className="flex items-center space-x-2 cursor-pointer">
             <Image
@@ -56,7 +56,7 @@ const Mobile = ({ packages, cities }: Props) => {
               <SheetHeader>
                 <SheetTitle>Menu</SheetTitle>
               </SheetHeader>
-              <div className="px-4 py-2 flex flex-col items-start space-y-4">
+              <div className="flex flex-col items-start px-4 py-2 space-y-4">
                 <Link href="/" passHref>
                   <Button onClick={() => setIsOpen(false)} variant="link">
                     Home
@@ -70,6 +70,11 @@ const Mobile = ({ packages, cities }: Props) => {
                 <Link href="/who-we-are" passHref>
                   <Button onClick={() => setIsOpen(false)} variant="link">
                     Who we are
+                  </Button>
+                </Link>
+                <Link href="/payment-plan" passHref>
+                  <Button onClick={() => setIsOpen(false)} variant="link">
+                    Payment Plan
                   </Button>
                 </Link>
                 <Link href="/why-us" passHref>
