@@ -52,8 +52,8 @@ const Desktop = ({ packages, cities }: Props) => {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Our Packages</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid  gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.70fr_1fr]">
-                    <li className="row-span-5">
+                  <ul className="grid gap-3 p-6 ">
+                    {/* <li className="row-span-5">
                       <NavigationMenuLink asChild>
                         <Link
                           className="flex flex-col justify-end w-full h-full p-6 no-underline rounded-md outline-none select-none bg-gradient-to-b from-muted/50 to-muted focus:shadow-md"
@@ -69,14 +69,15 @@ const Desktop = ({ packages, cities }: Props) => {
                           </p>
                         </Link>
                       </NavigationMenuLink>
-                    </li>
+                    </li> */}
                     {packages.map((item) => (
-                      <li key={item._id}>
-                        <NavigationMenuItem>
+                      <li key={item._id} className="w-full">
+                        <NavigationMenuItem className="w-full">
                           <Link
                             href={`/packages/${item.slug}`}
                             legacyBehavior
                             passHref
+                            className="w-full"
                           >
                             <NavigationMenuLink
                               className={navigationMenuTriggerStyle()}
