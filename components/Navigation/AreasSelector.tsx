@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ScrollArea } from "../ui/scroll-area";
+import { areas } from "@/utils/areas";
 
 type AreasProps = {
   cities: {
@@ -24,16 +25,18 @@ type AreasProps = {
   }[]
 };
 
+
+
 const AreasSelector = ({ cities }: AreasProps) => {
   return (
     <div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button className="text-white bg-brand">Areas</Button>
+          <Button className="text-white bg-brand">Areas Of Operation</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <ScrollArea className="w-44 h-96">
-            {cities.map((city) => (
+          <ScrollArea className="w-44">
+            {areas.map((city) => (
               <Link key={city.id} href={`/areas/${city.slug}`} passHref>
                 <DropdownMenuItem>{city.name}</DropdownMenuItem>
               </Link>

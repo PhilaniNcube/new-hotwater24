@@ -31,11 +31,11 @@ export default function PackageDetails({ geyser }: { geyser: Geyser }) {
 						className="px-4 py-3 text-4xl font-bold text-white bg-red-600 w-fit"
 						suppressHydrationWarning
 					>
-						From: {formatCurrency(geyser.price)}
+						From: {formatCurrency(geyser.price)}*
 					</h2>
 					<div>
 						<p>
-							{geyser.description} - <br /> Outlets: {geyser.outlets}
+							{geyser.description}
 						</p>
 						{/* <Table>
             <TableBody>
