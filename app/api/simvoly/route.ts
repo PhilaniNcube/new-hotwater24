@@ -16,7 +16,7 @@ try {
     Authorization:`Bearer ${process.env.SIMVOLY_API}`,
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Headers": "*",
-          "Access-Control-Allow-Methods": "POST",
+          "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE",
           "Access-Control-Max-Age": "3600",
   },
   body: JSON.stringify({

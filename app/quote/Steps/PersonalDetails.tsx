@@ -252,24 +252,24 @@ const PersonalDetails = ({
 
 
       const crmRes = await fetch(url, {
-        method: "POST",
+							method: "POST",
 
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Headers": "*",
-          "Access-Control-Allow-Methods": "POST",
-          "Access-Control-Max-Age": "3600",
-      },
-        body: JSON.stringify({
-          first_name: firstName,
-          last_name: lastName,
-          email: email,
-          address: "",
-          city: city,
-          phone: telephoneNumber,
-        }),
-      });
+							headers: {
+								"Content-Type": "application/json",
+								"Access-Control-Allow-Origin": "*",
+								"Access-Control-Allow-Headers": "*",
+								"Access-Control-Allow-Methods": "GET,POST,PUT,DELETE",
+								"Access-Control-Max-Age": "3600",
+							},
+							body: JSON.stringify({
+								first_name: firstName,
+								last_name: lastName,
+								email: email,
+								address: "",
+								city: city,
+								phone: telephoneNumber,
+							}),
+						});
 
       const result = await crmRes.json();
       console.log(result);
