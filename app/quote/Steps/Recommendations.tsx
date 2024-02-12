@@ -197,7 +197,7 @@ const Recommendations = ({
 								<p className="py-2 text-2xl font-semibold text-center text-red-600">
 									From: {formatCurrency(displayedGeyser.price)}
 								</p>
-								<p className="py-2 text-sm font-semibold text-center text-red-600">
+								<p className="py-2 text-sm font-semibold text-center text-slate-800">
 									{displayedGeyser.composition}
 								</p>
 							</div>
