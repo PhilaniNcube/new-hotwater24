@@ -693,7 +693,7 @@ body {font-family: 'Poppins', sans-serif;}
         <td style="padding:15px 0px 5px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f; font-size: 30px"><strong>${
           flowRate <= 45
             ? formatter.format(
-                geyserPrice + installationCost + plumbingCost
+                geyserPrice
               )
             : "Awaiting calculations"
         }*</strong></span></div><div></div></div></td>
@@ -814,7 +814,7 @@ body {font-family: 'Poppins', sans-serif;}
           <td style="padding:0px;margin:0px;border-spacing:0;"><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="1e19420d-1d9e-4ea6-ab69-d9981acd1b3f" data-mc-module-version="2019-10-22">
     <tbody>
       <tr>
-        <td style="padding:18px 0px 18px 0px; line-height:15px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: inherit"><span style="color: #80817f; font-size: 10px">*This total estimated cost is based on the information as provided. It includes the cost for the gas geyser, gas installation and plumbing work and excludes the cost for a gas cage, gas cylinder(s) and gas supply.</span></div><div></div></div></td>
+        <td style="padding:18px 0px 18px 0px; line-height:15px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: inherit"><span style="color: #80817f; font-size: 10px"> *This total estimated cost is based on the information as provided. It includes the cost for the gas geyser, gas installation, plumbing work and CoC. It excludes the cost for a gas cage, gas cylinder(s) and gas supply.</span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
