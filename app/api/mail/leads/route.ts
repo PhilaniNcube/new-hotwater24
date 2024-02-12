@@ -59,7 +59,7 @@ export async function POST(req:NextRequest) {
     from: "info@hotwater24.com", // Change to your verified sender
     cc: email,
     subject: "Hotwater24 | Your size gas geyser",
-    text: `Thank you for answering questions about your property and gas geyser needs. We will be in touch shortly`,
+    text: "Thank you for answering questions about your property and gas geyser needs. We will be in touch shortly",
     html: `
    <!--user entered Head Start--><link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet"><style>
 body {font-family: 'Poppins', sans-serif;}
