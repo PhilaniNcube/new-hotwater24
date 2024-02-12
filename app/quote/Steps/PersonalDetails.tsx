@@ -129,16 +129,16 @@ const PersonalDetails = ({
 
     analytics.track("generate_lead");
 
-    if(quoteInfo.streetAddress === '') {
+    // if(quoteInfo.streetAddress === '') {
 
-      setQuoteInfo({
-        ...quoteInfo,
-        streetAddress: data[0].description.split(",")[0],
-        suburb: data[0].description.split(",")[1].trim(),
-        city: data[0].description.split(",")[2].trim(),
-      });
+    //   setQuoteInfo({
+    //     ...quoteInfo,
+    //     streetAddress: data[0].description.split(",")[0],
+    //     suburb: data[0].description.split(",")[1].trim(),
+    //     city: data[0].description.split(",")[2].trim(),
+    //   });
 
-    }
+    // }
 
     try {
       const quote = await supabase
@@ -198,57 +198,57 @@ const PersonalDetails = ({
       console.log("quote", quote);
 
       if (quote) {
-        const mail = await fetch(`/api/mail/leads`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            houseType: houseType,
-            ownership: ownership,
-            gasSupply: gasSupply,
-            gasStove: gasStove,
-            gasWaterHeating: gasWaterHeating,
-            gasHeating: gasHeating,
-            otherGasUse: otherGasUse,
-            locateOutside: locateOutside,
-            gasGeyser: gasGeyser,
-            electricGeyser: electricGeyser,
-            solarGeyser: solarGeyser,
-            otherGeyser: otherGeyser,
-            standardShower: standardShower,
-            rainShower: rainShower,
-            bathtub: bathtub,
-            kitchenSink: kitchenSink,
-            bathroomSink: bathroomSink,
-            dishwasher: dishwasher,
-            washingmachine: washingmachine,
-            flowRate: flowRate,
-            offGrid: offGrid,
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            streetAddress: streetAddress,
-            suburb: suburb,
-            city: city,
-            telephoneNumber: telephoneNumber,
-            postalCode: postalCode,
-            completeSolution: completeSolution,
-            product_id: product_id || null,
-            installation: installation,
-            contactDay: contactDay,
-            contactTime: contactTime,
-            geyserPrice: geyserPrice,
-            monthlySavings: monthlySavings,
-            yearlySavings: yearlySavings,
-            geyserSize: geyserSize,
-            installationCost: installationCost,
-            plumbingCost: plumbingCost,
-            comments: comments,
-            financing: financing,
-          }),
-        });
+        const mail = await fetch("/api/mail/leads", {
+									method: "POST",
+									headers: { "Content-Type": "application/json" },
+									body: JSON.stringify({
+										houseType: houseType,
+										ownership: ownership,
+										gasSupply: gasSupply,
+										gasStove: gasStove,
+										gasWaterHeating: gasWaterHeating,
+										gasHeating: gasHeating,
+										otherGasUse: otherGasUse,
+										locateOutside: locateOutside,
+										gasGeyser: gasGeyser,
+										electricGeyser: electricGeyser,
+										solarGeyser: solarGeyser,
+										otherGeyser: otherGeyser,
+										standardShower: standardShower,
+										rainShower: rainShower,
+										bathtub: bathtub,
+										kitchenSink: kitchenSink,
+										bathroomSink: bathroomSink,
+										dishwasher: dishwasher,
+										washingmachine: washingmachine,
+										flowRate: flowRate,
+										offGrid: offGrid,
+										firstName: firstName,
+										lastName: lastName,
+										email: email,
+										streetAddress: streetAddress,
+										suburb: suburb,
+										city: city,
+										telephoneNumber: telephoneNumber,
+										postalCode: postalCode,
+										completeSolution: completeSolution,
+										product_id: product_id || null,
+										installation: installation,
+										contactDay: contactDay,
+										contactTime: contactTime,
+										geyserPrice: geyserPrice,
+										monthlySavings: monthlySavings,
+										yearlySavings: yearlySavings,
+										geyserSize: geyserSize,
+										installationCost: installationCost,
+										plumbingCost: plumbingCost,
+										comments: comments,
+										financing: financing,
+									}),
+								});
       }
 
-      const url = new URL(`https://www.hotwater24.com/api/simvoly`);
+      const url = new URL("https://www.hotwater24.com/api/simvoly");
 
 
       const crmRes = await fetch(url, {
@@ -265,7 +265,7 @@ const PersonalDetails = ({
           first_name: firstName,
           last_name: lastName,
           email: email,
-          address: streetAddress,
+          address: "",
           city: city,
           phone: telephoneNumber,
         }),
@@ -291,10 +291,10 @@ const PersonalDetails = ({
       onSubmit={handleSubmit}
       className="max-w-6xl px-6 mx-auto my-16 lg:my-8 lg:px-12"
     >
-      <Script
+      {/* <Script
         defer={true}
         src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places&callback=init`}
-      ></Script>
+      ></Script> */}
       <h1 className="mt-8 font-sans text-2xl font-bold text-center">
         Personal contact information
       </h1>
@@ -386,7 +386,7 @@ const PersonalDetails = ({
         </div>
 
         <div className="flex flex-col my-4 md:flex-row md:justify-between md:space-x-24">
-          <div className="flex flex-col w-full md:w-1/2">
+          {/* <div className="flex flex-col w-full md:w-1/2">
             <Label className="font-bold text-md" htmlFor="streetAddress">
               Street address
             </Label>
@@ -403,7 +403,7 @@ const PersonalDetails = ({
                 })
               }
             />
-          </div>
+          </div> */}
 
           {/* {ready ? (
             <div className="relative flex flex-col w-full md:w-1/2 isolate">
@@ -461,7 +461,7 @@ const PersonalDetails = ({
 
           {/* Places */}
 
-          <div className="flex flex-col w-full md:w-1/2">
+          {/* <div className="flex flex-col w-full md:w-1/2">
             <Label className="font-bold text-md" htmlFor="suburb">
               Suburb
             </Label>
@@ -478,7 +478,7 @@ const PersonalDetails = ({
                 })
               }
             />
-          </div>
+          </div> */}
         </div>
 
         <div className="flex flex-col my-4 md:flex-row md:justify-between md:space-x-24">
@@ -501,7 +501,7 @@ const PersonalDetails = ({
             />
           </div>
 
-          <div className="flex flex-col w-full">
+          {/* <div className="flex flex-col w-full">
             <Label className="font-bold text-md" htmlFor="postalCode">
               Postal code
             </Label>
@@ -518,7 +518,7 @@ const PersonalDetails = ({
                 })
               }
             />
-          </div>
+          </div> */}
         </div>
 
         {/****
@@ -577,14 +577,14 @@ const PersonalDetails = ({
         *** */}
 
         <div className="flex flex-col w-full">
-          <Label className="font-bold text-md" htmlFor="comments">
+          {/* <Label className="font-bold text-md" htmlFor="comments">
             Comments{" "}
             <span className="ml-2 text-xs">
               (please may you add any information/ questions/ remarks you would
               like to share with us in order to support your enquiry)
             </span>
-          </Label>
-          <Textarea
+          </Label> */}
+          {/* <Textarea
             rows={4}
             name="comments"
             className="py-2 pl-4 text-base text-gray-600 bg-white border border-gray-300 rounded-md focus:outline-none focus:border-gray-700 "
@@ -595,7 +595,7 @@ const PersonalDetails = ({
                 comments: e.target.value,
               })
             }
-          ></Textarea>
+          /> */}
           <p className="my-2 text-xs">
             By filling in this form you give us consent to email you – but you
             can unsubscribe at any time
@@ -611,7 +611,9 @@ const PersonalDetails = ({
           quoteInfo.city !== "" ? (
             <Fragment>
               {" "}
-              <svg
+              {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+               <svg
                 onClick={prevPage}
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-16 h-16 text-white bg-red-500 rounded-full shadow-lg cursor-pointer shadow-red-500 hover:shadow-md hover:bg-red-600"

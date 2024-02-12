@@ -9,16 +9,20 @@ const { email, phone, first_name, last_name, address, city } = await req.json()
 
 try {
 
-  const res = await fetch(`https://salomonpiena-27.elitefunnels.com/api/site/contacts`, {
+  const res = await fetch("https://salomonpiena-27.elitefunnels.com/api/site/contacts", {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization':`Bearer ${process.env.SIMVOLY_API}`
+    Authorization:`Bearer ${process.env.SIMVOLY_API}`,
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "*",
+          "Access-Control-Allow-Methods": "POST",
+          "Access-Control-Max-Age": "3600",
   },
   body: JSON.stringify({
     name: `${first_name} ${last_name}`,
     email: email,
-    address: address,
+    address: address || "",
     city: city,
     phone:phone,
     properties: [{
@@ -32,19 +36,20 @@ try {
 
   console.log({data})
 
-  if (data.success === false) {
-    throw new Error(data.message)
+  if (!data || data.success === false  ) {
+   return NextResponse.json({message: 'There was an error saving data to Simvoly',})
   }
 
   return NextResponse.json({message: 'success', data: data})
 
 
 } catch (error) {
-  console.log(error)
+  console.log(error, "Server Error")
   return NextResponse.json({message: 'There was an error', error: error})
 
 } finally {
-  return NextResponse.json({message: 'success'})
+  // biome-ignore lint/correctness/noUnsafeFinally: <explanation>
+return  NextResponse.json({message: 'success'})
 }
 
 
