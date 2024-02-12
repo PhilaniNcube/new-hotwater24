@@ -35,7 +35,7 @@ export default function Confirm({
               />
             </div>
           </div>
-          <div className="absolute top-0 hidden w-full bg-gray-100 md:h-96 md:block lg:hidden"></div>
+          <div className="absolute top-0 hidden w-full bg-gray-100 md:h-96 md:block lg:hidden"/>
           <div className="w-full h-full lg:hidden">
             <img
               src="/images/basin_square.jpg"
@@ -46,17 +46,17 @@ export default function Confirm({
         </div>
         <div className="flex items-center p-8 bg-gray-100 lg:w-1/2 lg:ml-12 lg:p-14">
           <div>
-            <h1 className="w-full text-4xl font-semibold text-gray-800 capitalize  md:w-8/12 lg:w-11/12 sm:text-5xl">
+            <h1 className="w-full text-4xl font-semibold text-gray-800 capitalize md:w-8/12 lg:w-11/12 sm:text-5xl">
               THANK YOU {quoteInfo.firstName}!
             </h1>
-            <p className="mt-5 text-base leading-normal text-gray-600  md:w-9/12 lg:w-11/12 xl:w-10/12 2xl:9/12">
+            <p className="mt-5 text-base leading-normal text-gray-600 md:w-9/12 lg:w-11/12 xl:w-10/12 2xl:9/12">
               We have taken note of your interest for a gas geyser installation
               for your property. You have received an email with the summary of
               the information you entered. We will be contacting you within the
               next 48 hours and send you our proposal, which entails all the
               initial information you need (including an initial cost estimate).
             </p>
-            <p className="mt-5 text-base leading-normal text-gray-600  md:w-9/12 lg:w-11/12 xl:w-10/12 2xl:9/12">
+            <p className="mt-5 text-base leading-normal text-gray-600 md:w-9/12 lg:w-11/12 xl:w-10/12 2xl:9/12">
               If you did not receive the confirmation e-mail, please check your
               spam folder.
             </p>

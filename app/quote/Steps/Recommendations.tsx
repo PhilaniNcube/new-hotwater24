@@ -106,27 +106,27 @@ const Recommendations = ({
 
   useEffect(() => {
 			if (quoteInfo.flowRate <= 9) {
-				setGeyserPrice(4500);
+				setGeyserPrice(displayedGeyser?.price || 4500);
 				setInstallation(5500);
 				setPlumbing(3750);
 				setGeyserSize(8);
 			} else if (quoteInfo.flowRate <= 12) {
-				setGeyserPrice(7200);
+				setGeyserPrice(displayedGeyser?.price || 7200);
 				setInstallation(5500);
 				setPlumbing(3750);
 				setGeyserSize(12);
 			} else if (quoteInfo.flowRate <= 18) {
-				setGeyserPrice(8700);
+				setGeyserPrice(displayedGeyser?.price || 8700);
 				setInstallation(5850);
 				setPlumbing(3750);
 				setGeyserSize(16);
 			} else if (quoteInfo.flowRate <= 23) {
-				setGeyserPrice(12950);
+				setGeyserPrice(displayedGeyser?.price || 12950);
 				setInstallation(8050);
 				setPlumbing(3950);
 				setGeyserSize(20);
 			} else if (quoteInfo.flowRate <= 45) {
-				setGeyserPrice(14950);
+				setGeyserPrice(displayedGeyser?.price || 14950);
 				setInstallation(8050);
 				setPlumbing(3950);
 				setGeyserSize(26);
