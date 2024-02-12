@@ -16,6 +16,7 @@ export type Geyser = {
   _createdAt: Date
   title: string
   price: number
+  composition: string
   slug: string
   subTitle: string
   description: string

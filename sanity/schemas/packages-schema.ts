@@ -20,6 +20,11 @@ const geysers = {
       type: 'text',
     },
     {
+      name: 'composition',
+      title: 'Composition',
+      type: 'string'
+    },
+    {
       name: 'outlets',
       title: 'How many outlets',
       type: 'string',

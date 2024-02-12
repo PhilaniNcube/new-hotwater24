@@ -33,10 +33,10 @@ export default function PackageDetails({ geyser }: { geyser: Geyser }) {
 					>
 						From: {formatCurrency(geyser.price)}*
 					</h2>
+
 					<div>
-						<p>
-							{geyser.description}
-						</p>
+						<p>{geyser.description}</p>
+						<p>{geyser.composition}</p>
 						{/* <Table>
             <TableBody>
               <TableRow>
@@ -78,9 +78,7 @@ export default function PackageDetails({ geyser }: { geyser: Geyser }) {
 					</div>
 					<h2 className="mt-4 text-2xl font-bold">Specifications</h2>
 					<PortableText value={geyser.specifications} />
-					<p className="font-semibold">
-						Warranty: {geyser.warranty}
-					</p>
+					<p className="font-semibold">Warranty: {geyser.warranty}</p>
 					<Table>
 						<TableHeader>
 							<TableRow>
