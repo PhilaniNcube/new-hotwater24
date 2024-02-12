@@ -55,9 +55,7 @@ function LeadCard({ quote }:LeadCardProps) {
                         ` Estimated Cost:
                       ${formatter.format(
                         roundUp(
-                          quote.geyserPrice +
-                            quote.installationCost +
-                            quote.plumbingCost
+                          quote.geyserPrice
                         )
                       )}`}
                     </h3>
