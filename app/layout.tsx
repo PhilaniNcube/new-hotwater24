@@ -52,7 +52,6 @@ process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
 
   return (
 			<html lang="en">
-				<GoogleTagManager gtmId="GTM-TDQ62BT" />
 				<body className={lato.className}>
 					<GasGenius />
 					{/* biome-ignore lint/style/noNonNullAssertion: <explanation> */}
@@ -62,6 +61,7 @@ process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
 					{children}
 					<Footer />
 				</body>
+				<GoogleTagManager gtmId="GTM-TDQ62BT" />
 			</html>
 		);
 }
