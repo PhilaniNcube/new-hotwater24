@@ -61,7 +61,7 @@ process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
 					{children}
 					<Footer />
 				</body>
-				<GoogleTagManager gtmId="GTM-TDQ62BT" />
+				<GoogleTagManager gtmId="GTM-WWK8FMB" />
 			</html>
 		);
 }
