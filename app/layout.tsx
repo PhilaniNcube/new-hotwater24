@@ -60,8 +60,8 @@ process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
 					<Mobile packages={geysers} cities={data!} />
 					{children}
 					<Footer />
+				  <GoogleTagManager gtmId="GTM-WWK8FMB" />
 				</body>
-				<GoogleTagManager gtmId="GTM-WWK8FMB" />
 			</html>
 		);
 }
