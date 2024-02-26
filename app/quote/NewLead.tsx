@@ -15,6 +15,7 @@ import WaterOutlets from "./Steps/WaterOutlests";
 import OffGridStep from "./Steps/OffGridStep";
 import analytics from "@/utils/analytics";
 import { Geyser } from "@/sanity/types";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 export type LeadStageProps = {
   quoteInfo: {
@@ -67,7 +68,8 @@ export type LeadStageProps = {
   page: number;
   nextPage: () => void;
   prevPage: () => void;
-  setQuoteInfo: (quoteInfo: any) => void;
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+setQuoteInfo: (quoteInfo: any) => void;
   setPage?: (page: number) => void;
 
 };
@@ -130,7 +132,8 @@ const NewLead = ({geysers}:{geysers: Geyser[]}) => {
 
       const nextPage = () => {
         if (page === 13) return;
-        analytics.track(`step_${page}`);
+
+        sendGTMEvent({ event: `step_${page}`});
         setPage((page) => page + 1);
       };
       const prevPage = () => {

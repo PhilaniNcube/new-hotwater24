@@ -89,242 +89,255 @@ const WaterOutlets = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
   // flowRate: 0,
 
   const calculateFlowRate = () => {
-    let showerFlow = quoteInfo.standardShower * 6.5;
-    let rainShowerFlow = quoteInfo.rainShower * 12.5;
-    let kitchenSinkFlow = quoteInfo.kitchenSink * 5;
-    let bathtubFlow = quoteInfo.bathtub * 5;
-    let bathroomSinkFlow = quoteInfo.bathroomSink * 2.5;
+    const showerFlow = quoteInfo.standardShower * 6.5;
+    const rainShowerFlow = quoteInfo.rainShower * 12.5;
+    const kitchenSinkFlow = quoteInfo.kitchenSink * 5;
+    const bathtubFlow = quoteInfo.bathtub * 5;
+    const bathroomSinkFlow = quoteInfo.bathroomSink * 2.5;
     // let dishwasherFlow = quoteInfo.dishwasher * 10.02;
     //  let washingmachineFlow = quoteInfo.washingmachine * 10.02;
 
-    let rate =
+    const rate =
       showerFlow +
       rainShowerFlow +
       bathtubFlow +
       bathroomSinkFlow +
       kitchenSinkFlow;
 
-    let totalFowRate = rate * 0.8;
+    const totalFowRate = rate * 0.8;
 
     setQuoteInfo({ ...quoteInfo, flowRate: +totalFowRate.toFixed(2) });
   };
 
   return (
-    <motion.div
-       transition={{duration: 0.3}}
-        key="outlets"
-        initial={{ x: '100%' }}
-        animate={{ x: 0 }}
-        exit={{ x: '-100%' }}
-    className="max-w-6xl mx-auto my-16">
-      <h1 className="mt-8 font-sans text-center font-bold text-2xl">
-        Warm water outlets
-      </h1>
+			<motion.div
+				transition={{ duration: 0.3 }}
+				key="outlets"
+				initial={{ x: "100%" }}
+				animate={{ x: 0 }}
+				exit={{ x: "-100%" }}
+				className="max-w-6xl mx-auto my-16"
+			>
+				<h1 className="mt-8 font-sans text-2xl font-bold text-center">
+					Warm water outlets
+				</h1>
 
-      <p className="py-3 text-center">
-        How many of these warm water outlets do you have in your house?
-      </p>
+				<p className="py-3 text-center">
+					How many of these warm water outlets do you have in your house?
+				</p>
 
-      <div className="py-8 max-w-3xl mx-auto flex flex-col items-center md:flex-row md:justify-between justify-center md:flex-wrap gap-y-8">
-        <div className="relative h-[200px] w-[230px] rounded shadow-lg bg-gray-100 flex flex-col items-center justify-center hover:shadow-md cursor-pointer">
-          <img className="h-16 w-16" alt="" src="/images/icons/shower.svg" />
-          <p className="text-lg text-center text-sky-500 font-bold">
-            Standard shower
-          </p>
-          <div className="flex flex-row justify-between items-center h-10 rounded-lg relative bg-transparent mt-1">
-            <button
-              disabled={quoteInfo.standardShower === 0}
-              onClick={decrementStandardShower}
-              data-action="decrement"
-              className=" bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-l cursor-pointer outline-none"
-            >
-              <span className="m-auto text-2xl font-thin">−</span>
-            </button>
-            <input
-              type="number"
-              onChange={(e) =>
-                setQuoteInfo({ ...quoteInfo, standardShower: e.target.value })
-              }
-              value={quoteInfo.standardShower}
-              className="focus:outline-none text-center w-full hidden  font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default items-center text-gray-700  outline-none"
-              name="custom-input-number"
-            ></input>
-            <p className="h-10 w-10 flex justify-center items-center">
-              {quoteInfo.standardShower}
-            </p>
-            <button
-              data-action="increment"
-              onClick={incrementStandardShower}
-              className="bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-r cursor-pointer"
-            >
-              <span className="m-auto text-2xl font-thin">+</span>
-            </button>
-          </div>
-        </div>
-        <div className="relative h-[200px] w-[230px] rounded shadow-lg bg-gray-100 flex flex-col items-center justify-center hover:shadow-md cursor-pointer">
-          <img
-            className="h-16 w-16"
-            alt=""
-            src="/images/icons/rainshower.svg"
-          />
-          <p className="text-lg text-center text-sky-500 font-bold">
-            Rain shower
-          </p>
-          <div className="flex flex-row h-10 w-32 rounded-lg relative bg-transparent mt-1">
-            <button
-              disabled={quoteInfo.rainShower === 0}
-              onClick={decrementRainShower}
-              data-action="decrement"
-              className=" bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-l cursor-pointer outline-none"
-            >
-              <span className="m-auto text-2xl font-thin">−</span>
-            </button>
-            <input
-              type="number"
-              onChange={(e) =>
-                setQuoteInfo({ ...quoteInfo, rainShower: e.target.value })
-              }
-              className="focus:outline-none text-center w-full  font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default items-center text-gray-700 hidden  outline-none"
-              name="custom-input-number"
-              value={quoteInfo.rainShower}
-            ></input>
-            <p className="h-10 w-10 flex justify-center items-center">
-              {quoteInfo.rainShower}
-            </p>
-            <button
-              data-action="increment"
-              onClick={incrementRainShower}
-              className="bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-r cursor-pointer"
-            >
-              <span className="m-auto text-2xl font-thin">+</span>
-            </button>
-          </div>
-        </div>
+				<div className="flex flex-col items-center justify-center max-w-3xl py-8 mx-auto md:flex-row md:justify-between md:flex-wrap gap-y-8">
+					<div className="relative h-[200px] w-[230px] rounded shadow-lg bg-gray-100 flex flex-col items-center justify-center hover:shadow-md cursor-pointer">
+						<img className="w-16 h-16" alt="" src="/images/icons/shower.svg" />
+						<p className="text-lg font-bold text-center text-sky-500">
+							Standard shower
+						</p>
+						<div className="relative flex flex-row items-center justify-between h-10 mt-1 bg-transparent rounded-lg">
+							<button
+                type="button"
+								disabled={quoteInfo.standardShower === 0}
+								onClick={decrementStandardShower}
+								data-action="decrement"
+								className="w-10 h-full text-gray-600 bg-transparent rounded-l outline-none cursor-pointer hover:text-gray-700 hover:bg-gray-400"
+							>
+								<span className="m-auto text-2xl font-thin">−</span>
+							</button>
+							<input
+								type="number"
+								onChange={(e) =>
+									setQuoteInfo({ ...quoteInfo, standardShower: e.target.value })
+								}
+								value={quoteInfo.standardShower}
+								className="items-center hidden w-full font-semibold text-center text-gray-700 outline-none focus:outline-none text-md hover:text-black focus:text-black md:text-basecursor-default"
+								name="custom-input-number"
+							/>
+							<p className="flex items-center justify-center w-10 h-10">
+								{quoteInfo.standardShower}
+							</p>
+							<button
+                type="button"
+								data-action="increment"
+								onClick={incrementStandardShower}
+								className="w-10 h-full text-gray-600 bg-transparent rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400"
+							>
+								<span className="m-auto text-2xl font-thin">+</span>
+							</button>
+						</div>
+					</div>
+					<div className="relative h-[200px] w-[230px] rounded shadow-lg bg-gray-100 flex flex-col items-center justify-center hover:shadow-md cursor-pointer">
+						<img
+							className="w-16 h-16"
+							alt=""
+							src="/images/icons/rainshower.svg"
+						/>
+						<p className="text-lg font-bold text-center text-sky-500">
+							Rain shower
+						</p>
+						<div className="relative flex flex-row w-32 h-10 mt-1 bg-transparent rounded-lg">
+							<button
+                type="button"
+								disabled={quoteInfo.rainShower === 0}
+								onClick={decrementRainShower}
+								data-action="decrement"
+								className="w-10 h-full text-gray-600 bg-transparent rounded-l outline-none cursor-pointer hover:text-gray-700 hover:bg-gray-400"
+							>
+								<span className="m-auto text-2xl font-thin">−</span>
+							</button>
+							<input
+								type="number"
+								onChange={(e) =>
+									setQuoteInfo({ ...quoteInfo, rainShower: e.target.value })
+								}
+								className="items-center hidden w-full font-semibold text-center text-gray-700 outline-none focus:outline-none text-md hover:text-black focus:text-black md:text-basecursor-default"
+								name="custom-input-number"
+								value={quoteInfo.rainShower}
+							/>
+							<p className="flex items-center justify-center w-10 h-10">
+								{quoteInfo.rainShower}
+							</p>
+							<button
+								type="button"
+								data-action="increment"
+								onClick={incrementRainShower}
+								className="w-10 h-full text-gray-600 bg-transparent rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400"
+							>
+								<span className="m-auto text-2xl font-thin">+</span>
+							</button>
+						</div>
+					</div>
 
-        <div className="relative h-[200px] w-[230px] rounded shadow-lg bg-gray-100 flex flex-col items-center justify-center hover:shadow-md cursor-pointer">
-          <img className="h-16 w-16" alt="" src="/images/icons/bath.svg" />
-          <p className="text-lg text-center text-sky-500 font-bold">Bathtubs</p>
-          <div className="flex flex-row h-10 w-32 rounded-lg relative bg-transparent mt-1">
-            <button
-              disabled={quoteInfo.bathtub === 0}
-              onClick={decrementBathtub}
-              data-action="decrement"
-              className=" bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-l cursor-pointer outline-none"
-            >
-              <span className="m-auto text-2xl font-thin">−</span>
-            </button>
-            <input
-              type="number"
-              onChange={(e) =>
-                setQuoteInfo({ ...quoteInfo, bathtub: e.target.value })
-              }
-              className="focus:outline-none text-center w-full  font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default hidden items-center text-gray-700  outline-none"
-              name="custom-input-number"
-              value={quoteInfo.bathtub}
-            ></input>
-            <p className="h-10 w-10 flex justify-center items-center">
-              {quoteInfo.bathtub}
-            </p>
-            <button
-              data-action="increment"
-              onClick={incrementBathtub}
-              className="bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-r cursor-pointer"
-            >
-              <span className="m-auto text-2xl font-thin">+</span>
-            </button>
-          </div>
-        </div>
+					<div className="relative h-[200px] w-[230px] rounded shadow-lg bg-gray-100 flex flex-col items-center justify-center hover:shadow-md cursor-pointer">
+						<img className="w-16 h-16" alt="" src="/images/icons/bath.svg" />
+						<p className="text-lg font-bold text-center text-sky-500">
+							Bathtubs
+						</p>
+						<div className="relative flex flex-row w-32 h-10 mt-1 bg-transparent rounded-lg">
+							<button
+								type="button"
+								disabled={quoteInfo.bathtub === 0}
+								onClick={decrementBathtub}
+								data-action="decrement"
+								className="w-10 h-full text-gray-600 bg-transparent rounded-l outline-none cursor-pointer hover:text-gray-700 hover:bg-gray-400"
+							>
+								<span className="m-auto text-2xl font-thin">−</span>
+							</button>
+							<input
+								type="number"
+								onChange={(e) =>
+									setQuoteInfo({ ...quoteInfo, bathtub: e.target.value })
+								}
+								className="items-center hidden w-full font-semibold text-center text-gray-700 outline-none focus:outline-none text-md hover:text-black focus:text-black md:text-basecursor-default"
+								name="custom-input-number"
+								value={quoteInfo.bathtub}
+							/>
+							<p className="flex items-center justify-center w-10 h-10">
+								{quoteInfo.bathtub}
+							</p>
+							<button
+								type="button"
+								data-action="increment"
+								onClick={incrementBathtub}
+								className="w-10 h-full text-gray-600 bg-transparent rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400"
+							>
+								<span className="m-auto text-2xl font-thin">+</span>
+							</button>
+						</div>
+					</div>
 
-        <div className="relative h-[200px] w-[230px] rounded shadow-lg bg-gray-100 flex flex-col items-center justify-center hover:shadow-md cursor-pointer">
-          <img className="h-16 w-16" alt="" src="/images/icons/sink.svg" />
-          <p className="text-lg text-center text-sky-500 font-bold">
-            Kitchen sinks
-          </p>
-          <div className="flex flex-row h-10 w-32 rounded-lg relative bg-transparent mt-1">
-            <button
-              disabled={quoteInfo.kitchenSink === 0}
-              onClick={decrementKitchenSink}
-              data-action="decrement"
-              className=" bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-l cursor-pointer outline-none"
-            >
-              <span className="m-auto text-2xl font-thin">−</span>
-            </button>
-            <input
-              type="number"
-              onChange={(e) =>
-                setQuoteInfo({ ...quoteInfo, kitchenSink: e.target.value })
-              }
-              className="focus:outline-none text-center w-full  font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default hidden items-center text-gray-700  outline-none"
-              name="custom-input-number"
-              value={quoteInfo.kitchenSink}
-            ></input>
-            <p className="h-10 w-10 flex justify-center items-center">
-              {quoteInfo.kitchenSink}
-            </p>
-            <button
-              data-action="increment"
-              onClick={incrementKitchenSink}
-              className="bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-r cursor-pointer"
-            >
-              <span className="m-auto text-2xl font-thin">+</span>
-            </button>
-          </div>
-        </div>
+					<div className="relative h-[200px] w-[230px] rounded shadow-lg bg-gray-100 flex flex-col items-center justify-center hover:shadow-md cursor-pointer">
+						<img className="w-16 h-16" alt="" src="/images/icons/sink.svg" />
+						<p className="text-lg font-bold text-center text-sky-500">
+							Kitchen sinks
+						</p>
+						<div className="relative flex flex-row w-32 h-10 mt-1 bg-transparent rounded-lg">
+							<button
+								type="button"
+								disabled={quoteInfo.kitchenSink === 0}
+								onClick={decrementKitchenSink}
+								data-action="decrement"
+								className="w-10 h-full text-gray-600 bg-transparent rounded-l outline-none cursor-pointer hover:text-gray-700 hover:bg-gray-400"
+							>
+								<span className="m-auto text-2xl font-thin">−</span>
+							</button>
+							<input
+								type="number"
+								onChange={(e) =>
+									setQuoteInfo({ ...quoteInfo, kitchenSink: e.target.value })
+								}
+								className="items-center hidden w-full font-semibold text-center text-gray-700 outline-none focus:outline-none text-md hover:text-black focus:text-black md:text-basecursor-default"
+								name="custom-input-number"
+								value={quoteInfo.kitchenSink}
+							/>
+							<p className="flex items-center justify-center w-10 h-10">
+								{quoteInfo.kitchenSink}
+							</p>
+							<button
+								type="button"
+								data-action="increment"
+								onClick={incrementKitchenSink}
+								className="w-10 h-full text-gray-600 bg-transparent rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400"
+							>
+								<span className="m-auto text-2xl font-thin">+</span>
+							</button>
+						</div>
+					</div>
 
-        <div className="relative h-[200px] w-[230px] rounded shadow-lg bg-gray-100 flex flex-col items-center justify-center hover:shadow-md cursor-pointer">
-          <img className="h-16 w-16" alt="" src="/images/icons/sink.svg" />
-          <p className="text-lg text-center text-sky-500 font-bold">
-            Bathroom sinks
-          </p>
-          <div className="flex flex-row h-10 w-32 rounded-lg relative bg-transparent mt-1">
-            <button
-              disabled={quoteInfo.bathroomSink === 0}
-              onClick={decrementBathroomSink}
-              data-action="decrement"
-              className=" bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-l cursor-pointer outline-none"
-            >
-              <span className="m-auto text-2xl font-thin">−</span>
-            </button>
-            <input
-              type="number"
-              onChange={(e) =>
-                setQuoteInfo({ ...quoteInfo, bathroomSink: e.target.value })
-              }
-              className="focus:outline-none text-center w-full  font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default hidden items-center text-gray-700  outline-none"
-              name="custom-input-number"
-              value={quoteInfo.bathroomSink}
-            ></input>
-            <p className="h-10 w-10 flex justify-center items-center">
-              {quoteInfo.bathroomSink}
-            </p>
-            <button
-              data-action="increment"
-              onClick={incrementBathroomSink}
-              className="bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-r cursor-pointer"
-            >
-              <span className="m-auto text-2xl font-thin">+</span>
-            </button>
-          </div>
-        </div>
+					<div className="relative h-[200px] w-[230px] rounded shadow-lg bg-gray-100 flex flex-col items-center justify-center hover:shadow-md cursor-pointer">
+						<img className="w-16 h-16" alt="" src="/images/icons/sink.svg" />
+						<p className="text-lg font-bold text-center text-sky-500">
+							Bathroom sinks
+						</p>
+						<div className="relative flex flex-row w-32 h-10 mt-1 bg-transparent rounded-lg">
+							<button
+								type="button"
+								disabled={quoteInfo.bathroomSink === 0}
+								onClick={decrementBathroomSink}
+								data-action="decrement"
+								className="w-10 h-full text-gray-600 bg-transparent rounded-l outline-none cursor-pointer hover:text-gray-700 hover:bg-gray-400"
+							>
+								<span className="m-auto text-2xl font-thin">−</span>
+							</button>
+							<input
+								type="number"
+								onChange={(e) =>
+									setQuoteInfo({ ...quoteInfo, bathroomSink: e.target.value })
+								}
+								className="items-center hidden w-full font-semibold text-center text-gray-700 outline-none focus:outline-none text-md hover:text-black focus:text-black md:text-basecursor-default"
+								name="custom-input-number"
+								value={quoteInfo.bathroomSink}
+							/>
+							<p className="flex items-center justify-center w-10 h-10">
+								{quoteInfo.bathroomSink}
+							</p>
+							<button
+								type="button"
+								data-action="increment"
+								onClick={incrementBathroomSink}
+								className="w-10 h-full text-gray-600 bg-transparent rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400"
+							>
+								<span className="m-auto text-2xl font-thin">+</span>
+							</button>
+						</div>
+					</div>
 
-        {/**
+					{/**
          *
          *
          *  <div className="relative h-[200px] w-[230px] rounded shadow-lg bg-gray-100 flex flex-col items-center justify-center hover:shadow-md cursor-pointer">
           <img
-            className="h-16 w-16"
+            className="w-16 h-16"
             alt=""
             src="/images/icons/washingmachine.svg"
           />
-          <p className="text-lg text-center text-sky-500 font-bold">
+          <p className="text-lg font-bold text-center text-sky-500">
             Washing Machine (hotfill*)
           </p>
-          <div className="flex flex-row h-10 w-32 rounded-lg relative bg-transparent mt-1">
+          <div className="relative flex flex-row w-32 h-10 mt-1 bg-transparent rounded-lg">
             <button
               disabled={quoteInfo.washingmachine === 0}
               onClick={decrementWashingMachine}
               data-action="decrement"
-              className=" bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-l cursor-pointer outline-none"
+              className="w-10 h-full text-gray-600 bg-transparent rounded-l outline-none cursor-pointer hover:text-gray-700 hover:bg-gray-400"
             >
               <span className="m-auto text-2xl font-thin">−</span>
             </button>
@@ -333,17 +346,17 @@ const WaterOutlets = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
               onChange={(e) =>
                 setQuoteInfo({ ...quoteInfo, washingmachine: e.target.value })
               }
-              className="focus:outline-none text-center w-full  font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default hidden items-center text-gray-700  outline-none"
+              className="items-center hidden w-full font-semibold text-center text-gray-700 outline-none focus:outline-none text-md hover:text-black focus:text-black md:text-basecursor-default"
               name="custom-input-number"
               value={quoteInfo.washingmachine}
             ></input>
-            <p className="h-10 w-10 flex justify-center items-center">
+            <p className="flex items-center justify-center w-10 h-10">
               {quoteInfo.washingmachine}
             </p>
             <button
               data-action="increment"
               onClick={incrementWashingMachine}
-              className="bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-r cursor-pointer"
+              className="w-10 h-full text-gray-600 bg-transparent rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400"
             >
               <span className="m-auto text-2xl font-thin">+</span>
             </button>
@@ -354,19 +367,19 @@ const WaterOutlets = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
          *
          *  <div className="relative h-[200px] w-[230px] rounded shadow-lg bg-gray-100 flex flex-col items-center justify-center hover:shadow-md cursor-pointer">
           <img
-            className="h-16 w-16"
+            className="w-16 h-16"
             alt=""
             src="/images/icons/dishwasher.svg"
           />
-          <p className="text-lg text-center text-sky-500 font-bold">
+          <p className="text-lg font-bold text-center text-sky-500">
             Dishwasher (hotfill*)
           </p>
-          <div className="flex flex-row h-10 w-32 rounded-lg relative bg-transparent mt-1">
+          <div className="relative flex flex-row w-32 h-10 mt-1 bg-transparent rounded-lg">
             <button
               disabled={quoteInfo.dishwasher === 0}
               onClick={decrementDishwasher}
               data-action="decrement"
-              className=" bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-l cursor-pointer outline-none"
+              className="w-10 h-full text-gray-600 bg-transparent rounded-l outline-none cursor-pointer hover:text-gray-700 hover:bg-gray-400"
             >
               <span className="m-auto text-2xl font-thin">−</span>
             </button>
@@ -375,17 +388,17 @@ const WaterOutlets = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
               onChange={(e) =>
                 setQuoteInfo({ ...quoteInfo, dishwasher: e.target.value })
               }
-              className="focus:outline-none text-center w-full  font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default hidden items-center text-gray-700  outline-none"
+              className="items-center hidden w-full font-semibold text-center text-gray-700 outline-none focus:outline-none text-md hover:text-black focus:text-black md:text-basecursor-default"
               name="custom-input-number"
               value={quoteInfo.dishwasher}
             ></input>
-            <p className="h-10 w-10 flex justify-center items-center">
+            <p className="flex items-center justify-center w-10 h-10">
               {quoteInfo.dishwasher}
             </p>
             <button
               data-action="increment"
               onClick={incrementDishwasher}
-              className="bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 rounded-r cursor-pointer"
+              className="w-10 h-full text-gray-600 bg-transparent rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400"
             >
               <span className="m-auto text-2xl font-thin">+</span>
             </button>
@@ -393,65 +406,70 @@ const WaterOutlets = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
         </div>
          *
          * **/}
-      </div>
+				</div>
 
-      <div className="flex items-center justify-center space-x-6 my-3">
-        {quoteInfo.standardShower !== 0 ||
-        quoteInfo.rainShower !== 0 ||
-        // quoteInfo.sink !== 0 ||
-        quoteInfo.bathtub !== 0 ? (
-          <Fragment>
-            {' '}
-            <svg
-              onClick={prevPage}
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-16 w-16 bg-red-500 text-white rounded-full shadow-red-500 shadow-lg hover:shadow-md hover:bg-red-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-            <button
-              onClick={() => {
-                calculateFlowRate();
-                nextPage();
-              }}
-              className="bg-sky-500 hover:bg-sky-600 text-center text-white text-2xl font-medium rounded-full py-4 px-8 shadow-sky-400 shadow-md hover:shadow"
-            >
-              Continue
-            </button>
-          </Fragment>
-        ) : (
-          <Fragment>
-            <svg
-              onClick={prevPage}
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-16 w-16 bg-red-500 text-white rounded-full shadow-red-500 shadow-lg hover:shadow-md hover:bg-red-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-            <p className="text-md text-sky-600 font-bold text-center">
-              Please answer the question
-            </p>
-          </Fragment>
-        )}
-      </div>
-    </motion.div>
-  );
+				<div className="flex items-center justify-center my-3 space-x-6">
+					{quoteInfo.standardShower !== 0 ||
+					quoteInfo.rainShower !== 0 ||
+					// quoteInfo.sink !== 0 ||
+					quoteInfo.bathtub !== 0 ? (
+						<Fragment>
+							{" "}
+							{/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+							{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+							<svg
+								onClick={prevPage}
+								xmlns="http://www.w3.org/2000/svg"
+								className="w-16 h-16 text-white bg-red-500 rounded-full shadow-lg shadow-red-500 hover:shadow-md hover:bg-red-600"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth={1}
+									d="M15 19l-7-7 7-7"
+								/>
+							</svg>
+							<button
+								type="button"
+								onClick={() => {
+									calculateFlowRate();
+									nextPage();
+								}}
+								className="px-8 py-4 text-2xl font-medium text-center text-white rounded-full shadow-md bg-sky-500 hover:bg-sky-600 shadow-sky-400 hover:shadow"
+							>
+								Continue
+							</button>
+						</Fragment>
+					) : (
+						<Fragment>
+							{/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+							{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+							<svg
+								onClick={prevPage}
+								xmlns="http://www.w3.org/2000/svg"
+								className="w-16 h-16 text-white bg-red-500 rounded-full shadow-lg shadow-red-500 hover:shadow-md hover:bg-red-600"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth={1}
+									d="M15 19l-7-7 7-7"
+								/>
+							</svg>
+							<p className="font-bold text-center text-md text-sky-600">
+								Please answer the question
+							</p>
+						</Fragment>
+					)}
+				</div>
+			</motion.div>
+		);
 };
 
 export default WaterOutlets;

@@ -1,14 +1,16 @@
-import analytics from '../utils/analytics'
+import { sendGTMEvent } from '@next/third-parties/google';
+
 
 
 export const start = () => {
   console.log('start');
 
-  analytics.track('start_recommendation');
+  sendGTMEvent({ event: 'start_recommendation' })
 };
 
 export const savings = () => {
   console.log('saving');
 
-  analytics.track('saving');
+
+  sendGTMEvent({ event: 'saving' })
 };

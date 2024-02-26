@@ -28,6 +28,7 @@ import { Textarea } from "@/components/ui/textarea";
 import analytics from "@/utils/analytics";
 import Script from "next/script";
 import { createBrowserClient } from "@supabase/ssr";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 const libraries = ['places']
 
@@ -127,7 +128,9 @@ const PersonalDetails = ({
     e.preventDefault();
     setLoading(true);
 
-    analytics.track("generate_lead");
+
+
+    sendGTMEvent({ event: "generate_lead" });
 
     // if(quoteInfo.streetAddress === '') {
 

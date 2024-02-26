@@ -121,7 +121,7 @@ const Summary = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }) => {
   const handleSubmit = async () => {
     setLoading(true);
 
-    // analytics.track('generate_lead');
+    sendGTMEvent({ event: "generate_lead" });
 
     try {
       const quote = await mutation.mutateAsync();
@@ -129,7 +129,7 @@ const Summary = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }) => {
       console.log('quote', quote);
 
       if (quote?.data[0]) {
-        const mail = await fetch(`/api/mail/leads`, {
+        const mail = await fetch("/api/mail/leads", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -198,10 +198,10 @@ const Summary = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }) => {
         initial={{ x: '100%' }}
         animate={{ x: 0 }}
         exit={{ x: '-100%' }}
-    className="max-w-6xl mx-auto my-16 lg:my-4 px-6 lg:px-0">
+    className="max-w-6xl px-6 mx-auto my-16 lg:my-4 lg:px-0">
       <QuoteCard quote={quoteInfo} />
 
-      <p className="text-sm md:text-lg lg:px-36 text-gray-600 font-bold my-4 text-center">
+      <p className="my-4 text-sm font-bold text-center text-gray-600 md:text-lg lg:px-36">
         Please click on the button below to complete the process. You will
         instantly receive an e-mail with the information you provided and we
         will get in touch with you.
@@ -209,12 +209,14 @@ const Summary = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }) => {
 
       <div
         id="save"
-        className="flex items-center justify-center space-x-6 mb-12"
+        className="flex items-center justify-center mb-12 space-x-6"
       >
-        <svg
+        {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+         <svg
           onClick={prevPage}
           xmlns="http://www.w3.org/2000/svg"
-          className="h-16 w-16 bg-red-500 text-white rounded-full shadow-red-500 shadow-lg hover:shadow-md hover:bg-red-600"
+          className="w-16 h-16 text-white bg-red-500 rounded-full shadow-lg shadow-red-500 hover:shadow-md hover:bg-red-600"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -228,9 +230,10 @@ const Summary = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }) => {
         </svg>
 
         <button
+          type="button"
           onClick={handleSubmit}
           disabled={loading}
-          className="bg-sky-500 hover:bg-sky-600 text-center text-white text-lg md:text-xl font-medium rounded-full py-4 px-8 shadow-sky-400 shadow-md hover:shadow my-4"
+          className="px-8 py-4 my-4 text-lg font-medium text-center text-white rounded-full shadow-md bg-sky-500 hover:bg-sky-600 md:text-xl shadow-sky-400 hover:shadow"
         >
           {loading ? 'Loading...' : 'Complete the process'}
         </button>
