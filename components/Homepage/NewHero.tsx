@@ -23,7 +23,6 @@ export default function NewHero() {
 								<Link
 									className="flex items-center justify-center h-12 px-4 text-sm text-white bg-red-600 rounded-full shadow-lg sm:w-fit min-w-[190px]"
 									href="/quote/start"
-									prefetch={false}
 								>
 									Get a Quote
 								</Link>

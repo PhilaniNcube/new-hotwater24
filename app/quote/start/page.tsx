@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { start } from "@/utils/gtm";
+
 
 export const metadata: Metadata = {
   title: "Get A Quote | Howtwater24",
