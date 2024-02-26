@@ -89,7 +89,7 @@ const page = () => {
           <Link href="/quote" passHref>
             <button
               type="button"
-              onClick={() => start()}
+
               className="px-8 py-3 text-2xl font-medium text-center text-white rounded-full shadow-md bg-sky-500 hover:bg-sky-700 shadow-sky-400 hover:shadow"
             >
               Let&#39;s get started!
