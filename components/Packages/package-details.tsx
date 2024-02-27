@@ -37,6 +37,7 @@ export default function PackageDetails({ geyser }: { geyser: Geyser }) {
 					<div>
 						<p>{geyser.description}</p>
 						<p>{geyser.composition}</p>
+						<p>**Gas geysers can also be purchased individually.</p>
 						{/* <Table>
             <TableBody>
               <TableRow>
