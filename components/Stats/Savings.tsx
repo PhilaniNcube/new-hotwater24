@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { start } from "../../utils/gtm";
 import { cn } from "@/lib/utils";
-import { antonio } from "@/app/fonts";
+import { antonio } from "@/fonts";
 
 function Savings() {
   const [bill, setBill] = useState(100);

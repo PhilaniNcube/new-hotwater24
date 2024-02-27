@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { antonio } from "@/app/fonts";
+import { antonio } from "@/fonts";
 import sgMail from "@sendgrid/mail";
 import { getGeyser } from "@/sanity/sanity-utils";
 

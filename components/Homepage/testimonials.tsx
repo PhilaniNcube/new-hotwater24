@@ -2,7 +2,7 @@
  * v0 by Vercel.
  * @see https://v0.dev/t/uFR3NMUdsrp
  */
-import { antonio } from "@/app/fonts";
+import { antonio } from "@/fonts";
 import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 

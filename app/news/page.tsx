@@ -1,5 +1,5 @@
 import { getArticles } from "@/sanity/sanity-utils";
-import { antonio, bebas } from "../fonts";
+import { antonio, bebas } from "../../fonts";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { format } from "date-fns";

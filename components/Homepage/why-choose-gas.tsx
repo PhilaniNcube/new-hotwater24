@@ -1,5 +1,5 @@
 
-import { antonio } from "@/app/fonts";
+import { antonio } from "@/fonts";
 import {
   CardTitle,
   CardDescription,

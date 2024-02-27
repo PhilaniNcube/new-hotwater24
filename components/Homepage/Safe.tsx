@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ChooseWhite from "../ChooseWhite";
 import { cn } from "@/lib/utils";
-import { antonio } from "@/app/fonts";
+import { antonio } from "@/fonts";
 
 export default function Safe() {
   return (

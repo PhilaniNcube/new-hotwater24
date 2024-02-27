@@ -26,7 +26,7 @@ import { LeadStageProps } from "../NewLead";
 import { Geyser } from "@/sanity/types";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { antonio } from "@/app/fonts";
+import { antonio } from "@/fonts";
 import { formatCurrency } from "@/utils/format";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 

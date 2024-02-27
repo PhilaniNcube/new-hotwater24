@@ -1,4 +1,4 @@
-import { bebas } from "@/app/fonts";
+import { bebas } from "@/fonts";
 import { getArticle } from "@/sanity/sanity-utils";
 import { format } from "date-fns";
 import Image from "next/image";

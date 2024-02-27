@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { formatCurrency } from "@/utils/format";
 import { cn } from "@/lib/utils";
-import { antonio } from "@/app/fonts";
+import { antonio } from "@/fonts";
 
 const PackagesGrid = async () => {
 

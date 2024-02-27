@@ -1,5 +1,5 @@
 
-import { antonio } from "@/app/fonts";
+import { antonio } from "@/fonts";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon } from "lucide-react";

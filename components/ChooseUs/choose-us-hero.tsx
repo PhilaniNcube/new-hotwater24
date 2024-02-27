@@ -3,7 +3,7 @@ import { BadgeDollarSign, CheckIcon, Clock10Icon, CogIcon, HomeIcon, LightbulbIc
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
-import { antonio } from "@/app/fonts";
+import { antonio } from "@/fonts";
 
 export default function ChooseUsHero() {
   return (

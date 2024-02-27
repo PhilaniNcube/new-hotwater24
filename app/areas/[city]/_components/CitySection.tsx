@@ -1,4 +1,4 @@
-import { antonio } from "@/app/fonts";
+import { antonio } from "@/fonts";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Card } from "@tremor/react";

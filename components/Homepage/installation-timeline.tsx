@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { AwardIcon, CarIcon, Clock2Icon, Droplet, DropletIcon, HelpCircle, LucideDroplets, PenLine, Shovel } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { antonio } from "@/app/fonts";
+import { antonio } from "@/fonts";
 
 /**
  * v0 by Vercel.

@@ -1,4 +1,4 @@
-import { antonio } from "@/app/fonts";
+import { antonio } from "@/fonts";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Image from "next/image";

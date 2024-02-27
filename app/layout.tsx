@@ -3,7 +3,7 @@ import Footer from './Footer'
 import './globals.css'
 import Desktop from '@/components/Navigation/Desktop';
 import { getGeysers } from '@/sanity/sanity-utils';
-import { lato } from './fonts';
+import { lato } from '../fonts';
 import GasGenius from '@/components/Homepage/GasGenius';
 import Mobile from '@/components/Navigation/Mobile';
 import { cookies } from 'next/headers';

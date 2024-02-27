@@ -1,4 +1,4 @@
-import { antonio } from "@/app/fonts";
+import { antonio } from "@/fonts";
 import { cn } from "@/lib/utils";
 import { FlameIcon } from "lucide-react";
 import Image from "next/image";

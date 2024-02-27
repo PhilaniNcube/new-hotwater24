@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
-import { antonio } from "@/app/fonts";
+import { antonio } from "@/fonts";
 
 const QualityGeysers = () => {
   return (

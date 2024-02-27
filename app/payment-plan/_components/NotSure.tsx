@@ -2,7 +2,7 @@
  * v0 by Vercel.
  * @see https://v0.dev/t/zuxGuoPlVGF
  */
-import { antonio } from "@/app/fonts";
+import { antonio } from "@/fonts";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon } from "lucide-react";
