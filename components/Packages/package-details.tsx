@@ -37,7 +37,7 @@ export default function PackageDetails({ geyser }: { geyser: Geyser }) {
 						className="flex flex-col px-4 py-3 text-2xl font-bold text-white bg-blue-600 w-fit"
 						suppressHydrationWarning
 					>
-            <small className="text-xs">Geyser Only**</small>
+            <small className="text-xs">Geyser Only</small>
 						 {formatCurrency(geyser.geyser.price)}**
 					</h2>
 
