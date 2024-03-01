@@ -37,14 +37,21 @@ export default function PackageDetails({ geyser }: { geyser: Geyser }) {
 						className="flex flex-col px-4 py-3 text-2xl font-bold text-white bg-blue-600 w-fit"
 						suppressHydrationWarning
 					>
-            <small className="text-xs">Geyser Only</small>
-						 {formatCurrency(geyser.geyser.price)}**
+						<small className="text-xs">Geyser Only Price</small>
+						{formatCurrency(geyser.geyser.price)}**
 					</h2>
 
 					<div>
 						<p>{geyser.description}</p>
 						<p>{geyser.composition}</p>
-						<p>**Gas geysers can also be purchased individually.</p>
+						<p>
+							{geyser.slug === "hot" &&
+								"**Price includes weather cover and VAT"}
+							{geyser.slug === "super-hot" &&
+								"**Price includes weather cover and VAT"}
+							{geyser.slug === "boiling-hot" && "**Price includes VAT"}
+							{geyser.slug === "steaming-hot" && "**Price includes VAT"}
+						</p>
 						{/* <Table>
             <TableBody>
               <TableRow>
