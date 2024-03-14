@@ -3,7 +3,7 @@
  * @see https://v0.dev/t/qO8Rn3AUhrE
  */
 import { Button } from "@/components/ui/button";
-import { Geyser } from "@/sanity/types";
+import type { Geyser } from "@/sanity/types";
 import { formatCurrency } from "@/utils/format";
 import Image from "next/image";
 import {
@@ -28,13 +28,13 @@ export default function PackageDetails({ geyser }: { geyser: Geyser }) {
 						{geyser.title}
 					</h1>
 					<h2
-						className="px-4 py-3 text-4xl font-bold text-white bg-red-600 w-fit"
+						className="w-full px-4 py-3 text-2xl font-bold text-center text-white bg-red-600 lg:w-2/5"
 						suppressHydrationWarning
 					>
 						From: {formatCurrency(geyser.price)}*
 					</h2>
 					<h2
-						className="flex flex-col px-4 py-3 text-2xl font-bold text-white bg-blue-600 w-fit"
+						className="flex flex-col w-full px-4 py-3 text-lg font-bold text-center text-white bg-blue-600 lg:w-2/5"
 						suppressHydrationWarning
 					>
 						<small className="text-xs">Geyser Only Price</small>

@@ -632,7 +632,7 @@ const PersonalDetails = ({
 									type="submit"
 									className="px-8 py-4 text-2xl font-medium text-center text-white rounded-full shadow-md bg-sky-500 hover:bg-sky-600 shadow-sky-400 hover:shadow"
 								>
-									{loading ? "Saving..." : "Continue"}
+									{loading ? "Saving..." : "Send me a proposal"}
 								</Button>
 							</Fragment>
 						) : (
