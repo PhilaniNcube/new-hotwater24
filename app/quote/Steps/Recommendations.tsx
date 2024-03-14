@@ -80,7 +80,7 @@ const Recommendations = ({
   const  getDisplayedGeyser = () => {
 
     if(quoteInfo.flowRate <= 9) {
-      return geysers.find((geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 8)
+      return geysers.find((geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 12)
     // biome-ignore lint/style/noUselessElse: <explanation>
 }  else if(quoteInfo.flowRate <= 12) {
       return geysers.find((geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 12)
@@ -104,12 +104,13 @@ const Recommendations = ({
   console.log("Display Geyser" , displayedGeyser?.brand)
 
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
 			if (quoteInfo.flowRate <= 9) {
 				setGeyserPrice(displayedGeyser?.price || 4500);
 				setInstallation(5500);
 				setPlumbing(3750);
-				setGeyserSize(8);
+				setGeyserSize(12);
 			} else if (quoteInfo.flowRate <= 12) {
 				setGeyserPrice(displayedGeyser?.price || 7200);
 				setInstallation(5500);
