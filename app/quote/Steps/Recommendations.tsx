@@ -22,8 +22,8 @@ import formatter from "@/lib/format";
 import roundUp, { roundUpThousand } from "@/lib/roundUp";
 import { motion } from "framer-motion";
 import { ShieldQuestionIcon } from "lucide-react";
-import { LeadStageProps } from "../NewLead";
-import { Geyser } from "@/sanity/types";
+import type { LeadStageProps } from "../NewLead";
+import type { Geyser } from "@/sanity/types";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { antonio } from "@/fonts";
@@ -61,6 +61,8 @@ const Recommendations = ({
   const [installation, setInstallation] = useState(0);
   const [plumbing, setPlumbing] = useState(0);
 
+  console.log({flowrate: quoteInfo.flowRate})
+
   const labels = ["Total Cost"];
 
 
@@ -79,13 +81,13 @@ const Recommendations = ({
 
   const  getDisplayedGeyser = () => {
 
-    if(quoteInfo.flowRate <= 9) {
+    if(quoteInfo.flowRate <= 6) {
       return geysers.find((geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 12)
     // biome-ignore lint/style/noUselessElse: <explanation>
-}  else if(quoteInfo.flowRate <= 12) {
+}  else if(quoteInfo.flowRate <= 13) {
       return geysers.find((geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 12)
     // biome-ignore lint/style/noUselessElse: <explanation>
-}  else if(quoteInfo.flowRate <= 18) {
+}  else if(quoteInfo.flowRate <= 19) {
       return geysers.find((geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 16)
     // biome-ignore lint/style/noUselessElse: <explanation>
 }  else if(quoteInfo.flowRate <= 23) {
@@ -106,7 +108,7 @@ const Recommendations = ({
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-			if (quoteInfo.flowRate <= 9) {
+			if (quoteInfo.flowRate <= 6) {
 				setGeyserPrice(displayedGeyser?.price || 4500);
 				setInstallation(5500);
 				setPlumbing(3750);
@@ -116,7 +118,7 @@ const Recommendations = ({
 				setInstallation(5500);
 				setPlumbing(3750);
 				setGeyserSize(12);
-			} else if (quoteInfo.flowRate <= 18) {
+			} else if (quoteInfo.flowRate <= 19) {
 				setGeyserPrice(displayedGeyser?.price || 8700);
 				setInstallation(5850);
 				setPlumbing(3750);
