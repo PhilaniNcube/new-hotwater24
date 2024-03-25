@@ -3,7 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { Fragment, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { LeadStageProps } from '../NewLead';
+import type { LeadStageProps } from '../NewLead';
 
 const WaterOutlets = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:LeadStageProps) => {
   console.log('Step', page, quoteInfo);
