@@ -84,10 +84,7 @@ const Recommendations = ({
     if(quoteInfo.flowRate <= 6) {
       return geysers.find((geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 12)
     // biome-ignore lint/style/noUselessElse: <explanation>
-}  else if(quoteInfo.flowRate <= 13) {
-      return geysers.find((geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 12)
-    // biome-ignore lint/style/noUselessElse: <explanation>
-}  else if(quoteInfo.flowRate <= 19) {
+}   else if(quoteInfo.flowRate <= 19) {
       return geysers.find((geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 16)
     // biome-ignore lint/style/noUselessElse: <explanation>
 }  else if(quoteInfo.flowRate <= 23) {
@@ -113,12 +110,7 @@ const Recommendations = ({
 				setInstallation(5500);
 				setPlumbing(3750);
 				setGeyserSize(12);
-			} else if (quoteInfo.flowRate <= 12) {
-				setGeyserPrice(displayedGeyser?.price || 7200);
-				setInstallation(5500);
-				setPlumbing(3750);
-				setGeyserSize(12);
-			} else if (quoteInfo.flowRate <= 19) {
+			}  else if (quoteInfo.flowRate <= 19) {
 				setGeyserPrice(displayedGeyser?.price || 8700);
 				setInstallation(5850);
 				setPlumbing(3750);
