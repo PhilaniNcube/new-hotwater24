@@ -71,6 +71,10 @@ export default async function GeyserPackages() {
 																	{formatCurrency(item.price)}
 																</p>
 															</div>
+															<small className="text-xs leading-5 text-slate-600">
+																Price includes gas geyser, installation (gas and
+																plumbing) and CoC
+															</small>
 															<Image
 																alt="Geyser 100L Image"
 																className="object-cover w-full my-4 overflow-hidden rounded-lg "

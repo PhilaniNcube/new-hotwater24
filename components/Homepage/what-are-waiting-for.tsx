@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function WhatAreYouWaitingFor() {
   return (
-    <section className="w-full px-8 py-12">
+    <section className="w-full px-8 py-4">
+      <Image width={1322} height={1250} src="/images/geyser_2.jpeg" className="w-1/2 mx-auto my-6 lg:w-1/3" alt="How Geysers Work" />
       <div className="container flex flex-col items-center justify-center gap-4 p-6 bg-red-600 rounded-full shadow md:flex-row md:p-8 lg:p-12 ">
         <div className="space-y-3 text-center">
           <h2 className={cn("text-3xl text-white font-bold tracking-tighter md:text-4xl", antonio.className)}>
