@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "Get A Quote | Howtwater24",
+  title: "Get A Quote | Hotwater24",
   description:
     "Hotwater 24 are gas experts bringing hot water to homes 24/7 with Gas Geyser solutions. Our expert team specialises in seamless Gas Geyser installations, ensuring optimum efficiency and performance. Discover competitive Gas Geyser installation prices tailored to your household needs in a few minutes using our quick and easy questionnaire. Trust us for unbeatable Gas Geyser prices and a reliable Gas Water Heating System for you and your family.",
   keywords:
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   robots: "index, follow",
 
   openGraph: {
-    title: "Get A Quote | Howtwater24",
+    title: "Get A Quote | Hotwater24",
     description:
       "Hotwater 24 are gas experts bringing hot water to homes 24/7 with Gas Geyser solutions. Our expert team specialises in seamless Gas Geyser installations, ensuring optimum efficiency and performance. Discover competitive Gas Geyser installation prices tailored to your household needs in a few minutes using our quick and easy questionnaire. Trust us for unbeatable Gas Geyser prices and a reliable Gas Water Heating System for you and your family.",
       images: ["/images/banner.jpg" ],
