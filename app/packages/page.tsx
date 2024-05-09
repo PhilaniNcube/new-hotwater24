@@ -1,6 +1,6 @@
 import PackagesGrid from "@/components/Packages/packages-grid";
 import { getGeysers } from "@/sanity/sanity-utils";
-import { Metadata, MetadataRoute } from "next";
+import {type  Metadata, MetadataRoute } from "next";
 
 const BASE_URL = "https://htowater24.com";
 
