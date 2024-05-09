@@ -55,12 +55,12 @@ export async function POST(req:NextRequest) {
   } = body;
 
   const msg = {
-    to: "info@hotwater24.com", // Change to your recipient
-    from: "info@hotwater24.com", // Change to your verified sender
-    cc: email,
-    subject: "Hotwater24 | Your size gas geyser",
-    text: "Thank you for answering questions about your property and gas geyser needs. We will be in touch shortly",
-    html: `
+			to: "info@hotwater24.com", // Change to your recipient
+			from: "info@hotwater24.com", // Change to your verified sender
+			cc: email,
+			subject: "Hotwater24 | Your size gas geyser",
+			text: "Thank you for answering questions about your property and gas geyser needs. We will be in touch shortly",
+			html: `
    <!--user entered Head Start--><link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet"><style>
 body {font-family: 'Poppins', sans-serif;}
 </style><!--End Head user entered-->
@@ -109,7 +109,7 @@ body {font-family: 'Poppins', sans-serif;}
   </table><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="8fd711e6-aecf-4663-bf53-6607f08b57e9" data-mc-module-version="2019-10-22">
     <tbody>
       <tr>
-        <td style="padding:20px 0px 10px 20px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: left"><span style="color: #80817f; font-size: 12px"><strong>Thank you for visiting our website. Please find below a summary of the information you provided. Based on this information, we will get in touch with you.</strong></span></div>
+        <td style="padding:20px 0px 10px 20px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: left"><span style="color: #80817f; font-size: 12px"><strong>Thank you for completing the questionnaire. Please find below a shite summary of the information you have provided. Based on this information, we will soon send you an initial (costing) proposal.</strong></span></div>
 <div style="font-family: inherit; text-align: center"><br></div><div></div></div></td>
       </tr>
     </tbody>
@@ -197,8 +197,8 @@ body {font-family: 'Poppins', sans-serif;}
     <tbody>
       <tr>
         <td style="padding:15px 0px 15px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f">${
-          ownership ? "Owner" : "Renter"
-        }</span></div><div></div></div></td>
+					ownership ? "Owner" : "Renter"
+				}</span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -273,8 +273,8 @@ body {font-family: 'Poppins', sans-serif;}
     <tbody>
       <tr>
         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f">${
-          gasStove ? "Yes" : "No"
-        }</span></div><div></div></div></td>
+					gasStove ? "Yes" : "No"
+				}</span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -293,8 +293,8 @@ body {font-family: 'Poppins', sans-serif;}
     <tbody>
       <tr>
         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f">${
-          gasWaterHeating ? "Yes" : "No"
-        }</span></div><div></div></div></td>
+					gasWaterHeating ? "Yes" : "No"
+				}</span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -313,8 +313,8 @@ body {font-family: 'Poppins', sans-serif;}
     <tbody>
       <tr>
         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f">${
-          gasHeating ? "Yes" : "No"
-        }</span></div><div></div></div></td>
+					gasHeating ? "Yes" : "No"
+				}</span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -333,8 +333,8 @@ body {font-family: 'Poppins', sans-serif;}
     <tbody>
       <tr>
         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f">${
-          otherGasUse ? "Yes" : "No"
-        }</span></div><div></div></div></td>
+					otherGasUse ? "Yes" : "No"
+				}</span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -379,8 +379,8 @@ body {font-family: 'Poppins', sans-serif;}
     <tbody>
       <tr>
         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f">${
-          gasGeyser ? "Yes" : "No"
-        }</span></div><div></div></div></td>
+					gasGeyser ? "Yes" : "No"
+				}</span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -399,8 +399,8 @@ body {font-family: 'Poppins', sans-serif;}
     <tbody>
       <tr>
         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f">${
-          electricGeyser ? "Yes" : "No"
-        }</span></div><div></div></div></td>
+					electricGeyser ? "Yes" : "No"
+				}</span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -419,8 +419,8 @@ body {font-family: 'Poppins', sans-serif;}
     <tbody>
       <tr>
         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f">${
-          solarGeyser ? "Yes" : "No"
-        }</span></div><div></div></div></td>
+					solarGeyser ? "Yes" : "No"
+				}</span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -439,8 +439,8 @@ body {font-family: 'Poppins', sans-serif;}
     <tbody>
       <tr>
         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f">${
-          otherGeyser ? "Yes" : "No"
-        }</span></div><div></div></div></td>
+					otherGeyser ? "Yes" : "No"
+				}</span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -643,16 +643,16 @@ body {font-family: 'Poppins', sans-serif;}
     <tbody>
       <tr>
         <td style="padding:15px 0px 15px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f; font-size: 12px"><strong>${
-          flowRate <= 45 ? "Geyser Size" : "Flow Rate"
-        }</strong></span></div><div></div></div></td>
+					flowRate <= 45 ? "Geyser Size" : "Flow Rate"
+				}</strong></span></div><div></div></div></td>
       </tr>
     </tbody>
   </table><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="64573b96-209a-4822-93ec-5c5c732af15c.2.1.1.1.1.1.1" data-mc-module-version="2019-10-22">
     <tbody>
       <tr>
         <td style="padding:0px 0px 15px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f; font-size: 30px"><strong>${
-          flowRate <= 45 ? geyserSize : flowRate
-        } L/Min</strong></span></div><div></div></div></td>
+					flowRate <= 45 ? geyserSize : flowRate
+				} L/Min</strong></span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -691,12 +691,10 @@ body {font-family: 'Poppins', sans-serif;}
     <tbody>
       <tr>
         <td style="padding:15px 0px 5px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f; font-size: 30px"><strong>${
-          flowRate <= 45
-            ? formatter.format(
-                geyserPrice
-              )
-            : "Awaiting calculations"
-        }*</strong></span></div><div></div></div></td>
+					flowRate <= 45
+						? formatter.format(geyserPrice)
+						: "Awaiting calculations"
+				}*</strong></span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -976,7 +974,7 @@ body {font-family: 'Poppins', sans-serif;}
       }
     </style>
            `,
-  };
+		};
 
   const message = await sgMail.send(msg);
 
