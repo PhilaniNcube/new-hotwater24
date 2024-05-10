@@ -36,9 +36,9 @@ const PackagesGrid = async () => {
 											<Image
 												alt={item.title}
 												className="object-cover w-full md:w-3/4"
-												height="1000"
+												height={1000}
 												src={item.image}
-												width="600"
+												width={600}
 											/>
 										</div>
 										<div className="p-4 bg-white dark:bg-zinc-950">
