@@ -1,11 +1,11 @@
 
-import { NextRequest, NextResponse } from 'next/server'
+import {type  NextRequest, NextResponse } from 'next/server'
 import sgMail from '@sendgrid/mail';
 import client from '@sendgrid/client';
 
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
-client.setApiKey(process.env.SENDGRID_API_KEY!);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
+client.setApiKey(process.env.SENDGRID_API_KEY || '');
 
 export const dynamic = 'force-dynamic'
 
@@ -35,7 +35,7 @@ export async function POST(req:NextRequest) {
     from: 'info@hotwater24.com', // Change to your verified sender
     cc: email,
     subject: 'Hotwater24 | Geyser Enquiry',
-    text: `Thank you for answering questions about your property and gas geyser needs. We will be in touch shortly`,
+    text: "Thank you for answering questions about your property and gas geyser needs. We will be in touch shortly",
     html: ` <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size:14px; font-family:inherit; color:#000000; background-color:#ffffff;">
         <div class="webkit">
           <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#ffffff">
@@ -467,24 +467,12 @@ We will contact you shortly if additional information is required from you in or
   };
 
   const request = {
-    url: `/v3/marketing/contacts`,
+    url: "/v3/marketing/contacts",
     // method: ['POST', 'PUT'],
     body: data,
   };
 
-  {
-    /***
-  client
-    .request(request)
-    .then(([response]) => {
-      console.log(response.statusCode);
-      console.log(response.body);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-*/
-  }
+
 
   const message = await sgMail.send(msg);
   const contact = await client.request(request);

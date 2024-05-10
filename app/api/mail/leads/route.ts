@@ -1,10 +1,10 @@
 
-import { NextRequest, NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import sgMail from '@sendgrid/mail';
 import formatter from '@/lib/format';
 import roundUp from '@/lib/roundUp';
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
 
 export const dynamic = 'force-dynamic'
 
