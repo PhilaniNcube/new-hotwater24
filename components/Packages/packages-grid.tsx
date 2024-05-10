@@ -58,7 +58,7 @@ const PackagesGrid = async () => {
 											>
 												{item.outlets}
 											</h3>
-											<p className="text-xs text-slate-800">
+											<p className="text-xs text-slate-800 text-center">
 												price includes gas geyser, installation and CoC
 											</p>
 										</div>
