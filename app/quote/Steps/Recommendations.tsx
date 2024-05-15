@@ -77,7 +77,7 @@ const Recommendations = ({
   //@ts-nocheck
   const sortedFilter = filteredGeysers.sort((a, b ) => Number(a.maxFlowRate.split("l")[0]) - Number(b.maxFlowRate.split("l")[0]));
 
-  console.log(sortedFilter)
+  console.log({sortedFilter, filteredGeysers})
 
   const  getDisplayedGeyser = () => {
 
