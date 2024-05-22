@@ -366,14 +366,12 @@ export default function FaqArticle() {
 						gas, what is the difference?
 					</h2>
 					<p className="text-base">
-						Gas geysers tap into the existing waterlines coming from your
-						electrical geyser. Gas geysers are in general installed close to the
-						main bathroom(s), so the hot water does not have to travel so far
-						and you have access to hot water almost instantly. So instead of the
-						water traveling through the electrical geyser it is now being
-						directed into the gas geyser. The gas geyser will also have to be
-						connected to gas via gas cylinders or piped gas (natural gas or
-						LPG). Inlet: gas and water (cold); outlet: water (hot).
+						Gas geysers tap into the existing waterlines from your electrical
+						geyser which are already available. The only thing that needs to be
+						done, from a plumbing point of view, is to connect the gas geyser to
+						the existing waterlines. Then the gas geyser needs to be connected
+						to either a gas cylinder or to piped (underground) gas, which can
+						either be natural gas or LPG.
 					</p>
 					<h2
 						className={cn(
