@@ -4,6 +4,8 @@ import CityHero from "./_components/CityHero";
 import CitySection from "./_components/CitySection";
 import { areas } from "@/utils/areas";
 
+export const dynamic = "force-static";
+
 
 const page = async ({params:{city}}:{params:{city:string}}) => {
 

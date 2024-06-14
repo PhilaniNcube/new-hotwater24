@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import FaqHero from "./_components/FaqHero";
 import FaqArticle from "./_components/faq-article";
 
@@ -12,6 +12,8 @@ export const metadata: Metadata = {
 		description: "What do I need to know before buying a gas geyser?",
 	},
 };
+
+export const dynamic = "force-static";
 
 const page = () => {
   return <main>

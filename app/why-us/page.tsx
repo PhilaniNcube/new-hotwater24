@@ -6,6 +6,8 @@ import WhyUsHero from "./_components/WhyUsHero";
 
 import type { Metadata } from "next";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "Hotwater24 | Why Choose Us",
   description:

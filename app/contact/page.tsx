@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import  type { Metadata } from "next";
 import ContactPage from "./ContactPage";
 
 export const metadata: Metadata = {
@@ -11,6 +11,8 @@ export const metadata: Metadata = {
 		description: "Get in touch with us for more information on gas geysers",
 	},
 };
+
+export const dynamic = 'force-static'
 
 const page = () => {
   return <ContactPage />;

@@ -6,7 +6,7 @@ import { format } from "date-fns";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
 	title: "Hotwater24 | News",
@@ -20,6 +20,8 @@ export const metadata: Metadata = {
 			"Get news on the South African energy sector with a focus on LPG gas household usage",
 	},
 };
+
+export const dynamic = "force-static";
 
 const page = async () => {
 

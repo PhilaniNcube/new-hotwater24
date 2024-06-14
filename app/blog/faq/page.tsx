@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Script from "next/script";
 import Image from "next/image";
-import { Metadata } from "next";
+import type { Metadata } from "next";
+
+export const dynamic = "force-static";
 
 export const metadata: Metadata = {
 	title: "Hotwater24 | Frequently Asked Questions",

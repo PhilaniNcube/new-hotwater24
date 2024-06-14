@@ -17,8 +17,8 @@ export default function Login() {
   const [view, setView] = useState('sign-in')
   // const router = useRouter()
    const supabase = createBrowserClient<Database>(
-     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+     process.env.NEXT_PUBLIC_SUPABASE_URL || "",
+     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
    );
 
 
@@ -60,10 +60,10 @@ export default function Login() {
   }
 
   return (
-    <div className="flex-1 flex flex-col w-full h-screen px-8 sm:max-w-md mx-auto py-16 justify-center gap-2">
+    <div className="flex flex-col justify-center flex-1 w-full h-screen gap-2 px-8 py-16 mx-auto sm:max-w-md">
       <h1 className="text-4xl font-bold text-center text-slate-800">Log In</h1>
       <form onSubmit={handleSignIn}>
-        <div className="w-full flex flex-col space-y-3">
+        <div className="flex flex-col w-full space-y-3">
           <Label htmlFor="email">Email</Label>
           <Input
             required
@@ -75,7 +75,7 @@ export default function Login() {
           />
         </div>
         {/* {view === "sign-in" ? (
-          <div className="w-full mt-3 flex flex-col space-y-3">
+          <div className="flex flex-col w-full mt-3 space-y-3">
             <Label htmlFor="password">Password</Label>
             <Input
               type="password"
@@ -87,7 +87,7 @@ export default function Login() {
           </div>
         ) : null} */}
 
-        <Button type="submit" className="mt-3 w-full">
+        <Button type="submit" className="w-full mt-3">
           {view === "sign-in" ? "Log In" : "Reset Password"}
         </Button>
 

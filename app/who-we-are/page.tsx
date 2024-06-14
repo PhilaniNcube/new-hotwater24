@@ -1,7 +1,9 @@
 
 import WhoWeAreHero from "@/components/WhoWeAre/who-we-are-hero";
 import WhoWeAre from "@/components/WhoWeAre/who-we-are";
-import { Metadata } from "next";
+import type { Metadata } from "next";
+
+export const dynamic = "force-static";
 
 export const metadata: Metadata = {
 	title: "Hotwater24 | Who We Are",

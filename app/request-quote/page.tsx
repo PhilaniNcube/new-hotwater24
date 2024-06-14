@@ -1,5 +1,6 @@
 import RequestQuote from "@/components/RequestQuote/request-quote-form";
 
+
 const page = ({
   searchParams :{
     package_name

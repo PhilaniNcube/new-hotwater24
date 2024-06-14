@@ -12,10 +12,6 @@ import { GoogleTagManager } from "@next/third-parties/google";
 
 
 
-
-export const dynamic = "force-dynamic";
-
-
 export const metadata = {
   title: 'Hotwater 24',
   description: '',

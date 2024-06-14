@@ -1,6 +1,8 @@
 import PackageDetails from "@/components/Packages/package-details";
 import { getGeyser } from "@/sanity/sanity-utils";
-import { Metadata, ResolvingMetadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
+
+export const dynamic = 'force-static'
 
 type Props = {
 	params: { slug: string };

@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 
 import type { Metadata, ResolvingMetadata } from "next";
 
+export const dynamic = "force-static";
+
 type Props = {
   params: { slug: string };
   searchParams: { [key: string]: string | string[] | undefined };
