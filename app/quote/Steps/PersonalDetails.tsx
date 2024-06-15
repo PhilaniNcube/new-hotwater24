@@ -1,32 +1,13 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
-import { useRouter } from "next/navigation";
 import React, { type FormEvent, Fragment, useState } from "react";
 import { motion } from "framer-motion";
 import type { LeadStageProps } from "../NewLead";
-import {useLoadScript} from '@react-google-maps/api'
 import usePlacesAutocomplete from "use-places-autocomplete";
-import { Check, ChevronsUpDown } from "lucide-react";
-import { cn } from "@/lib/utils";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import analytics from "@/utils/analytics";
-import Script from "next/script";
 import { createBrowserClient } from "@supabase/ssr";
 import { sendGTMEvent } from "@next/third-parties/google";
 
