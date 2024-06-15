@@ -1,10 +1,10 @@
 
-import { NextRequest, NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import sgMail from '@sendgrid/mail';
 import formatter from '@/lib/format';
 import roundUp from '@/lib/roundUp';
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export const dynamic = 'force-dynamic'
 
@@ -32,13 +32,13 @@ export async function POST(req:NextRequest) {
   } = body;
 
  const msg = {
-    to: receipient, // Change to your recipient
-    from: 'info@hotwater24.com', // Change to your verified sender
-    cc: secondary,
-    bcc: 'info@hotwater24.com',
-    subject: 'Hotwater24 | Geyser Enquiry',
-    text: `Thank you for answering questions about your property and gas geyser needs. We will be in touch shortly`,
-    html: ` <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size:14px; font-family:inherit; color:#000000; background-color:#ffffff;">
+		to: receipient, // Change to your recipient
+		from: "info@hotwater24.com", // Change to your verified sender
+		cc: secondary,
+		bcc: "info@hotwater24.com",
+		subject: "Hotwater24 | Geyser Enquiry",
+		text: "Thank you for answering questions about your property and gas geyser needs. We will be in touch shortly",
+		html: ` <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size:14px; font-family:inherit; color:#000000; background-color:#ffffff;">
         <div class="webkit">
           <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#ffffff">
             <tr>
@@ -79,8 +79,8 @@ export async function POST(req:NextRequest) {
     <tbody>
       <tr>
         <td style="padding:30px 0px 40px 30px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: left"><span style="color: #80817f; font-size: 12px"><strong>Thank you for visiting our website. Please find below a summary of the information you provided, as well as our recommendation on the size geyser (${flowRate.toFixed(
-          2,
-        )} L/Min) which suits your need.<br>
+					2,
+				)} L/Min) which suits your need.<br>
 <span style="margin-top:20px; color: black;">${messages}.</span></strong></span></div>
 <div style="font-family: inherit; text-align: center"><br></div><div></div></div></td>
       </tr>
@@ -237,8 +237,8 @@ export async function POST(req:NextRequest) {
     <tbody>
       <tr>
         <td style="padding:15px 0px 15px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f; font-size: 30px"><strong>${flowRate.toFixed(
-          2,
-        )} L/Min</strong></span></div><div></div></div></td>
+					2,
+				)} L/Min</strong></span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -283,8 +283,8 @@ export async function POST(req:NextRequest) {
     <tbody>
       <tr>
         <td style="padding:15px 0px 15px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f; font-size: 12px"><strong>${
-          installation ? 'Yes' : 'No'
-        }</strong></span></div><div></div></div></td>
+					installation ? "Yes" : "No"
+				}</strong></span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -455,7 +455,7 @@ export async function POST(req:NextRequest) {
           }
       }
     </style>`,
-  };
+	};
 
   const message = await sgMail.send(msg);
   console.log(message);

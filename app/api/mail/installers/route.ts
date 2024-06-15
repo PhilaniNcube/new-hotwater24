@@ -1,11 +1,11 @@
 
-import { NextRequest, NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import sgMail from '@sendgrid/mail';
 import client from '@sendgrid/client';
 
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
-client.setApiKey(process.env.SENDGRID_API_KEY!);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+client.setApiKey(process.env.SENDGRID_API_KEY);
 
 export const dynamic = 'force-dynamic'
 
@@ -56,13 +56,13 @@ export async function POST(req:NextRequest) {
   } = body;
 
  const msg = {
-      to: receipient, // Change to your recipient
-    from: 'info@hotwater24.com', // Change to your verified sender
-    cc: secondary,
-    bcc: 'info@hotwater24.com',
-    subject: 'Hotwater24 | New Geyser Installation Lead',
-    text: `Thank you for answering questions about your property and gas geyser needs. We will be in touch shortly`,
-    html: `
+		to: receipient, // Change to your recipient
+		from: "info@hotwater24.com", // Change to your verified sender
+		cc: secondary,
+		bcc: "info@hotwater24.com",
+		subject: "Hotwater24 | New Geyser Installation Lead",
+		text: "Thank you for answering questions about your property and gas geyser needs. We will be in touch shortly",
+		html: `
    <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size:14px; font-family:inherit; color:#000000; background-color:#ffffff;">
         <div class="webkit">
           <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#ffffff">
@@ -306,8 +306,8 @@ border-image-source: initial; border-image-slice: initial; border-image-width: i
     <tbody>
       <tr>
         <td style="padding:15px 0px 15px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f">${
-          ownership ? 'Owner' : 'Renter'
-        }</span></div><div></div></div></td>
+					ownership ? "Owner" : "Renter"
+				}</span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -338,8 +338,8 @@ border-image-source: initial; border-image-slice: initial; border-image-width: i
     <tbody>
       <tr>
         <td style="padding:15px 0px 15px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f">${
-          locateOutside ? 'Yes' : 'No'
-        }</span></div><div></div></div></td>
+					locateOutside ? "Yes" : "No"
+				}</span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -414,8 +414,8 @@ border-image-source: initial; border-image-slice: initial; border-image-width: i
     <tbody>
       <tr>
         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit; color: #80817f" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center">${
-          gasStove ? 'Yes' : 'No'
-        }</div><div></div></div></td>
+					gasStove ? "Yes" : "No"
+				}</div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -434,8 +434,8 @@ border-image-source: initial; border-image-slice: initial; border-image-width: i
     <tbody>
       <tr>
         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center; color: #80817f">${
-          gasWaterHeating ? 'Yes' : 'No'
-        }</div><div></div></div></td>
+					gasWaterHeating ? "Yes" : "No"
+				}</div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -454,8 +454,8 @@ border-image-source: initial; border-image-slice: initial; border-image-width: i
     <tbody>
       <tr>
         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center; color: #80817f">${
-          gasHeating ? 'Yes' : 'No'
-        }</div><div></div></div></td>
+					gasHeating ? "Yes" : "No"
+				}</div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -474,8 +474,8 @@ border-image-source: initial; border-image-slice: initial; border-image-width: i
     <tbody>
       <tr>
         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center; color: #80817f">${
-          otherGasUse ? otherGasUse : 'None'
-        }</div><div></div></div></td>
+					otherGasUse ? otherGasUse : "None"
+				}</div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -520,8 +520,8 @@ border-image-source: initial; border-image-slice: initial; border-image-width: i
     <tbody>
       <tr>
         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center; color: #80817f">${
-          gasGeyser ? 'Yes' : 'No'
-        }</div><div></div></div></td>
+					gasGeyser ? "Yes" : "No"
+				}</div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -540,8 +540,8 @@ border-image-source: initial; border-image-slice: initial; border-image-width: i
     <tbody>
       <tr>
         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center; color: #80817f">${
-          electricGeyser ? 'Yes' : 'No'
-        }</div><div></div></div></td>
+					electricGeyser ? "Yes" : "No"
+				}</div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -560,8 +560,8 @@ border-image-source: initial; border-image-slice: initial; border-image-width: i
     <tbody>
       <tr>
         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center; color: #80817f">${
-          solarGeyser ? 'Yes' : 'No'
-        }</div><div></div></div></td>
+					solarGeyser ? "Yes" : "No"
+				}</div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -580,8 +580,8 @@ border-image-source: initial; border-image-slice: initial; border-image-width: i
     <tbody>
       <tr>
         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center; color: #80817f">${
-          otherGeyser ? 'Yes' : 'No'
-        }</div><div></div></div></td>
+					otherGeyser ? "Yes" : "No"
+				}</div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -840,8 +840,8 @@ border-image-source: initial; border-image-slice: initial; border-image-width: i
     <tbody>
       <tr>
         <td style="padding:15px 0px 15px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f; font-size: 12px"><strong>${
-          installation ? 'Yes' : 'No'
-        }</strong></span></div><div></div></div></td>
+					installation ? "Yes" : "No"
+				}</strong></span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -872,8 +872,8 @@ border-image-source: initial; border-image-slice: initial; border-image-width: i
     <tbody>
       <tr>
         <td style="padding:15px 0px 15px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #80817f; font-size: 12px"><strong>${
-          completeSolution ? 'Yes' : 'No'
-        }</strong></span></div><div></div></div></td>
+					completeSolution ? "Yes" : "No"
+				}</strong></span></div><div></div></div></td>
       </tr>
     </tbody>
   </table></td>
@@ -1046,7 +1046,7 @@ center {font-family: 'Poppins', sans-serif;}
 </style>
 
            `,
-  };
+	};
 
   const message = await sgMail.send(msg);
 

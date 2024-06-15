@@ -2,9 +2,9 @@
 
 /* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/navigation";
-import React, { FormEvent, Fragment, useState } from "react";
+import React, { type FormEvent, Fragment, useState } from "react";
 import { motion } from "framer-motion";
-import { LeadStageProps } from "../NewLead";
+import type { LeadStageProps } from "../NewLead";
 import {useLoadScript} from '@react-google-maps/api'
 import usePlacesAutocomplete from "use-places-autocomplete";
 import { Check, ChevronsUpDown } from "lucide-react";

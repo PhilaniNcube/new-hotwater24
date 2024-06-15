@@ -14,7 +14,7 @@ import WaterHeating from "./Steps/WaterHeating";
 import WaterOutlets from "./Steps/WaterOutlests";
 import OffGridStep from "./Steps/OffGridStep";
 import analytics from "@/utils/analytics";
-import { Geyser } from "@/sanity/types";
+import type { Geyser } from "@/sanity/types";
 import { sendGTMEvent } from "@next/third-parties/google";
 
 export type LeadStageProps = {
