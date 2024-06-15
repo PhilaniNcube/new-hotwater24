@@ -3,6 +3,7 @@ import { Card, LineChart, Title, BarChart } from "@tremor/react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { createServerClient } from "@supabase/ssr";
+import { createClient } from "@/utils/supabase/server";
 
 export const dynamic = "force-dynamic";
 
@@ -17,38 +18,20 @@ type ServerPageProps = {
 const page = async ({ searchParams }: ServerPageProps) => {
   console.log({ searchParams });
 
-    const cookieStore = cookies();
+    const supabase = createClient();
 
-    const supabase = createServerClient<Database>(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      {
-        cookies: {
-          get(name: string) {
-            return cookieStore.get(name)?.value;
-          },
-        },
-      }
-    );
-
-  const quotesData = supabase
-    .from("quotes")
-    .select("*", { count: "exact" })
-    .limit(40)
-    .order("created_at", { ascending: false });
 
    const tableData = supabase.from("flowrate_counts").select("*").order("flowrate", { ascending: true });
 
-  const [{ data: leads, error: leadsError, count }, {data:table, error}] = await Promise.all([
-    quotesData,
+  const [ {data:table, error}] = await Promise.all([
     tableData
   ]);
 
-  console.log(count);
+
 
   return (
     <main className="container py-10">
-      <div className="w-full flex justify-between items-center">
+      <div className="flex items-center justify-between w-full">
       <h1 className="text-3xl font-medium">Admin Dashboard</h1>
       <Link href={{
         pathname: "/admin/leads",
@@ -58,17 +41,17 @@ const page = async ({ searchParams }: ServerPageProps) => {
           search: ""
         }
       }}>
-        <Button type="button" className="bg-brand text-white">
+        <Button type="button" className="text-white bg-brand">
           Leads
         </Button>
       </Link>
       </div>
-      <Card className="mt-4 px-6 text-black">
+      <Card className="px-6 mt-4 text-black">
         <Title>Flowrate Summary</Title>
         <BarChart
           color="emerald"
           className="mt-6"
-          data={table!}
+          data={table|| []}
           index="flowrate"
           colors={["emerald", "gray"]}
           showGridLines={true}

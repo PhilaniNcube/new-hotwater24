@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import LeadsTable from "./LeadsTable";
 import { createServerClient } from "@supabase/ssr";
+import { createClient } from "@/utils/supabase/server";
 
 export const dynamic = "force-dynamic";
 
@@ -10,23 +11,14 @@ type ServerPageProps = {
 
 const page = async ({ searchParams }: ServerPageProps) => {
 
-    const cookieStore = cookies();
+  const supabase = createClient()
 
-    const supabase = createServerClient<Database>(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      {
-        cookies: {
-          get(name: string) {
-            return cookieStore.get(name)?.value;
-          },
-        },
-      }
-    );
-
+  // biome-ignore lint/complexity/useLiteralKeys: <explanation>
   const page = searchParams["page"] ?? "1";
+  // biome-ignore lint/complexity/useLiteralKeys: <explanation>
   const per_page = searchParams["page_size"] ?? "500";
 
+  // biome-ignore lint/complexity/useLiteralKeys: <explanation>
   const searchTerm = searchParams["search"] || "";
 
   if(typeof searchTerm !== "string") throw new Error("Search term must be a string");
@@ -72,15 +64,19 @@ const page = async ({ searchParams }: ServerPageProps) => {
   const isTherePreviousPage = await hasPreviousPage(Number(page));
 
   return (
-    <div className="container">
-      <h1>Admin Page</h1>
-      <LeadsTable
-        leads={leads!}
-        isThereNextPage={isThereNextPage}
-        isTherePreviousPage={isTherePreviousPage}
-        page={Number(page)}
-      />
-    </div>
-  );
+			<div className="container">
+				<h1>Admin Page</h1>
+				{leadsError || !leads ? (
+					<p>Error fetching leads</p>
+				) : (
+					<LeadsTable
+						leads={leads}
+						isThereNextPage={isThereNextPage}
+						isTherePreviousPage={isTherePreviousPage}
+						page={Number(page)}
+					/>
+				)}
+			</div>
+		);
 };
 export default page;

@@ -12,7 +12,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { Geyser } from "@/sanity/types";
+import type { Geyser } from "@/sanity/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
