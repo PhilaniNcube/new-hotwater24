@@ -144,7 +144,7 @@ const NewLead = ({geysers}:{geysers: Geyser[]}) => {
       installationCost: 0,
       plumbingCost: null,
       comments: "",
-      source: null,
+      source: source,
     });
 
       const nextPage = () => {
