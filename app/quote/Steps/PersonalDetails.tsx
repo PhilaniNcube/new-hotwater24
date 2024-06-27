@@ -99,6 +99,7 @@ const PersonalDetails = ({
     plumbingCost,
     comments,
     financing,
+    source,
   } = quoteInfo;
 
   // const [open, setOpen] = useState(false);
@@ -174,6 +175,7 @@ const PersonalDetails = ({
             plumbingCost: plumbingCost ? plumbingCost : 5000,
             comments: comments,
             financing: financing,
+            source: source || '',
           },
         ])
         .select("*")
