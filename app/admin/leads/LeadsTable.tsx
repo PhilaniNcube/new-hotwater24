@@ -176,7 +176,7 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
       );
     },
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("source")}</div>
+      <div className="text-sm text-lead-600">{row.getValue("source")}</div>
     ),
   },
   {
