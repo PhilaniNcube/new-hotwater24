@@ -62,7 +62,8 @@ const Summary = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }) => {
     geyserSize,
     installationCost,
     plumbingCost,
-    comments
+    comments,
+    source
   } = quoteInfo;
 
   const queryClient = useQueryClient();
@@ -114,6 +115,7 @@ const Summary = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }) => {
         installationCost: installationCost,
         plumbingCost: plumbingCost,
         comments:comments,
+        source: source,
       },
     ])
   );
