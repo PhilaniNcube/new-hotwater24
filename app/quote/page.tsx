@@ -9,7 +9,7 @@ const page = async () => {
 
   const geysers = await getGeysers();
 
-  console.log(geysers)
+
 
 
 

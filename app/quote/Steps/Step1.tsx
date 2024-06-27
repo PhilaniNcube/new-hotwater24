@@ -1,12 +1,14 @@
 "use client"
 /* eslint-disable @next/next/no-img-element */
 import React, { Fragment, useState } from 'react';
-import { LeadStageProps } from '../NewLead';
+import type { LeadStageProps } from '../NewLead';
 
 const Family = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:LeadStageProps) => {
   console.log('Step', page, quoteInfo);
 
   const [interaction, setInteraction] = useState(false);
+
+
 
   const decrementChildren = () => {
     setInteraction(true);
@@ -56,7 +58,7 @@ const Family = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:LeadStageP
 
   return (
     <Fragment>
-      <h1 className="mt-8 font-sans text-center font-bold text-2xl">
+      <h1 className="mt-8 font-sans text-2xl font-bold text-center">
         Size of household
       </h1>
 
@@ -65,16 +67,17 @@ const Family = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:LeadStageP
         household
       </p>
 
-      <div className="flex items-center py-8  justify-around max-w-6xl mx-auto flex-wrap space-y-10 md:space-y-0">
-        <div className="flex flex-col w-64 h-64 shadow-lg rounded bg-gray-50 justify-center items-center hover:bg-gray-100 hover:shadow">
-          <img className="h-16 w-16" alt="" src="/images/icons/child.svg" />
-          <p className="text-sm py-8">How many children?</p>
-          <div className="flex flex-row h-10 w-32 rounded-lg relative bg-transparent mt-1">
+      <div className="flex flex-wrap items-center justify-around max-w-6xl py-8 mx-auto space-y-10 md:space-y-0">
+        <div className="flex flex-col items-center justify-center w-64 h-64 rounded shadow-lg bg-gray-50 hover:bg-gray-100 hover:shadow">
+          <img className="w-16 h-16" alt="" src="/images/icons/child.svg" />
+          <p className="py-8 text-sm">How many children?</p>
+          <div className="relative flex flex-row w-32 h-10 mt-1 bg-transparent rounded-lg">
             <button
+              type="button"
               disabled={quoteInfo.children === 0}
               onClick={decrementChildren}
               data-action="decrement"
-              className=" bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
+              className="w-20 h-full text-gray-600 bg-transparent rounded-l outline-none cursor-pointer hover:text-gray-700 hover:bg-gray-400"
             >
               <span className="m-auto text-2xl font-thin">−</span>
             </button>
@@ -83,32 +86,34 @@ const Family = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:LeadStageP
               onChange={(e) =>
                 setQuoteInfo({ ...quoteInfo, children: e.target.value })
               }
-              className="focus:outline-none text-center w-full  font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default hidden items-center text-gray-700  outline-none"
+              className="items-center hidden w-full font-semibold text-center text-gray-700 outline-none focus:outline-none text-md hover:text-black focus:text-black md:text-basecursor-default"
               name="custom-input-number"
               value={quoteInfo.children}
-            ></input>
-            <p className="h-10 w-10 flex justify-center items-center">
+            />
+            <p className="flex items-center justify-center w-10 h-10">
               {quoteInfo.children}
             </p>
             <button
+              type="button"
               data-action="increment"
               onClick={incrementChildren}
-              className="bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
+              className="w-20 h-full text-gray-600 bg-transparent rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400"
             >
               <span className="m-auto text-2xl font-thin">+</span>
             </button>
           </div>
         </div>
 
-        <div className="flex flex-col w-64 h-64 shadow-lg rounded bg-gray-50 justify-center items-center hover:bg-gray-100 hover:shadow">
-          <img className="h-16 w-16" alt="" src="/images/icons/teen.svg" />
-          <p className="text-sm py-8">How many teenagers?</p>
-          <div className="flex flex-row h-10 w-32 rounded-lg relative bg-transparent mt-1">
+        <div className="flex flex-col items-center justify-center w-64 h-64 rounded shadow-lg bg-gray-50 hover:bg-gray-100 hover:shadow">
+          <img className="w-16 h-16" alt="" src="/images/icons/teen.svg" />
+          <p className="py-8 text-sm">How many teenagers?</p>
+          <div className="relative flex flex-row w-32 h-10 mt-1 bg-transparent rounded-lg">
             <button
+              type="button"
               disabled={quoteInfo.teenagers === 0}
               onClick={decrementTeenagers}
               data-action="decrement"
-              className=" bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
+              className="w-20 h-full text-gray-600 bg-transparent rounded-l outline-none cursor-pointer hover:text-gray-700 hover:bg-gray-400"
             >
               <span className="m-auto text-2xl font-thin">−</span>
             </button>
@@ -117,32 +122,34 @@ const Family = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:LeadStageP
               onChange={(e) =>
                 setQuoteInfo({ ...quoteInfo, teenagers: e.target.value })
               }
-              className="focus:outline-none text-center w-full  font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default hidden items-center text-gray-700  outline-none"
+              className="items-center hidden w-full font-semibold text-center text-gray-700 outline-none focus:outline-none text-md hover:text-black focus:text-black md:text-basecursor-default"
               name="custom-input-number"
               value={quoteInfo.teenagers}
-            ></input>
-            <p className="h-10 w-10 flex justify-center items-center">
+            />
+            <p className="flex items-center justify-center w-10 h-10">
               {quoteInfo.teenagers}
             </p>
             <button
+            type="button"
               data-action="increment"
               onClick={incrementTeenagers}
-              className="bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
+              className="w-20 h-full text-gray-600 bg-transparent rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400"
             >
               <span className="m-auto text-2xl font-thin">+</span>
             </button>
           </div>
         </div>
 
-        <div className="flex flex-col w-64 h-64 shadow-lg rounded bg-gray-50 justify-center items-center hover:bg-gray-100 hover:shadow">
-          <img className="h-16 w-16" alt="" src="/images/icons/adult.svg" />
-          <p className="text-sm py-8 text-center">How many adults?</p>
-          <div className="flex flex-row h-10 w-32 rounded-lg relative bg-transparent mt-1">
+        <div className="flex flex-col items-center justify-center w-64 h-64 rounded shadow-lg bg-gray-50 hover:bg-gray-100 hover:shadow">
+          <img className="w-16 h-16" alt="" src="/images/icons/adult.svg" />
+          <p className="py-8 text-sm text-center">How many adults?</p>
+          <div className="relative flex flex-row w-32 h-10 mt-1 bg-transparent rounded-lg">
             <button
+              type="button"
               disabled={quoteInfo.adults === 0}
               onClick={decrementAdults}
               data-action="decrement"
-              className=" bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
+              className="w-20 h-full text-gray-600 bg-transparent rounded-l outline-none cursor-pointer hover:text-gray-700 hover:bg-gray-400"
             >
               <span className="m-auto text-2xl font-thin">−</span>
             </button>
@@ -151,36 +158,38 @@ const Family = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:LeadStageP
               onChange={(e) =>
                 setQuoteInfo({ ...quoteInfo, adults: e.target.value })
               }
-              className="focus:outline-none text-center w-full  font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default hidden items-center text-gray-700  outline-none"
+              className="items-center hidden w-full font-semibold text-center text-gray-700 outline-none focus:outline-none text-md hover:text-black focus:text-black md:text-basecursor-default"
               name="custom-input-number"
               value={quoteInfo.adults}
-            ></input>
-            <p className="h-10 w-10 flex justify-center items-center">
+            />
+            <p className="flex items-center justify-center w-10 h-10">
               {quoteInfo.adults}
             </p>
             <button
+              type="button"
               data-action="increment"
               onClick={incrementAdults}
-              className="bg-transparent text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
+              className="w-20 h-full text-gray-600 bg-transparent rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400"
             >
               <span className="m-auto text-2xl font-thin">+</span>
             </button>
           </div>
         </div>
       </div>
-      <div className="my-10 flex justify-center">
+      <div className="flex justify-center my-10">
         {quoteInfo.adults !== 0 ||
         quoteInfo.children !== 0 ||
         quoteInfo.teenagers !== 0 ? (
           <button
+            type="button"
             onClick={nextPage}
-            className="bg-sky-500 hover:bg-sky-600 text-center text-white text-2xl font-medium rounded-full py-4 px-8 shadow-sky-400 shadow-md hover:shadow"
+            className="px-8 py-4 text-2xl font-medium text-center text-white rounded-full shadow-md bg-sky-500 hover:bg-sky-600 shadow-sky-400 hover:shadow"
           >
             Continue
           </button>
         ) : (
           <Fragment>
-            <p className="text-md text-sky-600 font-bold text-center">
+            <p className="font-bold text-center text-md text-sky-600">
               Please answer the question
             </p>
           </Fragment>

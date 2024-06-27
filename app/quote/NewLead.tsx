@@ -1,5 +1,5 @@
 "use client"
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import Confirm from "./Steps/Confirm";
@@ -64,6 +64,7 @@ export type LeadStageProps = {
     installationCost: number;
     plumbingCost: number | null;
     comments: string;
+    source: string | null;
   };
   page: number;
   nextPage: () => void;
@@ -79,8 +80,23 @@ setQuoteInfo: (quoteInfo: any) => void;
 const NewLead = ({geysers}:{geysers: Geyser[]}) => {
 
   const searchParams = useSearchParams()
-
+  const [source, setSource] = useState<null | string>(null)
   const [page, setPage] = useState(1);
+
+     //write a useEffect function to set the document.refferer value to the source value in the quoteInfo object
+  useEffect(() => {
+
+    if (document?.referrer && !source) {
+      setSource(document.referrer)
+    }
+
+
+
+
+
+  }, [source]);
+
+  console.log({source})
 
     const [quoteInfo, setQuoteInfo] = useState({
       children: 0,
@@ -128,6 +144,7 @@ const NewLead = ({geysers}:{geysers: Geyser[]}) => {
       installationCost: 0,
       plumbingCost: null,
       comments: "",
+      source: null,
     });
 
       const nextPage = () => {
