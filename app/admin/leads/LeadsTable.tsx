@@ -2,10 +2,10 @@
 
 import * as React from "react";
 import {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-  VisibilityState,
+ type ColumnDef,
+  type ColumnFiltersState,
+  type SortingState,
+  type VisibilityState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
@@ -75,7 +75,7 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Date
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="w-4 h-4 ml-2" />
         </Button>
       );
     },
@@ -105,7 +105,7 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Email
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="w-4 h-4 ml-2" />
         </Button>
       );
     },
@@ -120,7 +120,7 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           First Name
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="w-4 h-4 ml-2" />
         </Button>
       );
     },
@@ -137,7 +137,7 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Last Name
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="w-4 h-4 ml-2" />
         </Button>
       );
     },
@@ -154,12 +154,29 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Phone Number
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="w-4 h-4 ml-2" />
         </Button>
       );
     },
     cell: ({ row }) => (
       <div className="capitalize">{row.getValue("telephoneNumber")}</div>
+    ),
+  },
+  {
+    accessorKey: "source",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+         Source
+          <ArrowUpDown className="w-4 h-4 ml-2" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("source")}</div>
     ),
   },
   {
@@ -171,7 +188,7 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Suburb
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="w-4 h-4 ml-2" />
         </Button>
       );
     },
@@ -188,7 +205,7 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           City
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="w-4 h-4 ml-2" />
         </Button>
       );
     },
@@ -198,14 +215,14 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
     accessorKey: "flowRate",
     header: () => <div className="text-right">Flow Rate</div>,
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("flowRate"));
+      const amount = Number.parseFloat(row.getValue("flowRate"));
 
       // Format the amount as a dollar amount
       // const formatted = new Intl.NumberFormat("en-ZA", {
       //   style: "number",
       // }).format(amount);
 
-      return <div className="text-right font-medium">{amount}</div>;
+      return <div className="font-medium text-right">{amount}</div>;
     },
   },
   {
@@ -217,7 +234,7 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
       return (
         <Link href={`/admin/leads/${id}`}>
           <Button type="button">
-            <Link2 className="h-4 w-4" />
+            <Link2 className="w-4 h-4" />
           </Button>
         </Link>
       );
@@ -237,8 +254,8 @@ const LeadsTable = ({
   const [downloadData, setDownloadData] = React.useState<null | string>(null);
 
      const supabase = createBrowserClient<Database>(
-       process.env.NEXT_PUBLIC_SUPABASE_URL!,
-       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+       process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
      );
 
   const [sorting, setSorting] = React.useState<SortingState>([]);
@@ -279,7 +296,7 @@ const LeadsTable = ({
 
   return (
     <div className="w-full">
-      <div className="flex space-x-5 justify-between items-center py-4">
+      <div className="flex items-center justify-between py-4 space-x-5">
         <Input
           placeholder="Filter emails..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
@@ -311,7 +328,7 @@ const LeadsTable = ({
               disabled={filteredIDs.length === 0}
             >
               {loading ? (
-                <CircleDashed className="animate-spin mr-2 h-4 w-4" />
+                <CircleDashed className="w-4 h-4 mr-2 animate-spin" />
               ) : (
                 "Download"
               )}
@@ -323,7 +340,7 @@ const LeadsTable = ({
                 filename="leads.csv"
                 data={downloadData}
               >
-                <Button type="button" className="bg-green-600 text-white">
+                <Button type="button" className="text-white bg-green-600">
                   Export to CSV
                 </Button>
               </CSVLink>
@@ -337,7 +354,7 @@ const LeadsTable = ({
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
-              Columns <ChevronDown className="ml-2 h-4 w-4" />
+              Columns <ChevronDown className="w-4 h-4 ml-2" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -361,7 +378,7 @@ const LeadsTable = ({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="rounded-md border">
+      <div className="border rounded-md">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -411,7 +428,7 @@ const LeadsTable = ({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
+      <div className="flex items-center justify-end py-4 space-x-2">
         <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
