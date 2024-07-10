@@ -39,24 +39,25 @@ export default function PaymentPlanHero() {
 										{/***List the steps in a payment plan */}
 										<ol className="flex flex-col items-start px-6 font-medium text-center list-decimal gap-y-2 text-md text-slate-700 ">
 											<li>
-												We only require a 50% deposit upon approval of the
-												quotation{" "}
+												We require only 50% deposit upon approval of the
+												quotation (where we normally require 70% deposit
+												payment).
 											</li>
 											<li>
-												After the installation is complete, the second payment
-												of 20% is due
+												After 1 month of installation date, we ask for the 2nd
+												20% payment.
 											</li>
 											<li>
-												After 1 month of the installation date, the third
-												payment of 15% is due
+												After 2 months of installation date, we ask for the 3rd
+												15% payment.
 											</li>
 											<li>
-												After 2 months of the installation date, the final 15%
-												payment is due
+												After 3 months of installation date, we ask for the
+												final 15% payment.
 											</li>
 											<li>
-												After receiving the full payment, we will the process
-												and issue the CoC.
+												After having received full payment, we will process the
+												CoC.
 											</li>
 										</ol>
 									</CardContent>
