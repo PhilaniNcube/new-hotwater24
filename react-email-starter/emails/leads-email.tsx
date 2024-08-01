@@ -121,104 +121,92 @@ const LeadsEmail = ( {
   }) => {
   return (
 			<Html>
-      <Head />
-      <Preview>AWS Email Verification</Preview>
-      <Body style={main}>
-        <Container style={container}>
-          <Section style={coverSection}>
-            <Section style={imageSection}>
-              <Img
-                src={`/static/banner.jpg`}
-                alt="Banner"
-              />
-            </Section>
-            <Section style={upperSection}>
-
-              <Text style={mainText}>
-               Thank you for completing the questionnaire. Please find below a short summary of the information you have provided. Based on this information, we will soon send you an initial (costing) proposal.
-              </Text>
-              <Section>
-                <Text style={text}><strong>Name:</strong> {firstName} {lastName} <br />
-                <strong>Address:</strong> {city} <br />
-                <strong>Tel Number:</strong> {telephoneNumber} <br />
-                <strong>Email:</strong> {email} <br />
-                </Text>
-
-              </Section >
-              <Section style={{textAlign:"center", backgroundColor:"#e2e8f0"}} className="bg-slate-200">
-                <Heading style={h1}>Property Details</Heading>
-              </Section>
-              <Section >
-                <Row style={text}>
-                  <Column style={{textAlign:"center"}}>
-                   <Text>House Type</Text>
-                  </Column>
-                  <Column style={{textAlign:"center"}}>
-                    <Text>{houseType} House Type</Text>
-                  </Column>
-                </Row>
-                <Row style={text}>
-                  <Column style={{textAlign:"center"}}>
-                   <Text>Property Ownership</Text>
-                  </Column>
-                  <Column style={{textAlign:"center"}}>
-                    <Text>{houseType} Property Ownership</Text>
-                  </Column>
-                </Row>
-                <Row style={text}>
-                  <Column style={{textAlign:"center"}}>
-                   <Text>Current Gas Supply</Text>
-                  </Column>
-                  <Column style={{textAlign:"center"}}>
-                    <Text>{houseType} Current Gas Supply</Text>
-                  </Column>
-                </Row>
-
-
-              </Section>
-               <Section style={{textAlign:"center", backgroundColor:"#e2e8f0"}} className="bg-slate-200">
-                <Heading style={h1}>Intended Gas Useage</Heading>
-              </Section>
-              <Section style={{textAlign: "center"}}>
-                <Column style={text}>
-                  <Text>Cooking</Text>
-                  <Text>{gasStove ? "Yes" : "No"}</Text>
-                </Column >
-                <Column style={text}> <Text>Electric Geyser</Text>
-                  <Text>{electricGeyser ? "Yes" : "No"}</Text></Column>
-                <Column style={text}>
-                <Text>Solar Geyser</Text>
-                  <Text>{solarGeyser ? "Yes" : "No"}</Text></Column>
-                <Column style={text}>
-                <Text>Other</Text>
-                  <Text>{otherGasUse ? "Yes" : "No"}</Text></Column>
-              </Section>
-            </Section>
-            <Hr />
-            <Section style={lowerSection}>
-              <Text style={cautionText}>
-                Amazon Web Services will never email you and ask you to disclose
-                or verify your password, credit card, or banking account number.
-              </Text>
-            </Section>
-          </Section>
-          <Text style={footerText}>
-            This message was produced and distributed by Amazon Web Services,
-            Inc., 410 Terry Ave. North, Seattle, WA 98109. © 2022, Amazon Web
-            Services, Inc.. All rights reserved. AWS is a registered trademark
-            of{" "}
-            <Link href="https://amazon.com" target="_blank" style={link}>
-              Amazon.com
-            </Link>
-            , Inc. View our{" "}
-            <Link href="https://amazon.com" target="_blank" style={link}>
-              privacy policy
-            </Link>
-            .
-          </Text>
-        </Container>
-      </Body>
-    </Html>
+				<Head />
+				<Preview>AWS Email Verification</Preview>
+				<Body style={main}>
+					<Container style={container}>
+						<Section style={coverSection}>
+							<Section style={imageSection}>
+								<Img src="/static/banner.jpg" alt="Banner" />
+							</Section>
+							<Section style={upperSection}>
+								<Text style={mainText}>
+									Thank you for completing the questionnaire. Please find below
+									a short summary of the information you have provided. Based on
+									this information, we will soon send you an initial (costing)
+									proposal.
+								</Text>
+								<Section>
+									<Text style={text}>
+										<strong>Name:</strong> {firstName} {lastName} <br />
+										<strong>Address:</strong> {city} <br />
+										<strong>Tel Number:</strong> {telephoneNumber} <br />
+										<strong>Email:</strong> {email} <br />
+									</Text>
+								</Section>
+								<Section
+									style={{ textAlign: "center", backgroundColor: "#e2e8f0" }}
+									className="bg-slate-200"
+								>
+									<Heading style={h1}>Property Details</Heading>
+								</Section>
+								<Section>
+									<Row style={text}>
+										<Column style={{ textAlign: "center" }}>
+											<Text>House Type</Text>
+										</Column>
+										<Column style={{ textAlign: "center" }}>
+											<Text>{houseType} House Type</Text>
+										</Column>
+									</Row>
+									<Row style={text}>
+										<Column style={{ textAlign: "center" }}>
+											<Text>Property Ownership</Text>
+										</Column>
+										<Column style={{ textAlign: "center" }}>
+											<Text>{houseType} Property Ownership</Text>
+										</Column>
+									</Row>
+									<Row style={text}>
+										<Column style={{ textAlign: "center" }}>
+											<Text>Current Gas Supply</Text>
+										</Column>
+										<Column style={{ textAlign: "center" }}>
+											<Text>{houseType} Current Gas Supply</Text>
+										</Column>
+									</Row>
+								</Section>
+								<Section
+									style={{ textAlign: "center", backgroundColor: "#e2e8f0" }}
+									className="bg-slate-200"
+								>
+									<Heading style={h1}>Intended Gas Useage</Heading>
+								</Section>
+								<Section style={{ textAlign: "center" }}>
+									<Column style={text}>
+										<Text>Cooking</Text>
+										<Text>{gasStove ? "Yes" : "No"}</Text>
+									</Column>
+									<Column style={text}>
+										{" "}
+										<Text>Electric Geyser</Text>
+										<Text>{electricGeyser ? "Yes" : "No"}</Text>
+									</Column>
+									<Column style={text}>
+										<Text>Solar Geyser</Text>
+										<Text>{solarGeyser ? "Yes" : "No"}</Text>
+									</Column>
+									<Column style={text}>
+										<Text>Other</Text>
+										<Text>{otherGasUse ? "Yes" : "No"}</Text>
+									</Column>
+								</Section>
+							</Section>
+							<Hr />
+						</Section>
+					</Container>
+				</Body>
+			</Html>
 		);
 };
 export default LeadsEmail;
