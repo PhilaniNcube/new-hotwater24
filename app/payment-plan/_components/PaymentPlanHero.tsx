@@ -37,7 +37,7 @@ export default function PaymentPlanHero() {
 								<Card className="">
 									<CardContent className="px-3 py-4">
 										{/***List the steps in a payment plan */}
-										<ol className="flex flex-col items-start px-6 font-medium text-center list-decimal gap-y-2 text-md text-slate-700 ">
+										<ol className="flex flex-col items-start justify-start px-6 font-medium text-left list-decimal gap-y-2 text-md text-slate-700 ">
 											<li>
 												We require only 50% deposit upon approval of the
 												quotation (where we normally require 70% deposit
