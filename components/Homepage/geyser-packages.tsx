@@ -72,8 +72,10 @@ export default async function GeyserPackages() {
 																</p>
 															</div>
 															<small className="text-xs leading-5 text-slate-600">
-																Price includes gas geyser, installation (gas and
-																plumbing) and CoC
+																Price includes gas geyser, installation (gas
+																installation and plumbing) and Certificate of
+																Conformity. Price does not include the cost for
+																gas cylinders (including gas) and gas cages.
 															</small>
 															<Image
 																alt="Geyser 100L Image"

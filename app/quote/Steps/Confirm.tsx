@@ -4,7 +4,7 @@
 import React from 'react';
 
 import { motion } from 'framer-motion';
-import { LeadStageProps } from '../NewLead';
+import type { LeadStageProps } from '../NewLead';
 
 export default function Confirm({
   quoteInfo,
