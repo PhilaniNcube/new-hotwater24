@@ -15,6 +15,7 @@ export async function POST(req:Request) {
   console.log("Revalidating news articles", body)
 
   revalidatePath('/news', "layout")
+  revalidatePath('/', "layout")
 
 	return NextResponse.json(
 		{ status: 200 },
