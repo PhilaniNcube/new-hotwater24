@@ -8,11 +8,11 @@ export default function CityHero({city}:{city:string}) {
   return (
     <section className="w-full">
       <div className="px-0">
-        <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <div>
             <Image
               alt="Geyser"
-              className="object-cover object-bottom mx-auto overflow-hidden w-full"
+              className="object-cover object-bottom w-full mx-auto overflow-hidden"
               height={654}
               src="/images/banner.jpg"
               width={960}
@@ -26,14 +26,14 @@ export default function CityHero({city}:{city:string}) {
               </Link>
               <Link
                 className="inline-flex items-center justify-center h-10 px-8 text-sm font-medium text-white transition-colors bg-red-600 border rounded-full shadow-sm border-slate-300 hover:bg-zinc-100 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:pointer-events-none disabled:opacity-50 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:focus-visible:ring-zinc-300"
-                href="/packages"
+                href="/#packages"
               >
                 Choose your gas geyser
               </Link>
             </div>
           </div>
 
-          <div className="flex flex-col justify-center space-y-4 container">
+          <div className="container flex flex-col justify-center space-y-4">
             <div className="space-y-2">
               <h1
                 className={cn(
@@ -46,40 +46,40 @@ export default function CityHero({city}:{city:string}) {
               </h1>
             </div>
             <div className="">
-              <div className="p-1 flex items-center font-medium">
-                <span className="flex p-2 mr-2 items-center justify-center rounded-full text-white bg-red-500">
+              <div className="flex items-center p-1 font-medium">
+                <span className="flex items-center justify-center p-2 mr-2 text-white bg-red-500 rounded-full">
                   <FlameIcon className="w-6 h-6" size={24} />
                 </span>
                 <p className="text-md text-zinc-500 dark:text-zinc-400">
                   Quality gas geysers
                 </p>
               </div>
-              <div className="p-1 flex items-center font-medium">
-                <span className="flex p-2 mr-2 items-center justify-center rounded-full text-white bg-red-500">
+              <div className="flex items-center p-1 font-medium">
+                <span className="flex items-center justify-center p-2 mr-2 text-white bg-red-500 rounded-full">
                   <FlameIcon className="w-6 h-6" size={24} />
                 </span>
                 <p className="text-md text-zinc-500 dark:text-zinc-400">
                   Certified installers
                 </p>
               </div>
-              <div className="p-1 flex items-center font-medium">
-                <span className="flex p-2 mr-2 items-center justify-center rounded-full text-white bg-red-500">
+              <div className="flex items-center p-1 font-medium">
+                <span className="flex items-center justify-center p-2 mr-2 text-white bg-red-500 rounded-full">
                   <FlameIcon className="w-6 h-6" size={24} />
                 </span>
                 <p className="text-md text-zinc-500 dark:text-zinc-400">
                   Full warranty
                 </p>
               </div>
-              <div className="p-1 flex items-center font-medium">
-                <span className="flex p-2 mr-2 items-center justify-center rounded-full text-white bg-red-500">
+              <div className="flex items-center p-1 font-medium">
+                <span className="flex items-center justify-center p-2 mr-2 text-white bg-red-500 rounded-full">
                   <FlameIcon className="w-6 h-6" size={24} />
                 </span>
                 <p className="text-md text-zinc-500 dark:text-zinc-400">
                   Certificate of Compliance
                 </p>
               </div>
-              <div className="p-1 flex items-center font-medium">
-                <span className="flex p-2 mr-2 items-center justify-center rounded-full text-white bg-red-500">
+              <div className="flex items-center p-1 font-medium">
+                <span className="flex items-center justify-center p-2 mr-2 text-white bg-red-500 rounded-full">
                   <FlameIcon className="w-6 h-6" size={24} />
                 </span>
                 <p className="text-md text-zinc-500 dark:text-zinc-400">

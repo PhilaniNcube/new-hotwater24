@@ -28,7 +28,7 @@ export default function NewHero() {
 								</Link>
 								<Link
 									className="flex items-center justify-center h-12 px-4 text-sm text-white rounded-full shadow-lg bg-brand sm:w-fit min-w-[190px]"
-									href="/packages"
+									href="/#packages"
 								>
 									Choose your gas geyser
 								</Link>

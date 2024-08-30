@@ -12,7 +12,7 @@ export default function DiscountBanner() {
         <p className="text-md md:text-lg lg:text-xl">
           Valid until the 14<sup>th</sup> Dec{" "}
         </p>
-        <Link href="/packages">
+        <Link href="/#packages">
           <Button
             className="mt-4 text-red-500 bg-white rounded-full"
             variant="secondary"

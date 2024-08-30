@@ -49,27 +49,10 @@ const Desktop = ({ packages, cities }: Props) => {
 						</Link>
 						<NavigationMenu>
 							<NavigationMenuList>
-								<NavigationMenuItem>
+								{/* <NavigationMenuItem>
 									<NavigationMenuTrigger>Our Packages</NavigationMenuTrigger>
 									<NavigationMenuContent>
 										<ul className="grid gap-3 p-6 ">
-											{/* <li className="row-span-5">
-                      <NavigationMenuLink asChild>
-                        <Link
-                          className="flex flex-col justify-end w-full h-full p-6 no-underline rounded-md outline-none select-none bg-gradient-to-b from-muted/50 to-muted focus:shadow-md"
-                          href="/payment-plan"
-                        >
-                          <div className="mt-4 mb-2 text-lg font-medium">
-                            Payment Plan
-                          </div>
-                          <p className="text-xs leading-tight text-muted-foreground">
-                            Enjoy flexible purchasing with our payment plan
-                            options! We allow installment payments on all our
-                            packages.
-                          </p>
-                        </Link>
-                      </NavigationMenuLink>
-                    </li> */}
 											{packages.map((item) => (
 												<li key={item._id} className="w-full">
 													<NavigationMenuItem className="w-full">
@@ -90,6 +73,15 @@ const Desktop = ({ packages, cities }: Props) => {
 											))}
 										</ul>
 									</NavigationMenuContent>
+								</NavigationMenuItem> */}
+								<NavigationMenuItem>
+									<Link href="/#packages" legacyBehavior passHref>
+										<NavigationMenuLink
+											className={navigationMenuTriggerStyle()}
+										>
+											Our Packages
+										</NavigationMenuLink>
+									</Link>
 								</NavigationMenuItem>
 								<NavigationMenuItem>
 									<Link href="/who-we-are" legacyBehavior passHref>

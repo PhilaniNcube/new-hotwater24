@@ -87,7 +87,7 @@ const QualityGeysers = () => {
 					</article>
 				</div>
 				<div className="flex justify-center">
-					<Link href="/packages" prefetch={false}>
+					<Link href="/#packages" prefetch={false}>
 						<Button type="button" className="bg-red-600 rounded-full">
 							Choose your gas geyser
 						</Button>

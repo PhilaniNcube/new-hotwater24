@@ -49,7 +49,7 @@ export default function WhoWeAre() {
           </ul>
         </div>
         <div className="flex flex-col md:flex-row justify-center items-center gap-3 mt-8 w-full">
-          <Link href="/packages">
+          <Link href="/#packages">
             <Button className="flex items-center justify-center h-12 text-sm text-white bg-red-600 rounded-full shadow-lg  sm:w-44">
               View Our Packages
             </Button>

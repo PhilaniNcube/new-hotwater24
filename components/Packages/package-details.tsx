@@ -134,7 +134,7 @@ export default function PackageDetails({ geyser }: { geyser: Geyser }) {
 								Request a quote now
 							</Button>
 						</Link>
-						<Link href="/packages">
+						<Link href="/#packages">
 							<Button className="rounded-full bg-red-600 min-w-[190px]">
 								View our packages
 							</Button>

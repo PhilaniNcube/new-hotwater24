@@ -15,7 +15,7 @@ export default async function GeyserPackages() {
   const packages = await getGeysers();
 
   return (
-    <section className="container py-8">
+    <section className="container py-8 -scroll-p-20" id="packages">
       <h2
         className={cn(
           "text-3xl lg:text-4xl font-bold text-center text-slate-900 my-3",

@@ -81,7 +81,7 @@ export default function SafeInstallations() {
 							alt="LPG"
 							className="min-w-[180px] bg-slate-700 rounded-lg"
 						/>
-						<Link href="/packages">
+						<Link href="/#packages">
 							<Button
 								type="button"
 								className="min-w-[180px] rounded-full bg-brand"

@@ -62,7 +62,7 @@ const Mobile = ({ packages, cities }: Props) => {
                     Home
                   </Button>
                 </Link>
-                <Link href="/packages" passHref>
+                <Link href="/#packages" passHref>
                   <Button onClick={() => setIsOpen(false)} variant="link">
                     Packages
                   </Button>

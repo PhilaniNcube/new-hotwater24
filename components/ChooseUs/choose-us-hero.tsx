@@ -120,7 +120,7 @@ export default function ChooseUsHero() {
               Calculate your saving
             </Button>
           </Link>
-          <Link href="/packages">
+          <Link href="/#packages">
             <Button className="rounded-full bg-red-600 min-w-[190px]">
               Choose your gas geyser
             </Button>
