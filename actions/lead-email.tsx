@@ -1,3 +1,4 @@
+import { max } from "date-fns";
 import type * as React from "react";
 
 interface EmailTemplateProps {
@@ -41,6 +42,7 @@ const container = {
   paddingLeft: "20px",
   marginTop: "20px",
   fontSize: "16px",
+  maxWidth: "600px",
 }
 
 const heading = {

@@ -108,7 +108,6 @@ const PersonalDetails = ({
 
   const handleSubmit = async (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
 
 
 
@@ -116,6 +115,7 @@ const PersonalDetails = ({
 
 
 
+    setLoading(true);
     try {
       const quote = await supabase
         .from("quotes")
@@ -250,12 +250,13 @@ const PersonalDetails = ({
 
       const result = await crmRes.json();
       console.log(result);
-
       setLoading(false);
       nextPage();
+
     } catch (error) {
       console.log(error);
     }
+    setLoading(false);
   };
 
   return (
@@ -607,7 +608,7 @@ const PersonalDetails = ({
 									type="submit"
 									className="px-8 py-4 text-2xl font-medium text-center text-white rounded-full shadow-md bg-sky-500 hover:bg-sky-600 shadow-sky-400 hover:shadow"
 								>
-									{loading ? "Saving..." : "Send me a proposal"}
+									{loading ? "Saving..." : "Continue"}
 								</Button>
 							</Fragment>
 						) : (
