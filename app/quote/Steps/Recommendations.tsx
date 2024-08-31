@@ -192,9 +192,10 @@ const Recommendations = ({
 								<p className="py-2 text-2xl font-semibold text-center text-red-600">
 									From: {formatCurrency(displayedGeyser.price)}*
 								</p>
-								<p className="py-2 text-sm font-semibold text-center text-slate-800">
+								{/* <p className="py-2 text-sm font-semibold text-center text-slate-800">
 									{displayedGeyser.composition}
-								</p>
+
+								</p> */}
 							</div>
 							{/* <div className="w-full p-4 ">
 							 <Table>
@@ -311,9 +312,9 @@ const Recommendations = ({
             </ol> */}
 						</div>
 						<p className="mx-auto mt-4 text-lg font-bold text-center text-gray-600">
-							If you would like to consider a payment plan/installment, please
-							do select the option below and we will take you further through
-							the process.
+							If you would like to consider our payment plan, please select the
+							option “Yes payment plan”. If not interested, please select the
+							option “No payment plan”.
 						</p>
 						{/*
               <p className="mx-auto mt-4 text-lg font-bold text-center text-gray-600 md:text-3xl">

@@ -3,7 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { Fragment, useState } from 'react';
 import {motion} from 'framer-motion';
-import { LeadStageProps } from '../NewLead';
+import type { LeadStageProps } from '../NewLead';
 
 const Financing = ({
   quoteInfo,
@@ -46,6 +46,12 @@ const Financing = ({
               financing: "true",
             });
           }}
+          onKeyDown={() => {
+            setQuoteInfo({
+              ...quoteInfo,
+              financing: "true",
+            });
+          }}
         >
           {quoteInfo.financing && (
             <svg
@@ -54,6 +60,7 @@ const Financing = ({
               viewBox="0 0 20 20"
               fill="currentColor"
             >
+              <title>Check</title>
               <path
                 fillRule="evenodd"
                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
@@ -74,6 +81,12 @@ const Financing = ({
               financing: false,
             });
           }}
+          onKeyDown={() => {
+            setQuoteInfo({
+              ...quoteInfo,
+              financing: false,
+            });
+          }}
         >
           {quoteInfo.financing === "false" || quoteInfo.financing === ""  && (
             <svg
@@ -82,6 +95,7 @@ const Financing = ({
               viewBox="0 0 20 20"
               fill="currentColor"
             >
+              <title>Check</title>
               <path
                 fillRule="evenodd"
                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
@@ -102,12 +116,14 @@ const Financing = ({
             {" "}
             <svg
               onClick={prevPage}
+              onKeyDown={prevPage}
               xmlns="http://www.w3.org/2000/svg"
               className="h-16 w-16 bg-red-500 text-white rounded-full shadow-red-500 shadow-lg hover:shadow-md hover:bg-red-600"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
+              <title>Back</title>
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -116,6 +132,7 @@ const Financing = ({
               />
             </svg>
             <button
+            type="button"
               onClick={nextPage}
               className="bg-sky-500 hover:bg-sky-600 text-center text-white text-2xl font-medium rounded-full py-4 px-8 shadow-sky-400 shadow-md hover:shadow"
             >
@@ -126,12 +143,14 @@ const Financing = ({
           <Fragment>
             <svg
               onClick={prevPage}
+              onKeyDown={prevPage}
               xmlns="http://www.w3.org/2000/svg"
               className="h-16 w-16 bg-red-500 text-white rounded-full shadow-red-500 shadow-lg hover:shadow-md hover:bg-red-600"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
+              <title>Back</title>
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

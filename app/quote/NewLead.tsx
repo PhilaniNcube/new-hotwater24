@@ -51,7 +51,7 @@ export type LeadStageProps = {
     city: string;
     telephoneNumber: string;
     postalCode: string;
-    completeSolution: boolean;
+    completeSolution: boolean | null;
     product_id: string | undefined;
     installation: string;
     contactDay: string;
@@ -131,7 +131,7 @@ const NewLead = ({geysers}:{geysers: Geyser[]}) => {
 					city: "",
 					telephoneNumber: "",
 					postalCode: "",
-					completeSolution: false,
+					completeSolution: null,
 					product_id: undefined,
 					installation: "",
 					contactDay: "",
