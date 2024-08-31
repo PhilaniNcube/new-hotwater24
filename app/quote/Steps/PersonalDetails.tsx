@@ -114,56 +114,47 @@ const PersonalDetails = ({
 
     sendGTMEvent({ event: "generate_lead" });
 
-    // if(quoteInfo.streetAddress === '') {
 
-    //   setQuoteInfo({
-    //     ...quoteInfo,
-    //     streetAddress: data[0].description.split(",")[0],
-    //     suburb: data[0].description.split(",")[1].trim(),
-    //     city: data[0].description.split(",")[2].trim(),
-    //   });
-
-    // }
 
     try {
       const quote = await supabase
         .from("quotes")
         .insert([
           {
-            children,
-            adults,
-            teenagers,
+            children: children || 0,
+            adults : adults || 0,
+            teenagers : teenagers || 0,
             houseType: houseType,
-            ownership: ownership,
+            ownership: ownership ?? undefined,
             gasSupply: gasSupply,
-            gasStove: gasStove,
-            gasWaterHeating: gasWaterHeating,
-            gasHeating: gasHeating,
-            otherGasUse: otherGasUse,
-            locateOutside: locateOutside,
-            gasGeyser: gasGeyser,
-            electricGeyser: electricGeyser,
-            solarGeyser: solarGeyser,
-            otherGeyser: otherGeyser,
-            standardShower: standardShower,
-            rainShower: rainShower,
-            bathtub: bathtub,
-            kitchenSink: kitchenSink,
-            bathroomSink: bathroomSink,
-            dishwasher: dishwasher,
-            washingmachine: washingmachine,
-            flowRate: flowRate,
-            offGrid: offGrid,
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            streetAddress: streetAddress,
-            city: city,
-            suburb: suburb,
-            telephoneNumber: telephoneNumber,
-            postalCode: postalCode,
-            completeSolution: completeSolution,
-            product_id: product_id || undefined,
+            gasStove: gasStove ?? undefined,
+            gasWaterHeating: gasWaterHeating ?? undefined,
+            gasHeating: gasHeating ?? undefined,
+            otherGasUse: otherGasUse ?? undefined,
+            locateOutside: locateOutside ?? undefined,
+            gasGeyser: gasGeyser ?? undefined,
+            electricGeyser: electricGeyser ?? undefined,
+            solarGeyser: solarGeyser ?? undefined,
+            otherGeyser: otherGeyser ?? undefined,
+            standardShower: standardShower ?? undefined,
+            rainShower: rainShower ?? undefined,
+            bathtub: bathtub ?? undefined,
+            kitchenSink: kitchenSink ?? undefined,
+            bathroomSink: bathroomSink ?? undefined,
+            dishwasher: dishwasher ?? undefined,
+            washingmachine: washingmachine ?? undefined,
+            flowRate: flowRate ?? undefined,
+            offGrid: offGrid ?? undefined,
+            firstName: firstName ?? undefined,
+            lastName: lastName ?? undefined,
+            email: email ?? undefined,
+            streetAddress: streetAddress ?? undefined,
+            city: city ?? undefined,
+            suburb: suburb ?? undefined,
+            telephoneNumber: telephoneNumber ?? undefined,
+            postalCode: postalCode ?? undefined,
+            completeSolution: completeSolution ?? undefined,
+            product_id: product_id ?? undefined,
             installation: installation,
             contactDay: contactDay,
             contactTime: contactTime,
@@ -175,7 +166,7 @@ const PersonalDetails = ({
             plumbingCost: plumbingCost ? plumbingCost : 5000,
             comments: comments,
             financing: financing,
-            source: source || '',
+            source: source ?? undefined,
           },
         ])
         .select("*")
@@ -444,7 +435,7 @@ const PersonalDetails = ({
             </div>
           )} */}
 						{/* Places */}
-						<div className="flex flex-col w-1/2">
+						<div className="flex flex-col w-full md:w-1/2">
 							<Label className="font-bold text-md" htmlFor="suburb">
 								Suburb
 							</Label>
@@ -462,7 +453,7 @@ const PersonalDetails = ({
 								}
 							/>
 						</div>{" "}
-						<div className="flex flex-col w-1/2">
+						<div className="flex flex-col w-full md:w-1/2">
 							<Label className="font-bold text-md" htmlFor="city">
 								City
 							</Label>
@@ -501,6 +492,29 @@ const PersonalDetails = ({
               }
             />
           </div> */}
+
+						<div className="flex flex-col w-full md:w-1/3">
+							<label className="font-bold text-md" htmlFor="contactTime">
+								What is is prefered contact method?
+							</label>
+							<select
+								name="contactTime"
+								required
+								className="py-2 pl-4 text-base text-gray-600 border border-gray-300 rounded-md focus:outline-none focus:border-gray-700 "
+								value={quoteInfo.contactTime}
+								onChange={(e) =>
+									setQuoteInfo({
+										...quoteInfo,
+										contactTime: e.target.value,
+									})
+								}
+							>
+								<option value="">Select Method</option>
+								<option value="call">Call</option>
+								<option value="email">Email</option>
+								<option value="whatsapp">WhatsApp</option>
+							</select>
+						</div>
 					</div>
 
 					{/****
@@ -531,29 +545,7 @@ const PersonalDetails = ({
               <option value="Thursday">Thursday</option>
             </select>
           </div>
-          <div className="flex flex-col w-full">
-            <label className="text-xs font-bold" htmlFor="contactTime">
-              What time can we contact you?
-            </label>
-            <select
-              type="text"
-              name="contactTime"
-              required
-              className="py-2 pl-4 text-base text-gray-600 border border-gray-300 rounded-md focus:outline-none focus:border-gray-700 "
-              value={quoteInfo.contactTime}
-              onChange={(e) =>
-                setQuoteInfo({
-                  ...quoteInfo,
-                  contactTime: e.target.value,
-                })
-              }
-            >
-              <option value="">Select Time</option>
-              <option value="9AM - 11AM">9AM - 11AM</option>
-              <option value="11AM - 1PM">11AM - 1PM</option>
-              <option value="2PM - 5PM">2PM - 5PM</option>
-            </select>
-          </div>
+
         </div>
 
         *** */}
@@ -578,10 +570,10 @@ const PersonalDetails = ({
               })
             }
           /> */}
-						<p className="my-2 text-xs">
+						{/* <p className="my-2 text-xs">
 							By filling in this form you give us consent to email you – but you
 							can unsubscribe at any time
-						</p>
+						</p> */}
 					</div>
 				</div>
 				<div className="flex items-center justify-center mt-4 mb-12 space-x-6">
