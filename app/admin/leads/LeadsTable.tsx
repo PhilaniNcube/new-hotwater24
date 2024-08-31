@@ -163,6 +163,23 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
     ),
   },
   {
+    accessorKey: "contactTime",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Contact Method
+          <ArrowUpDown className="w-4 h-4 ml-2" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("contactTime")}</div>
+    ),
+  },
+  {
     accessorKey: "source",
     header: ({ column }) => {
       return (

@@ -1,6 +1,6 @@
 "use client"
 /* eslint-disable @next/next/no-img-element */
-import React, { FormEvent, Fragment, useState } from "react";
+import React, { type FormEvent, Fragment, useState } from "react";
 import { useRouter } from "next/navigation";
 import LeadCard from "@/components/Quote/LeadCard";
 import { createBrowserClient } from "@supabase/ssr";
@@ -12,8 +12,8 @@ type LeadProps = {
 function QuoteData({ lead }:LeadProps) {
 
    const supabase = createBrowserClient<Database>(
-     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+     process.env.NEXT_PUBLIC_SUPABASE_URL,
+     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
    );
 
   const router = useRouter();
@@ -69,49 +69,49 @@ function QuoteData({ lead }:LeadProps) {
   const handleSubmit = async (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const mail = await fetch(`/api/mail/installers`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        children: children,
-        teenagers: teenagers,
-        adults: adults,
-        houseType: houseType,
-        ownership: ownership,
-        gasSupply: gasSupply,
-        gasStove: gasStove,
-        gasWaterHeating: gasWaterHeating,
-        gasHeating: gasHeating,
-        otherGasUse: otherGasUse,
-        locateOutside: locateOutside,
-        gasGeyser: gasGeyser,
-        electricGeyser: electricGeyser,
-        solarGeyser: solarGeyser,
-        otherGeyser: otherGeyser,
-        standardShower: standardShower,
-        rainShower: rainShower,
-        bathtub: bathtub,
-        kitchenSink: kitchenSink,
-        bathroomSink: bathroomSink,
-        dishwasher: dishwasher,
-        washingmachine: washingmachine,
-        flowRate: flowRate,
-        offGrid: offGrid,
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        streetAddress: streetAddress,
-        suburb: suburb,
-        city: city,
-        telephoneNumber: telephoneNumber,
-        postalCode: postalCode,
-        completeSolution: completeSolution,
-        installation: installation,
-        messages: messages,
-        receipient: receipient,
-        secondary: secondary,
-      }),
-    });
+    const mail = await fetch("/api/mail/installers", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						children: children,
+						teenagers: teenagers,
+						adults: adults,
+						houseType: houseType,
+						ownership: ownership,
+						gasSupply: gasSupply,
+						gasStove: gasStove,
+						gasWaterHeating: gasWaterHeating,
+						gasHeating: gasHeating,
+						otherGasUse: otherGasUse,
+						locateOutside: locateOutside,
+						gasGeyser: gasGeyser,
+						electricGeyser: electricGeyser,
+						solarGeyser: solarGeyser,
+						otherGeyser: otherGeyser,
+						standardShower: standardShower,
+						rainShower: rainShower,
+						bathtub: bathtub,
+						kitchenSink: kitchenSink,
+						bathroomSink: bathroomSink,
+						dishwasher: dishwasher,
+						washingmachine: washingmachine,
+						flowRate: flowRate,
+						offGrid: offGrid,
+						firstName: firstName,
+						lastName: lastName,
+						email: email,
+						streetAddress: streetAddress,
+						suburb: suburb,
+						city: city,
+						telephoneNumber: telephoneNumber,
+						postalCode: postalCode,
+						completeSolution: completeSolution,
+						installation: installation,
+						messages: messages,
+						receipient: receipient,
+						secondary: secondary,
+					}),
+				});
 
     console.log(mail);
 
@@ -159,6 +159,7 @@ function QuoteData({ lead }:LeadProps) {
       <div className="w-full bg-gray-200 py-10  relative">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row gap-8 lg:px-0">
           <button
+          type="button"
             onClick={() => {
               setShow(true);
             }}
@@ -167,6 +168,7 @@ function QuoteData({ lead }:LeadProps) {
             Delete
           </button>
           <button
+            type="button"
             onClick={createLink}
             className="bg-brand px-12 py-2 rounded text-white my-4 text-base font-medium"
           >
@@ -182,7 +184,7 @@ function QuoteData({ lead }:LeadProps) {
               show={show}
               setShow={setShow}
               deleteLead={deleteLead}
-              lead={lead!}
+              lead={lead}
             />
           )}
 
@@ -255,6 +257,7 @@ function QuoteData({ lead }:LeadProps) {
               />
             </div>
             <button
+            type="submit"
               disabled={loading}
               className="mt-4 bg-sky-700 text-white py-2 rounded-md"
             >
@@ -308,6 +311,7 @@ const Alert = ({
                 height={22}
                 fill="currentColor"
               >
+                <title>Alert</title>
                 <path
                   className="heroicon-ui"
                   d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 9a1 1 0 0 1-1-1V8a1 1 0 0 1 2 0v4a1 1 0 0 1-1 1zm0 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
@@ -325,6 +329,7 @@ const Alert = ({
           <div className="flex xl:items-center lg:items-center sm:justify-end justify-center pr-4 ">
             <span
               onClick={() => deleteLead(lead.id)}
+              onKeyDown={() => deleteLead(lead.id)}
               className="text-sm mr-12 font-bold cursor-pointer text-gray-200 px-4 py-2 rounded bg-red-500 "
             >
               Yes
@@ -332,6 +337,9 @@ const Alert = ({
             <span
               className="text-sm cursor-pointer bg-gray-300 shadow rounded px-4 py-2 text-gray-700 "
               onClick={() => {
+                setShow(false);
+              }}
+              onKeyDown={() => {
                 setShow(false);
               }}
             >

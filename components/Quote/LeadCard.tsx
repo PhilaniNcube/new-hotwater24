@@ -175,6 +175,9 @@ function LeadCard({ quote }:LeadCardProps) {
                 <p className="text-sm font-normal text-gray-600">
                   {`Phone Number: ${quote.telephoneNumber}`}
                 </p>
+                <p className="text-sm font-normal text-gray-600">
+                  {`Prefered Contact Method: ${quote.contactTime ? quote.contactTime : "N/A"}`}
+                </p>
 
                 <div className="relative p-4 mt-2 mb-2 bg-gray-100 rounded shadow">
                   <ul>
