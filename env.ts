@@ -19,6 +19,7 @@ const envSchema = z.object({
 	XERO_CLIENT_SECRET: z.string(),
 	NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: z.string(),
 	SIMVOLY_API: z.string(),
+	RESEND_API_KEY: z.string(),
 });
 
 envSchema.parse(process.env);

@@ -83,20 +83,17 @@ const NewLead = ({geysers}:{geysers: Geyser[]}) => {
   const [source, setSource] = useState<null | string>(null)
   const [page, setPage] = useState(1);
 
+
+
      //write a useEffect function to set the document.refferer value to the source value in the quoteInfo object
-  useEffect(() => {
 
-    if (document?.referrer && !source) {
-      setSource(document.referrer)
-    }
-
-
-
+							useEffect(() => {
+								if (source === null) {
+									setSource(document.referrer);
+								}
+							}, [source]);
 
 
-  }, [source]);
-
-  console.log({source})
 
     const [quoteInfo, setQuoteInfo] = useState({
 					children: 0,
@@ -144,7 +141,7 @@ const NewLead = ({geysers}:{geysers: Geyser[]}) => {
 					installationCost: 0,
 					plumbingCost: null,
 					comments: "",
-					source: document.referrer,
+					source: source,
 				});
 
       const nextPage = () => {
@@ -171,6 +168,7 @@ const NewLead = ({geysers}:{geysers: Geyser[]}) => {
             nextPage={nextPage}
             prevPage={prevPage}
             page={page}
+            source={source}
           />
         )}
         {page === 2 && (
