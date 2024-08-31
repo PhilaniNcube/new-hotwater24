@@ -31,7 +31,7 @@ export default function Safe() {
 										antonio.className,
 									)}
 								>
-									Safe and reliable installation by accredited professionals
+									Safe and reliable installation by certified professionals
 								</h1>
 								<p className="mt-4 text-lg leading-6 text-white xl:w-5/12 lg:w-8/12 md:w-10/12 2xl:pr-12">
 									Safety comes first! We work with our network of independent

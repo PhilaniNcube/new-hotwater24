@@ -1,7 +1,6 @@
 "use client"
 
-import React, { FormEvent, useState } from "react";
-import analytics from "../../utils/analytics";
+import React, { type FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { sendGTMEvent } from "@next/third-parties/google";
 

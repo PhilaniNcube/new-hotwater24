@@ -1,17 +1,18 @@
-import Hero from '@/components/Homepage/Hero'
-import CTA from '@/components/Homepage/CTA'
-import Safe from '@/components/Homepage/Safe'
-import NewHero from '@/components/Homepage/NewHero'
-import WhyGoGas from '@/components/Homepage/why-choose-gas'
-import WhatAreYouWaitingFor from '@/components/Homepage/what-are-waiting-for'
-import GeyserPackages from '@/components/Homepage/geyser-packages'
-import ButtonCtaSection from '@/components/Homepage/button-cta-section'
-import InstallationTimeline from '@/components/Homepage/installation-timeline'
-import QualityGeysers from '@/components/Homepage/quality-geysers'
-import Testimonials from '@/components/Homepage/testimonials'
-import DiscountBanner from '@/components/Homepage/discount-banner'
+import Hero from "@/components/Homepage/Hero";
+import CTA from "@/components/Homepage/CTA";
+import Safe from "@/components/Homepage/Safe";
+import NewHero from "@/components/Homepage/NewHero";
+import WhyGoGas from "@/components/Homepage/why-choose-gas";
+import WhatAreYouWaitingFor from "@/components/Homepage/what-are-waiting-for";
+import GeyserPackages from "@/components/Homepage/geyser-packages";
+import ButtonCtaSection from "@/components/Homepage/button-cta-section";
+import InstallationTimeline from "@/components/Homepage/installation-timeline";
+import QualityGeysers from "@/components/Homepage/quality-geysers";
+import Testimonials from "@/components/Homepage/testimonials";
+import DiscountBanner from "@/components/Homepage/discount-banner";
 
 import type { Metadata } from "next";
+import Bosch from "@/components/Homepage/bosch";
 
 export const metadata: Metadata = {
 	title: "Hotwater24 | Gas Geyser Installations",
@@ -28,22 +29,19 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-static";
 
-
 export default async function Index() {
-
-
-  return (
-   <main>
-    <NewHero />
-    {/* <DiscountBanner /> */}
-    <WhyGoGas />
-    <WhatAreYouWaitingFor />
-    <GeyserPackages />
-    <ButtonCtaSection />
-    <InstallationTimeline />
-    <QualityGeysers />
-    <Testimonials />
-    <Safe />
-   </main>
-  )
+	return (
+		<main>
+			<NewHero />
+			<Bosch />
+			<WhyGoGas />
+			<WhatAreYouWaitingFor />
+			<GeyserPackages />
+			<ButtonCtaSection />
+			<InstallationTimeline />
+			<QualityGeysers />
+			<Testimonials />
+			<Safe />
+		</main>
+	);
 }
