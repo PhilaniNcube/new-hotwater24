@@ -78,8 +78,7 @@ const QualityGeysers = () => {
 							</CardHeader>
 							<CardContent>
 								<CardDescription className="text-sm font-medium text-center">
-									Paloma Gas Geysers is a trusted and well-established brand
-									offering top-quality gas geysers for residential and
+									Paloma Gas Geysers are a trusted and well-established and offer top-quality gas geysers for residential and
 									commercial use.
 								</CardDescription>
 							</CardContent>
@@ -101,7 +100,7 @@ const QualityGeysers = () => {
 							</CardHeader>
 							<CardContent>
 								<CardDescription className="text-sm font-medium text-center">
-									The Bosch gas geyser with battery or hydro ignition have all
+									Bosch gas geysers with battery or hydro ignition have all
 									the qualities expected of a Bosch appliance while at the same
 									time offering you the added benefit of being small and
 									efficient.
