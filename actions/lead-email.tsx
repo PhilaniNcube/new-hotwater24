@@ -25,7 +25,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
 		/>
 		<div style={container}>
 			<h1 style={heading}>
-				Hi, {firstName} {lastName}!
+				Hi, {firstName}!
 			</h1>
 			<p>
 				<strong>
