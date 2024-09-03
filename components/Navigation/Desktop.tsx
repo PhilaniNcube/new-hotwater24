@@ -34,31 +34,31 @@ type Props = {
 
 const Desktop = ({ packages, cities }: Props) => {
   return (
-    <section className="sticky top-0 left-0 right-0 z-50 hidden py-3 shadow-md lg:block bg-white/80 backdrop-blur-sm">
-      <div className="container flex items-center justify-between py-2 mb-2 border-b md:flex-row">
+    <section className="sticky top-0 left-0 right-0 z-50 hidden pb-3 shadow-md lg:block bg-white/80 backdrop-blur-sm">
+      <div className="flex items-center justify-between px-10 py-2 mb-2 border-b lg:px-20 md:flex-row bg-brand">
         <span className="flex flex-row items-center">
-          <Mail className="text-slate-600" size={20} />
+          <Mail className="text-white" size={20} />
           <a
             href="mailto:info@hotwater24.com"
-            className="ml-2 text-sm font-medium text-slate-600"
+            className="ml-2 text-sm font-medium text-white"
           >
             info@hotwater24.com
           </a>
           <span className="pl-3">|</span>
-          <Phone className="ml-2 text-slate-600" size={20} />
+          <Phone className="ml-2 text-white" size={20} />
           <a
             href="tel:+27793414075"
-            className="ml-2 text-sm font-medium text-slate-600"
+            className="ml-2 text-sm font-medium text-white"
           >
             +27 79 341 4075
           </a>
         </span>
         <span className="flex flex-row items-center">
           <a
-            href="https://www.facebook.com/hotwater24"
+            href="https://www.facebook.com/HotW24"
             target="_blank"
             rel="noreferrer"
-            className="text-slate-600"
+            className="text-white"
           >
             <RiFacebookBoxFill className="text-2xl" />
           </a>
@@ -66,7 +66,7 @@ const Desktop = ({ packages, cities }: Props) => {
             href="https://www.instagram.com/hot_water_24/"
             target="_blank"
             rel="noreferrer"
-            className="text-slate-600"
+            className="text-white"
           >
             <RiInstagramFill className="text-2xl" />
           </a>
@@ -74,7 +74,7 @@ const Desktop = ({ packages, cities }: Props) => {
             href="https://www.linkedin.com/company/hotwater24/"
             target="_blank"
             rel="noreferrer"
-            className="text-slate-600"
+            className="text-white"
           >
             <RiLinkedinFill className="text-2xl" />
           </a>
