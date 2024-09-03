@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
   `;
 
 		const { data, error } = await resend.emails.send({
-			from: "Hotwater 24 <webdev@hotwater24.com>",
+			from: "Hotwater 24 <info@hotwater24.com>",
 			to: [email, "info@hotwater24.com"],
 			subject: "Contact | Hotwater 24",
 			text: `Hi ${firstName}.	Thank you for completing the questionnaire. Based on the information
