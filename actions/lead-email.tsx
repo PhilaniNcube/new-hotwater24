@@ -11,30 +11,30 @@ interface EmailTemplateProps {
 }
 
 export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
-	firstName,
-	lastName,
-	email,
-	streetAddress,
-	city,
-	telephoneNumber,
+  firstName,
+  lastName,
+  email,
+  streetAddress,
+  city,
+  telephoneNumber,
 }) => (
-	<div>
-		<img
-			src="http://cdn.mcauto-images-production.sendgrid.net/622b9324edf69236/b96619d1-872f-4b3f-ba0d-0908a77a2320/600x225.jpg"
-			alt="banner"
-		/>
-		<div style={container}>
-			<h1 style={heading}>
-				Hi, {firstName}!
-			</h1>
-			<p>
-				<strong>
-					Thank you for completing the questionnaire. Based on the information
-					you provided, we will soon send you an initial (costing) proposal.
-				</strong>
-			</p>
-		</div>
-	</div>
+  <div>
+    <img
+      src="http://cdn.mcauto-images-production.sendgrid.net/622b9324edf69236/b96619d1-872f-4b3f-ba0d-0908a77a2320/600x225.jpg"
+      alt="banner"
+    />
+    <div style={container}>
+      <h1 style={heading}>Hi {firstName}!</h1>
+      <p>
+        <strong>
+          Thank you for completing our questionnaire. Based on the information
+          provided, we will soon send you a comprehensive (costing) proposal
+          regarding the installation for a gas water heating solution for your
+          property.
+        </strong>
+      </p>
+    </div>
+  </div>
 );
 
 

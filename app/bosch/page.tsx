@@ -126,17 +126,17 @@ export default function Component() {
         </section>
         <section
           id="comparison"
-          className="w-full py-12 bg-gray-100 md:py-24 lg:py-32"
+          className="w-full max-w-4xl mx-auto py-12 bg-gray-100 md:py-24 lg:py-32"
         >
           <div className="container px-4 md:px-6">
             <h2 className="mb-12 text-3xl font-bold tracking-tighter text-center sm:text-5xl">
               Why Choose Bosch Gas Geysers?
             </h2>
             <Table>
-              <TableHeader>
+              <TableHeader className="">
                 <TableRow>
                   <TableHead className="w-[200px]">Feature</TableHead>
-                  <TableHead>Bosch Gas Geyser</TableHead>
+                  <TableHead >Bosch Gas Geyser</TableHead>
                   <TableHead>Electric Geyser</TableHead>
                   <TableHead>Solar Water Heater</TableHead>
                 </TableRow>
@@ -144,41 +144,71 @@ export default function Component() {
               <TableBody>
                 <TableRow>
                   <TableCell className="font-medium">Heating Speed</TableCell>
-                  <TableCell>Instant</TableCell>
-                  <TableCell>Slow</TableCell>
-                  <TableCell>Dependent on sunlight</TableCell>
+                  <TableCell className="bg-brand text-white font-medium">
+                    Instant
+                  </TableCell>
+                  <TableCell className="bg-red-600 text-white font-medium">
+                    Slow
+                  </TableCell>
+                  <TableCell className="bg-yellow-600 text-white font-medium">
+                    Dependent on sunlight
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell className="font-medium">
                     Energy Efficiency
                   </TableCell>
-                  <TableCell>High</TableCell>
-                  <TableCell>Moderate</TableCell>
-                  <TableCell>High</TableCell>
+                  <TableCell className="bg-brand text-white font-medium">
+                    High
+                  </TableCell>
+                  <TableCell className="bg-red-600 text-white font-medium">
+                    Moderate
+                  </TableCell>
+                  <TableCell className="bg-yellow-600 text-white font-medium">
+                    High
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell className="font-medium">
                     Installation Cost
                   </TableCell>
-                  <TableCell>Moderate</TableCell>
-                  <TableCell>Low</TableCell>
-                  <TableCell>High</TableCell>
+                  <TableCell className="bg-brand text-white font-medium">
+                    Moderate
+                  </TableCell>
+                  <TableCell className="bg-red-600 text-white font-medium">
+                    Low
+                  </TableCell>
+                  <TableCell className="bg-yellow-600 text-white font-medium">
+                    High
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell className="font-medium">
                     Operational Cost
                   </TableCell>
-                  <TableCell>Low</TableCell>
-                  <TableCell>High</TableCell>
-                  <TableCell>Low</TableCell>
+                  <TableCell className="bg-brand text-white font-medium">
+                    Low
+                  </TableCell>
+                  <TableCell className="bg-red-600 text-white font-medium">
+                    High
+                  </TableCell>
+                  <TableCell className="bg-yellow-600 text-white font-medium">
+                    Low
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell className="font-medium">
                     Dependence on Electricity
                   </TableCell>
-                  <TableCell>None</TableCell>
-                  <TableCell>High</TableCell>
-                  <TableCell>Moderate</TableCell>
+                  <TableCell className="bg-brand text-white font-medium">
+                    None
+                  </TableCell>
+                  <TableCell className="bg-red-600 text-white font-medium">
+                    High
+                  </TableCell>
+                  <TableCell className="bg-yellow-600 text-white font-medium">
+                    Moderate
+                  </TableCell>
                 </TableRow>
               </TableBody>
             </Table>
@@ -205,7 +235,6 @@ export default function Component() {
                 >
                   Get a Quote
                 </Link>
-
               </div>
             </div>
           </div>
