@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { Fragment, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -70,96 +70,86 @@ export type LeadStageProps = {
   nextPage: () => void;
   prevPage: () => void;
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-setQuoteInfo: (quoteInfo: any) => void;
+  setQuoteInfo: (quoteInfo: any) => void;
   setPage?: (page: number) => void;
-
 };
 
-
-
-const NewLead = ({geysers}:{geysers: Geyser[]}) => {
-
-  const searchParams = useSearchParams()
-  const [source, setSource] = useState<null | string>(null)
+const NewLead = ({ geysers }: { geysers: Geyser[] }) => {
+  const searchParams = useSearchParams();
+  const [source, setSource] = useState<null | string>(null);
   const [page, setPage] = useState(1);
 
+  //write a useEffect function to set the document.refferer value to the source value in the quoteInfo object
 
+  useEffect(() => {
+    console.log("source", document.referrer);
 
-     //write a useEffect function to set the document.refferer value to the source value in the quoteInfo object
+    setSource(document.referrer);
+  }, []);
 
-							useEffect(() => {
-								if (source === null) {
-									setSource(document.referrer);
-								}
-							}, [source]);
+  const [quoteInfo, setQuoteInfo] = useState({
+    children: 0,
+    teenagers: 0,
+    adults: 0,
+    houseType: "",
+    ownership: true,
+    gasSupply: "",
+    gasStove: false,
+    gasWaterHeating: true,
+    gasHeating: false,
+    otherGasUse: "",
+    locateOutside: false,
+    electricGeyser: false,
+    gasGeyser: false,
+    solarGeyser: false,
+    otherGeyser: "",
+    standardShower: 0,
+    rainShower: 0,
+    bathtub: 0,
+    bathroomSink: 0,
+    kitchenSink: 0,
+    dishwasher: 0,
+    washingmachine: 0,
+    flowRate: 0,
+    offGrid: false,
+    firstName: "",
+    lastName: "",
+    email: "",
+    streetAddress: "",
+    suburb: "",
+    city: "",
+    telephoneNumber: "",
+    postalCode: "",
+    completeSolution: null,
+    product_id: undefined,
+    installation: "",
+    contactDay: "",
+    contactTime: "",
+    financing: "",
+    geyserPrice: 0,
+    monthlySavings: 200,
+    yearlySavings: 2400,
+    geyserSize: null,
+    installationCost: 0,
+    plumbingCost: null,
+    comments: "",
+    source: source,
+  });
 
+  const nextPage = () => {
+    if (page === 13) return;
 
-
-    const [quoteInfo, setQuoteInfo] = useState({
-					children: 0,
-					teenagers: 0,
-					adults: 0,
-					houseType: "",
-					ownership: true,
-					gasSupply: "",
-					gasStove: false,
-					gasWaterHeating: true,
-					gasHeating: false,
-					otherGasUse: "",
-					locateOutside: false,
-					electricGeyser: false,
-					gasGeyser: false,
-					solarGeyser: false,
-					otherGeyser: "",
-					standardShower: 0,
-					rainShower: 0,
-					bathtub: 0,
-					bathroomSink: 0,
-					kitchenSink: 0,
-					dishwasher: 0,
-					washingmachine: 0,
-					flowRate: 0,
-					offGrid: false,
-					firstName: "",
-					lastName: "",
-					email: "",
-					streetAddress: "",
-					suburb: "",
-					city: "",
-					telephoneNumber: "",
-					postalCode: "",
-					completeSolution: null,
-					product_id: undefined,
-					installation: "",
-					contactDay: "",
-					contactTime: "",
-					financing: "",
-					geyserPrice: 0,
-					monthlySavings: 200,
-					yearlySavings: 2400,
-					geyserSize: null,
-					installationCost: 0,
-					plumbingCost: null,
-					comments: "",
-					source: source,
-				});
-
-      const nextPage = () => {
-        if (page === 13) return;
-
-        sendGTMEvent({ event: `step_${page}`});
-        setPage((page) => page + 1);
-      };
-      const prevPage = () => {
-        if (page === 1) return;
-        setPage((page) => page - 1);
-      };
-
+    sendGTMEvent({ event: `step_${page}` });
+    setPage((page) => page + 1);
+  };
+  const prevPage = () => {
+    if (page === 1) return;
+    setPage((page) => page - 1);
+  };
 
   return (
     <div className="h-full">
       {" "}
-
       <div className="relative h-full">
         {page === 1 && (
           <Family
@@ -274,7 +264,6 @@ const NewLead = ({geysers}:{geysers: Geyser[]}) => {
             nextPage={nextPage}
             prevPage={prevPage}
             page={page}
-
           />
         )}
       </div>
