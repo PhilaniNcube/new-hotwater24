@@ -78,6 +78,10 @@ const Desktop = ({ packages, cities }: Props) => {
           >
             <RiLinkedinFill className="text-2xl" />
           </a>
+          <p className="mx-3 text-white">|</p>
+          <Link className="text-white" href="/login">
+           Login
+          </Link>
         </span>
       </div>
       <nav className="container flex items-center justify-between">

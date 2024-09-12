@@ -3,55 +3,107 @@
  * @see https://v0.dev/t/uFR3NMUdsrp
  */
 import { antonio } from "@/fonts";
-import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
+import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { Star, StarHalf } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { format, formatDistance,  intlFormatDistance,  parseISO } from "date-fns";
+
+interface Review {
+  id: number;
+  name: string;
+  avatar: string;
+  rating: number;
+  date: Date;
+  text: string;
+  link: string;
+}
+
+const reviews: Review[] = [
+  {
+    id: 1,
+    link: "https://g.co/kgs/grRt5nF",
+    name: "Aubrey Swigelaar",
+    avatar: "/placeholder.svg?height=40&width=40",
+    rating: 5,
+    date: new Date(2024, 9, 29),
+    text: "Thinking of having a gas geyser installed, look no further.Hotwater24 is the company I can recommend. I used their services and they executed the work proficiently and I an happy with the workmanship, and their affordability.I can just wish them prosperity  for their future business.",
+  },
+  {
+    id: 2,
+    link: "https://g.co/kgs/eJzFw8q",
+    name: "May Alli",
+    avatar: "/placeholder.svg?height=40&width=40",
+    rating: 5,
+    date: new Date(2024, 9, 29),
+    text: "Ronald and Shane provided me with outstanding service. Communication is clear, advice was to my benefit, they dissuaded me from procuring a bigger and more expensive unit as it was going to be an overkill for my needs. Installation of my geyser and gas bottles were executed very thoroughly and neatly. I will definitely be using Hotwater24 to attend to gas refilling going forward. I highly recommend this company for your gas needs. Thank you Ronald for your professionalism.",
+  },
+  {
+    id: 3,
+    link: "https://g.co/kgs/885MGn7",
+    name: "Garth Hendrickse",
+    avatar: "/placeholder.svg?height=40&width=40",
+    rating: 5,
+    date: new Date(2024, 11, 12),
+    text: "Hi Guys. It is not often you get a professional company that is weel priced, superb in getting things done, keeping you informed. These guys are just brilliant. If you need gas stuff done, they are the best !!! Installed 3 gas heaters in a two story home.",
+  },
+];
+
 
 export default function Testimonials() {
+
+
+
+
   return (
     <section className="mt-4">
-      <h2 className={cn("text-2xl lg:text-4xl font-bold text-center mb-3 dark:text-white", antonio.className)}>
-        Our Happy Customers
-      </h2>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 container">
-        <div className="flex flex-col items-center text-center">
-          <h3 className={cn("font-semibold mt-4",antonio.className)}>Phillip Erasmus</h3>
-
-          <blockquote className="mt-2 italic text-zinc-500 dark:text-zinc-400">
-            "Can surely recommend you! On time and quality installation. Follow
-            up and keeping to commitments. Not something you see and hear about
-            in these days. Thanks again."
-          </blockquote>
-        </div>
-        <div className="flex flex-col items-center text-center">
-          <h3 className={cn("font-semibold mt-4",antonio.className)}>Nish Govender</h3>
-
-          <blockquote className="mt-2 italic text-zinc-500 dark:text-zinc-400">
-            "Ronald from Hotwater24 offers exceptional front-end service. The
-            advice offered to a first-time gas user is meticulous and
-            informative."
-          </blockquote>
-        </div>
-        <div className="flex flex-col items-center text-center">
-          <h3 className={cn("font-semibold mt-4",antonio.className)}>Zama Mbatha</h3>
-
-          <blockquote className="mt-2 italic text-zinc-500 dark:text-zinc-400">
-            "Job well done to the Hotwater24 team, from beginning to end, they
-            were very professional. I LOVE the fact that they were there
-            throughout the process to give advice and help with the right
-            products for our household. KUDOS to you guys."
-          </blockquote>
-        </div>
-        <div className="flex flex-col items-center text-center">
-          <h3 className={cn("font-semibold mt-4",antonio.className)}>Tersia Block</h3>
-
-          <blockquote className="mt-2 italic text-zinc-500 dark:text-zinc-400">
-            "Excellent service installation. From the first engagement with
-            Ronald to the site visit and installation. Shane and Lamont were
-            also very knowledgeable and professional. I am a very satisfied
-            customer."
-          </blockquote>
+      <div className="container px-4 py-8 mx-auto">
+        <h2 className="mb-6 text-2xl font-bold text-center">Google Reviews</h2>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {reviews.map((review) => (
+            <Card key={review.id}>
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <Avatar className="w-10 h-10 mr-4">
+                    <AvatarImage src={review.avatar} alt={review.name} />
+                    <AvatarFallback>{review.name.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <h3 className="font-semibold">{review.name}</h3>
+                    <p className="text-sm text-gray-500">
+                      {intlFormatDistance(new Date(), review.date)}
+                    </p>
+                  </div>
+                </div>
+                <StarRating rating={review.rating} />
+                <p className="mt-4 text-gray-700">{review.text}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
+  );
+}
+
+
+function StarRating({ rating }: { rating: number }) {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 !== 0;
+
+  return (
+    <div className="flex">
+      {[...Array(5)].map((_, i) => (
+        <span key={i}>
+          {i < fullStars ? (
+            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+          ) : i === fullStars && hasHalfStar ? (
+            <StarHalf className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+          ) : (
+            <Star className="w-5 h-5 text-gray-300" />
+          )}
+        </span>
+      ))}
+    </div>
   );
 }

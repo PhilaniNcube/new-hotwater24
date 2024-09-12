@@ -40,12 +40,12 @@ const Navbar = async () => {
   return (
     <header className="">
       {/** Top Nav **/}
-      <div className="bg-white py-4 w-full">
+      <div className="w-full py-4 bg-white">
         <div className="container flex justify-between">
           <Link href="/" passHref>
-            <div className="flex space-x-2 items-center cursor-pointer">
+            <div className="flex items-center space-x-2 cursor-pointer">
               <Image
-                className="w-36 sm:w-44 object-cover"
+                className="object-cover w-36 sm:w-44"
                 src="/images/hw24-logo.svg"
                 width={358}
                 height={73}
@@ -54,56 +54,56 @@ const Navbar = async () => {
               />
             </div>
           </Link>
-          <div className="flex items-center gap-x-5 space-x-4">
+          <div className="flex items-center space-x-4 gap-x-5">
             <a
               href="https://wa.me/27793414075?text=I'm%20interested%20in%20your%20products"
               target="_blank"
               rel="noreferrer"
-              className="bg-green-600 hover:bg-green-700 text-white flex items-center justify-between px-4 py-2 space-x-6 rounded-full font-bold"
+              className="flex items-center justify-between px-4 py-2 space-x-6 font-bold text-white bg-green-600 rounded-full hover:bg-green-700"
             >
               Get in touch <RiWhatsappLine className="text-2xl" />
             </a>
           </div>
         </div>
       </div>
-      <div className="bg-gray-800 py-4">
+      <div className="py-4 bg-gray-800">
         {/* Desktop Nav */}
-        <div className="hidden container md:flex items-center justify-between">
-          <nav className="flex space-x-8 items-center text-white">
+        <div className="container items-center justify-between hidden md:flex">
+          <nav className="flex items-center space-x-8 text-white">
             <Link
               href="/"
-              className="text-sm md:text-md focus:text-sky-600 pr-6"
+              className="pr-6 text-sm md:text-md focus:text-sky-600"
             >
               Home
             </Link>
             <Link
               href="/who-we-are"
-              className="text-sm md:text-md focus:text-sky-600 px-6"
+              className="px-6 text-sm md:text-md focus:text-sky-600"
             >
               Who We Are
             </Link>
             <Link
               href="/why-us"
-              className="text-sm md:text-md focus:text-sky-600 px-6"
+              className="px-6 text-sm md:text-md focus:text-sky-600"
             >
               Why Choose Us
             </Link>
             <Link
               href="/our-approach"
-              className="text-sm md:text-md focus:text-sky-600 px-6"
+              className="px-6 text-sm md:text-md focus:text-sky-600"
             >
               Our Approach
             </Link>
 
             <Link
               href="/blog/faq"
-              className="text-sm md:text-md focus:text-sky-600 px-6"
+              className="px-6 text-sm md:text-md focus:text-sky-600"
             >
               FAQs
             </Link>
             <Link
               href="/news"
-              className="text-sm md:text-md focus:text-sky-600 px-6"
+              className="px-6 text-sm md:text-md focus:text-sky-600"
             >
               News
             </Link>
@@ -113,7 +113,7 @@ const Navbar = async () => {
               <Link
                 href="/admin"
                 passHref
-                className="flex space-x-2 bg-blue-800 px-3 py-2 rounded"
+                className="flex px-3 py-2 space-x-2 bg-blue-800 rounded"
               >
                 <User size={20} className="text-white" />
                 <span className="text-white">Admin</span>
@@ -126,7 +126,7 @@ const Navbar = async () => {
             </div>
         {/* Desktop Nav Ends */}
         {/* Mobile Nav Starts */}
-        <div className="flex md:hidden justify-between items-center container">
+        <div className="container flex items-center justify-between md:hidden">
           <MobileNav is_admin={data!} />
         </div>
         {/* Mobile Nav Ends */}
