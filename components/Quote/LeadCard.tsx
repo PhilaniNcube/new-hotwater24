@@ -51,7 +51,7 @@ function LeadCard({ quote }:LeadCardProps) {
                     </h2>
 
                     <h3 className="pb-3 text-lg font-bold text-gray-600 border-b border-gray-400">
-                      {quote.flowRate <= 30 &&
+                      {quote.flowRate <= 30 && quote.geyserPrice &&
                         ` Estimated Cost:
                       ${formatter.format(
                         roundUp(
