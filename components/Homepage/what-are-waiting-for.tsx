@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export default function WhatAreYouWaitingFor() {
   return (
-			<section className="w-full px-8">
+			<section className="w-full px-8 scroll-mt-10" id="tankless">
 				<div className="pb-16">
 					<Image
 						width={1322}

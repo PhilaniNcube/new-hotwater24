@@ -7,7 +7,7 @@ import { antonio } from "@/fonts";
 
 const QualityGeysers = () => {
   return (
-			<section className="container py-6">
+			<section className="container py-6" id="brands">
 				<h2
 					className={cn(
 						"text-3xl lg:text-4xl font-bold text-center text-slate-800",
