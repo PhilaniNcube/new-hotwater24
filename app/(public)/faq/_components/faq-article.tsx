@@ -64,6 +64,183 @@ export default function FaqArticle() {
             antonio.className
           )}
         >
+          What are the requirements to install a gas geyser?
+        </h2>
+        <p className="text-base">
+          Please click on the link to read all about the requirements for a gas
+          geyser installation:
+        </p>
+        <Link
+          className="text-lg font-medium text-center text-blue-600 underline"
+          href="https://www.hotwater24.com/news/installing-a-gas-geyser-key-requirements"
+        >
+          Installation Requirements
+        </Link>
+        <h2
+          className={cn(
+            "text-xl md:text-2xl lg:text-3xl text-slate-700 mt-5 my-2",
+            antonio.className
+          )}
+        >
+          Where do I need to place the gas cylinders?
+        </h2>{" "}
+        <p className="text-base">
+          Cylinders shall be located on a firm, clean, well-drained and level
+          base. The area surrounding a container shall be kept clear of
+          combustible materials, for example, weeds, dry grass, paper and waste.
+        </p>
+        <p className="text-base">
+          Cylinders shall be located and protected against tampering by
+          unauthorized persons and damage and interference by, for example,
+          animals and vehicles.
+        </p>
+        <p className="text-base">
+          Below diagram explains a more accurate on the exact requirements and
+          dimensions:
+        </p>{" "}
+        <Image
+          alt="Cover image"
+          className="aspect-video w-2/3 overflow-hidden rounded-lg object-cover my-3"
+          height="510"
+          src="/images/geyser-location.png"
+          width="812"
+        />
+        <h2
+          className={cn(
+            "text-xl md:text-2xl lg:text-3xl text-slate-700 mt-5 my-2",
+            antonio.className
+          )}
+        >
+          Is a gas cage required?
+        </h2>
+        <p className="text-base">
+          Domestic installations do not require according to SANS standard that
+          the cylinders be placed in a cage but shall be secured in such a
+          manner so as not to accidentally fall over (Eg: Anchor and chain).
+        </p>
+        <h2
+          className={cn(
+            "text-xl md:text-2xl lg:text-3xl text-slate-700 mt-5 my-2",
+            antonio.className
+          )}
+        >
+          Can I install a gas geyser at a house with a thatched roof?
+        </h2>
+        <p className="text-base">
+          Installing a gas geyser in a house with a thatched roof is generally
+          possible, but it requires careful consideration of safety and
+          regulatory requirements and needs to be performed by a professional
+          and certified installer.
+        </p>
+        <p className="text-base">
+          Gas cylinders shall not be installed directly under the eaves of
+          thatched roof and shall be not less than 3 m away from eaves of the
+          thatched roof behind a firewall. Please find below sketch of
+          requirements of the location of the gas cylinders:
+        </p>{" "}
+        <Image
+          alt="Cover image"
+          className="aspect-square w-2/3 lg:w-1/3 overflow-hidden rounded-lg object-cover my-3"
+          height="615"
+          src="/images/thatch-geyser.png"
+          width="659"
+        />{" "}
+        <h2
+          className={cn(
+            "text-xl md:text-2xl lg:text-3xl text-slate-700 mt-5 my-2",
+            antonio.className
+          )}
+        >
+          How much kg’s of LPG gas am I allowed to store at my house:
+        </h2>
+        <p className="text-base">
+          You are not allowed to have over 100kg of “fixed” LPG gas cylinders at
+          your house. If you plan to install over 100kg of LPG gas, you will
+          require planning submission and approval in terms of the “National
+          Building Regulations and Building Standards Act” as well as
+          certification in terms of the “Community Fire Safety By-law” and its
+          amendments.
+        </p>
+        <p className="text-base">
+          Please do consult your local municipality regarding these regulations
+          as they might differ between municipalities.
+        </p>{" "}
+        <h2
+          className={cn(
+            "text-xl md:text-2xl lg:text-3xl text-slate-700 mt-5 my-2",
+            antonio.className
+          )}
+        >
+          Does switching from a electric geyser to a gas geyser save me money?
+        </h2>
+        <p className="text-base">
+          Switching from an electric geyser to a gas geyser can result in
+          significant cost savings, especially with the rising cost of
+          electricity in South Africa.
+        </p>
+        <p className="text-base">
+          To calculate the potential savings, we need to compare the operating
+          costs of both systems.
+        </p>{" "}
+        <h3
+          className={cn(
+            "text-xl md:text-2xl text-slate-700 mt-5 my-2",
+            antonio.className
+          )}
+        >
+          Factors to Consider:
+        </h3>
+        <ol className="list-decimal list-inside text-slate-700">
+          <li className="font-semibold text-sm">
+            Electric Geyser Costs
+            <ul className="list-disc list-inside pl-5 font-light">
+              <li>
+                <strong>Electricity Monthly Usage:</strong> To heat 150litres of
+                hot water per day for one month, the electric units used are
+                270kWh.
+              </li>
+              <li>
+                <strong>Electricity Tariff:</strong> According to its latest
+                publicly available data on electricity prices, South Africa’s
+                average per-kWh electricity tariff for households stood at
+                roughly R3.30 by December 2023 (Source MyBroadband &
+                https://www.globalpetrolprices.com/electricity_prices/)
+              </li>
+              <li>
+                <strong>Monthly Expense:</strong> 270kWh × R3.30 ={" "}
+                <strong>R891.00/month</strong>
+              </li>
+            </ul>
+          </li>
+          <li className="font-semibold text-sm">
+            Gas Geyser Costs
+            <ul className="list-disc list-inside pl-5 font-light">
+              <li>
+                <strong>Gas Consumption</strong> To heat 150litres of hot water
+                per day for one month, the gas used is 15kg
+              </li>
+              <li>
+                <strong>Gas Price:</strong> The cost of LPG is around R36 per
+                kilogram in South Africa (prices fluctuate with market
+                conditions).
+              </li>
+              <li>
+                <strong>Monthly Expense:</strong> 15kg × R36.00 =
+                <strong>R540.00/month</strong>
+              </li>
+            </ul>
+          </li>
+        </ol>{" "}
+        <p className="text-base">
+          Monthly saving by switching from an electrical geyser to a gas geyser
+          is R351.00, which is almost 40%!
+        </p>{" "}
+        <h2
+          className={cn(
+            "text-xl md:text-2xl lg:text-3xl text-slate-700 mt-5 my-2",
+            antonio.className
+          )}
+        >
           Does the size of the gas geyser matter?
         </h2>
         <p className="text-base">
