@@ -30,8 +30,7 @@ const article = {
     {
       name: 'link',
       title: 'Link',
-      type: 'url',
-      required: true
+      type: 'url'
     },
     {
       name: 'content',
