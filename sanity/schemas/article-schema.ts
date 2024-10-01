@@ -31,6 +31,7 @@ const article = {
       name: 'link',
       title: 'Link',
       type: 'url',
+      required: true
     },
     {
       name: 'content',
