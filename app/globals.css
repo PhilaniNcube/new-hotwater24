@@ -76,11 +76,11 @@
 }
 
 #content h3 {
-  @apply text-primary text-3xl font-bold my-3;
+  @apply text-3xl font-bold my-3;
 }
 
 #content h4 {
-  @apply text-secondary text-2xl my-2;
+  @apply text-2xl my-2;
 }
 
 #content h5 {
