@@ -43,7 +43,7 @@ const page = async ({params: {slug}}: {params:{slug:string}}) => {
   const article = await getArticle(slug)
 
   return (
-    <div className="container py-10">
+    <div className="container py-10" id="article">
       <h1 className={`${bebas.className} text-2xl md:texxt-3xl text-slate-800`}>
         {article.title}
       </h1>
@@ -62,7 +62,7 @@ const page = async ({params: {slug}}: {params:{slug:string}}) => {
           <p className="text-xs text-slate-500">
             Original Article: <Link href={article.link} className="text-blue-500 underline">Link</Link>
           </p>
-          <div className="font-normal text-slate-600 content">
+          <div className="font-normal text-slate-600 content" id="content">
             <PortableText value={article.content} />
           </div>
           <Link href="/news">
