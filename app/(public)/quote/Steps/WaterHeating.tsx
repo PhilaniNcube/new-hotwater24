@@ -20,8 +20,8 @@ const WaterHeating = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
         animate={{ x: 0 }}
         exit={{ x: '-100%' }}
           transition={{ duration: 0.3}}
-         className="max-w-6xl mx-auto my-16 relative">
-      <h1 className="mt-8 font-sans text-center font-bold text-2xl">
+         className="relative max-w-6xl mx-auto my-16">
+      <h1 className="mt-8 font-sans text-2xl font-bold text-center">
         Water heating
       </h1>
 
@@ -40,7 +40,7 @@ const WaterHeating = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
         How do you currently heat up your water? Multiple answers are possible.
       </p>
 
-      <div className="py-8 max-w-6xl mx-auto flex flex-col md:flex-row flex-wrap items-center justify-center space-y-4 lg:space-y-0 lg:space-x-6">
+      <div className="flex flex-col flex-wrap items-center justify-center max-w-6xl py-8 mx-auto space-y-4 md:flex-row gap-x-3 gap-y-4 md:space-y-0 lg:space-x-6">
         <div
           className="relative h-[200px] w-[250px] rounded shadow-lg bg-gray-100 flex flex-col items-center justify-center hover:shadow-md cursor-pointer"
           onClick={() => {
@@ -53,7 +53,7 @@ const WaterHeating = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
           {quoteInfo.electricGeyser === true && (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8 absolute top-2 right-2 text-sky-500"
+              className="absolute w-8 h-8 top-2 right-2 text-sky-500"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -65,11 +65,11 @@ const WaterHeating = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
             </svg>
           )}
           <img
-            className="h-16 w-16"
+            className="w-16 h-16"
             alt=""
             src="/images/icons/electricity.svg"
           />
-          <p className="text-lg text-center text-sky-500 font-bold">
+          <p className="text-lg font-bold text-center text-sky-500">
             Electricity
           </p>
         </div>
@@ -85,7 +85,7 @@ const WaterHeating = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
           {quoteInfo.gasGeyser === true && (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8 absolute top-2 right-2 text-sky-500"
+              className="absolute w-8 h-8 top-2 right-2 text-sky-500"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -96,8 +96,8 @@ const WaterHeating = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
               />
             </svg>
           )}
-          <img className="h-16 w-16" alt="" src="/images/icons/gas.svg" />
-          <p className="text-lg text-center text-sky-500 font-bold">Gas</p>
+          <img className="w-16 h-16" alt="" src="/images/icons/gas.svg" />
+          <p className="text-lg font-bold text-center text-sky-500">Gas</p>
         </div>
         <div
           className="relative h-[200px] w-[250px] rounded shadow-lg bg-gray-100 flex flex-col items-center justify-center hover:shadow-md cursor-pointer"
@@ -111,7 +111,7 @@ const WaterHeating = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
           {quoteInfo.solarGeyser === true && (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8 absolute top-2 right-2 text-sky-500"
+              className="absolute w-8 h-8 top-2 right-2 text-sky-500"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -122,8 +122,8 @@ const WaterHeating = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
               />
             </svg>
           )}
-          <img className="h-16 w-16" alt="" src="/images/icons/solar.svg" />
-          <p className="text-lg text-center text-sky-500 font-bold">Solar</p>
+          <img className="w-16 h-16" alt="" src="/images/icons/solar.svg" />
+          <p className="text-lg font-bold text-center text-sky-500">Solar</p>
         </div>
         <div
           className="relative h-[200px] w-[250px] rounded shadow-lg bg-gray-100 flex flex-col items-center justify-center hover:shadow-md cursor-pointer"
@@ -132,7 +132,7 @@ const WaterHeating = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
           {quoteInfo.otherGeyser !== "" && (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8 absolute top-2 right-2 text-sky-500"
+              className="absolute w-8 h-8 top-2 right-2 text-sky-500"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -143,11 +143,11 @@ const WaterHeating = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
               />
             </svg>
           )}
-          <img className="h-16 w-16" alt="" src="/images/icons/dots.svg" />
-          <p className="text-lg text-center text-sky-500 font-bold">Other</p>
+          <img className="w-16 h-16" alt="" src="/images/icons/dots.svg" />
+          <p className="text-lg font-bold text-center text-sky-500">Other</p>
         </div>
       </div>
-      <div className="flex items-center justify-center space-x-6 my-3">
+      <div className="flex items-center justify-center my-3 space-x-6">
         {quoteInfo.electricGeyser !== null ||
         quoteInfo.gasGeyser !== null ||
         quoteInfo.solarGeyser !== null ||
@@ -157,7 +157,7 @@ const WaterHeating = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
             <svg
               onClick={prevPage}
               xmlns="http://www.w3.org/2000/svg"
-              className="h-16 w-16 bg-red-500 text-white rounded-full shadow-red-500 shadow-lg hover:shadow-md hover:bg-red-600"
+              className="w-16 h-16 text-white bg-red-500 rounded-full shadow-lg shadow-red-500 hover:shadow-md hover:bg-red-600"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -171,7 +171,7 @@ const WaterHeating = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
             </svg>
             <button
               onClick={nextPage}
-              className="bg-sky-500 hover:bg-sky-600 text-center text-white text-2xl font-medium rounded-full py-4 px-8 shadow-sky-400 shadow-md hover:shadow"
+              className="px-8 py-4 text-2xl font-medium text-center text-white rounded-full shadow-md bg-sky-500 hover:bg-sky-600 shadow-sky-400 hover:shadow"
             >
               Continue
             </button>
@@ -181,7 +181,7 @@ const WaterHeating = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
             <svg
               onClick={prevPage}
               xmlns="http://www.w3.org/2000/svg"
-              className="h-16 w-16 bg-red-500 text-white rounded-full shadow-red-500 shadow-lg hover:shadow-md hover:bg-red-600"
+              className="w-16 h-16 text-white bg-red-500 rounded-full shadow-lg shadow-red-500 hover:shadow-md hover:bg-red-600"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -193,7 +193,7 @@ const WaterHeating = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }:Lead
                 d="M15 19l-7-7 7-7"
               />
             </svg>
-            <p className="text-md text-sky-600 font-bold text-center">
+            <p className="font-bold text-center text-md text-sky-600">
               Please answer the question
             </p>
           </Fragment>

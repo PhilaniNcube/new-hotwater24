@@ -16,6 +16,7 @@ import OffGridStep from "./Steps/OffGridStep";
 import analytics from "@/utils/analytics";
 import type { Geyser } from "@/sanity/types";
 import { sendGTMEvent } from "@next/third-parties/google";
+import BoreholeWater from "./Steps/BoreholeWater";
 
 export type LeadStageProps = {
   quoteInfo: {
@@ -65,6 +66,7 @@ export type LeadStageProps = {
     plumbingCost: number | null;
     comments: string;
     source: string | null;
+    borehole_water: boolean;
   };
   page: number;
   nextPage: () => void;
@@ -129,6 +131,7 @@ const NewLead = ({ geysers }: { geysers: Geyser[] }) => {
     plumbingCost: null,
     comments: "",
     source: source,
+    borehole_water: false,
   });
 
     useEffect(() => {
@@ -201,6 +204,15 @@ const NewLead = ({ geysers }: { geysers: Geyser[] }) => {
           />
         )}
         {page === 6 && (
+          <BoreholeWater
+            quoteInfo={quoteInfo}
+            setQuoteInfo={setQuoteInfo}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            page={page}
+          />
+        )}
+        {page === 7 && (
           <WaterHeating
             quoteInfo={quoteInfo}
             setQuoteInfo={setQuoteInfo}
@@ -210,7 +222,7 @@ const NewLead = ({ geysers }: { geysers: Geyser[] }) => {
           />
         )}
 
-        {page === 7 && (
+        {page === 8 && (
           <WaterOutlets
             quoteInfo={quoteInfo}
             setQuoteInfo={setQuoteInfo}
@@ -220,7 +232,7 @@ const NewLead = ({ geysers }: { geysers: Geyser[] }) => {
           />
         )}
 
-        {page === 8 && (
+        {page === 9 && (
           <OffGridStep
             quoteInfo={quoteInfo}
             setQuoteInfo={setQuoteInfo}
@@ -229,7 +241,7 @@ const NewLead = ({ geysers }: { geysers: Geyser[] }) => {
             page={page}
           />
         )}
-        {page === 9 && (
+        {page === 10 && (
           <Recommendations
             quoteInfo={quoteInfo}
             setQuoteInfo={setQuoteInfo}
@@ -240,7 +252,7 @@ const NewLead = ({ geysers }: { geysers: Geyser[] }) => {
           />
         )}
 
-        {page === 10 && (
+        {page === 11 && (
           <PersonalDetails
             quoteInfo={quoteInfo}
             setQuoteInfo={setQuoteInfo}
@@ -260,7 +272,7 @@ const NewLead = ({ geysers }: { geysers: Geyser[] }) => {
           page={page}
         />
       )*/}
-        {page === 11 && (
+        {page === 12 && (
           <Confirm
             quoteInfo={quoteInfo}
             setQuoteInfo={setQuoteInfo}

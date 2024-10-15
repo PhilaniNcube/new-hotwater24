@@ -69,7 +69,7 @@ export default function LeadsTable({leads}:Props) {
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
             ID
-            <ArrowUpDown className="ml-2 h-4 w-4" />
+            <ArrowUpDown className="w-4 h-4 ml-2" />
           </Button>
         );
       },
@@ -83,17 +83,13 @@ export default function LeadsTable({leads}:Props) {
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
             First Name
-            <ArrowUpDown className="ml-2 h-4 w-4" />
+            <ArrowUpDown className="w-4 h-4 ml-2" />
           </Button>
         );
       },
       cell: ({ row }) => {
         const lead = row.original;
-        return (
-          <p className="">
-            {lead.firstName}
-          </p>
-        );
+        return <p className="">{lead.firstName}</p>;
       },
     },
     {
@@ -105,17 +101,13 @@ export default function LeadsTable({leads}:Props) {
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
             Last Name
-            <ArrowUpDown className="ml-2 h-4 w-4" />
+            <ArrowUpDown className="w-4 h-4 ml-2" />
           </Button>
         );
       },
       cell: ({ row }) => {
         const lead = row.original;
-        return (
-          <p className="">
-            {lead.lastName}
-          </p>
-        );
+        return <p className="">{lead.lastName}</p>;
       },
     },
     {
@@ -143,7 +135,7 @@ export default function LeadsTable({leads}:Props) {
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
             House Type
-            <ArrowUpDown className="ml-2 h-4 w-4" />
+            <ArrowUpDown className="w-4 h-4 ml-2" />
           </Button>
         );
       },
@@ -161,9 +153,27 @@ export default function LeadsTable({leads}:Props) {
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
             Source
-            <ArrowUpDown className="ml-2 h-4 w-4" />
+            <ArrowUpDown className="w-4 h-4 ml-2" />
           </Button>
         );
+      },
+    },
+    {
+      accessorKey: "borehole_water",
+      header: ({ column }) => {
+        return (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Borehole Waer
+            <ArrowUpDown className="w-4 h-4 ml-2" />
+          </Button>
+        );
+      },
+      cell: ({ row }) => {
+        const lead = row.original;
+        return <p className="">{lead.borehole_water === false ? "No" : "Yes"}</p>;
       },
     },
     {
@@ -173,9 +183,9 @@ export default function LeadsTable({leads}:Props) {
         return (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
+              <Button variant="ghost" className="w-8 h-8 p-0">
                 <span className="sr-only">Open menu</span>
-                <MoreHorizontal className="h-4 w-4" />
+                <MoreHorizontal className="w-4 h-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -221,10 +231,10 @@ export default function LeadsTable({leads}:Props) {
   });
 
   return (
-    <div className="container mx-auto py-10">
-      <h1 className="text-2xl font-bold mb-4">Geyser Installation Leads</h1>
+    <div className="container py-10 mx-auto">
+      <h1 className="mb-4 text-2xl font-bold">Geyser Installation Leads</h1>
       <div className="flex items-center py-4">
-        <Search className="w-5 h-5 text-gray-500 mr-2" />
+        <Search className="w-5 h-5 mr-2 text-gray-500" />
         <Input
           placeholder="Search all columns..."
           value={globalFilter ?? ""}
@@ -232,7 +242,7 @@ export default function LeadsTable({leads}:Props) {
           className="max-w-sm"
         />
       </div>
-      <div className="rounded-md border">
+      <div className="border rounded-md">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -282,14 +292,14 @@ export default function LeadsTable({leads}:Props) {
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
+      <div className="flex items-center justify-end py-4 space-x-2">
         <Button
           variant="outline"
           size="sm"
           onClick={() => table.setPageIndex(0)}
           disabled={!table.getCanPreviousPage()}
         >
-          <ChevronsLeft className="h-4 w-4" />
+          <ChevronsLeft className="w-4 h-4" />
           <span className="sr-only">Go to first page</span>
         </Button>
         <Button
@@ -298,7 +308,7 @@ export default function LeadsTable({leads}:Props) {
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          <ChevronLeft className="h-4 w-4" />
+          <ChevronLeft className="w-4 h-4" />
           <span className="sr-only">Go to previous page</span>
         </Button>
         <Button
@@ -307,7 +317,7 @@ export default function LeadsTable({leads}:Props) {
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          <ChevronRight className="h-4 w-4" />
+          <ChevronRight className="w-4 h-4" />
           <span className="sr-only">Go to next page</span>
         </Button>
         <Button
@@ -316,7 +326,7 @@ export default function LeadsTable({leads}:Props) {
           onClick={() => table.setPageIndex(table.getPageCount() - 1)}
           disabled={!table.getCanNextPage()}
         >
-          <ChevronsRight className="h-4 w-4" />
+          <ChevronsRight className="w-4 h-4" />
           <span className="sr-only">Go to last page</span>
         </Button>
       </div>

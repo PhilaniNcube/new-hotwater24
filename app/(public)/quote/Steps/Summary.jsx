@@ -63,7 +63,8 @@ const Summary = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }) => {
     installationCost,
     plumbingCost,
     comments,
-    source
+    source,
+    borehole_water,
   } = quoteInfo;
 
   const queryClient = useQueryClient();
@@ -116,6 +117,7 @@ const Summary = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }) => {
         plumbingCost: plumbingCost,
         comments:comments,
         source: source,
+        borehole_water: borehole_water,
       },
     ])
   );
@@ -176,6 +178,7 @@ const Summary = ({ quoteInfo, nextPage, prevPage, page, setQuoteInfo }) => {
             installationCost: installationCost,
             plumbingCost: plumbingCost,
             comments: comments,
+            borehole_water: borehole_water,
           }),
         });
 

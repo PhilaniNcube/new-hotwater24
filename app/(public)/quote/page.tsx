@@ -6,11 +6,7 @@ import { getGeysers } from "@/sanity/sanity-utils";
 
 const page = async () => {
 
-
   const geysers = await getGeysers();
-
-
-
 
 
   return (

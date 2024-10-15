@@ -97,6 +97,7 @@ const PersonalDetails = ({
     comments,
     financing,
     source,
+    borehole_water,
   } = quoteInfo;
 
   // const [open, setOpen] = useState(false);
@@ -159,6 +160,7 @@ const PersonalDetails = ({
             comments: comments,
             financing: financing,
             source: source ?? undefined,
+            borehole_water: borehole_water,
           },
         ])
         .select("*")
@@ -211,6 +213,7 @@ const PersonalDetails = ({
             plumbingCost: plumbingCost,
             comments: comments,
             financing: financing,
+            borehole_water: borehole_water,
           }),
         });
       }

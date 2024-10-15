@@ -590,6 +590,7 @@ export type Database = {
           user_id: string | null;
           washingmachine: number;
           yearlySavings: number;
+          borehole_water: boolean;
         };
         Insert: {
           adults?: number;
@@ -642,6 +643,7 @@ export type Database = {
           user_id?: string | null;
           washingmachine: number;
           yearlySavings?: number;
+          borehole_water?: boolean;
         };
         Update: {
           adults?: number;
@@ -694,6 +696,7 @@ export type Database = {
           user_id?: string | null;
           washingmachine?: number;
           yearlySavings?: number;
+          borehole_water?: boolean;
         };
         Relationships: [
           {
