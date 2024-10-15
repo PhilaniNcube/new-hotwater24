@@ -231,7 +231,7 @@ export default function LeadsTable({leads}:Props) {
   });
 
   return (
-    <div className="container py-10 mx-auto">
+    <div className="container py-10 mx-auto max-w-7xl">
       <h1 className="mb-4 text-2xl font-bold">Geyser Installation Leads</h1>
       <div className="flex items-center py-4">
         <Search className="w-5 h-5 mr-2 text-gray-500" />

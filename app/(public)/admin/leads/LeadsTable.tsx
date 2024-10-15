@@ -197,6 +197,24 @@ export const columns: ColumnDef<Database["public"]["Tables"]["quotes"]["Row"]>[]
     ),
   },
   {
+    accessorKey: "borehole_water",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+         Borehole Water
+          <ArrowUpDown className="w-4 h-4 ml-2" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const original = row.original;
+      return <div className="capitalize">{original.borehole_water ? "Yes" : "No"}</div>;
+    },
+  },
+  {
     accessorKey: "suburb",
     header: ({ column }) => {
       return (
