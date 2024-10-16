@@ -386,6 +386,23 @@ function LeadCard({ quote }:LeadCardProps) {
                   </div>
                 </div>
 
+                 <div className="my-2">
+                    <h2 className="mb-1 font-medium leading-6 text-center text-gray-600">
+                      Borehole Water
+                    </h2>
+                    <p className="text-sm leading-5 text-center text-gray-800">
+                      {quote.borehole_water ? (
+                        <span className="text-lg text-white bg-green-700">
+                          <Check className="text-lg text-white bg-green-700" />
+                        </span>
+                      ) : (
+                        <span className="text-lg text-white bg-red-500">
+                          <AiFillCloseSquare className="text-lg text-white bg-red-500" />
+                        </span>
+                      )}
+                    </p>
+                  </div>
+
                 <h3 className="text-lg font-bold text-gray-600">Comments:</h3>
                 <p className="text-xs text-gray-700">{quote.comments}</p>
               </div>

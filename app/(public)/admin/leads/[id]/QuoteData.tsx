@@ -56,6 +56,7 @@ function QuoteData({ lead }:LeadProps) {
     installation,
     contactTime,
     contactDay,
+    borehole_water
   } = lead;
 
   const [receipient, setReceipient] = useState("");
@@ -110,6 +111,7 @@ function QuoteData({ lead }:LeadProps) {
 						messages: messages,
 						receipient: receipient,
 						secondary: secondary,
+            borehole_water: borehole_water,
 					}),
 				});
 
@@ -156,27 +158,27 @@ function QuoteData({ lead }:LeadProps) {
   return (
     <Fragment>
 
-      <div className="w-full bg-gray-200 py-10  relative">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row gap-8 lg:px-0">
+      <div className="relative w-full py-10 bg-gray-200">
+        <div className="flex flex-col max-w-6xl gap-8 px-6 mx-auto md:flex-row lg:px-0">
           <button
           type="button"
             onClick={() => {
               setShow(true);
             }}
-            className="bg-red-600 px-12 py-2 rounded text-white my-4 text-base font-medium"
+            className="px-12 py-2 my-4 text-base font-medium text-white bg-red-600 rounded"
           >
             Delete
           </button>
           <button
             type="button"
             onClick={createLink}
-            className="bg-brand px-12 py-2 rounded text-white my-4 text-base font-medium"
+            className="px-12 py-2 my-4 text-base font-medium text-white rounded bg-brand"
           >
             Generate Payment Link
           </button>
         </div>
 
-        <div className="container mx-auto px-6 flex items-start justify-center">
+        <div className="container flex items-start justify-center px-6 mx-auto">
           {show && (
             <Alert
               confirm={confirm}
@@ -198,16 +200,16 @@ function QuoteData({ lead }:LeadProps) {
         </div>
 
         <form
-          className="md:w-1/2 mx-auto px-6 bg-white py-4 rounded mt-4"
+          className="px-6 py-4 mx-auto mt-4 bg-white rounded md:w-1/2"
           onSubmit={handleSubmit}
         >
-          <p className="text-lg font-bold my-4">
+          <p className="my-4 text-lg font-bold">
             Send message to the installer
           </p>
           <div className="flex flex-col ">
             <label
               htmlFor="receipient"
-              className="text-gray-800  text-sm font-bold leading-tight tracking-normal mb-2"
+              className="mb-2 text-sm font-bold leading-tight tracking-normal text-gray-800"
             >
               Email Address
             </label>
@@ -217,14 +219,14 @@ function QuoteData({ lead }:LeadProps) {
               type="email"
               value={receipient}
               onChange={(e) => setReceipient(e.target.value)}
-              className="text-gray-600 focus:outline-none focus:border focus:border-indigo-700  bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-gray-300 rounded border shadow"
+              className="flex items-center w-64 h-10 pl-3 text-sm font-normal text-gray-600 bg-white border border-gray-300 rounded shadow focus:outline-none focus:border focus:border-indigo-700"
               placeholder="Primary Email Address"
             />
 
             <div className="flex flex-col mt-4">
               <label
                 htmlFor="secondary"
-                className="text-gray-800  text-sm font-bold leading-tight tracking-normal mb-2"
+                className="mb-2 text-sm font-bold leading-tight tracking-normal text-gray-800"
               >
                 CC:Email Address
               </label>
@@ -233,12 +235,12 @@ function QuoteData({ lead }:LeadProps) {
                 type="email"
                 value={secondary}
                 onChange={(e) => setSecondary(e.target.value)}
-                className="text-gray-600 focus:outline-none focus:border focus:border-indigo-700  bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-gray-300 rounded border shadow"
+                className="flex items-center w-64 h-10 pl-3 text-sm font-normal text-gray-600 bg-white border border-gray-300 rounded shadow focus:outline-none focus:border focus:border-indigo-700"
                 placeholder="Email Addresss"
               />
             </div>
 
-            <div className="mt-8 flex flex-col xl:w-3/5 lg:w-1/2 md:w-1/2 w-full">
+            <div className="flex flex-col w-full mt-8 xl:w-3/5 lg:w-1/2 md:w-1/2">
               <label
                 htmlFor="message"
                 className="pb-2 text-sm font-bold text-gray-800"
@@ -251,7 +253,7 @@ function QuoteData({ lead }:LeadProps) {
                 value={messages}
                 onChange={(e) => setMessage(e.target.value)}
                 required
-                className="bg-transparent border border-gray-300 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 resize-none placeholder-gray-500 text-gray-500 "
+                className="py-3 pl-3 text-sm text-gray-500 placeholder-gray-500 bg-transparent border border-gray-300 rounded shadow-sm resize-none focus:outline-none focus:border-indigo-700 "
                 placeholder="Short Message"
                 rows={5}
               />
@@ -259,7 +261,7 @@ function QuoteData({ lead }:LeadProps) {
             <button
             type="submit"
               disabled={loading}
-              className="mt-4 bg-sky-700 text-white py-2 rounded-md"
+              className="py-2 mt-4 text-white rounded-md bg-sky-700"
             >
               {loading ? "Sending..." : "Send"}
             </button>
@@ -291,7 +293,7 @@ const Alert = ({
   const router = useRouter();
 
   return (
-    <div className="absolute top-16 left-4 py-5">
+    <div className="absolute py-5 top-16 left-4">
       {/* Code block starts */}
       <div className="flex items-center justify-center px-4 py-6">
         <div
@@ -302,8 +304,8 @@ const Alert = ({
               : "transition duration-150 ease-in-out w-full lg:w-full mx-auto bg-white py-4 md:py-0 shadow rounded flex flex-col items-center md:flex-row  justify-between translate-hide"
           }
         >
-          <div className="flex flex-col items-center md:flex-row w-full">
-            <div className="mr-3 p-4 bg-red-400  rounded md:rounded-tr-none md:rounded-br-none text-white">
+          <div className="flex flex-col items-center w-full md:flex-row">
+            <div className="p-4 mr-3 text-white bg-red-400 rounded md:rounded-tr-none md:rounded-br-none">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -318,24 +320,24 @@ const Alert = ({
                 />
               </svg>
             </div>
-            <p className="mr-2 text-base font-bold text-gray-800 dark:text-gray-100 mt-2 md:my-0">
+            <p className="mt-2 mr-2 text-base font-bold text-gray-800 dark:text-gray-100 md:my-0">
               Delete Warning
             </p>
-            <div className="h-1 w-1 bg-gray-300 dark:bg-gray-700 rounded-full mr-2 hidden xl:block" />
-            <p className="text-sm lg:text-base dark:text-gray-400 text-gray-600 lg:pt-1 xl:pt-0 sm:mb-0 mb-2 text-center sm:text-left px-16">
+            <div className="hidden w-1 h-1 mr-2 bg-gray-300 rounded-full dark:bg-gray-700 xl:block" />
+            <p className="px-16 mb-2 text-sm text-center text-gray-600 lg:text-base dark:text-gray-400 lg:pt-1 xl:pt-0 sm:mb-0 sm:text-left">
               Are you sure you want to delete this record.
             </p>
           </div>
-          <div className="flex xl:items-center lg:items-center sm:justify-end justify-center pr-4 ">
+          <div className="flex justify-center pr-4 xl:items-center lg:items-center sm:justify-end ">
             <span
               onClick={() => deleteLead(lead.id)}
               onKeyDown={() => deleteLead(lead.id)}
-              className="text-sm mr-12 font-bold cursor-pointer text-gray-200 px-4 py-2 rounded bg-red-500 "
+              className="px-4 py-2 mr-12 text-sm font-bold text-gray-200 bg-red-500 rounded cursor-pointer "
             >
               Yes
             </span>
             <span
-              className="text-sm cursor-pointer bg-gray-300 shadow rounded px-4 py-2 text-gray-700 "
+              className="px-4 py-2 text-sm text-gray-700 bg-gray-300 rounded shadow cursor-pointer "
               onClick={() => {
                 setShow(false);
               }}
