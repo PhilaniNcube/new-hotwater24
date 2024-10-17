@@ -80,7 +80,7 @@
 }
 
 #content h4 {
-  @apply text-2xl my-2;
+  @apply text-2xl mt-6 mb-2;
 }
 
 #content h5 {
