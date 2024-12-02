@@ -38,6 +38,49 @@ export default function FaqArticle() {
             antonio.className
           )}
         >
+          Where do you operate?
+        </h2>
+        <p className="text-base">
+          We operate in several regions/ cities across South Africa, namely
+          Capetown, Johannesburg and Pretoria.
+        </p>
+        <h2
+          className={cn(
+            "text-xl md:text-2xl lg:text-3xl text-slate-700 mt-5 my-2",
+            antonio.className
+          )}
+        >
+          Do gas geysers offer a warranty when running on borehole water?
+        </h2>
+        <p className="text-base">
+          Many gas geysers do not offer any warranty in case the property is
+          running on a borehole. Therefore, we highly recommend servicing your
+          gas geyser every 12 months for optimal performance.
+        </p>
+        <h2
+          className={cn(
+            "text-xl md:text-2xl lg:text-3xl text-slate-700 mt-5 my-2",
+            antonio.className
+          )}
+        >
+          How long will a 48kg gas cylinder last me for my household?
+        </h2>
+        <p className="text-base">
+          The average use of gas for a household family of four is estimated to
+          be around 20kg of LPG per month. Therefore, a 48kg gas cylinder should
+          last approximately 2 to 2.5 months for a typical family.
+        </p>
+        <p className="text-base">
+          The cost of a 48kg gas cylinder, including deposit and gas supply, is
+          generally around R1,700. Based on the average usage, you can estimate
+          the monthly cost to be around R700 to R850.
+        </p>
+        <h2
+          className={cn(
+            "text-xl md:text-2xl lg:text-3xl text-slate-700 mt-5 my-2",
+            antonio.className
+          )}
+        >
           What is a gas geyser?
         </h2>
         <p className="text-base">
@@ -100,7 +143,7 @@ export default function FaqArticle() {
         </p>{" "}
         <Image
           alt="Cover image"
-          className="aspect-video w-2/3 overflow-hidden rounded-lg object-cover my-3"
+          className="object-cover w-2/3 my-3 overflow-hidden rounded-lg aspect-video"
           height="510"
           src="/images/geyser-location.png"
           width="812"
@@ -140,7 +183,7 @@ export default function FaqArticle() {
         </p>{" "}
         <Image
           alt="Cover image"
-          className="aspect-square w-2/3 lg:w-1/3 overflow-hidden rounded-lg object-cover my-3"
+          className="object-cover w-2/3 my-3 overflow-hidden rounded-lg aspect-square lg:w-1/3"
           height="615"
           src="/images/thatch-geyser.png"
           width="659"
@@ -191,9 +234,9 @@ export default function FaqArticle() {
           Factors to Consider:
         </h3>
         <ol className="list-decimal list-inside text-slate-700">
-          <li className="font-semibold text-sm">
+          <li className="text-sm font-semibold">
             Electric Geyser Costs
-            <ul className="list-disc list-inside pl-5 font-light">
+            <ul className="pl-5 font-light list-disc list-inside">
               <li>
                 <strong>Electricity Monthly Usage:</strong> To heat 150litres of
                 hot water per day for one month, the electric units used are
@@ -212,9 +255,9 @@ export default function FaqArticle() {
               </li>
             </ul>
           </li>
-          <li className="font-semibold text-sm">
+          <li className="text-sm font-semibold">
             Gas Geyser Costs
-            <ul className="list-disc list-inside pl-5 font-light">
+            <ul className="pl-5 font-light list-disc list-inside">
               <li>
                 <strong>Gas Consumption</strong> To heat 150litres of hot water
                 per day for one month, the gas used is 15kg
@@ -735,27 +778,7 @@ export default function FaqArticle() {
           overcast conditions when your solar geyser is not able to produce
           enough hot water.
         </p>
-        <h2
-          className={cn(
-            "text-xl md:text-2xl lg:text-3xl text-slate-700 mt-5 my-2",
-            antonio.className
-          )}
-        >
-          How long will last me a 48kg gas cylinder?
-        </h2>{" "}
-        <p className="text-base">
-          This depends strongly on the number of family members, temperature
-          setting on the gas geyser, if you like to take long or short showers,
-          if you like your baths, etc….
-        </p>
-        <p className="text-base">
-          However when all being taken in moderation, we see that a 48kg gas
-          cylinder lasts between 2-3months.
-        </p>
-        <p className="text-base">
-          When used in conjunction with a solar geyser, this can even go up to
-          5-6 months and even longer….
-        </p>{" "}
+
         <h2
           className={cn(
             "text-xl md:text-2xl lg:text-3xl text-slate-700 mt-5 my-2",
