@@ -32,6 +32,7 @@ export async function generateMetadata(
 
   return {
     title: article.meta_title || article.title,
+    description: article.meta_description || article.title,
     keywords:
       "Gas Geyser, Gas Geyser Installation, Gas Geyser Installation Prices, Gas Water Heater, Gas Geyser Prices, and Gas Water Heating System.",
     openGraph: {
