@@ -3,7 +3,7 @@ import { getArticle } from "@/sanity/sanity-utils";
 import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
-import {PortableText} from "@portabletext/react"
+import { PortableText } from "@portabletext/react";
 import { Button } from "@/components/ui/button";
 
 import type { Metadata, ResolvingMetadata } from "next";
@@ -23,13 +23,15 @@ export async function generateMetadata(
   const slug = params.slug;
 
   // fetch data
- const article = await getArticle(slug);
+  const article = await getArticle(slug);
+
+  console.log(article); // This will log the article object to the console
 
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: article.title,
+    title: article.meta_title || article.title,
     keywords:
       "Gas Geyser, Gas Geyser Installation, Gas Geyser Installation Prices, Gas Water Heater, Gas Geyser Prices, and Gas Water Heating System.",
     openGraph: {
@@ -38,9 +40,8 @@ export async function generateMetadata(
   };
 }
 
-const page = async ({params: {slug}}: {params:{slug:string}}) => {
-
-  const article = await getArticle(slug)
+const page = async ({ params: { slug } }: { params: { slug: string } }) => {
+  const article = await getArticle(slug);
 
   return (
     <div className="container py-10" id="article">
@@ -60,13 +61,19 @@ const page = async ({params: {slug}}: {params:{slug:string}}) => {
             Submitted: {format(new Date(article._createdAt), "PPPP")}
           </p>
           <p className="text-xs text-slate-500">
-            Original Article: <Link href={article.link} className="text-blue-500 underline">Link</Link>
+            Original Article:{" "}
+            <Link href={article.link} className="text-blue-500 underline">
+              Link
+            </Link>
           </p>
           <div className="font-normal text-slate-600 content" id="content">
             <PortableText value={article.content} />
           </div>
           <Link href="/news">
-            <Button type="button" className="rounded-none bg-slate-800 hover:bg-slate-700">
+            <Button
+              type="button"
+              className="rounded-none bg-slate-800 hover:bg-slate-700"
+            >
               Back to Articles
             </Button>
           </Link>

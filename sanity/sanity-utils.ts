@@ -1,15 +1,13 @@
 import { createClient, groq } from "next-sanity";
 import { Article, Geyser } from "./types";
 
-  const client = createClient({
-    projectId: "anh1uho1",
-    dataset: "production",
-    apiVersion: "2023-07-31",
+const client = createClient({
+  projectId: "anh1uho1",
+  dataset: "production",
+  apiVersion: "2023-07-31",
+});
 
-  })
-
-export async function getArticles():Promise<Article[]> {
-
+export async function getArticles(): Promise<Article[]> {
   return await client.fetch(
     groq`*[_type == "article"] | order(_createdAt desc){
       _id,
@@ -20,29 +18,27 @@ export async function getArticles():Promise<Article[]> {
       link,
       content
     }`
-  )
-
+  );
 }
 
-export async function getArticle(slug:string):Promise<Article> {
-
+export async function getArticle(slug: string): Promise<Article> {
   return await client.fetch(
     groq`*[_type == "article" && slug.current == $slug][0]{
       _id,
       _createdAt,
       title,
+      meta_title,
+      meta_description,
       "slug": slug.current,
       "image": image.asset->url,
       link,
       content
     }`,
-    {slug}
-  )
+    { slug }
+  );
 }
 
-
 export async function getGeysers(): Promise<Geyser[]> {
-
   return await client.fetch(
     groq`*[_type == "geysers"] | order(_createdAt asc){
       _id,
@@ -68,13 +64,10 @@ export async function getGeysers(): Promise<Geyser[]> {
       brand,
       "image": image.asset->url,
     }`
-  )
-
+  );
 }
 
-
-export async function getGeyser(slug:string):Promise<Geyser> {
-
+export async function getGeyser(slug: string): Promise<Geyser> {
   return await client.fetch(
     groq`*[_type == "geysers" && slug.current == $slug][0]{
      _id,
@@ -100,6 +93,6 @@ export async function getGeyser(slug:string):Promise<Geyser> {
       brand,
       "image": image.asset->url,
     }`,
-    {slug}
-  )
+    { slug }
+  );
 }

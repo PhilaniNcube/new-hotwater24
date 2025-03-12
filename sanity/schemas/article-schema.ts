@@ -1,44 +1,54 @@
 const article = {
-  name: 'article',
-  title: 'Articles',
-  type: 'document',
+  name: "article",
+  title: "Articles",
+  type: "document",
   fields: [
     {
-    name: 'title',
-    title: 'Title',
-    type: 'string'
+      name: "title",
+      title: "Title",
+      type: "string",
     },
     {
-    name: 'slug',
-    title: 'Slug',
-    type: 'slug',
-    options: {source: 'title'}
+      name: "meta_title",
+      title: "Meta Title",
+      type: "string",
     },
     {
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-      options: {hotspot: true},
+      name: "meta_description",
+      title: "Meta Description",
+      type: "string",
+    },
+    {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: { source: "title" },
+    },
+    {
+      name: "image",
+      title: "Image",
+      type: "image",
+      options: { hotspot: true },
       fields: [
         {
-          name: 'alt',
-          title: 'Alt',
-          type: 'string',
-        }
-      ]
+          name: "alt",
+          title: "Alt",
+          type: "string",
+        },
+      ],
     },
     {
-      name: 'link',
-      title: 'Link',
-      type: 'url'
+      name: "link",
+      title: "Link",
+      type: "url",
     },
     {
-      name: 'content',
-      title: 'Content',
-      type: 'array',
-      of: [{type: 'block'}]
-    }
-  ]
-}
+      name: "content",
+      title: "Content",
+      type: "array",
+      of: [{ type: "block" }],
+    },
+  ],
+};
 
-export default article
+export default article;
