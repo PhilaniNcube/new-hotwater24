@@ -6,7 +6,7 @@ import Link from "next/link";
 import { PortableText } from "@portabletext/react";
 import { Button } from "@/components/ui/button";
 
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 
 export const dynamic = "force-static";
 
@@ -17,13 +17,13 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
 export async function generateMetadata(
  props: {
     params: Params;
-    searchParams: SearchParams;
+
   }
 
 ): Promise<Metadata> {
 
   const params = await props.params
-  const searchParams = await props.searchParams
+
 
   // read route params
   const slug = params.slug;
@@ -41,7 +41,14 @@ export async function generateMetadata(
     keywords:
       "Gas Geyser, Gas Geyser Installation, Gas Geyser Installation Prices, Gas Water Heater, Gas Geyser Prices, and Gas Water Heating System.",
     openGraph: {
-      images: [`${article.image}` ]
+      images: [
+        {
+          url: article.image,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
+      ]
     },
   };
 }
