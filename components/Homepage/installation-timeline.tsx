@@ -10,7 +10,7 @@ import { antonio } from "@/fonts";
  */
 export default function InstallationTimeline() {
   return (
-    <div className="container relative py-4 overflow-auto isolate">
+    <div className="container max-w-7xl mx-auto relative py-4 overflow-auto isolate">
       <h2
         className={cn(
           "text-3xl lg:text-4xl font-bold text-center text-slate-800 py-6",
@@ -124,7 +124,7 @@ export default function InstallationTimeline() {
 
       <Link prefetch={false} href="/quote/start" className="flex justify-center w-full">
         <Button
-          className="mx-auto mt-3 text-center bg-red-600 rounded-full w-44"
+          className="mx-auto mt-3 text-center bg-red-600 rounded-full w-44 text-white"
           type="button"
         >
           Get Started

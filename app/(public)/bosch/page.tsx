@@ -246,7 +246,7 @@ export default function Component() {
 // @ts-ignore
 function FeatureCard({ icon, title, description }) {
 	return (
-		<div className="flex flex-col items-center p-4 text-center border rounded-lg shadow-sm">
+		<div className="flex flex-col items-center p-4 text-center border rounded-lg shadow-xs">
 			<div className="mb-4">{icon}</div>
 			<h3 className="mb-2 text-lg font-semibold">{title}</h3>
 			<p className="text-gray-500">{description}</p>

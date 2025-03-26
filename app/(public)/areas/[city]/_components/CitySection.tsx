@@ -6,7 +6,7 @@ import { Card } from "@tremor/react";
 const CitySection = ({city}:{city:string}) => {
   return (
     <section>
-      <div className="container py-12">
+      <div className="container max-w-7xl mx-auto py-12">
         <h2
           className={cn(
             "text-xl md:text-2xl text-slate-700",

@@ -1,7 +1,5 @@
 
 import { createClient } from '@/utils/supabase/server'
-import { CookieOptions, createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
 
 export const dynamic = 'force-dynamic'
@@ -9,7 +7,7 @@ export const dynamic = 'force-dynamic'
 export async function GET() {
 
 
-  const supabase = createClient()
+  const supabase = await createClient()
 
   // This assumes you have a `todos` table in Supabase. Check out
   // the `Create Table and seed with data` section of the README 👇

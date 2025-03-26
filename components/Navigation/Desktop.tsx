@@ -32,60 +32,64 @@ type Props = {
   }[];
 }
 
-const Desktop = ({ packages, cities }: Props) => {
+const Desktop = () => {
   return (
     <section className="sticky top-0 left-0 right-0 z-50 hidden pb-3 shadow-md lg:block bg-white/80 backdrop-blur-sm">
-      <div className="flex items-center justify-between px-10 py-2 mb-2 border-b lg:px-20 md:flex-row bg-brand">
+      <div className="flex items-center justify-between px-10 py-2 mb-2 lg:px-20 md:flex-row bg-brand">
+        <div className="flex justify-between w-full max-w-7xl mx-auto">
         <span className="flex flex-row items-center">
           <Mail className="text-white" size={20} />
-          <a
+          <Link
             href="mailto:info@hotwater24.com"
             className="ml-2 text-sm font-medium text-white"
+            prefetch={false}
           >
             info@hotwater24.com
-          </a>
+          </Link>
           <span className="pl-3">|</span>
           <Phone className="ml-2 text-white" size={20} />
-          <a
+          <Link
             href="tel:+27793414075"
             className="ml-2 text-sm font-medium text-white"
+            prefetch={false}
           >
             +27 79 341 4075
-          </a>
+          </Link>
         </span>
         <span className="flex flex-row items-center">
-          <a
+          <Link
             href="https://www.facebook.com/HotW24"
             target="_blank"
             rel="noreferrer"
             className="text-white"
           >
             <RiFacebookBoxFill className="text-2xl" />
-          </a>
-          <a
+          </Link>
+          <Link
             href="https://www.instagram.com/hot_water_24/"
             target="_blank"
             rel="noreferrer"
             className="text-white"
           >
             <RiInstagramFill className="text-2xl" />
-          </a>
-          <a
+          </Link>
+          <Link
             href="https://www.linkedin.com/company/hotwater24/"
             target="_blank"
             rel="noreferrer"
             className="text-white"
           >
             <RiLinkedinFill className="text-2xl" />
-          </a>
+          </Link>
           <p className="mx-3 text-white">|</p>
           <Link className="text-white" href="/login">
            Login
           </Link>
         </span>
+        </div>
       </div>
-      <nav className="container flex items-center justify-between">
-        <div className="flex items-center gap-x-9">
+      <nav className="container max-w-7xl px-0 mx-auto flex items-center justify-between">
+        <div className="flex items-center gap-x-9 w-full">
           <Link href="/" passHref>
             <div className="flex items-center space-x-2 cursor-pointer">
               <Image
@@ -100,31 +104,7 @@ const Desktop = ({ packages, cities }: Props) => {
           </Link>
           <NavigationMenu>
             <NavigationMenuList>
-              {/* <NavigationMenuItem>
-									<NavigationMenuTrigger>Our Packages</NavigationMenuTrigger>
-									<NavigationMenuContent>
-										<ul className="grid gap-3 p-6 ">
-											{packages.map((item) => (
-												<li key={item._id} className="w-full">
-													<NavigationMenuItem className="w-full">
-														<Link
-															href={`/packages/${item.slug}`}
-															legacyBehavior
-															passHref
-															className="w-full"
-														>
-															<NavigationMenuLink
-																className={navigationMenuTriggerStyle()}
-															>
-																{item.maxFlowRate.split("l")[0]}L {item.title}
-															</NavigationMenuLink>
-														</Link>
-													</NavigationMenuItem>
-												</li>
-											))}
-										</ul>
-									</NavigationMenuContent>
-								</NavigationMenuItem> */}
+           
               <NavigationMenuItem>
                 <Link href="/#packages" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -171,13 +151,13 @@ const Desktop = ({ packages, cities }: Props) => {
           </NavigationMenu>
         </div>
         <div className="flex items-center gap-4">
-          <AreasSelector cities={cities} />
+          <AreasSelector />
           <Link
             href="https://wa.me/27793414075?text=I'm%20interested%20in%20your%20products"
             target="_blank"
             rel="noreferrer"
           >
-            <Button type="button" className="bg-green-500 rounded-full">
+            <Button type="button" className="bg-green-600 text-white rounded-full">
               <RiWhatsappLine className="mr-1 text-2xl" />
               Get In Touch
             </Button>

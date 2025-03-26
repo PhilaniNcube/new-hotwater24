@@ -27,14 +27,14 @@ type AreasProps = {
 
 
 
-const AreasSelector = ({ cities }: AreasProps) => {
+const AreasSelector = () => {
   return (
     <div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button className="text-white bg-brand">Areas Of Operation</Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent className="bg-white">
           <ScrollArea className="w-44">
             {areas.map((city) => (
               <Link key={city.id} href={`/areas/${city.slug}`} passHref>

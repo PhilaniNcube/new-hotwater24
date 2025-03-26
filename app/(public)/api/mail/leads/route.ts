@@ -1,10 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server";
-import sgMail from "@sendgrid/mail";
-import formatter from "@/lib/format";
 import { Resend } from "resend";
 import { EmailTemplate } from "@/actions/lead-email";
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY || "");
+
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -77,7 +75,7 @@ export async function POST(req: NextRequest) {
 				streetAddress,
 				city,
 				telephoneNumber,
-			}),
+			}) as unknown as React.ReactNode,
 		});
 
 		if (error) {

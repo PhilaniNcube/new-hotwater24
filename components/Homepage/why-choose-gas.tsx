@@ -11,7 +11,7 @@ import {  FlameIcon } from "lucide-react";
 
 export default function WhyGoGas() {
   return (
-			<section className="container">
+			<section className="container max-w-7xl mx-auto">
 				<div className="px-6 py-12 bg-white lg:px-0 dark:bg-gray-800">
 					<div className="pb-10 text-center">
 						<h1

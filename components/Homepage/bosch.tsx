@@ -12,7 +12,7 @@ import Link from "next/link";
 export default function Bosch() {
 	return (
     <section className="py-6">
-      <Card className="w-full @container  mx-auto my-6">
+      <Card className="w-full border-0 shadow-none @container mx-auto my-6">
         <CardHeader className="p-6 bg-red-600 text-primary-foreground">
           <CardTitle className="text-3xl font-bold text-center">
             Bosch is Back!
@@ -43,7 +43,7 @@ export default function Bosch() {
           </div>
         </CardContent>
         <CardFooter className="flex justify-center p-6">
-          <Button size="lg" className="rounded-full bg-brand">
+          <Button size="lg" className="rounded-full bg-brand text-white">
             <Link href="/bosch">Learn More About Bosch Gas Geysers</Link>
           </Button>
         </CardFooter>

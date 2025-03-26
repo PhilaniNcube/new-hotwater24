@@ -11,6 +11,7 @@ import { createServerClient } from "@supabase/ssr";
 import { GoogleTagManager } from "@next/third-parties/google";
 
 import type { Metadata } from "next";
+import { createClient } from "@/utils/supabase/server";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hotwater24.com"),
@@ -25,21 +26,9 @@ export default async function Public({
 }) {
 	const geysers = await getGeysers();
 
-	const cookieStore = cookies();
+  const supabase = await createClient();  
 
-	const supabase = createServerClient<Database>(
-		// biome-ignore lint/style/noNonNullAssertion: <explanation>
-		process.env.NEXT_PUBLIC_SUPABASE_URL!,
-		// biome-ignore lint/style/noNonNullAssertion: <explanation>
-		process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-		{
-			cookies: {
-				get(name: string) {
-					return cookieStore.get(name)?.value;
-				},
-			},
-		},
-	);
+
 
 	const { data, error } = await supabase
 		.from("cities")
@@ -52,9 +41,9 @@ export default async function Public({
       <body className={lato.className}>
         <GasGenius />
         {/* biome-ignore lint/style/noNonNullAssertion: <explanation> */}
-        <Desktop packages={geysers} cities={data!} />
+        <Desktop  />
         {/* biome-ignore lint/style/noNonNullAssertion: <explanation> */}
-        <Mobile packages={geysers} cities={data!} />
+        <Mobile  />
         {children}
         <Footer />
         {/* @ts-ignore */}

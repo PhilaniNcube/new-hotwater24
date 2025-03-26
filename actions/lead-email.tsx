@@ -1,4 +1,4 @@
-import { max } from "date-fns";
+
 import type * as React from "react";
 
 interface EmailTemplateProps {

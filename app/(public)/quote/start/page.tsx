@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 
 const page = () => {
   return (
-    <main className="container py-10">
+    <main className="container max-w-7xl mx-auto py-10">
       <div className="w-full pt-4">
         <h1
           className={cn(

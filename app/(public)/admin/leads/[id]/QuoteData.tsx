@@ -219,7 +219,7 @@ function QuoteData({ lead }:LeadProps) {
               type="email"
               value={receipient}
               onChange={(e) => setReceipient(e.target.value)}
-              className="flex items-center w-64 h-10 pl-3 text-sm font-normal text-gray-600 bg-white border border-gray-300 rounded shadow focus:outline-none focus:border focus:border-indigo-700"
+              className="flex items-center w-64 h-10 pl-3 text-sm font-normal text-gray-600 bg-white border border-gray-300 rounded shadow-smfocus:outline-none focus:border focus:border-indigo-700"
               placeholder="Primary Email Address"
             />
 
@@ -235,7 +235,7 @@ function QuoteData({ lead }:LeadProps) {
                 type="email"
                 value={secondary}
                 onChange={(e) => setSecondary(e.target.value)}
-                className="flex items-center w-64 h-10 pl-3 text-sm font-normal text-gray-600 bg-white border border-gray-300 rounded shadow focus:outline-none focus:border focus:border-indigo-700"
+                className="flex items-center w-64 h-10 pl-3 text-sm font-normal text-gray-600 bg-white border border-gray-300 rounded shadow-smfocus:outline-none focus:border focus:border-indigo-700"
                 placeholder="Email Addresss"
               />
             </div>
@@ -253,7 +253,7 @@ function QuoteData({ lead }:LeadProps) {
                 value={messages}
                 onChange={(e) => setMessage(e.target.value)}
                 required
-                className="py-3 pl-3 text-sm text-gray-500 placeholder-gray-500 bg-transparent border border-gray-300 rounded shadow-sm resize-none focus:outline-none focus:border-indigo-700 "
+                className="py-3 pl-3 text-sm text-gray-500 placeholder-gray-500 bg-transparent border border-gray-300 rounded shadow-xs resize-none focus:outline-none focus:border-indigo-700 "
                 placeholder="Short Message"
                 rows={5}
               />
@@ -300,8 +300,8 @@ const Alert = ({
           id="alert"
           className={
             show
-              ? "transition duration-150 ease-in-out w-full lg:w-full mx-auto bg-white shadow py-4 md:py-0 rounded flex flex-col items-center md:flex-row  justify-between "
-              : "transition duration-150 ease-in-out w-full lg:w-full mx-auto bg-white py-4 md:py-0 shadow rounded flex flex-col items-center md:flex-row  justify-between translate-hide"
+              ? "transition duration-150 ease-in-out w-full lg:w-full mx-auto bg-white shadow-smpy-4 md:py-0 rounded flex flex-col items-center md:flex-row  justify-between "
+              : "transition duration-150 ease-in-out w-full lg:w-full mx-auto bg-white py-4 md:py-0 shadow-smrounded flex flex-col items-center md:flex-row  justify-between translate-hide"
           }
         >
           <div className="flex flex-col items-center w-full md:flex-row">
@@ -337,7 +337,7 @@ const Alert = ({
               Yes
             </span>
             <span
-              className="px-4 py-2 text-sm text-gray-700 bg-gray-300 rounded shadow cursor-pointer "
+              className="px-4 py-2 text-sm text-gray-700 bg-gray-300 rounded shadow-smcursor-pointer "
               onClick={() => {
                 setShow(false);
               }}

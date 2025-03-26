@@ -388,7 +388,7 @@ const PersonalDetails = ({
                 data &&
                 data.length > 0 &&
                 data.map((prediction) => (
-                  <div className="bg-white absolute bottom-0 translate-y-[25px] left-0 right-0 p-2 shadow-sm rounded border border-slate-200 overflow-clip">
+                  <div className="bg-white absolute bottom-0 translate-y-[25px] left-0 right-0 p-2 shadow-xs rounded border border-slate-200 overflow-clip">
                     <pre
                       onClick={() => {
                         setValue(prediction.description, false);

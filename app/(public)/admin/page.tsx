@@ -1,24 +1,18 @@
-import { cookies } from "next/headers";
-import { Card, LineChart, Title, BarChart } from "@tremor/react";
+
+import { Card, Title, BarChart } from "@tremor/react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { createServerClient } from "@supabase/ssr";
+
 import { createClient } from "@/utils/supabase/server";
 
 export const dynamic = "force-dynamic";
 
-type ServerPageProps = {
-  searchParams: {
-    page: string
-    page_size: string
-    search: string
-  }
-}
 
-const page = async ({ searchParams }: ServerPageProps) => {
-  console.log({ searchParams });
 
-    const supabase = createClient();
+const page = async () => {
+  
+
+    const supabase = await createClient();
 
 
    const tableData = supabase.from("flowrate_counts").select("*").order("flowrate", { ascending: true });

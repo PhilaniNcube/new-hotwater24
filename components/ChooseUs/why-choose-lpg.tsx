@@ -65,7 +65,7 @@ export default function ChooseLpg() {
             <Link href="/quote/start">
               <Button
                 type="button"
-                className="rounded-full bg-red-600 min-w-[150px]"
+                className="rounded-full bg-red-600 text-white min-w-[150px]"
               >
                 <span>Get a Quote</span>
                 <ArrowRight className="ml-2" />

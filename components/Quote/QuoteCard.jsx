@@ -14,7 +14,7 @@ function Index({ quote }) {
           <div className="w-full">
             {/* Card is full width. Use in 12 col grid for best view. */}
             {/* Card code block start */}
-            <div className="flex flex-col w-full mx-auto bg-white rounded shadow lg:flex-row">
+            <div className="flex flex-col w-full mx-auto bg-white rounded shadow-smlg:flex-row">
               <div className="w-full p-6 lg:w-1/3">
                 <div className="flex items-center">
                   <div className="w-12 h-12 rounded shadow">

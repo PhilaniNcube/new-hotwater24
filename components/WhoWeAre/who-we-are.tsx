@@ -11,7 +11,7 @@ import { Loader } from "lucide-react";
 export default function WhoWeAre() {
   return (
     <section className="w-full py-12">
-      <div className="container px-4 md:px-6">
+      <div className="container max-w-7xl mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center space-y-6">
           <h2
             className={cn(

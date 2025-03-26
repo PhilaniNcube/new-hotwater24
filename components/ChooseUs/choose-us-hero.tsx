@@ -8,7 +8,7 @@ import { antonio } from "@/fonts";
 export default function ChooseUsHero() {
   return (
     <div className="w-full py-12">
-      <div className="container px-4 md:px-6">
+      <div className="container max-w-7xl mx-auto lg:px-0 px-4 md:px-6">
         {/* <div className="mb-8 text-center">
           <h1
             className={cn(
@@ -116,12 +116,12 @@ export default function ChooseUsHero() {
         </div>
         <div className="flex flex-col items-center justify-center w-full gap-6 my-6 md:flex-row">
           <Link href="/savings">
-            <Button className="rounded-full bg-brand min-w-[190px]">
+            <Button className="rounded-full bg-brand text-white min-w-[190px]">
               Calculate your saving
             </Button>
           </Link>
           <Link href="/#packages">
-            <Button className="rounded-full bg-red-600 min-w-[190px]">
+            <Button className="rounded-full bg-red-600 text-white min-w-[190px]">
               Choose your gas geyser
             </Button>
           </Link>

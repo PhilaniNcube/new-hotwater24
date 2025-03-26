@@ -20,8 +20,8 @@ const MobileNav = ({is_admin}:{is_admin:boolean}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger asChild>
+    <Sheet open={isOpen} onOpenChange={setIsOpen} >
+      <SheetTrigger asChild className="">
         <Button type="button" variant="ghost" className="text-white">
           <MenuIcon size="lg" />
         </Button>

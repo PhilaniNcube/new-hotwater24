@@ -5,21 +5,23 @@ import { createClient } from "@/utils/supabase/server";
 
 export const dynamic = "force-dynamic";
 
-type ServerPageProps = {
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
+ 
 
-const page = async ({ searchParams }: ServerPageProps) => {
+const page = async (props: {searchParams:SearchParams}) => {
 
-  const supabase = createClient()
+  const supabase = await createClient()
+ 
+  const searchParams = await props.searchParams;
 
-  // biome-ignore lint/complexity/useLiteralKeys: <explanation>
-  const page = searchParams["page"] ?? "1";
-  // biome-ignore lint/complexity/useLiteralKeys: <explanation>
-  const per_page = searchParams["page_size"] ?? "500";
 
   // biome-ignore lint/complexity/useLiteralKeys: <explanation>
-  const searchTerm = searchParams["search"] || "";
+  const page =  searchParams["page"] ?? "1";
+  // biome-ignore lint/complexity/useLiteralKeys: <explanation>
+  const per_page = await searchParams["page_size"] ?? "500";
+
+  // biome-ignore lint/complexity/useLiteralKeys: <explanation>
+  const searchTerm = await searchParams["search"] || "";
 
   if(typeof searchTerm !== "string") throw new Error("Search term must be a string");
 

@@ -27,11 +27,11 @@ type Props = {
   }[];
 };
 
-const Mobile = ({ packages, cities }: Props) => {
+const Mobile = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 left-0 right-0 flex bg-white shadow lg:hidden">
+    <header className="sticky top-0 left-0 right-0 flex bg-white shadow-sm lg:hidden">
       <div className="container flex items-center justify-between py-3">
         <Link href="/">
           <div className="flex items-center space-x-2 cursor-pointer">
@@ -48,11 +48,11 @@ const Mobile = ({ packages, cities }: Props) => {
         <div>
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button type="button" variant="ghost" className="text-white">
+              <Button type="button" variant="ghost" className="">
                 <MenuIcon className="text-slate-900" size="lg" />
               </Button>
             </SheetTrigger>
-            <SheetContent>
+            <SheetContent className="bg-white">
               <SheetHeader>
                 <SheetTitle>Menu</SheetTitle>
               </SheetHeader>

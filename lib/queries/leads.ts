@@ -1,7 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
 
 export async function getLeads(page = 1, query = "") {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const limit = 600;
   // get the start and end values for pagination
@@ -19,7 +19,7 @@ export async function getLeads(page = 1, query = "") {
 
 
 export async function getLead(id:number) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data, error } = await supabase.from("quotes").select("*").eq("id", id).single();
 

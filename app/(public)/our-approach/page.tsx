@@ -47,7 +47,7 @@ const page = () => {
 								<button
 									type="button"
 									// onClick={savings}
-									className="flex items-center px-4 py-2 mt-4 space-x-2 text-white uppercase bg-gray-800 rounded-full shadow-lg shadow-gray-600 hover:shadow-sm focus:focus-ring-sky-400 w-fit"
+									className="flex items-center px-4 py-2 mt-4 space-x-2 text-white uppercase bg-gray-800 rounded-full shadow-lg shadow-gray-600 hover:shadow-xs focus:focus-ring-sky-400 w-fit"
 								>
 									Calculate Your Saving!
 									<span>
@@ -107,7 +107,7 @@ const page = () => {
 						<Link href="/contact" passHref>
 							<button
 								type="button"
-								className="flex items-center px-4 py-2 mt-4 space-x-2 text-white uppercase bg-gray-800 rounded-full shadow-lg shadow-gray-600 hover:shadow-sm focus:focus-ring-sky-400 w-fit"
+								className="flex items-center px-4 py-2 mt-4 space-x-2 text-white uppercase bg-gray-800 rounded-full shadow-lg shadow-gray-600 hover:shadow-xs focus:focus-ring-sky-400 w-fit"
 							>
 								Get in touch
 								<span>

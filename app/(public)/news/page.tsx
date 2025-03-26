@@ -30,7 +30,7 @@ const page = async () => {
   console.log({news})
 
   return (
-    <main className="container py-10">
+    <main className="container max-w-7xl mx-auto py-10">
       <h1
         className={cn(
           "text-3xl text-slate-800 font-bold  sm:text-4xl md:text-5xl flex flex-col gap-2",
@@ -66,7 +66,7 @@ const page = async () => {
                   {format(new Date(article._createdAt), "PPPP")}
                 </small>
                 <Link className="block" href={`/news/${article.slug}`}>
-                  <Button className="rounded-none bg-slate-800 hover:bg-slate-700">
+                  <Button className="rounded-none bg-slate-800 text-white hover:bg-slate-700">
                     Read Article
                   </Button>
                 </Link>

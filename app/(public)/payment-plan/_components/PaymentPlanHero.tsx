@@ -17,7 +17,7 @@ export default function PaymentPlanHero() {
 					alt="Banner"
 					className="object-cover w-full"
 				/>
-				<div className="container w-full">
+				<div className="container max-w-xl mx-auto w-full">
 					<div className="flex flex-col items-center justify-center h-full space-y-4 text-center">
 						<div className="py-10 space-y-2 md:py-4">
 							<h1

@@ -23,7 +23,7 @@ export default function CTA() {
             </p>
 
             <Link href="/savings" passHref>
-              <Button className="focus:bg-gray-900 rounded-full shadow-lg hover:shadow mt-6 py-4 px-8 text-base font-medium leading-none text-white bg-gray-800 hover:bg-gray-700 uppercase">
+              <Button className="focus:bg-gray-900 rounded-full shadow-lg hover:shadow-smmt-6 py-4 px-8 text-base font-medium leading-none text-white bg-gray-800 hover:bg-gray-700 uppercase">
                 Calculate Your Saving
               </Button>
             </Link>

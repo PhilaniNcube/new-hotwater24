@@ -20,9 +20,12 @@ const page = () => {
   return (
     <main className="relative">
       <WhyUsHero />
+      <div className="max-w-7xl mx-auto">
       <ChooseUsHero />
       <ChooseLpg />
       <SafeInstallations />
+      </div>
+ 
     </main>
   );
 };

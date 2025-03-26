@@ -7,7 +7,7 @@ import { antonio } from "@/fonts";
 
 const QualityGeysers = () => {
   return (
-			<section className="container py-6" id="brands">
+			<section className="container max-w-7xl mx-auto py-6" id="brands">
 				<h2
 					className={cn(
 						"text-3xl lg:text-4xl font-bold text-center text-slate-800",
@@ -18,7 +18,7 @@ const QualityGeysers = () => {
 				</h2>
 				<div className="grid grid-cols-1 gap-8 py-5 md:grid-cols-3 lg:grid-cols-5">
 					<article className="w-full">
-						<Card>
+						<Card className="h-full">
 							<CardHeader>
 								<Image
 									src="/images/dewhot_logo.webp"
@@ -41,7 +41,7 @@ const QualityGeysers = () => {
 						</Card>
 					</article>
 					<article>
-						<Card>
+						<Card className="h-full">
 							<CardHeader>
 								<Image
 									src="/images/rinnai_logo.webp"
@@ -63,7 +63,7 @@ const QualityGeysers = () => {
 						</Card>
 					</article>
 					<article>
-						<Card>
+						<Card className="h-full">
 							<CardHeader>
 								<Image
 									src="/images/paloma_logo.webp"
@@ -85,7 +85,7 @@ const QualityGeysers = () => {
 						</Card>
 					</article>
 					<article>
-						<Card>
+						<Card className="h-full">
 							<CardHeader>
 								<Image
 									src="/images/bosch.webp"
@@ -109,7 +109,7 @@ const QualityGeysers = () => {
 						</Card>
 					</article>
 					<article>
-						<Card>
+						<Card className="h-full">
 							<CardHeader>
 								<Image
 									src="/images/typhoon.webp"
@@ -133,7 +133,7 @@ const QualityGeysers = () => {
 				</div>
 				<div className="flex justify-center">
 					<Link href="/#packages" prefetch={false}>
-						<Button type="button" className="bg-red-600 rounded-full">
+						<Button type="button" className="bg-red-600 text-white rounded-full">
 							Choose your gas geyser
 						</Button>
 					</Link>

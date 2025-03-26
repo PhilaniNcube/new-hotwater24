@@ -114,7 +114,7 @@ const page = () => {
                 {({ open }) => (
                   <Fragment>
                     <Disclosure.Button>
-                      <div className="flex flex-row items-center px-4 py-2 space-x-4 rounded-lg shadow bg-slate-100">
+                      <div className="flex flex-row items-center px-4 py-2 space-x-4 rounded-lg shadow-smbg-slate-100">
                         <span className="font-medium text-gray-700 text-md">
                           More Info
                         </span>
@@ -210,7 +210,7 @@ const page = () => {
                 {({ open }) => (
                   <Fragment>
                     <Disclosure.Button>
-                      <div className="flex flex-row items-center px-4 py-2 space-x-4 rounded-lg shadow bg-slate-100">
+                      <div className="flex flex-row items-center px-4 py-2 space-x-4 rounded-lg shadow-smbg-slate-100">
                         <span className="font-medium text-gray-700 text-md">
                           More Info
                         </span>
@@ -262,7 +262,7 @@ const page = () => {
                 {({ open }) => (
                   <Fragment>
                     <Disclosure.Button>
-                      <div className="flex flex-row items-center px-4 py-2 space-x-4 rounded-lg shadow bg-slate-100">
+                      <div className="flex flex-row items-center px-4 py-2 space-x-4 rounded-lg shadow-smbg-slate-100">
                         <span className="font-medium text-gray-700 text-md">
                           More Info
                         </span>
@@ -427,7 +427,7 @@ const page = () => {
                 {({ open }) => (
                   <Fragment>
                     <Disclosure.Button>
-                      <div className="flex flex-row items-center px-4 py-2 space-x-4 rounded-lg shadow bg-slate-100">
+                      <div className="flex flex-row items-center px-4 py-2 space-x-4 rounded-lg shadow-smbg-slate-100">
                         <span className="font-medium text-gray-700 text-md">
                           More Info
                         </span>
@@ -653,7 +653,7 @@ const page = () => {
                 </span>
               </p>
               <div>
-                <table className="w-full text-left bg-white shadow dark:bg-gray-800">
+                <table className="w-full text-left bg-white shadow-smdark:bg-gray-800">
                   <thead>
                     <tr className="border-b border-gray-300 dark:border-gray-700">
                       <th className="w-1/4 py-5 pl-2 text-base text-gray-800 sm:pl-10 dark:text-gray-100">
@@ -707,7 +707,7 @@ const page = () => {
                 </span>
               </p>
               <div>
-                <table className="w-full text-left bg-white shadow dark:bg-gray-800">
+                <table className="w-full text-left bg-white shadow-smdark:bg-gray-800">
                   <thead>
                     <tr className="border-b border-gray-300 dark:border-gray-700">
                       <th className="w-1/4 py-5 pl-2 text-base text-gray-800 sm:pl-10 dark:text-gray-100">

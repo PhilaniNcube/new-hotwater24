@@ -4,13 +4,15 @@ import { redirect } from "next/navigation";
 import { createServerClient } from "@supabase/ssr";
 import { createClient } from "@/utils/supabase/server";
 
-const page = async ({ params: { id } }: { params: { id: string } }) => {
-	const supabase = createClient();
+const page = async ({ params }: { params: Promise<{ id: string }> }) => {
+	const supabase = await createClient();
+    
+	const {id} = await params;
 
 	const { data: lead, error } = await supabase
 		.from("quotes")
 		.select("*")
-		.eq("id", id)
+		.eq("id", Number(id))
 		.single();
 
 	if (error) redirect("/admin/leads");

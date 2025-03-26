@@ -80,7 +80,7 @@ function Savings() {
         <Link href="/quote/start" passHref>
           <button
             onClick={start}
-            className="flex items-center px-4 py-2 mt-4 mb-8 space-x-2 text-white bg-gray-800 rounded-full shadow-lg shadow-gray-600 hover:shadow-sm focus:focus-ring-sky-400 w-fit"
+            className="flex items-center px-4 py-2 mt-4 mb-8 space-x-2 text-white bg-gray-800 rounded-full shadow-lg shadow-gray-600 hover:shadow-xs focus:focus-ring-sky-400 w-fit"
           >
             Choose your geyser
             <span>

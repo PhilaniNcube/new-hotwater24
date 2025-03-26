@@ -10,15 +10,21 @@ import type { Metadata, ResolvingMetadata } from "next";
 
 export const dynamic = "force-static";
 
-type Props = {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+type Params = Promise<{ slug: string }>
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
+ 
 
 export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
+ props: {
+    params: Params;
+    searchParams: SearchParams;
+  }
+
 ): Promise<Metadata> {
+
+  const params = await props.params
+  const searchParams = await props.searchParams
+
   // read route params
   const slug = params.slug;
 
@@ -27,8 +33,7 @@ export async function generateMetadata(
 
   console.log(article); // This will log the article object to the console
 
-  // optionally access and extend (rather than replace) parent metadata
-  const previousImages = (await parent).openGraph?.images || [];
+
 
   return {
     title: article.meta_title || article.title,
@@ -36,16 +41,17 @@ export async function generateMetadata(
     keywords:
       "Gas Geyser, Gas Geyser Installation, Gas Geyser Installation Prices, Gas Water Heater, Gas Geyser Prices, and Gas Water Heating System.",
     openGraph: {
-      images: [`${article.image}`, ...previousImages],
+      images: [`${article.image}` ]
     },
   };
 }
 
-const page = async ({ params: { slug } }: { params: { slug: string } }) => {
+const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const {slug} = await params;
   const article = await getArticle(slug);
 
   return (
-    <div className="container py-10" id="article">
+    <div className="container max-w-7xl mx-auto py-10" id="article">
       <h1 className={`${bebas.className} text-2xl md:texxt-3xl text-slate-800`}>
         {article.title}
       </h1>

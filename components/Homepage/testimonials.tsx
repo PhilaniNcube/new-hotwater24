@@ -57,7 +57,7 @@ export default function Testimonials() {
 
   return (
     <section className="mt-4">
-      <div className="container px-4 py-8 mx-auto">
+      <div className="container max-w-7xl px-4 py-8 mx-auto">
         <h2 className="mb-6 text-2xl font-bold text-center">Google Reviews</h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {reviews.map((review) => (

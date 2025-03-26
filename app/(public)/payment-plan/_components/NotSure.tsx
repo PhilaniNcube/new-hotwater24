@@ -10,8 +10,8 @@ import Link from "next/link";
 
 export default function NotSure() {
   return (
-    <section className="w-full py-12 px-8">
-      <div className="container flex p-6 md:p-8 shadow justify-center lg:p-12 rounded-full bg-red-600 items-center gap-4 ">
+    <section className="w-full py-12 px-8 max-w-7xl mx-auto lg:px-0">
+      <div className="container flex p-6 md:p-8 shadow-sm justify-center lg:p-12 rounded-full bg-red-600 items-center gap-4 ">
         <div className="space-y-3 text-center">
           <h2
             className={cn(
@@ -25,7 +25,7 @@ export default function NotSure() {
         <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center">
           <Link href="/savings">
             <Button
-              className="px-8 py-2 text-lg font-medium transition-colors rounded-full shadow bg-zinc-900 text-zinc-50 hover:bg-zinc-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-50/90 dark:focus-visible:ring-zinc-300"
+              className="px-8 py-2 text-lg font-medium transition-colors rounded-full shadow-smbg-zinc-900 text-zinc-50 hover:bg-zinc-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-50/90 dark:focus-visible:ring-zinc-300"
               variant="default"
             >
               Calculate Your Saving

@@ -9,7 +9,7 @@ import { antonio } from "@/fonts";
 export default function Safe() {
   return (
 			<div>
-				<div className="container md:py-12 py-9">
+				<div className="container max-w-7xl mx-auto md:py-12 py-9">
 					<div className="relative rounded-md">
 						<img
 							loading="lazy"

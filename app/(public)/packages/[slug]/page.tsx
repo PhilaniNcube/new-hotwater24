@@ -9,9 +9,13 @@ type Props = {
 };
 
 export async function generateMetadata(
-	{ params }: Props,
-	parent: ResolvingMetadata,
+	props: {
+		params: Promise<{ slug: string }>;
+	}
 ): Promise<Metadata> {
+
+	const params = await props.params;
+
 	// read route params
 	const slug = params.slug;
 
@@ -51,14 +55,17 @@ export async function generateMetadata(
 	};
 }
 
-const page = async ({params: {slug}}: {params: {slug: string}}) => {
+const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
-  const geyser = await getGeyser(slug)
+	const { slug } = await params;
 
-  return (
-    <main className="container py-10">
-      <PackageDetails geyser={geyser} />
-    </main>
-  );
+
+	const geyser = await getGeyser(slug)
+
+	return (
+		<main className="container py-10">
+			<PackageDetails geyser={geyser} />
+		</main>
+	);
 };
 export default page;

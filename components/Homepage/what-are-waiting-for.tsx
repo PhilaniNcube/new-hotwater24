@@ -30,7 +30,7 @@ export default function WhatAreYouWaitingFor() {
 						</Link>
 					</p>
 				</div>
-				<div className="container flex flex-col items-center justify-center gap-4 p-6 bg-red-600 rounded-full shadow md:flex-row md:p-8 lg:p-12 ">
+				<div className="container max-w-7xl mx-auto flex flex-col items-center justify-center gap-4 p-6 bg-red-600 rounded-full shadow-smmd:flex-row md:p-8 lg:p-12 ">
 					<div className="space-y-3 text-center">
 						<h2
 							className={cn(
@@ -44,7 +44,7 @@ export default function WhatAreYouWaitingFor() {
 					<div className="flex flex-col gap-2 min-[400px]:flex-row justify-center">
 						<Link href="/savings" prefetch={false}>
 							<Button
-								className="px-8 py-2 text-lg font-medium transition-colors rounded-full shadow bg-zinc-900 text-zinc-50 hover:bg-zinc-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-50/90 dark:focus-visible:ring-zinc-300"
+								className="px-8 py-2 text-lg font-medium transition-colors rounded-full shadow-smbg-zinc-900 text-zinc-50 hover:bg-zinc-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-50/90 dark:focus-visible:ring-zinc-300"
 								variant="default"
 							>
 								Calculate Your Saving

@@ -5,7 +5,7 @@ import { RiWhatsappLine } from "react-icons/ri";
 const Footer = () => {
   return (
     <div className="py-16 text-white bg-gray-800 lg:py-8">
-      <div className="container">
+      <div className="container max-w-7xl mx-auto px-4 md:px-6 lg:px-0">
         <div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2 lg:gap-6 lg:grid-cols-3">
           <div className="flex flex-col items-start justify-start">
             <h3 className="text-lg font-bold md:text-xl">Contact Details</h3>

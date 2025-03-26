@@ -10,7 +10,7 @@ const page = async () => {
 
 
   return (
-    <main className="container min-h-screen py-10">
+    <main className="container max-w-7xl mx-auto min-h-screen py-10">
       <Script
         type="application/ld+json"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
