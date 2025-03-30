@@ -86,7 +86,7 @@ const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           <Link href="/news">
             <Button
               type="button"
-              className="rounded-none bg-slate-800 hover:bg-slate-700"
+              className="rounded-none bg-brand text-white hover:bg-slate-700"
             >
               Back to Articles
             </Button>
