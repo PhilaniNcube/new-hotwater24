@@ -1,414 +1,282 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { Fragment } from 'react';
-import { AiFillCloseSquare } from 'react-icons/ai';
+import React from 'react';
 import formatter from '../../lib/format';
 import roundUp from '../../lib/roundUp';
-import { Check } from 'lucide-react';
+import { Check, X, User } from 'lucide-react';
+import { 
+  Card, 
+  CardContent, 
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
 
 type LeadCardProps = {
    quote: Database['public']['Tables']['quotes']['Row']
 }
 
-function LeadCard({ quote }:LeadCardProps) {
+function LeadCard({ quote }: LeadCardProps) {
+  // Helper function to convert string to boolean
+  const toBool = (value: string | boolean | null): boolean | null => {
+    if (value === null) return null;
+    if (typeof value === 'boolean') return value;
+    return value === 'true' || value === '1' || value === 'yes';
+  };
+
+  const StatusIndicator = ({ value, label }: { value: boolean | null, label: string }) => (
+    <div className="flex flex-col items-center">
+      <span className="text-sm font-medium mb-1">{label}</span>
+      <span className={`rounded-full p-1 ${value ? 'bg-green-100' : 'bg-red-100'}`}>
+        {value ? 
+          <Check className="h-4 w-4 text-green-600" /> : 
+          <X className="h-4 w-4 text-red-600" />
+        }
+      </span>
+    </div>
+  );
+
   return (
-    <Fragment>
-      <div className="w-full py-4 bg-gray-200">
-        <div className="container flex items-start justify-center px-6 mx-auto">
-          <div className="w-full">
-            {/* Card is full width. Use in 12 col grid for best view. */}
-            {/* Card code block start */}
-            <div className="flex flex-col w-full mx-auto bg-white rounded shadow-smlg:flex-row">
-              <div className="w-full p-6 lg:w-1/3">
-                <div className="flex items-center">
-                  <div className="w-12 h-12 rounded shadow">
-                    <img
-                      className="object-cover w-full h-full overflow-hidden rounded"
-                      src="/images/avatar.svg"
-                      alt="logo"
-                    />
+    <Card className="w-full max-w-7xl mx-auto border bg-white shadow-md">
+      <CardHeader className="pb-2 border-b">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <Avatar className="h-12 w-12">
+              <AvatarImage src="/images/avatar.svg" alt="User avatar" />
+              <AvatarFallback><User className="h-6 w-6" /></AvatarFallback>
+            </Avatar>
+            <div>
+              <CardTitle className="text-xl font-medium text-gray-800">
+                {quote.firstName} {quote.lastName}
+              </CardTitle>
+              <p className="text-xs text-gray-600">{quote.email} • {new Date(quote.created_at).toDateString()}</p>
+            </div>
+          </div>
+          <div className="text-right">
+            {quote.flowRate <= 30 && quote.geyserPrice && (
+              <div className="flex flex-col">
+                <Badge variant="outline" className="mb-1 whitespace-nowrap">Flow Rate: {quote.flowRate} L/Min</Badge>
+                <Badge variant="outline" className="mb-1 whitespace-nowrap">Geyser Size: {quote.geyserSize} L/Min</Badge>
+                <Badge className="bg-sky-700 text-white whitespace-nowrap">
+                  Cost: {formatter.format(roundUp(quote.geyserPrice))}
+                </Badge>
+              </div>
+            )}
+          </div>
+        </div>
+      </CardHeader>
+
+      <CardContent className="pt-4">
+        <Tabs defaultValue="details" className="w-full">
+          <TabsList className="grid grid-cols-4 gap-2 mb-4 ">
+            <TabsTrigger 
+              value="details" 
+              className="data-[state=active]:bg-brand bg-gray-200 hover:cursor-pointer hover:bg-slate-100 data-[state=active]:text-white"
+            >
+              Customer Details
+            </TabsTrigger>
+            <TabsTrigger 
+              value="household" 
+              className="data-[state=active]:bg-brand bg-gray-200 hover:cursor-pointer hover:bg-slate-100 data-[state=active]:text-white"
+            >
+              Household & Usage
+            </TabsTrigger>
+            <TabsTrigger 
+              value="property" 
+              className="data-[state=active]:bg-brand bg-gray-200 hover:cursor-pointer hover:bg-slate-100 data-[state=active]:text-white"
+            >
+              Property Info
+            </TabsTrigger>
+            <TabsTrigger 
+              value="system" 
+              className="data-[state=active]:bg-brand bg-gray-200 hover:cursor-pointer hover:bg-slate-100 data-[state=active]:text-white"
+            >
+              System Preferences
+            </TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="details" className="space-y-4">
+            <div className="grid grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-sm font-semibold mb-2">Contact Information</h3>
+                <div className="grid grid-cols-[120px_1fr] gap-y-1 text-sm">
+                  <span className="text-gray-500">Phone:</span>
+                  <span className="font-medium">{quote.telephoneNumber}</span>
+                  <span className="text-gray-500">Email:</span>
+                  <span className="font-medium">{quote.email}</span>
+                  <span className="text-gray-500">Contact Method:</span>
+                  <span className="font-medium">{quote.contactTime || "N/A"}</span>
+                </div>
+              </div>
+              
+              <div>
+                <h3 className="text-sm font-semibold mb-2">Address</h3>
+                <div className="grid grid-cols-[120px_1fr] gap-y-1 text-sm">
+                  <span className="text-gray-500">Street:</span>
+                  <span className="font-medium">{quote.streetAddress}</span>
+                  <span className="text-gray-500">Suburb:</span>
+                  <span className="font-medium">{quote.suburb}</span>
+                  <span className="text-gray-500">City:</span>
+                  <span className="font-medium">{quote.city}</span>
+                  <span className="text-gray-500">Postal Code:</span>
+                  <span className="font-medium">{quote.postalCode}</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold mb-2">Additional Notes</h3>
+              <div className="p-2 bg-gray-50 rounded-md border text-xs">
+                {quote.comments || "No additional comments provided."}
+              </div>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="household" className="space-y-4">
+            <div className="grid grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-sm font-semibold mb-2">Household Composition</h3>
+                <div className="grid grid-cols-3 gap-4 mb-4">
+                  <div className="flex flex-col items-center p-3 bg-gray-50 rounded-md">
+                    <span className="text-xs text-gray-500">Adults</span>
+                    <span className="text-2xl font-bold">{quote.adults}</span>
                   </div>
-                  <div className="ml-3">
-                    <h5 className="text-base font-medium text-gray-800">
-                      {quote.firstName} {quote.lastName}
-                    </h5>
-                    <p className="text-xs font-normal text-gray-600">
-                      {quote.email}
-                    </p>
-                    <p className="text-xs font-normal text-gray-600">
-                      {new Date(quote.created_at).toDateString()}
-                    </p>
+                  <div className="flex flex-col items-center p-3 bg-gray-50 rounded-md">
+                    <span className="text-xs text-gray-500">Teenagers</span>
+                    <span className="text-2xl font-bold">{quote.teenagers}</span>
+                  </div>
+                  <div className="flex flex-col items-center p-3 bg-gray-50 rounded-md">
+                    <span className="text-xs text-gray-500">Children</span>
+                    <span className="text-2xl font-bold">{quote.children}</span>
                   </div>
                 </div>
+                
+                <h3 className="text-sm font-semibold mb-2">Fixtures</h3>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Bathtubs:</span>
+                    <span className="font-medium">{quote.bathtub}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Rain Showers:</span>
+                    <span className="font-medium">{quote.rainShower}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Standard Showers:</span>
+                    <span className="font-medium">{quote.standardShower}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Kitchen Sinks:</span>
+                    <span className="font-medium">{quote.kitchenSink}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Bathroom Sinks:</span>
+                    <span className="font-medium">{quote.bathroomSink}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <h3 className="text-sm font-semibold mb-2">Intended Gas Use</h3>
+                <div className="grid grid-cols-3 gap-2 mb-4">
+                  <StatusIndicator value={toBool(quote.gasStove)} label="Cooking" />
+                  <StatusIndicator value={toBool(quote.gasWaterHeating)} label="Water Heating" />
+                  <StatusIndicator value={toBool(quote.gasHeating)} label="Space Heating" />
+                </div>
+                
+                <h3 className="text-sm font-semibold mb-2">Current Geyser Type</h3>
+                <div className="grid grid-cols-4 gap-2">
+                  <StatusIndicator value={toBool(quote.electricGeyser)} label="Electric" />
+                  <StatusIndicator value={toBool(quote.solarGeyser)} label="Solar" />
+                  <StatusIndicator value={toBool(quote.gasGeyser)} label="Gas" />
+                  <StatusIndicator value={toBool(quote.otherGeyser)} label="Other" />
+                </div>
+              </div>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="property" className="space-y-4">
+            <div className="grid grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-sm font-semibold mb-2">Property Details</h3>
+                <div className="grid grid-cols-[150px_1fr] gap-y-2 text-sm">
+                  <span className="text-gray-500">Home Ownership:</span>
+                  <Badge variant="outline">{quote.ownership ? "Owner" : "Renter"}</Badge>
+                  
+                  <span className="text-gray-500">Property Type:</span>
+                  <Badge variant="outline">{quote.houseType}</Badge>
+                  
 
-                <div className="flex items-center justify-between mt-8">
+                  <span className="text-gray-500">Gas Supply:</span>
+                  <Badge variant="outline">{quote.gasSupply}</Badge>
+                  
+
+                  <span className="text-gray-500">Borehole Water:</span>
+                  <Badge variant={toBool(quote.borehole_water) ? "default" : "outline"} className={toBool(quote.borehole_water) ? "bg-green-600" : ""}>
+                    {toBool(quote.borehole_water) ? "Yes" : "No"}
+                  </Badge>
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-center">
+                <div className="w-48 h-48 bg-gray-100 rounded-full flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="text-sm text-gray-500 mb-1">Flow Rate</div>
+                    <div className="text-3xl font-bold text-sky-700">{quote.flowRate} L/Min</div>
+                    {quote.flowRate <= 30 && (
+                      <div className="mt-2 text-sm text-gray-500">
+                        Geyser Size: <span className="font-medium">{quote.geyserSize} L/Min</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="system" className="space-y-4">
+            <div className="grid grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-sm font-semibold mb-2">System Preferences</h3>
+                <div className="space-y-3">
                   <div>
-                    <h2 className="text-sm font-bold tracking-normal text-gray-600 xl:text-lg">
-                      Flow Rate: {quote.flowRate} L/Min
-                    </h2>
-                    <h2 className="text-sm font-bold tracking-normal text-gray-600 xl:text-lg">
-                      {quote.flowRate <= 30 &&
-                        `Geyser Size: ${quote.geyserSize} L/Min`}
-                    </h2>
-
-                    <h3 className="pb-3 text-lg font-bold text-gray-600 border-b border-gray-400">
-                      {quote.flowRate <= 30 &&
-                        quote.geyserPrice &&
-                        ` Estimated Cost:
-                      ${formatter.format(roundUp(quote.geyserPrice))}`}
-                    </h3>
-                    <h3 className="pb-3 text-lg font-bold text-gray-600 border-b border-gray-400">
+                    <span className="text-sm text-gray-500">Financing Option:</span>
+                    <Badge className="ml-2">
                       {quote.financing === "" || quote.financing === "false"
                         ? "No Financing"
                         : quote.financing === "true"
-                          ? "Yes, Full Financing"
+                          ? "Full Financing"
                           : quote.financing}
-                    </h3>
-                    <h3 className="pb-3 text-lg font-bold text-gray-600 border-b border-gray-400">
-                      Off Grid Solution:{" "}
-                      {quote.completeSolution === null ||
-                      quote.completeSolution === false
-                        ? "No"
-                        : "Yes"}
-                    </h3>
-                    {/***
-                    <h3 className="mt-3 text-lg font-bold text-gray-600">
-                      Monthly Savings: {formatter.format(quote.monthlySavings)}
-                    </h3>
-                    <h3 className="text-lg font-bold text-gray-600">
-                      Yearly Savings: {formatter.format(quote.yearlySavings)}
-                    </h3>
-
-                  ***/}
+                    </Badge>
                   </div>
-                </div>
-
-                <div className="mt-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <p className="text-sm font-normal leading-3 tracking-normal text-gray-600">
-                      Bathubs
-                    </p>
-                    <p className="text-xs font-normal leading-3 tracking-normal text-sky-700">
-                      {quote.bathtub}
-                    </p>
+                  
+                  <div>
+                    <span className="text-sm text-gray-500">Off-Grid Solution:</span>
+                    <Badge className="ml-2" variant={toBool(quote.completeSolution) ? "default" : "outline"}>
+                      {toBool(quote.completeSolution) ? "Yes" : "No"}
+                    </Badge>
                   </div>
-
-                  {/***
-                     * ********************************
-                     *   <div className="flex items-center justify-between mb-2">
-                    <p className="text-sm font-normal leading-3 tracking-normal text-gray-600">
-                      Dishwashers
-                    </p>
-                    <p className="text-xs font-normal leading-3 tracking-normal text-sky-700">
-                      {quote.dishwasher}
-                    </p>
-                  </div>
-                     *
-                     */}
-
-                  <div className="flex items-center justify-between mb-2">
-                    <p className="text-sm font-normal leading-3 tracking-normal text-gray-600">
-                      Rain Showers
-                    </p>
-                    <p className="text-xs font-normal leading-3 tracking-normal text-sky-700">
-                      {quote.rainShower}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center justify-between mb-2">
-                    <p className="text-sm font-normal leading-3 tracking-normal text-gray-600">
-                      Kitchen Sinks
-                    </p>
-                    <p className="text-xs font-normal leading-3 tracking-normal text-sky-700">
-                      {quote.kitchenSink}
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-between mb-2">
-                    <p className="text-sm font-normal leading-3 tracking-normal text-gray-600">
-                      Bathroom Sinks
-                    </p>
-                    <p className="text-xs font-normal leading-3 tracking-normal text-sky-700">
-                      {quote.bathroomSink}
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-between mb-2">
-                    <p className="text-sm font-normal leading-3 tracking-normal text-gray-600">
-                      Standard Showers
-                    </p>
-                    <p className="text-xs font-normal leading-3 tracking-normal text-sky-700">
-                      {quote.standardShower}
-                    </p>
-                  </div>
-
-                  {/****
-                    *    <div className="flex items-center justify-between mb-2">
-                    <p className="text-sm font-normal leading-3 tracking-normal text-gray-600">
-                      Washing Machine
-                    </p>
-                    <p className="text-xs font-normal leading-3 tracking-normal text-sky-700">
-                      {quote.washingmachine}
-                    </p>
-                  </div>
-                    *
-                    *
-                    */}
                 </div>
               </div>
-              <div className="w-full p-6 border-t border-b border-gray-300 lg:w-1/3 lg:border-t-0 lg:border-b-0 sm:border-l sm:border-r">
-                <h3 className="mt-1 mb-1 text-lg font-bold text-gray-600">
-                  Address:
-                </h3>
-                <p className="text-sm font-normal text-gray-600">
-                  {`Street Address: ${quote.streetAddress}`}
-                </p>
-                <p className="text-sm font-normal text-gray-600">
-                  {`Suburb: ${quote.suburb}`}
-                </p>
-                <p className="text-sm font-normal text-gray-600">
-                  {`Postal Code: ${quote.postalCode}`}
-                </p>
-                <p className="text-sm font-normal text-gray-600">
-                  {`City: ${quote.city}`}
-                </p>
-                <p className="text-sm font-normal text-gray-600">
-                  {`Phone Number: ${quote.telephoneNumber}`}
-                </p>
-                <p className="text-sm font-normal text-gray-600">
-                  {`Prefered Contact Method: ${quote.contactTime ? quote.contactTime : "N/A"}`}
-                </p>
-
-                <div className="relative p-4 mt-2 mb-2 bg-gray-100 rounded shadow">
-                  <ul>
-                    <li className="text-xs font-normal tracking-normal text-gray-600">
-                      Home Ownership -{" "}
-                      <span className="font-bold uppercase">
-                        {quote.ownership ? "Owner" : "Renter"}
-                      </span>
-                    </li>
-                    <li className="text-xs font-normal tracking-normal text-gray-600">
-                      Property Type -{" "}
-                      <span className="font-bold uppercase">
-                        {quote.houseType}
-                      </span>
-                    </li>
-
-                    <li className="text-xs font-normal tracking-normal text-gray-600">
-                      Current Gas Supply -{" "}
-                      <span className="font-bold uppercase">
-                        {quote.gasSupply}
-                      </span>
-                    </li>
-                    {/***
-                    <li className="text-xs font-normal tracking-normal text-gray-600">
-                      {quote.flowRate <= 30 ? (
-                        <Fragment>
-                          Quote Required -{" "}
-                          <span className="font-bold uppercase">
-                            {quote.installation}
-                          </span>
-                        </Fragment>
-                      ) : (
-                        <Fragment>
-                          {" "}
-                          Request Information -{` `}
-                          <span className="font-bold uppercase">
-                            {quote.installation}
-                          </span>
-                        </Fragment>
-                      )}
-                    </li>
-                  */}
-                  </ul>
-                </div>
-
-                <span className="flex px-4 py-1 mt-3 mb-2 space-x-8 text-sm font-medium text-gray-50 bg-sky-800">
-                  {/***
-                  <p>{`Contact Day: ${quote.contactDay}`}</p>
-                  <p>{`Contact Time: ${quote.contactTime}`}</p>
-              ****/}
-                </span>
-              </div>
-              <div className="w-full px-6 py-8 lg:w-1/3">
-                <h3 className="text-lg font-bold text-gray-600">
-                  Household Size:
-                </h3>
-
-                <div className="flex items-center justify-between py-2 border-t-2">
-                  <div>
-                    <h2 className="leading-5 text-center text-gray-600">
-                      Children
-                    </h2>
-                    <h2 className="mb-1 text-lg font-bold leading-6 text-center text-gray-600">
-                      {quote.children}
-                    </h2>
-                  </div>
-                  <div>
-                    <h2 className="leading-5 text-center text-gray-600">
-                      Teenagers
-                    </h2>
-                    <h2 className="mb-1 text-lg font-bold leading-6 text-center text-gray-600">
-                      {quote.teenagers}
-                    </h2>
-                  </div>
-                  <div>
-                    <h2 className="leading-5 text-center text-gray-600">
-                      Adults
-                    </h2>
-                    <h2 className="mb-1 text-lg font-bold leading-6 text-center text-gray-600">
-                      {quote.adults}
-                    </h2>
-                  </div>
-                </div>
-
-                <h3 className="text-lg font-bold text-gray-600">
-                  Intended Gas Use:
-                </h3>
-                <div className="flex items-center justify-between py-4 border-t-2 border-gray-200">
-                  <div>
-                    <h2 className="mb-1 font-medium leading-6 text-center text-gray-600">
-                      Cooking
-                    </h2>
-                    <p className="text-sm leading-5 text-center text-gray-800">
-                      {quote.gasStove ? (
-                        <span className="text-lg text-white bg-green-700">
-                          <Check className="text-lg text-white bg-green-700" />
-                        </span>
-                      ) : (
-                        <span className="text-lg text-white bg-red-500">
-                          <AiFillCloseSquare className="text-lg text-white bg-red-500" />
-                        </span>
-                      )}
-                    </p>
-                  </div>
-                  <div>
-                    <h2 className="mb-1 font-medium leading-6 text-center text-gray-600">
-                      Water
-                    </h2>
-                    <p className="text-sm leading-5 text-center text-gray-800">
-                      {quote.gasWaterHeating ? (
-                        <span className="text-lg text-white bg-green-700">
-                          <Check className="text-lg text-white bg-green-700" />
-                        </span>
-                      ) : (
-                        <span className="text-lg text-white bg-red-500">
-                          <AiFillCloseSquare className="text-lg text-white bg-red-500" />
-                        </span>
-                      )}
-                    </p>
-                  </div>
-                  <div>
-                    <h2 className="mb-1 font-medium leading-6 text-center text-gray-600">
-                      Heating
-                    </h2>
-                    <div className="text-sm leading-5 text-center text-gray-800">
-                      {quote.gasHeating ? (
-                        <span className="text-lg text-white bg-green-700">
-                          <Check className="text-lg text-white bg-green-700" />
-                        </span>
-                      ) : (
-                        <span className="text-lg text-white bg-red-500">
-                          <AiFillCloseSquare className="text-lg text-white bg-red-500" />
-                        </span>
-                      )}
+              
+              {quote.flowRate <= 30 && quote.geyserPrice && (
+                <div className="p-4 border rounded-md bg-gray-50">
+                  <h3 className="text-sm font-semibold mb-2">Estimated Cost</h3>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-sky-700">
+                      {formatter.format(roundUp(quote.geyserPrice))}
                     </div>
                   </div>
                 </div>
-
-                <h3 className="text-lg font-bold text-gray-600">
-                  Current Geyser:
-                </h3>
-                <div className="flex items-center justify-between py-4 border-t-2 border-gray-200">
-                  <div>
-                    <h2 className="mb-1 font-medium leading-6 text-center text-gray-600">
-                      Electric
-                    </h2>
-                    <p className="text-sm leading-5 text-center text-gray-800">
-                      {quote.electricGeyser ? (
-                        <span className="text-lg text-white bg-green-700">
-                          <Check className="text-lg text-white bg-green-700" />
-                        </span>
-                      ) : (
-                        <span className="text-lg text-white bg-red-500">
-                          <AiFillCloseSquare className="text-lg text-white bg-red-500" />
-                        </span>
-                      )}
-                    </p>
-                  </div>
-                  <div>
-                    <h2 className="mb-1 font-medium leading-6 text-center text-gray-600">
-                      Solar
-                    </h2>
-                    <p className="text-sm leading-5 text-center text-gray-800">
-                      {quote.solarGeyser ? (
-                        <span className="text-lg text-white bg-green-700">
-                          <Check className="text-lg text-white bg-green-700" />
-                        </span>
-                      ) : (
-                        <span className="text-lg text-white bg-red-500">
-                          <AiFillCloseSquare className="text-lg text-white bg-red-500" />
-                        </span>
-                      )}
-                    </p>
-                  </div>
-                  <div>
-                    <h2 className="mb-1 font-medium leading-6 text-center text-gray-600">
-                      Gas
-                    </h2>
-                    <p className="text-sm leading-5 text-center text-gray-800">
-                      {quote.gasGeyser ? (
-                        <span className="text-lg text-white bg-green-700">
-                          <Check className="text-lg text-white bg-green-700" />
-                        </span>
-                      ) : (
-                        <span className="text-lg text-white bg-red-500">
-                          <AiFillCloseSquare className="text-lg text-white bg-red-500" />
-                        </span>
-                      )}
-                    </p>
-                  </div>
-                  <div>
-                    <h2 className="mb-1 font-medium leading-6 text-center text-gray-600">
-                      Other
-                    </h2>
-                    <p className="text-sm leading-5 text-center text-gray-800">
-                      {quote.otherGeyser ? (
-                        <span className="text-lg text-white bg-green-700">
-                          <Check className="text-lg text-white bg-green-700" />
-                        </span>
-                      ) : (
-                        <span className="text-lg text-white bg-red-500">
-                          <AiFillCloseSquare className="text-lg text-white bg-red-500" />
-                        </span>
-                      )}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="my-2">
-                  <h3 className="text-lg font-bold text-gray-600">
-                   Borehole Water:
-                  </h3>
-                  <p className="text-sm leading-5 text-center text-gray-800">
-                    {quote.borehole_water ? (
-                      <span className="text-lg text-white bg-green-700">
-                        <Check className="text-lg text-white bg-green-700" />
-                      </span>
-                    ) : (
-                      <span className="text-lg text-white bg-red-500">
-                        <AiFillCloseSquare className="text-lg text-white bg-red-500" />
-                      </span>
-                    )}
-                  </p>
-                </div>
-
-                <h3 className="text-lg font-bold text-gray-600">Comments:</h3>
-                <p className="text-xs text-gray-700">{quote.comments}</p>
-              </div>
+              )}
             </div>
-            {/* Card code block end */}
-          </div>
-        </div>
-      </div>
-    </Fragment>
+          </TabsContent>
+        </Tabs>
+      </CardContent>
+    </Card>
   );
 }
+
 export default LeadCard;

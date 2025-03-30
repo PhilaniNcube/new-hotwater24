@@ -38,6 +38,7 @@ import {
 import Link from "next/link";
 import { format } from "date-fns";
 import { createBrowserClient } from "@supabase/ssr";
+import { createClient } from "@/utils/supabase/client";
 
 type LeadsTableProps = {
   leads: Database["public"]["Tables"]["quotes"]["Row"][];
@@ -288,10 +289,7 @@ const LeadsTable = ({
 
   const [downloadData, setDownloadData] = React.useState<null | string>(null);
 
-     const supabase = createBrowserClient<Database>(
-       process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
-     );
+     const supabase = createClient();
 
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -386,13 +384,13 @@ const LeadsTable = ({
             )}
           </>
         )}
-        <DropdownMenu>
+        <DropdownMenu >
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
               Columns <ChevronDown className="w-4 h-4 ml-2" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent className="bg-white" align="end">
             {table
               .getAllColumns()
               .filter((column) => column.getCanHide())

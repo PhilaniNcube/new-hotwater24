@@ -4,6 +4,7 @@ import React, { type FormEvent, Fragment, useState } from "react";
 import { useRouter } from "next/navigation";
 import LeadCard from "@/components/Quote/LeadCard";
 import { createBrowserClient } from "@supabase/ssr";
+import { createClient } from "@/utils/supabase/client";
 
 type LeadProps = {
   lead: Database['public']['Tables']['quotes']['Row'];
@@ -11,11 +12,7 @@ type LeadProps = {
 
 function QuoteData({ lead }:LeadProps) {
 
-   const supabase = createBrowserClient<Database>(
-     process.env.NEXT_PUBLIC_SUPABASE_URL,
-     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-   );
-
+   const supabase = createClient()
   const router = useRouter();
 
   const {

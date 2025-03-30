@@ -66,7 +66,7 @@ const page = async (props: {searchParams:SearchParams}) => {
   const isTherePreviousPage = await hasPreviousPage(Number(page));
 
   return (
-			<div className="container">
+			<div className="container max-w-7xl mx-auto">
 				<h1>Admin Page</h1>
 				{leadsError || !leads ? (
 					<p>Error fetching leads</p>
