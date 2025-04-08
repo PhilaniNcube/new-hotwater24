@@ -3,10 +3,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/b6wdkCMNqBB
- */
+
 export default function PaymentPlanHero() {
 	return (
 		<section className="relative grid w-full grid-cols-1 pb-8 md:grid-cols-2 isolate">
