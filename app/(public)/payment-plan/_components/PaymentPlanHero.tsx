@@ -1,5 +1,5 @@
 import { antonio } from "@/fonts";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -60,13 +60,16 @@ export default function PaymentPlanHero() {
 											CoC.
 										</li>
 									</ol>
-									
+
 								</CardContent>
-							</Card>
-							<p>
+								<CardFooter>
+									<p>
 
 										<strong>Note:</strong> This plan excludes the cost for gas cylinders, gas supply or gas cage.
 									</p>
+								</CardFooter>
+							</Card>
+
 						</div>
 					</div>
 				</div>
