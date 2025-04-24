@@ -22,8 +22,7 @@ export async function generateMetadata(
 	// fetch data
 	const geyser = await getGeyser(slug);
 
-	// optionally access and extend (rather than replace) parent metadata
-	const previousImages = (await parent).openGraph?.images || [];
+
 
 	return {
 		metadataBase: new URL("https://www.hotwater24.com"),
@@ -47,7 +46,7 @@ export async function generateMetadata(
 			},
 		},
 		openGraph: {
-			images: [geyser.image, ...previousImages],
+			images: [geyser.image],
 			title: `${geyser.title} | Hotwater24`,
 			description: geyser.description,
 			type: "website",
@@ -63,7 +62,7 @@ const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 	const geyser = await getGeyser(slug)
 
 	return (
-		<main className="container py-10">
+		<main className="container max-w-7xl py-10 mx-auto">
 			<PackageDetails geyser={geyser} />
 		</main>
 	);

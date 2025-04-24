@@ -19,7 +19,7 @@ import Link from "next/link";
 
 export default function PackageDetails({ geyser }: { geyser: Geyser }) {
   return (
-			<div className="grid items-start gap-6 py-6 md:grid-cols-2 lg:gap-12">
+			<div className="grid items-start gap-6 py-6 md:grid-cols-2 lg:gap-12 w-full mx-auto">
 				<div className="grid items-start gap-4">
 					<h1 className="text-3xl font-bold">
 						<span className="uppercase">
@@ -52,44 +52,7 @@ export default function PackageDetails({ geyser }: { geyser: Geyser }) {
 							{geyser.slug === "boiling-hot" && "**Price includes VAT"}
 							{geyser.slug === "steaming-hot" && "**Price includes VAT"}
 						</p>
-						{/* <Table>
-            <TableBody>
-              <TableRow>
-                <TableCell>{geyser.geyser.description}</TableCell>
-                <TableCell>{formatCurrency(geyser.geyser.price)}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>{geyser.installation.description}</TableCell>
-                <TableCell>
-                  {formatCurrency(geyser.installation.price)}
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  {geyser.certificateOfCompliance.description}
-                </TableCell>
-                <TableCell>
-                  {formatCurrency(geyser.certificateOfCompliance.price)}
-                </TableCell>
-              </TableRow>
-
-              <TableRow>
-                <TableCell>{geyser.plumbing.description}</TableCell>
-                <TableCell>{formatCurrency(geyser.plumbing.price)}</TableCell>
-              </TableRow>
-              <TableRow className="text-xl font-bold">
-                <TableCell>Total</TableCell>
-                <TableCell>
-                  {formatCurrency(
-                    geyser.geyser.price +
-                      geyser.plumbing.price +
-                      geyser.installation.price +
-                      geyser.certificateOfCompliance.price
-                  )}
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table> */}
+	
 					</div>
 					<h2 className="mt-4 text-2xl font-bold">Specifications</h2>
 					<PortableText value={geyser.specifications} />
@@ -102,7 +65,7 @@ export default function PackageDetails({ geyser }: { geyser: Geyser }) {
 							</TableRow>
 						</TableHeader>
 						<TableBody>
-							{" "}
+						
 							<TableRow>
 								<TableCell>Max Flow Rate</TableCell>
 								<TableCell>{geyser.maxFlowRate}</TableCell>
