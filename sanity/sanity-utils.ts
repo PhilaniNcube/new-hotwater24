@@ -13,6 +13,8 @@ export async function getArticles(): Promise<Article[]> {
       _id,
       _createdAt,
       title,
+      meta_title,
+      meta_description,
       "slug": slug.current,
       "image": image.asset->url,
       link,
