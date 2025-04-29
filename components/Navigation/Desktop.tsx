@@ -259,6 +259,8 @@ const SearchDialog = () => {
               <p>No results found for "{query}".</p>
             </div>
           )}
+
+    
      
         </DialogHeader>
       </DialogContent>

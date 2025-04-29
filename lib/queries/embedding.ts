@@ -20,6 +20,8 @@ export async function semanticSearch(query: string) {
 
   const embedding = embeddingResult.embedding as unknown as string;
 
+  console.log("Embedding:", embedding);
+
   const supabase = await createClient();
 
   // Use the `match_documents` function with the <-> operator for cosine distance
