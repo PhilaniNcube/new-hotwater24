@@ -208,7 +208,8 @@ const SearchDialog = () => {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button variant="ghost" className="w-fit">
-          <Search className="mr-2 h-4 w-4" />
+          <Search className="h-4 w-4" />
+          <span className="text-xs text-slate-500">Search</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="bg-white sm:max-w-[425px]">
