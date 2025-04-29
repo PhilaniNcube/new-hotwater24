@@ -4,7 +4,7 @@
 
 import { createClient } from "@/utils/supabase/service";
 import { createOpenAI } from "@ai-sdk/openai";
-import { embed, EmbedResult } from 'ai';
+import { embed } from 'ai';
 
 
 const openai = createOpenAI({
