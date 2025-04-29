@@ -27,7 +27,7 @@ export async function semanticSearch(query: string) {
     query_embedding: JSON.stringify(embedding), 
     similarity_threshold: 0.3, // Adjust the threshold as needed
     match_count: 4, // Number of matches to return
-  }).select('*').limit(10);
+  }).select('*').limit(4);
    
 
 
