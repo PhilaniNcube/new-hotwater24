@@ -31,6 +31,7 @@ export async function semanticSearch(query: string) {
     match_count: 4, // Number of matches to return
   }).select('*').limit(4);
    
+  console.log({data, error});
 
 
   if (error) {
