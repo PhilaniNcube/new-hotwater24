@@ -46,7 +46,6 @@ export async function semanticSearch(query: string) {
     return null;
   }
 
-  console.log("Data returned from fetch:", data);
 
 
   return data;

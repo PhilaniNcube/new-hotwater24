@@ -229,6 +229,7 @@ const SearchDialog = () => {
                   // Call the search function here
                   console.log("Searching for:", query);
                   const results = await semanticSearch(query)
+                  console.log("Search results:", results);  
                   setSearchResults(results);
                 });
               }}
