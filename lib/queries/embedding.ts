@@ -5,6 +5,19 @@
 import { createClient } from "@/utils/supabase/service";
 import { createOpenAI } from "@ai-sdk/openai";
 import { embed } from 'ai';
+import { Redis } from '@upstash/redis'
+import { Ratelimit } from "@upstash/ratelimit";
+
+const redis = Redis.fromEnv()
+const rateLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(10, "1 m"),
+  analytics: true,
+})
+
+
+
+
 
 
 const openai = createOpenAI({
@@ -13,6 +26,18 @@ const openai = createOpenAI({
 
 export async function semanticSearch(query: string) {
 
+   
+
+  // Rate limit the request to 10 requests per minute
+  const { success, remaining } = await rateLimit.limit("search")
+  console.log("Rate limit success:", success)
+  console.log("Remaining requests:", remaining)
+
+  if (!success) {
+    return []
+  }
+
+
   const embeddingResult = await embed({
     model: openai.embedding('text-embedding-3-small'),
     value: query,
@@ -20,12 +45,11 @@ export async function semanticSearch(query: string) {
 
   const embedding = embeddingResult.embedding as unknown as string;
 
-  console.log("Embedding:", embedding);
+
   const threshold = 0.3; // Adjust the threshold as needed
   const matchCount = 4; // Number of matches to return
 
-  console.log("Threshold:", threshold);
-  console.log("Match Count:", matchCount);
+
 
   const supabase = await createClient();
 
@@ -37,8 +61,6 @@ export async function semanticSearch(query: string) {
   }).select('*').limit(4);
 
 
-   
-  console.log({data, error});
 
 
   if (error) {
