@@ -21,15 +21,22 @@ export async function semanticSearch(query: string) {
   const embedding = embeddingResult.embedding as unknown as string;
 
   console.log("Embedding:", embedding);
+  const threshold = 0.3; // Adjust the threshold as needed
+  const matchCount = 4; // Number of matches to return
+
+  console.log("Threshold:", threshold);
+  console.log("Match Count:", matchCount);
 
   const supabase = await createClient();
 
   // Use the `match_documents` function with the <-> operator for cosine distance
   const { data, error } = await supabase.rpc('search_content', {
     query_embedding: JSON.stringify(embedding), 
-    similarity_threshold: 0.3, // Adjust the threshold as needed
-    match_count: 4, // Number of matches to return
+    similarity_threshold: threshold, // Adjust the threshold as needed
+    match_count: matchCount, // Number of matches to return
   }).select('*').limit(4);
+
+
    
   console.log({data, error});
 
