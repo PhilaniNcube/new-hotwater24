@@ -803,6 +803,35 @@ export type Database = {
         Args: Record<PropertyKey, never>;
         Returns: boolean;
       };
+      query_embeddings: {
+        Args: { embedding: string; match_threshold: number }
+        Returns: {
+          content: string
+          created_at: string
+          embeddings: string
+          id: number
+          item_id: string
+          slug: string
+          title: string
+          type: Database["public"]["Enums"]["content_type"]
+        }[]
+      }
+      search_content: {
+        Args: {
+          query_embedding: string
+          similarity_threshold: number
+          match_count: number
+        }
+        Returns: {
+          id: number
+          item_id: string
+          slug: string
+          content: string
+          title: string
+          type: Database["public"]["Enums"]["content_type"]
+          similarity: number
+        }[]
+      }
     };
     Enums: {
       content_type: "product" | "article" | "content"
