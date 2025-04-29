@@ -2,29 +2,23 @@
 
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import type { Geyser } from "@/sanity/types";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useActionState, useTransition } from "react";
+import React, {  useTransition } from "react";
 import { Button } from "../ui/button";
 import { RiFacebookBoxFill, RiInstagramFill, RiLinkedinFill, RiLinkedinLine, RiWhatsappLine } from "react-icons/ri";
 import AreasSelector from "./AreasSelector";
-import { AiFillRedEnvelope, AiOutlineRedEnvelope } from "react-icons/ai";
 import { Mail, Phone, Search } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "../ui/input";
 import { semanticSearch } from "@/lib/queries/embedding";
-import { set } from "date-fns";
 import { ScrollArea } from "../ui/scroll-area";
 
 type Props = {
@@ -111,46 +105,55 @@ const Desktop = () => {
             <NavigationMenuList>
 
               <NavigationMenuItem asChild>
-                <Link href="/#packages" passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+
+                <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                  <Link href="/#packages" passHref>
                     Our Packages
-                  </NavigationMenuLink>
-                </Link>
+                  </Link>
+                </NavigationMenuLink>
+
               </NavigationMenuItem>
               <NavigationMenuItem asChild>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
                 <Link href="/who-we-are" passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Who We Are
-                  </NavigationMenuLink>
-                </Link>
+
+                  Who We Are</Link>
+              </NavigationMenuLink>
+
               </NavigationMenuItem>
               <NavigationMenuItem asChild>
-                <Link href="/why-us" passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Why Choose Us
-                  </NavigationMenuLink>
-                </Link>
+
+                <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                  <Link href="/why-us" passHref>
+                    Why Choose Us</Link>
+                </NavigationMenuLink>
+
               </NavigationMenuItem>
-              <NavigationMenuItem asChild>
+              <NavigationMenuItem asChild><NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
                 <Link href="/payment-plan" passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Payment Plan
-                  </NavigationMenuLink>
+
+                  Payment Plan
                 </Link>
+              </NavigationMenuLink>
+
               </NavigationMenuItem>
               <NavigationMenuItem asChild>
-                <Link href="/faq" passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                  <Link href="/faq" passHref>
+
                     FAQ's
-                  </NavigationMenuLink>
-                </Link>
+                  </Link>
+                </NavigationMenuLink>
+
               </NavigationMenuItem>
               <NavigationMenuItem asChild>
-                <Link href="/news" passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                  <Link href="/news" passHref>
+
                     News
-                  </NavigationMenuLink>
-                </Link>
+                  </Link>
+                </NavigationMenuLink>
+
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -170,7 +173,7 @@ const Desktop = () => {
           </Link>
         </div>
       </nav>
-    </section>
+    </section >
   );
 };
 export default Desktop;
@@ -223,13 +226,13 @@ const SearchDialog = () => {
               placeholder="Search..."
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <Button  className="ml-2 bg-brand text-white" disabled={isPending}
+            <Button className="ml-2 bg-brand text-white" disabled={isPending}
               onClick={() => {
                 startTransition(async () => {
                   // Call the search function here
                   console.log("Searching for:", query);
                   const results = await semanticSearch(query)
-                  console.log("Search results:", results);  
+                  console.log("Search results:", results);
                   setSearchResults(results);
                 });
               }}
@@ -260,8 +263,8 @@ const SearchDialog = () => {
             </div>
           )}
 
-    
-     
+
+
         </DialogHeader>
       </DialogContent>
     </Dialog>

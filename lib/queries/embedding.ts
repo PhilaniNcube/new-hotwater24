@@ -41,12 +41,12 @@ export async function semanticSearch(query: string) {
 
   if (!data) {
     console.error("No data returned from fetch");
-    return null;
+    return data;
   }
 
   if (data.length === 0) {
     console.error("No data returned from fetch");
-    return null;
+    return [];
   }
 
 
