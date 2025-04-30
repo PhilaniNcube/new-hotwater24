@@ -55,6 +55,9 @@ const Desktop = () => {
               +27 79 341 4075
             </Link>
           </span>
+          <span className="flex flex-row items-center mx-3">
+            <SearchDialog />
+          </span>
           <span className="flex flex-row items-center">
             <Link
               href="https://www.facebook.com/HotW24"
@@ -159,7 +162,7 @@ const Desktop = () => {
           </NavigationMenu>
         </div>
         <div className="flex items-center gap-4">
-          <SearchDialog />
+        
           <AreasSelector />
           <Link
             href="https://wa.me/27793414075?text=I'm%20interested%20in%20your%20products"
@@ -207,7 +210,7 @@ const SearchDialog = () => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost" className="w-fit">
+        <Button variant="ghost" className="min-w-lg  flex-1 flex h-8 items-center justify-start gap-2 rounded-full border border-slate-200 bg-white text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:focus:ring-offset-slate-800">
           <Search className="h-4 w-4" />
           <span className="text-xs text-slate-500">Search</span>
         </Button>
