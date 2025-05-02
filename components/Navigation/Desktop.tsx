@@ -251,7 +251,7 @@ const SearchDialog = () => {
               <ul className="mt-2 space-y-2">
                 {searchResults.map((result) => (
                   <li onClick={() => setIsOpen(false)} key={result.id} className="p-2 border rounded-md">
-                    <Link href={result.type === "article" ? `/news/${result.slug}` : `/packages/${result.slug}`} className="flex flex-col ">
+                    <Link href={result.type === "article" ? `/news/${result.slug}` : result.type === 'product' ? `/packages/${result.slug}` : `/${result.slug}`} className="flex flex-col ">
                       <h4 className="text-sm font-semibold underline text-brand">{result.type === 'product' && "Gas Geyser Package: "}{result.title}</h4>
                       <p className="text-xs text-gray-500">{result.content}</p>
                     </Link>
