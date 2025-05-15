@@ -29,13 +29,13 @@ export async function semanticSearch(query: string) {
    
 
   // Rate limit the request to 10 requests per minute
-  const { success, remaining } = await rateLimit.limit("search")
-  console.log("Rate limit success:", success)
-  console.log("Remaining requests:", remaining)
+  // const { success, remaining } = await rateLimit.limit("search")
+  // console.log("Rate limit success:", success)
+  // console.log("Remaining requests:", remaining)
 
-  if (!success) {
-    return []
-  }
+  // if (!success) {
+  //   return []
+  // }
 
 
   const embeddingResult = await embed({
