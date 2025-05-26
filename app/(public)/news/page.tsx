@@ -1,4 +1,4 @@
-import { getArticles } from "@/sanity/sanity-utils";
+import { ARTICLES_QUERY } from "@/sanity/sanity-utils";
 import { antonio, bebas } from "../../../fonts";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
@@ -7,30 +7,30 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
+import { sanityFetch } from "@/sanity/live";
 
 export const metadata: Metadata = {
-	title: "Hotwater24 | News",
-	description:
-		"Get news on the South African energy sector with a focus on LPG gas household usage",
-	keywords:
-		"gas geyser installations, gas geyser installation prices, gas geyser installation near me, how does a gas geyser work, gas geyser installation cost, gas geyser installation cape town, gas geyser installation durbanville, gas geyser installation brackenfell, gas geyser installation bellville, gas geyser installation kraaifontein, gas geyser installation kuilsriver, gas geyser installation parow, gas geyser installation goodwood, gas geyser installation monte vista, gas geyser installation edgemead, gas geyser installation plattekloof, gas geyser installation panorama, gas geyser installation welgemoed, gas geyser installation tygervalley, gas geyser installation durbanville hills, gas geyser installation sonstraal heights, gas geyser installation sonstraal, how does a gas geyser work",
-	openGraph: {
-		title: "Hotwater24 | News",
-		description:
-			"Get news on the South African energy sector with a focus on LPG gas household usage",
-	},
+  title: "Hotwater24 | News",
+  description:
+    "Get news on the South African energy sector with a focus on LPG gas household usage",
+  keywords:
+    "gas geyser installations, gas geyser installation prices, gas geyser installation near me, how does a gas geyser work, gas geyser installation cost, gas geyser installation cape town, gas geyser installation durbanville, gas geyser installation brackenfell, gas geyser installation bellville, gas geyser installation kraaifontein, gas geyser installation kuilsriver, gas geyser installation parow, gas geyser installation goodwood, gas geyser installation monte vista, gas geyser installation edgemead, gas geyser installation plattekloof, gas geyser installation panorama, gas geyser installation welgemoed, gas geyser installation tygervalley, gas geyser installation durbanville hills, gas geyser installation sonstraal heights, gas geyser installation sonstraal, how does a gas geyser work",
+  openGraph: {
+    title: "Hotwater24 | News",
+    description:
+      "Get news on the South African energy sector with a focus on LPG gas household usage",
+  },
 };
 
 export const dynamic = "force-static";
 
 const page = async () => {
-
-  const news = await getArticles()
-
-  console.log({news})
+  const { data: news } = await sanityFetch({
+    query: ARTICLES_QUERY,
+  });
 
   return (
-    <main className="container max-w-7xl mx-auto py-10">
+    <main className="container py-10 mx-auto max-w-7xl">
       <h1
         className={cn(
           "text-3xl text-slate-800 font-bold  sm:text-4xl md:text-5xl flex flex-col gap-2",
@@ -49,10 +49,10 @@ const page = async () => {
           >
             <div className="flex flex-col gap-2">
               <Image
-                src={article.image}
+                src={article.image!}
                 width={1280}
                 height={768}
-                alt={article.title}
+                alt={article.title!}
                 className={cn(
                   "w-full object-center object-cover",
                   index === 0 ? "" : "aspect-video"
@@ -65,11 +65,9 @@ const page = async () => {
                 <small className="text-slate-700">
                   {format(new Date(article._createdAt), "PPPP")}
                 </small>
-                <Link className="block" href={`/news/${article.slug}`}>
-                  <Button className="rounded-none bg-slate-800 text-white hover:bg-slate-700">
-                    Read Article
-                  </Button>
-                </Link>
+                <Button className="text-white rounded-none bg-slate-800 hover:bg-slate-700">
+                  Read Article
+                </Button>
               </div>
             </div>
           </Link>

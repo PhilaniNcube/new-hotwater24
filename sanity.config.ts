@@ -1,19 +1,29 @@
-import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
-import article from './sanity/schemas/article-schema'
-import schemas from './sanity/schemas'
-
+import { defineConfig } from "sanity";
+import { deskTool } from "sanity/desk";
+import article from "./sanity/schemas/article-schema";
+import schemas from "./sanity/schemas";
+import { structureTool } from "sanity/structure";
+import { presentationTool } from "sanity/presentation";
 
 const config = defineConfig({
-  projectId: 'anh1uho1',
-  dataset: 'production',
-  apiVersion: '2023-07-31',
-  title: 'Hotwater24 News',
-  basePath: '/studio',
-  plugins: [deskTool()],
-  schema: {types: schemas},
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  apiVersion: "2024-12-01",
+  title: "Hotwater24 News",
+  basePath: "/studio",
+  plugins: [
+    structureTool(),
+    presentationTool({
+      previewUrl: {
+        origin: process.env.SANITY_STUDIO_PREVIEW_ORIGIN,
+        preview: "/",
+        previewMode: {
+          enable: "/api/draft-mode/enable",
+        },
+      },
+    }),
+  ],
+  schema: { types: schemas },
+});
 
-})
-
-
-export default config
+export default config;

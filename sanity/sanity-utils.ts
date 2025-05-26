@@ -1,15 +1,39 @@
-import { createClient, groq } from "next-sanity";
-import { Article, Geyser } from "./types";
+import { createClient, defineQuery, groq } from "next-sanity";
+import {
+  Article,
+  Geysers,
+  LandingPage,
+  GEYSERS_QUERYResult,
+  GEYSER_QUERYResult,
+  LANDING_PAGES_QUERYResult,
+  LANDING_PAGE_QUERYResult,
+} from "./types";
 
-const client = createClient({
-  projectId: "anh1uho1",
-  dataset: "production",
-  apiVersion: "2023-07-31",
+export const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  apiVersion: "2024-12-01",
+  useCdn: true,
+  stega: {
+    studioUrl: process.env.NEXT_PUBLIC_SANITY_STUDIO_URL,
+  },
 });
 
-export async function getArticles(): Promise<Article[]> {
-  return await client.fetch(
-    groq`*[_type == "article"] | order(_createdAt desc){
+export const ARTICLES_QUERY =
+  defineQuery(`*[_type == "article"] | order(_createdAt desc){
+      _id,
+      _createdAt,
+      title,
+      meta_title,
+      meta_description,
+      "slug": slug.current,
+      "image": image.asset->url,
+      link,
+      content
+    }`);
+
+export const ARTICLE_QUERY = defineQuery(
+  `*[_type == "article" && slug.current == $slug][0]{
       _id,
       _createdAt,
       title,
@@ -20,29 +44,10 @@ export async function getArticles(): Promise<Article[]> {
       link,
       content
     }`
-  );
-}
+);
 
-export async function getArticle(slug: string): Promise<Article> {
-  return await client.fetch(
-    groq`*[_type == "article" && slug.current == $slug][0]{
-      _id,
-      _createdAt,
-      title,
-      meta_title,
-      meta_description,
-      "slug": slug.current,
-      "image": image.asset->url,
-      link,
-      content
-    }`,
-    { slug }
-  );
-}
-
-export async function getGeysers(): Promise<Geyser[]> {
-  return await client.fetch(
-    groq`*[_type == "geysers"] | order(_createdAt asc){
+export const GEYSERS_QUERY = defineQuery(
+  `*[_type == "geysers"] | order(_createdAt asc){
       _id,
       _createdAt,
       title,
@@ -66,12 +71,10 @@ export async function getGeysers(): Promise<Geyser[]> {
       brand,
       "image": image.asset->url,
     }`
-  );
-}
+);
 
-export async function getGeyser(slug: string): Promise<Geyser> {
-  return await client.fetch(
-    groq`*[_type == "geysers" && slug.current == $slug][0]{
+export const GEYSER_QUERY = defineQuery(
+  `*[_type == "geysers" && slug.current == $slug][0]{
      _id,
       _createdAt,
       title,
@@ -94,7 +97,185 @@ export async function getGeyser(slug: string): Promise<Geyser> {
       dimensions,
       brand,
       "image": image.asset->url,
-    }`,
-    { slug }
-  );
-}
+    }`
+);
+
+export const LANDING_PAGES_QUERY = defineQuery(
+  `*[_type == "landingPage"] | order(_createdAt desc){
+    _id,
+    _createdAt,
+    title,
+    "slug": slug.current,
+    seoTitle,
+    seoDescription,
+    pageBuilder[]{
+      _type,
+      _type == "heroSection" => {
+        heading,
+        subheading,
+        "backgroundImage": backgroundImage.asset->url,
+        "overlayImage": overlayImage.asset->url,
+        ctaButton,
+        secondaryCtaButton
+      },
+      _type == "textWithImageSection" => {
+        heading,
+        textContent,
+        "image": image.asset->url,
+        imagePosition,
+        ctaButton
+      },
+      _type == "featureListSection" => {
+        heading,
+        subheading,
+        features[]{
+          "icon": icon.asset->url,
+          title,
+          description,
+          link
+        },
+        layout
+      },
+      _type == "stepSection" => {
+        heading,
+        steps[]{
+          numberOrIcon,
+          title,
+          description
+        }
+      },
+      _type == "testimonialSection" => {
+        heading,
+        testimonials[]{
+          quote,
+          authorName,
+          authorTitleOrCompany,
+          "authorImage": authorImage.asset->url,
+          rating
+        }
+      },
+      _type == "videoEmbedSection" => {
+        heading,
+        videoUrl,
+        caption,
+        "placeholderImage": placeholderImage.asset->url
+      },
+      _type == "ctaSection" => {
+        heading,
+        subheading,
+        ctaButton,
+        secondaryCtaButton,
+        "backgroundImage": backgroundImage.asset->url
+      },
+      _type == "contactFormSection" => {
+        heading,
+        subheading,
+        formId,
+        submitButtonText
+      },
+      _type == "richTextSection" => {
+        heading,
+        content
+      },
+      _type == "imageGallerySection" => {
+        heading,
+        images[]{
+          "url": asset->url,
+          caption,
+          alt
+        },
+        layout
+      }
+    }
+  }`
+);
+
+export const LANDING_PAGE_QUERY = defineQuery(
+  `*[_type == "landingPage" && slug.current == $slug][0]{
+    _id,
+    _createdAt,
+    title,
+    "slug": slug.current,
+    seoTitle,
+    seoDescription,
+    pageBuilder[]{
+      _type,
+      _type == "heroSection" => {
+        heading,
+        subheading,
+        "backgroundImage": backgroundImage.asset->url,
+        "overlayImage": overlayImage.asset->url,
+        ctaButton,
+        secondaryCtaButton
+      },
+      _type == "textWithImageSection" => {
+        heading,
+        textContent,
+        "image": image.asset->url,
+        imagePosition,
+        ctaButton
+      },
+      _type == "featureListSection" => {
+        heading,
+        subheading,
+        features[]{
+          "icon": icon.asset->url,
+          title,
+          description,
+          link
+        },
+        layout
+      },
+      _type == "stepSection" => {
+        heading,
+        steps[]{
+          numberOrIcon,
+          title,
+          description
+        }
+      },
+      _type == "testimonialSection" => {
+        heading,
+        testimonials[]{
+          quote,
+          authorName,
+          authorTitleOrCompany,
+          "authorImage": authorImage.asset->url,
+          rating
+        }
+      },
+      _type == "videoEmbedSection" => {
+        heading,
+        videoUrl,
+        caption,
+        "placeholderImage": placeholderImage.asset->url
+      },
+      _type == "ctaSection" => {
+        heading,
+        subheading,
+        ctaButton,
+        secondaryCtaButton,
+        "backgroundImage": backgroundImage.asset->url
+      },
+      _type == "contactFormSection" => {
+        heading,
+        subheading,
+        formId,
+        submitButtonText
+      },
+      _type == "richTextSection" => {
+        heading,
+        content
+      },
+      _type == "imageGallerySection" => {
+        heading,
+        images[]{
+          "url": asset->url,
+          caption,
+          alt
+        },
+        layout
+      }
+    }
+  }`
+);
