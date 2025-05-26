@@ -1,16 +1,15 @@
 import Script from "next/script";
 import NewLead from "./NewLead";
-import { getGeysers } from "@/sanity/sanity-utils";
-
-
+import { GEYSERS_QUERY } from "@/sanity/sanity-utils";
+import { sanityFetch } from "@/sanity/live";
 
 const page = async () => {
-
-  const geysers = await getGeysers();
-
+  const { data: products } = await sanityFetch({
+    query: GEYSERS_QUERY,
+  });
 
   return (
-    <main className="container max-w-7xl mx-auto min-h-screen py-10">
+    <main className="container min-h-screen py-10 mx-auto max-w-7xl">
       <Script
         type="application/ld+json"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
@@ -64,7 +63,7 @@ const page = async () => {
         }}
       />
 
-      <NewLead geysers={geysers}  />
+      <NewLead geysers={products} />
     </main>
   );
 };
