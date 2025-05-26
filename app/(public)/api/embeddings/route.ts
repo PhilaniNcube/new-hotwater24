@@ -24,10 +24,8 @@ export async function GET(req: Request) {
     query: GEYSERS_QUERY,
   });
 
-  const [articlesRes, productsRes] = await Promise.all([articles, products]);
-
   const content = [
-    ...articlesRes.map((article) => ({
+    ...articles.map((article) => ({
       content: article.meta_description || "",
       created_at: article._createdAt,
       item_id: article._id,
@@ -35,7 +33,7 @@ export async function GET(req: Request) {
       title: article.title,
       type: "article" as EmbedingType,
     })),
-    ...productsRes.map((product) => ({
+    ...products.map((product) => ({
       content: `Brand:${product.brand} 
       Model:${product.geyser?.description} 
       Price:${product.price} 
