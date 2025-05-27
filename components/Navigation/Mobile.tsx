@@ -1,31 +1,17 @@
-"use client"
+"use client";
 
-import { Geyser } from "@/sanity/types";
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { MenuIcon } from "lucide-react";
-
-type Props = {
-  packages: Geyser[];
-  cities: {
-    id: number;
-    name: string;
-    slug: string;
-    created_at: string;
-  }[];
-};
 
 const Mobile = () => {
   const [isOpen, setIsOpen] = useState(false);

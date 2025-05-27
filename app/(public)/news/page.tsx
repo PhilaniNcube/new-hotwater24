@@ -8,6 +8,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { sanityFetch } from "@/sanity/live";
+import { ARTICLES_QUERYResult } from "@/sanity/types";
+
+type Article = ARTICLES_QUERYResult[0];
 
 export const metadata: Metadata = {
   title: "Hotwater24 | News",
@@ -29,6 +32,20 @@ const page = async () => {
     query: ARTICLES_QUERY,
   });
 
+  if (!news || news.length === 0) {
+    return (
+      <main className="container py-10 mx-auto max-w-7xl">
+        <h1 className="text-3xl font-bold text-slate-800 sm:text-4xl md:text-5xl">
+          No News Articles Found
+        </h1>
+        <Separator className="my-2" />
+        <p className="text-slate-700">
+          There are currently no news articles available.
+        </p>
+      </main>
+    );
+  }
+
   return (
     <main className="container py-10 mx-auto max-w-7xl">
       <h1
@@ -39,9 +56,9 @@ const page = async () => {
       >
         News Articles
       </h1>
-      <Separator className="my-2" />
+      <Separator className="my-2" />{" "}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-        {news.map((article, index) => (
+        {news.map((article: Article, index: number) => (
           <Link
             href={`/news/${article.slug}`}
             className="first:col-span-2 @container col-span-1"

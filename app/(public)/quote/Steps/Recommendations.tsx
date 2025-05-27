@@ -1,12 +1,7 @@
 "use client";
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-import React, { Fragment, useState, useEffect, useRef } from "react";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
+import React, { Fragment, useState, useEffect } from "react";
 import useMeasure from "react-use-measure";
 import {
   Chart as ChartJS,
@@ -17,18 +12,13 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
-import formatter from "@/lib/format";
-import roundUp, { roundUpThousand } from "@/lib/roundUp";
 import { motion } from "framer-motion";
-import { ShieldQuestionIcon } from "lucide-react";
 import type { LeadStageProps } from "../NewLead";
-import type { Geyser } from "@/sanity/types";
+import type { Geysers, GEYSERS_QUERYResult } from "@/sanity/types";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { antonio } from "@/fonts";
 import { formatCurrency } from "@/utils/format";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 ChartJS.register(
   CategoryScale,
@@ -40,7 +30,7 @@ ChartJS.register(
 );
 
 interface RecommendationsProps extends LeadStageProps {
-  geysers: Geyser[];
+  geysers: GEYSERS_QUERYResult;
 }
 
 const Recommendations = ({
@@ -65,35 +55,36 @@ const Recommendations = ({
 
   // write a function that filters that returns the geysers with the closest maxFlowRate to the calculate quoteInfo.flowRate property
 
-  const filteredGeysers = geysers.filter(
-    (geyser) => Number(geyser.maxFlowRate.split("l")[0]) >= quoteInfo.flowRate
-  );
+  const filteredGeysers = geysers.filter((geyser) => {
+    return Number(geyser.maxFlowRate?.split("l")[0]) >= quoteInfo.flowRate;
+  });
 
   //@ts-nocheck
   const sortedFilter = filteredGeysers.sort(
     (a, b) =>
-      Number(a.maxFlowRate.split("l")[0]) - Number(b.maxFlowRate.split("l")[0])
+      Number(a.maxFlowRate?.split("l")[0]) -
+      Number(b.maxFlowRate?.split("l")[0])
   );
 
   const getDisplayedGeyser = () => {
     if (quoteInfo.flowRate <= 6) {
       return geysers.find(
-        (geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 12
+        (geyser) => Number(geyser.maxFlowRate?.split("l")[0]) === 12
       );
       // biome-ignore lint/style/noUselessElse: <explanation>
     } else if (quoteInfo.flowRate <= 19) {
       return geysers.find(
-        (geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 16
+        (geyser) => Number(geyser.maxFlowRate?.split("l")[0]) === 16
       );
       // biome-ignore lint/style/noUselessElse: <explanation>
     } else if (quoteInfo.flowRate <= 23) {
       return geysers.find(
-        (geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 20
+        (geyser) => Number(geyser.maxFlowRate?.split("l")[0]) === 20
       );
       // biome-ignore lint/style/noUselessElse: <explanation>
     } else if (quoteInfo.flowRate <= 45) {
       return geysers.find(
-        (geyser) => Number(geyser.maxFlowRate.split("l")[0]) === 26
+        (geyser) => Number(geyser.maxFlowRate?.split("l")[0]) === 26
       );
       // biome-ignore lint/style/noUselessElse: <explanation>
     } else {
@@ -175,10 +166,10 @@ const Recommendations = ({
           <div className="relative flex flex-col gap-4 overflow-hidden rounded-lg group md:flex-row">
             <div className="flex flex-col items-center justify-center w-full">
               <Image
-                alt={displayedGeyser.title}
+                alt={displayedGeyser.title!}
                 className="object-cover w-[200px]"
                 height="1000"
-                src={displayedGeyser.image}
+                src={displayedGeyser.image!}
                 width="600"
               />
               <h3
@@ -190,7 +181,7 @@ const Recommendations = ({
                 {displayedGeyser.title}
               </h3>
               <p className="py-2 text-2xl font-semibold text-center text-red-600">
-                From: {formatCurrency(displayedGeyser.price)}*
+                From: {formatCurrency(displayedGeyser.price!)}*
               </p>
               <p className="py-2 text-sm font-semibold text-center text-slate-800">
                 *Cost includes gas geyser, installation (gas and plumbing) and

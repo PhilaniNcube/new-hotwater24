@@ -1,7 +1,6 @@
 "use client";
-import React, { Fragment, useEffect, useState } from "react";
-import { AnimatePresence } from "framer-motion";
-import { useRouter, useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
+
 import Confirm from "./Steps/Confirm";
 import Recommendations from "./Steps/Recommendations";
 import PersonalDetails from "./Steps/PersonalDetails";
@@ -13,10 +12,10 @@ import GasUse from "./Steps/GasUse";
 import WaterHeating from "./Steps/WaterHeating";
 import WaterOutlets from "./Steps/WaterOutlests";
 import OffGridStep from "./Steps/OffGridStep";
-import analytics from "@/utils/analytics";
-import type { Geyser } from "@/sanity/types";
+
 import { sendGTMEvent } from "@next/third-parties/google";
 import BoreholeWater from "./Steps/BoreholeWater";
+import { GEYSERS_QUERYResult } from "@/sanity/types";
 
 export type LeadStageProps = {
   quoteInfo: {
@@ -76,13 +75,11 @@ export type LeadStageProps = {
   setPage?: (page: number) => void;
 };
 
-const NewLead = ({ geysers }: { geysers: Geyser[] }) => {
-  const searchParams = useSearchParams();
+const NewLead = ({ geysers }: { geysers: GEYSERS_QUERYResult }) => {
   const [source, setSource] = useState<null | string>(null);
   const [page, setPage] = useState(1);
 
   //write a useEffect function to set the document.refferer value to the source value in the quoteInfo object
-
 
   const [quoteInfo, setQuoteInfo] = useState({
     children: 0,
@@ -134,13 +131,12 @@ const NewLead = ({ geysers }: { geysers: Geyser[] }) => {
     borehole_water: false,
   });
 
-    useEffect(() => {
-      console.log("source", document.referrer);
-      if(quoteInfo.source === null) {
-        setQuoteInfo({...quoteInfo, source: document.referrer});
-      }
-    }, []);
-
+  useEffect(() => {
+    console.log("source", document.referrer);
+    if (quoteInfo.source === null) {
+      setQuoteInfo({ ...quoteInfo, source: document.referrer });
+    }
+  }, []);
 
   const nextPage = () => {
     if (page === 13) return;

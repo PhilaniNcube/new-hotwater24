@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   NavigationMenu,
@@ -7,35 +7,36 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
-import type { Geyser } from "@/sanity/types";
 import Image from "next/image";
 import Link from "next/link";
-import React, {  useTransition } from "react";
+import React, { useTransition } from "react";
 import { Button } from "../ui/button";
-import { RiFacebookBoxFill, RiInstagramFill, RiLinkedinFill, RiLinkedinLine, RiWhatsappLine } from "react-icons/ri";
+import {
+  RiFacebookBoxFill,
+  RiInstagramFill,
+  RiLinkedinFill,
+  RiLinkedinLine,
+  RiWhatsappLine,
+} from "react-icons/ri";
 import AreasSelector from "./AreasSelector";
 import { Mail, Phone, Search } from "lucide-react";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Input } from "../ui/input";
 import { semanticSearch } from "@/lib/queries/embedding";
 import { ScrollArea } from "../ui/scroll-area";
-
-type Props = {
-  packages: Geyser[];
-  cities: {
-    id: number;
-    name: string;
-    slug: string;
-    created_at: string;
-  }[];
-}
 
 const Desktop = () => {
   return (
     <section className="sticky top-0 left-0 right-0 z-50 hidden pb-3 shadow-md lg:block bg-white/80 backdrop-blur-sm">
       <div className="flex items-center justify-between px-10 py-2 mb-2 lg:px-20 md:flex-row bg-brand">
-        <div className="flex justify-between w-full max-w-7xl mx-auto">
+        <div className="flex justify-between w-full mx-auto max-w-7xl">
           <span className="flex flex-row items-center">
             <Mail className="text-white" size={20} />
             <Link
@@ -90,8 +91,8 @@ const Desktop = () => {
           </span>
         </div>
       </div>
-      <nav className="container max-w-7xl px-0 mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-x-9 w-full">
+      <nav className="container flex items-center justify-between px-0 mx-auto max-w-7xl">
+        <div className="flex items-center w-full gap-x-9">
           <Link href="/" passHref>
             <div className="flex items-center space-x-2 cursor-pointer">
               <Image
@@ -106,112 +107,122 @@ const Desktop = () => {
           </Link>
           <NavigationMenu>
             <NavigationMenuList>
-
               <NavigationMenuItem asChild>
-
-                <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  asChild
+                >
                   <Link href="/#packages" passHref>
                     Our Packages
                   </Link>
                 </NavigationMenuLink>
-
               </NavigationMenuItem>
               <NavigationMenuItem asChild>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                <Link href="/who-we-are" passHref>
-
-                  Who We Are</Link>
-              </NavigationMenuLink>
-
-              </NavigationMenuItem>
-              <NavigationMenuItem asChild>
-
-                <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                  <Link href="/why-us" passHref>
-                    Why Choose Us</Link>
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  asChild
+                >
+                  <Link href="/who-we-are" passHref>
+                    Who We Are
+                  </Link>
                 </NavigationMenuLink>
-
-              </NavigationMenuItem>
-              <NavigationMenuItem asChild><NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                <Link href="/payment-plan" passHref>
-
-                  Payment Plan
-                </Link>
-              </NavigationMenuLink>
-
               </NavigationMenuItem>
               <NavigationMenuItem asChild>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  asChild
+                >
+                  <Link href="/why-us" passHref>
+                    Why Choose Us
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem asChild>
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  asChild
+                >
+                  <Link href="/payment-plan" passHref>
+                    Payment Plan
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem asChild>
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  asChild
+                >
                   <Link href="/faq" passHref>
-
                     FAQ's
                   </Link>
                 </NavigationMenuLink>
-
               </NavigationMenuItem>
               <NavigationMenuItem asChild>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  asChild
+                >
                   <Link href="/news" passHref>
-
                     News
                   </Link>
                 </NavigationMenuLink>
-
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
         <div className="flex items-center gap-4">
-        
           <AreasSelector />
           <Link
             href="https://wa.me/27793414075?text=I'm%20interested%20in%20your%20products"
             target="_blank"
             rel="noreferrer"
           >
-            <Button type="button" className="bg-green-600 text-white rounded-full">
+            <Button
+              type="button"
+              className="text-white bg-green-600 rounded-full"
+            >
               <RiWhatsappLine className="mr-1 text-2xl" />
               Get In Touch
             </Button>
           </Link>
         </div>
       </nav>
-    </section >
+    </section>
   );
 };
 export default Desktop;
 
-
-
-
-// create a search dialog component that will be used for semantic search 
+// create a search dialog component that will be used for semantic search
 
 const SearchDialog = () => {
-
   type ResultType = {
     id: number;
     item_id: string;
     title: string;
     content: string;
-    type: 'article' | 'product' | 'content';
+    type: "article" | "product" | "content";
     similarity: number;
     slug: string;
-  }
+  };
 
   const [isPending, startTransition] = useTransition();
 
   const [query, setQuery] = React.useState<string>("");
 
-  const [searchResults, setSearchResults] = React.useState<ResultType[] | null>(null);
+  const [searchResults, setSearchResults] = React.useState<ResultType[] | null>(
+    null
+  );
 
   const [isOpen, setIsOpen] = React.useState(false);
-
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost" className="min-w-lg  flex-1 flex h-8 items-center justify-start gap-2 rounded-full border border-slate-200 bg-white text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:focus:ring-offset-slate-800">
-          <Search className="h-4 w-4" />
+        <Button
+          variant="ghost"
+          className="flex items-center justify-start flex-1 h-8 gap-2 bg-white border rounded-full min-w-lg border-slate-200 text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:focus:ring-offset-slate-800"
+        >
+          <Search className="w-4 h-4" />
           <span className="text-xs text-slate-500">Search</span>
         </Button>
       </DialogTrigger>
@@ -230,12 +241,14 @@ const SearchDialog = () => {
               placeholder="Search..."
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <Button className="ml-2 bg-brand text-white" disabled={isPending}
+            <Button
+              className="ml-2 text-white bg-brand"
+              disabled={isPending}
               onClick={() => {
                 startTransition(async () => {
                   // Call the search function here
                   console.log("Searching for:", query);
-                  const results = await semanticSearch(query)
+                  const results = await semanticSearch(query);
                   console.log("Search results:", results);
                   setSearchResults(results);
                 });
@@ -250,9 +263,25 @@ const SearchDialog = () => {
               <h3 className="text-lg font-semibold">Search Results:</h3>
               <ul className="mt-2 space-y-2">
                 {searchResults.map((result) => (
-                  <li onClick={() => setIsOpen(false)} key={result.id} className="p-2 border rounded-md">
-                    <Link href={result.type === "article" ? `/news/${result.slug}` : result.type === 'product' ? `/packages/${result.slug}` : `/${result.slug}`} className="flex flex-col ">
-                      <h4 className="text-sm font-semibold underline text-brand">{result.type === 'product' && "Gas Geyser Package: "}{result.title}</h4>
+                  <li
+                    onClick={() => setIsOpen(false)}
+                    key={result.id}
+                    className="p-2 border rounded-md"
+                  >
+                    <Link
+                      href={
+                        result.type === "article"
+                          ? `/news/${result.slug}`
+                          : result.type === "product"
+                            ? `/packages/${result.slug}`
+                            : `/${result.slug}`
+                      }
+                      className="flex flex-col "
+                    >
+                      <h4 className="text-sm font-semibold underline text-brand">
+                        {result.type === "product" && "Gas Geyser Package: "}
+                        {result.title}
+                      </h4>
                       <p className="text-xs text-gray-500">{result.content}</p>
                     </Link>
                   </li>
@@ -266,11 +295,8 @@ const SearchDialog = () => {
               <p>No results found for "{query}".</p>
             </div>
           )}
-
-
-
         </DialogHeader>
       </DialogContent>
     </Dialog>
   );
-}
+};
