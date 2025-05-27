@@ -116,6 +116,9 @@ importers:
       '@react-google-maps/api':
         specifier: ^2.20.6
         version: 2.20.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@sanity/image-url':
+        specifier: ^1.1.0
+        version: 1.1.0
       '@sendgrid/client':
         specifier: ^8.1.4
         version: 8.1.4
