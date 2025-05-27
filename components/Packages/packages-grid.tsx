@@ -6,6 +6,9 @@ import { formatCurrency } from "@/utils/format";
 import { cn } from "@/lib/utils";
 import { antonio } from "@/fonts";
 import { sanityFetch } from "@/sanity/live";
+import { GEYSERS_QUERYResult } from "@/sanity/types";
+
+type Geyser = GEYSERS_QUERYResult[0];
 
 const PackagesGrid = async () => {
   const { data: packages } = await sanityFetch({
@@ -15,7 +18,7 @@ const PackagesGrid = async () => {
   return (
     <div className="w-full">
       <section className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-        {packages.map((item, index) => {
+        {packages.map((item: Geyser, index: number) => {
           return (
             <div
               key={item._id}
