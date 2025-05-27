@@ -835,17 +835,11 @@ export const imageGallerySection = {
               name: "caption",
               type: "string",
               title: "Caption",
-              options: {
-                isHighlighted: true, // Makes it stand out in the Sanity studio
-              },
             },
             {
               name: "alt",
               type: "string",
               title: "Alternative text (for SEO & accessibility)",
-              options: {
-                isHighlighted: true,
-              },
             },
           ],
         },
