@@ -24,8 +24,8 @@ const renderCtaButton = (cta: Cta, isPrimary: boolean = true) => {
   if (!cta?.buttonText) return null;
 
   const buttonClasses = isPrimary
-    ? "bg-white text-slate-900 flex space-x-2 py-2 px-4 shadow-gray-600 shadow-lg hover:shadow-xs hover:text-white items-center mt-4 rounded-full w-fit uppercase"
-    : "bg-transparent border border-white text-white flex space-x-2 py-2 px-4 hover:bg-white hover:text-slate-900 items-center mt-4 rounded-full w-fit uppercase";
+    ? "bg-orange-600 text-white flex space-x-2 py-2 px-4 shadow hover:shadow-xs hover:text-white items-center mt-4 w-fit  rounded-none"
+    : "bg-transparent border border-white text-white flex space-x-2 py-2 px-4 hover:bg-white hover:text-slate-900 items-center mt-4 w-fit ";
 
   const content = (
     <Button className={buttonClasses}>
@@ -72,7 +72,7 @@ const HeroBlock: React.FC<HeroBlockProps> = ({ data }) => {
     secondaryCtaButton,
   } = data;
   return (
-    <div className="relative isolate min-h-[70vh]">
+    <div className="relative isolate max-h-[70vh]">
       {/* Background Image */}
       {backgroundImage && (
         <Image
@@ -82,23 +82,23 @@ const HeroBlock: React.FC<HeroBlockProps> = ({ data }) => {
           height={1280}
           quality={100}
           priority={true}
-          className="z-[-1] w-full object-cover object-left md:object-center min-h-[50vh] md:min-h-[60vh]"
+          className="z-[-1] w-full object-cover object-left md:object-center max-h-[70vh]"
         />
       )}
 
       {/* Content Overlay */}
-      <div className="absolute inset-0">
-        <div className="container z-20 flex flex-col justify-center px-4 py-12 mx-auto space-y-3 bg-center bg-no-repeat bg-cover aspect-video lg:px-16">
+      <div className="absolute inset-0 h-full">
+        <div className="container relative z-20 flex flex-col justify-center h-full px-4 py-12 mx-auto space-y-3 bg-center bg-no-repeat bg-cover max-w-7xl aspect-video lg:px-0">
           <div className="max-w-xl">
             {heading && (
-              <h1 className="text-2xl lg:text-4xl max-w-[60ch] font-sans font-bold mb-3 text-white">
+              <h1 className="text-2xl lg:text-4xl max-w-[60ch] font-sans font-bold mb-3 text-black">
                 {heading}
               </h1>
             )}
           </div>
 
           {subheading && (
-            <p className="mb-4 font-normal text-white text-md lg:text-xl md:w-1/2 md:font-medium">
+            <p className="mb-4 font-normal text-black text-md lg:text-xl md:w-1/2 md:font-medium">
               {subheading}
             </p>
           )}
@@ -111,13 +111,13 @@ const HeroBlock: React.FC<HeroBlockProps> = ({ data }) => {
 
           {/* Overlay Image (optional decorative image) */}
           {overlayImage && (
-            <div className="absolute hidden bottom-8 right-8 lg:block">
+            <div className="absolute right-0 hidden bottom-8 lg:block">
               <Image
                 src={overlayImage}
                 alt="Hero overlay"
-                width={200}
-                height={200}
-                className="opacity-80"
+                width={500}
+                height={500}
+                className="object-cover w-full translate-y-24 rounded-md"
               />
             </div>
           )}
