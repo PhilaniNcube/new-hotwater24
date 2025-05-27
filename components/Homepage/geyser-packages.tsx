@@ -6,6 +6,9 @@ import { cn } from "@/lib/utils";
 import { antonio } from "@/fonts";
 import { sanityFetch } from "@/sanity/live";
 import { GEYSERS_QUERY } from "@/sanity/sanity-utils";
+import { GEYSERS_QUERYResult } from "@/sanity/types";
+
+type Geyser = GEYSERS_QUERYResult[0];
 
 /**
  * v0 by Vercel.
@@ -28,9 +31,9 @@ export default async function GeyserPackages() {
         )}
       >
         Which package best suits your household?
-      </h2>
+      </h2>{" "}
       <div className="grid gap-4 p-4 mt-6 lg:gap-8 md:grid-cols-3 lg:grid-cols-4">
-        {packages.map((item, index) => {
+        {packages.map((item: Geyser, index: number) => {
           if (index < 5) {
             return (
               <div
