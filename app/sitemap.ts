@@ -1,5 +1,6 @@
 import { sanityFetch } from "@/sanity/live";
 import { ARTICLES_QUERY, GEYSERS_QUERY } from "@/sanity/sanity-utils";
+import { ARTICLE_QUERYResult, GEYSER_QUERYResult } from "@/sanity/types";
 import { MetadataRoute } from "next";
 
 const BASE_URL = "https://hotwater24.com";
@@ -14,15 +15,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   // create a sitemap object for each article
-  const articleSitemaps = articles.map((article) => ({
-    url: `${BASE_URL}/news/${article.slug}`,
+  const articleSitemaps = articles.map((article: ARTICLE_QUERYResult) => ({
+    url: `${BASE_URL}/news/${article?.slug}`,
     // changeFrequency: 'monthly',
     lastModified: new Date(),
   }));
 
   // create a sitemap object for each package
-  const packageSitemaps = packages.map((item) => ({
-    url: `${BASE_URL}/packages/${item.slug}`,
+  const packageSitemaps = packages.map((item: GEYSER_QUERYResult) => ({
+    url: `${BASE_URL}/packages/${item?.slug}`,
     changeFrequency: "monthly",
     lastModified: new Date(),
   }));
