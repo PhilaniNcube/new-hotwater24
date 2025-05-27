@@ -69,36 +69,39 @@ export type ImageGallerySection = {
 export type RichTextSection = {
   _type: "richTextSection";
   heading?: string;
-  content?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      blank?: boolean;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-    _key: string;
-  }>;
+  content?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          blank?: boolean;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: "image";
+        _key: string;
+      }
+  >;
 };
 
 export type ContactFormSection = {
@@ -168,9 +171,11 @@ export type TestimonialItem = {
 export type TestimonialSection = {
   _type: "testimonialSection";
   heading?: string;
-  testimonials?: Array<{
-    _key: string;
-  } & TestimonialItem>;
+  testimonials?: Array<
+    {
+      _key: string;
+    } & TestimonialItem
+  >;
 };
 
 export type StepSection = {
@@ -207,9 +212,11 @@ export type FeatureListSection = {
   _type: "featureListSection";
   heading?: string;
   subheading?: string;
-  features?: Array<{
-    _key: string;
-  } & FeatureItem>;
+  features?: Array<
+    {
+      _key: string;
+    } & FeatureItem
+  >;
   layout?: "grid" | "list";
 };
 
@@ -312,27 +319,38 @@ export type LandingPage = {
   slug?: Slug;
   seoTitle?: string;
   seoDescription?: string;
-  pageBuilder?: Array<{
-    _key: string;
-  } & HeroSection | {
-    _key: string;
-  } & TextWithImageSection | {
-    _key: string;
-  } & FeatureListSection | {
-    _key: string;
-  } & StepSection | {
-    _key: string;
-  } & TestimonialSection | {
-    _key: string;
-  } & VideoEmbedSection | {
-    _key: string;
-  } & CtaSection | {
-    _key: string;
-  } & ContactFormSection | {
-    _key: string;
-  } & RichTextSection | {
-    _key: string;
-  } & ImageGallerySection>;
+  pageBuilder?: Array<
+    | ({
+        _key: string;
+      } & HeroSection)
+    | ({
+        _key: string;
+      } & TextWithImageSection)
+    | ({
+        _key: string;
+      } & FeatureListSection)
+    | ({
+        _key: string;
+      } & StepSection)
+    | ({
+        _key: string;
+      } & TestimonialSection)
+    | ({
+        _key: string;
+      } & VideoEmbedSection)
+    | ({
+        _key: string;
+      } & CtaSection)
+    | ({
+        _key: string;
+      } & ContactFormSection)
+    | ({
+        _key: string;
+      } & RichTextSection)
+    | ({
+        _key: string;
+      } & ImageGallerySection)
+  >;
 };
 
 export type SanityFileAsset = {
@@ -530,7 +548,34 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | Geopoint | ImageGallerySection | RichTextSection | ContactFormSection | CtaSection | VideoEmbedSection | TestimonialItem | TestimonialSection | StepSection | FeatureItem | FeatureListSection | TextWithImageSection | HeroSection | Cta | LandingPage | SanityFileAsset | Geysers | Article | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
+export type AllSanitySchemaTypes =
+  | SanityImagePaletteSwatch
+  | SanityImagePalette
+  | SanityImageDimensions
+  | Geopoint
+  | ImageGallerySection
+  | RichTextSection
+  | ContactFormSection
+  | CtaSection
+  | VideoEmbedSection
+  | TestimonialItem
+  | TestimonialSection
+  | StepSection
+  | FeatureItem
+  | FeatureListSection
+  | TextWithImageSection
+  | HeroSection
+  | Cta
+  | LandingPage
+  | SanityFileAsset
+  | Geysers
+  | Article
+  | SanityImageCrop
+  | SanityImageHotspot
+  | SanityImageAsset
+  | SanityAssetSourceData
+  | SanityImageMetadata
+  | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/sanity-utils.ts
 // Variable: ARTICLES_QUERY
@@ -712,129 +757,151 @@ export type LANDING_PAGES_QUERYResult = Array<{
   slug: string | null;
   seoTitle: string | null;
   seoDescription: string | null;
-  pageBuilder: Array<{
-    _type: "contactFormSection";
-    heading: string | null;
-    subheading: string | null;
-    formId: string | null;
-    submitButtonText: string | null;
-  } | {
-    _type: "ctaSection";
-    heading: string | null;
-    subheading: string | null;
-    ctaButton: Cta | null;
-    secondaryCtaButton: Cta | null;
-    backgroundImage: string | null;
-  } | {
-    _type: "featureListSection";
-    heading: string | null;
-    subheading: string | null;
-    features: Array<{
-      icon: string | null;
-      title: string | null;
-      description: string | null;
-      link: string | null;
-    }> | null;
-    layout: "grid" | "list" | null;
-  } | {
-    _type: "heroSection";
-    heading: string | null;
-    subheading: string | null;
-    backgroundImage: string | null;
-    overlayImage: string | null;
-    ctaButton: Cta | null;
-    secondaryCtaButton: Cta | null;
-  } | {
-    _type: "imageGallerySection";
-    heading: string | null;
-    images: Array<{
-      url: string | null;
-      caption: string | null;
-      alt: string | null;
-    }> | null;
-    layout: "carousel" | "grid" | "masonry" | null;
-  } | {
-    _type: "richTextSection";
-    heading: string | null;
-    content: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-      listItem?: "bullet" | "number";
-      markDefs?: Array<{
-        href?: string;
-        blank?: boolean;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
-      _key: string;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-      _key: string;
-    }> | null;
-  } | {
-    _type: "stepSection";
-    heading: string | null;
-    steps: Array<{
-      numberOrIcon: string | null;
-      title: string | null;
-      description: string | null;
-    }> | null;
-  } | {
-    _type: "testimonialSection";
-    heading: string | null;
-    testimonials: Array<{
-      quote: string | null;
-      authorName: string | null;
-      authorTitleOrCompany: string | null;
-      authorImage: string | null;
-      rating: 1 | 2 | 3 | 4 | 5 | null;
-    }> | null;
-  } | {
-    _type: "textWithImageSection";
-    heading: string | null;
-    textContent: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-      listItem?: "bullet" | "number";
-      markDefs?: Array<{
-        href?: string;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
-      _key: string;
-    }> | null;
-    image: string | null;
-    imagePosition: "left" | "right" | null;
-    ctaButton: Cta | null;
-  } | {
-    _type: "videoEmbedSection";
-    heading: string | null;
-    videoUrl: string | null;
-    caption: string | null;
-    placeholderImage: string | null;
-  }> | null;
+  pageBuilder: Array<
+    | {
+        _type: "contactFormSection";
+        heading: string | null;
+        subheading: string | null;
+        formId: string | null;
+        submitButtonText: string | null;
+      }
+    | {
+        _type: "ctaSection";
+        heading: string | null;
+        subheading: string | null;
+        ctaButton: Cta | null;
+        secondaryCtaButton: Cta | null;
+        backgroundImage: string | null;
+      }
+    | {
+        _type: "featureListSection";
+        heading: string | null;
+        subheading: string | null;
+        features: Array<{
+          icon: string | null;
+          title: string | null;
+          description: string | null;
+          link: string | null;
+        }> | null;
+        layout: "grid" | "list" | null;
+      }
+    | {
+        _type: "heroSection";
+        heading: string | null;
+        subheading: string | null;
+        backgroundImage: string | null;
+        overlayImage: string | null;
+        ctaButton: Cta | null;
+        secondaryCtaButton: Cta | null;
+      }
+    | {
+        _type: "imageGallerySection";
+        heading: string | null;
+        images: Array<{
+          url: string | null;
+          caption: string | null;
+          alt: string | null;
+        }> | null;
+        layout: "carousel" | "grid" | "masonry" | null;
+      }
+    | {
+        _type: "richTextSection";
+        heading: string | null;
+        content: Array<
+          | {
+              children?: Array<{
+                marks?: Array<string>;
+                text?: string;
+                _type: "span";
+                _key: string;
+              }>;
+              style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+              listItem?: "bullet" | "number";
+              markDefs?: Array<{
+                href?: string;
+                blank?: boolean;
+                _type: "link";
+                _key: string;
+              }>;
+              level?: number;
+              _type: "block";
+              _key: string;
+            }
+          | {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              _type: "image";
+              _key: string;
+            }
+        > | null;
+      }
+    | {
+        _type: "stepSection";
+        heading: string | null;
+        steps: Array<{
+          numberOrIcon: string | null;
+          title: string | null;
+          description: string | null;
+        }> | null;
+      }
+    | {
+        _type: "testimonialSection";
+        heading: string | null;
+        testimonials: Array<{
+          quote: string | null;
+          authorName: string | null;
+          authorTitleOrCompany: string | null;
+          authorImage: string | null;
+          rating: 1 | 2 | 3 | 4 | 5 | null;
+        }> | null;
+      }
+    | {
+        _type: "textWithImageSection";
+        heading: string | null;
+        textContent: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?:
+            | "blockquote"
+            | "h1"
+            | "h2"
+            | "h3"
+            | "h4"
+            | "h5"
+            | "h6"
+            | "normal";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+        }> | null;
+        image: string | null;
+        imagePosition: "left" | "right" | null;
+        ctaButton: Cta | null;
+      }
+    | {
+        _type: "videoEmbedSection";
+        heading: string | null;
+        videoUrl: string | null;
+        caption: string | null;
+        placeholderImage: string | null;
+      }
+  > | null;
 }>;
 // Variable: LANDING_PAGE_QUERY
 // Query: *[_type == "landingPage" && slug.current == $slug][0]{    _id,    _createdAt,    title,    "slug": slug.current,    seoTitle,    seoDescription,    pageBuilder[]{      _type,      _type == "heroSection" => {        heading,        subheading,        "backgroundImage": backgroundImage.asset->url,        "overlayImage": overlayImage.asset->url,        ctaButton,        secondaryCtaButton      },      _type == "textWithImageSection" => {        heading,        textContent,        "image": image.asset->url,        imagePosition,        ctaButton      },      _type == "featureListSection" => {        heading,        subheading,        features[]{          "icon": icon.asset->url,          title,          description,          link        },        layout      },      _type == "stepSection" => {        heading,        steps[]{          numberOrIcon,          title,          description        }      },      _type == "testimonialSection" => {        heading,        testimonials[]{          quote,          authorName,          authorTitleOrCompany,          "authorImage": authorImage.asset->url,          rating        }      },      _type == "videoEmbedSection" => {        heading,        videoUrl,        caption,        "placeholderImage": placeholderImage.asset->url      },      _type == "ctaSection" => {        heading,        subheading,        ctaButton,        secondaryCtaButton,        "backgroundImage": backgroundImage.asset->url      },      _type == "contactFormSection" => {        heading,        subheading,        formId,        submitButtonText      },      _type == "richTextSection" => {        heading,        content      },      _type == "imageGallerySection" => {        heading,        images[]{          "url": asset->url,          caption,          alt        },        layout      }    }  }
@@ -845,140 +912,162 @@ export type LANDING_PAGE_QUERYResult = {
   slug: string | null;
   seoTitle: string | null;
   seoDescription: string | null;
-  pageBuilder: Array<{
-    _type: "contactFormSection";
-    heading: string | null;
-    subheading: string | null;
-    formId: string | null;
-    submitButtonText: string | null;
-  } | {
-    _type: "ctaSection";
-    heading: string | null;
-    subheading: string | null;
-    ctaButton: Cta | null;
-    secondaryCtaButton: Cta | null;
-    backgroundImage: string | null;
-  } | {
-    _type: "featureListSection";
-    heading: string | null;
-    subheading: string | null;
-    features: Array<{
-      icon: string | null;
-      title: string | null;
-      description: string | null;
-      link: string | null;
-    }> | null;
-    layout: "grid" | "list" | null;
-  } | {
-    _type: "heroSection";
-    heading: string | null;
-    subheading: string | null;
-    backgroundImage: string | null;
-    overlayImage: string | null;
-    ctaButton: Cta | null;
-    secondaryCtaButton: Cta | null;
-  } | {
-    _type: "imageGallerySection";
-    heading: string | null;
-    images: Array<{
-      url: string | null;
-      caption: string | null;
-      alt: string | null;
-    }> | null;
-    layout: "carousel" | "grid" | "masonry" | null;
-  } | {
-    _type: "richTextSection";
-    heading: string | null;
-    content: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-      listItem?: "bullet" | "number";
-      markDefs?: Array<{
-        href?: string;
-        blank?: boolean;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
-      _key: string;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-      _key: string;
-    }> | null;
-  } | {
-    _type: "stepSection";
-    heading: string | null;
-    steps: Array<{
-      numberOrIcon: string | null;
-      title: string | null;
-      description: string | null;
-    }> | null;
-  } | {
-    _type: "testimonialSection";
-    heading: string | null;
-    testimonials: Array<{
-      quote: string | null;
-      authorName: string | null;
-      authorTitleOrCompany: string | null;
-      authorImage: string | null;
-      rating: 1 | 2 | 3 | 4 | 5 | null;
-    }> | null;
-  } | {
-    _type: "textWithImageSection";
-    heading: string | null;
-    textContent: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-      listItem?: "bullet" | "number";
-      markDefs?: Array<{
-        href?: string;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
-      _key: string;
-    }> | null;
-    image: string | null;
-    imagePosition: "left" | "right" | null;
-    ctaButton: Cta | null;
-  } | {
-    _type: "videoEmbedSection";
-    heading: string | null;
-    videoUrl: string | null;
-    caption: string | null;
-    placeholderImage: string | null;
-  }> | null;
+  pageBuilder: Array<
+    | {
+        _type: "contactFormSection";
+        heading: string | null;
+        subheading: string | null;
+        formId: string | null;
+        submitButtonText: string | null;
+      }
+    | {
+        _type: "ctaSection";
+        heading: string | null;
+        subheading: string | null;
+        ctaButton: Cta | null;
+        secondaryCtaButton: Cta | null;
+        backgroundImage: string | null;
+      }
+    | {
+        _type: "featureListSection";
+        heading: string | null;
+        subheading: string | null;
+        features: Array<{
+          icon: string | null;
+          title: string | null;
+          description: string | null;
+          link: string | null;
+        }> | null;
+        layout: "grid" | "list" | null;
+      }
+    | {
+        _type: "heroSection";
+        heading: string | null;
+        subheading: string | null;
+        backgroundImage: string | null;
+        overlayImage: string | null;
+        ctaButton: Cta | null;
+        secondaryCtaButton: Cta | null;
+      }
+    | {
+        _type: "imageGallerySection";
+        heading: string | null;
+        images: Array<{
+          url: string | null;
+          caption: string | null;
+          alt: string | null;
+        }> | null;
+        layout: "carousel" | "grid" | "masonry" | null;
+      }
+    | {
+        _type: "richTextSection";
+        heading: string | null;
+        content: Array<
+          | {
+              children?: Array<{
+                marks?: Array<string>;
+                text?: string;
+                _type: "span";
+                _key: string;
+              }>;
+              style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+              listItem?: "bullet" | "number";
+              markDefs?: Array<{
+                href?: string;
+                blank?: boolean;
+                _type: "link";
+                _key: string;
+              }>;
+              level?: number;
+              _type: "block";
+              _key: string;
+            }
+          | {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              _type: "image";
+              _key: string;
+            }
+        > | null;
+      }
+    | {
+        _type: "stepSection";
+        heading: string | null;
+        steps: Array<{
+          numberOrIcon: string | null;
+          title: string | null;
+          description: string | null;
+        }> | null;
+      }
+    | {
+        _type: "testimonialSection";
+        heading: string | null;
+        testimonials: Array<{
+          quote: string | null;
+          authorName: string | null;
+          authorTitleOrCompany: string | null;
+          authorImage: string | null;
+          rating: 1 | 2 | 3 | 4 | 5 | null;
+        }> | null;
+      }
+    | {
+        _type: "textWithImageSection";
+        heading: string | null;
+        textContent: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?:
+            | "blockquote"
+            | "h1"
+            | "h2"
+            | "h3"
+            | "h4"
+            | "h5"
+            | "h6"
+            | "normal";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+        }> | null;
+        image: string | null;
+        imagePosition: "left" | "right" | null;
+        ctaButton: Cta | null;
+      }
+    | {
+        _type: "videoEmbedSection";
+        heading: string | null;
+        videoUrl: string | null;
+        caption: string | null;
+        placeholderImage: string | null;
+      }
+  > | null;
 } | null;
 
 // Query TypeMap
-import "@sanity/client";
-declare module "@sanity/client" {
+import "next-sanity";
+declare module "next-sanity" {
   interface SanityQueries {
-    "*[_type == \"article\"] | order(_createdAt desc){\n      _id,\n      _createdAt,\n      title,\n      meta_title,\n      meta_description,\n      \"slug\": slug.current,\n      \"image\": image.asset->url,\n      link,\n      content\n    }": ARTICLES_QUERYResult;
-    "*[_type == \"article\" && slug.current == $slug][0]{\n      _id,\n      _createdAt,\n      title,\n      meta_title,\n      meta_description,\n      \"slug\": slug.current,\n      \"image\": image.asset->url,\n      link,\n      content\n    }": ARTICLE_QUERYResult;
-    "*[_type == \"geysers\"] | order(_createdAt asc){\n      _id,\n      _createdAt,\n      title,\n      \"slug\": slug.current,\n      subTitle,\n      description,\n      outlets,\n     geyser,\n     plumbing,\n     price,\n     composition,\n     certificateOfCompliance,\n     installation,\n      warranty,\n      specifications,\n      maxFlowRate,\n      minFlowRate,\n      minWaterPressure,\n      maxWaterPressure,\n      dimensions,\n      brand,\n      \"image\": image.asset->url,\n    }": GEYSERS_QUERYResult;
-    "*[_type == \"geysers\" && slug.current == $slug][0]{\n     _id,\n      _createdAt,\n      title,\n      \"slug\": slug.current,\n      price,\n      subTitle,\n      composition,\n      description,\n      outlets,\n      geyser,\n     plumbing,\n     certificateOfCompliance,\n     installation,\n      warranty,\n      specifications,\n      maxFlowRate,\n      minFlowRate,\n      minWaterPressure,\n      maxWaterPressure,\n      dimensions,\n      brand,\n      \"image\": image.asset->url,\n    }": GEYSER_QUERYResult;
-    "*[_type == \"landingPage\"] | order(_createdAt desc){\n    _id,\n    _createdAt,\n    title,\n    \"slug\": slug.current,\n    seoTitle,\n    seoDescription,\n    pageBuilder[]{\n      _type,\n      _type == \"heroSection\" => {\n        heading,\n        subheading,\n        \"backgroundImage\": backgroundImage.asset->url,\n        \"overlayImage\": overlayImage.asset->url,\n        ctaButton,\n        secondaryCtaButton\n      },\n      _type == \"textWithImageSection\" => {\n        heading,\n        textContent,\n        \"image\": image.asset->url,\n        imagePosition,\n        ctaButton\n      },\n      _type == \"featureListSection\" => {\n        heading,\n        subheading,\n        features[]{\n          \"icon\": icon.asset->url,\n          title,\n          description,\n          link\n        },\n        layout\n      },\n      _type == \"stepSection\" => {\n        heading,\n        steps[]{\n          numberOrIcon,\n          title,\n          description\n        }\n      },\n      _type == \"testimonialSection\" => {\n        heading,\n        testimonials[]{\n          quote,\n          authorName,\n          authorTitleOrCompany,\n          \"authorImage\": authorImage.asset->url,\n          rating\n        }\n      },\n      _type == \"videoEmbedSection\" => {\n        heading,\n        videoUrl,\n        caption,\n        \"placeholderImage\": placeholderImage.asset->url\n      },\n      _type == \"ctaSection\" => {\n        heading,\n        subheading,\n        ctaButton,\n        secondaryCtaButton,\n        \"backgroundImage\": backgroundImage.asset->url\n      },\n      _type == \"contactFormSection\" => {\n        heading,\n        subheading,\n        formId,\n        submitButtonText\n      },\n      _type == \"richTextSection\" => {\n        heading,\n        content\n      },\n      _type == \"imageGallerySection\" => {\n        heading,\n        images[]{\n          \"url\": asset->url,\n          caption,\n          alt\n        },\n        layout\n      }\n    }\n  }": LANDING_PAGES_QUERYResult;
-    "*[_type == \"landingPage\" && slug.current == $slug][0]{\n    _id,\n    _createdAt,\n    title,\n    \"slug\": slug.current,\n    seoTitle,\n    seoDescription,\n    pageBuilder[]{\n      _type,\n      _type == \"heroSection\" => {\n        heading,\n        subheading,\n        \"backgroundImage\": backgroundImage.asset->url,\n        \"overlayImage\": overlayImage.asset->url,\n        ctaButton,\n        secondaryCtaButton\n      },\n      _type == \"textWithImageSection\" => {\n        heading,\n        textContent,\n        \"image\": image.asset->url,\n        imagePosition,\n        ctaButton\n      },\n      _type == \"featureListSection\" => {\n        heading,\n        subheading,\n        features[]{\n          \"icon\": icon.asset->url,\n          title,\n          description,\n          link\n        },\n        layout\n      },\n      _type == \"stepSection\" => {\n        heading,\n        steps[]{\n          numberOrIcon,\n          title,\n          description\n        }\n      },\n      _type == \"testimonialSection\" => {\n        heading,\n        testimonials[]{\n          quote,\n          authorName,\n          authorTitleOrCompany,\n          \"authorImage\": authorImage.asset->url,\n          rating\n        }\n      },\n      _type == \"videoEmbedSection\" => {\n        heading,\n        videoUrl,\n        caption,\n        \"placeholderImage\": placeholderImage.asset->url\n      },\n      _type == \"ctaSection\" => {\n        heading,\n        subheading,\n        ctaButton,\n        secondaryCtaButton,\n        \"backgroundImage\": backgroundImage.asset->url\n      },\n      _type == \"contactFormSection\" => {\n        heading,\n        subheading,\n        formId,\n        submitButtonText\n      },\n      _type == \"richTextSection\" => {\n        heading,\n        content\n      },\n      _type == \"imageGallerySection\" => {\n        heading,\n        images[]{\n          \"url\": asset->url,\n          caption,\n          alt\n        },\n        layout\n      }\n    }\n  }": LANDING_PAGE_QUERYResult;
+    '*[_type == "article"] | order(_createdAt desc){\n      _id,\n      _createdAt,\n      title,\n      meta_title,\n      meta_description,\n      "slug": slug.current,\n      "image": image.asset->url,\n      link,\n      content\n    }': ARTICLES_QUERYResult;
+    '*[_type == "article" && slug.current == $slug][0]{\n      _id,\n      _createdAt,\n      title,\n      meta_title,\n      meta_description,\n      "slug": slug.current,\n      "image": image.asset->url,\n      link,\n      content\n    }': ARTICLE_QUERYResult;
+    '*[_type == "geysers"] | order(_createdAt asc){\n      _id,\n      _createdAt,\n      title,\n      "slug": slug.current,\n      subTitle,\n      description,\n      outlets,\n     geyser,\n     plumbing,\n     price,\n     composition,\n     certificateOfCompliance,\n     installation,\n      warranty,\n      specifications,\n      maxFlowRate,\n      minFlowRate,\n      minWaterPressure,\n      maxWaterPressure,\n      dimensions,\n      brand,\n      "image": image.asset->url,\n    }': GEYSERS_QUERYResult;
+    '*[_type == "geysers" && slug.current == $slug][0]{\n     _id,\n      _createdAt,\n      title,\n      "slug": slug.current,\n      price,\n      subTitle,\n      composition,\n      description,\n      outlets,\n      geyser,\n     plumbing,\n     certificateOfCompliance,\n     installation,\n      warranty,\n      specifications,\n      maxFlowRate,\n      minFlowRate,\n      minWaterPressure,\n      maxWaterPressure,\n      dimensions,\n      brand,\n      "image": image.asset->url,\n    }': GEYSER_QUERYResult;
+    '*[_type == "landingPage"] | order(_createdAt desc){\n    _id,\n    _createdAt,\n    title,\n    "slug": slug.current,\n    seoTitle,\n    seoDescription,\n    pageBuilder[]{\n      _type,\n      _type == "heroSection" => {\n        heading,\n        subheading,\n        "backgroundImage": backgroundImage.asset->url,\n        "overlayImage": overlayImage.asset->url,\n        ctaButton,\n        secondaryCtaButton\n      },\n      _type == "textWithImageSection" => {\n        heading,\n        textContent,\n        "image": image.asset->url,\n        imagePosition,\n        ctaButton\n      },\n      _type == "featureListSection" => {\n        heading,\n        subheading,\n        features[]{\n          "icon": icon.asset->url,\n          title,\n          description,\n          link\n        },\n        layout\n      },\n      _type == "stepSection" => {\n        heading,\n        steps[]{\n          numberOrIcon,\n          title,\n          description\n        }\n      },\n      _type == "testimonialSection" => {\n        heading,\n        testimonials[]{\n          quote,\n          authorName,\n          authorTitleOrCompany,\n          "authorImage": authorImage.asset->url,\n          rating\n        }\n      },\n      _type == "videoEmbedSection" => {\n        heading,\n        videoUrl,\n        caption,\n        "placeholderImage": placeholderImage.asset->url\n      },\n      _type == "ctaSection" => {\n        heading,\n        subheading,\n        ctaButton,\n        secondaryCtaButton,\n        "backgroundImage": backgroundImage.asset->url\n      },\n      _type == "contactFormSection" => {\n        heading,\n        subheading,\n        formId,\n        submitButtonText\n      },\n      _type == "richTextSection" => {\n        heading,\n        content\n      },\n      _type == "imageGallerySection" => {\n        heading,\n        images[]{\n          "url": asset->url,\n          caption,\n          alt\n        },\n        layout\n      }\n    }\n  }': LANDING_PAGES_QUERYResult;
+    '*[_type == "landingPage" && slug.current == $slug][0]{\n    _id,\n    _createdAt,\n    title,\n    "slug": slug.current,\n    seoTitle,\n    seoDescription,\n    pageBuilder[]{\n      _type,\n      _type == "heroSection" => {\n        heading,\n        subheading,\n        "backgroundImage": backgroundImage.asset->url,\n        "overlayImage": overlayImage.asset->url,\n        ctaButton,\n        secondaryCtaButton\n      },\n      _type == "textWithImageSection" => {\n        heading,\n        textContent,\n        "image": image.asset->url,\n        imagePosition,\n        ctaButton\n      },\n      _type == "featureListSection" => {\n        heading,\n        subheading,\n        features[]{\n          "icon": icon.asset->url,\n          title,\n          description,\n          link\n        },\n        layout\n      },\n      _type == "stepSection" => {\n        heading,\n        steps[]{\n          numberOrIcon,\n          title,\n          description\n        }\n      },\n      _type == "testimonialSection" => {\n        heading,\n        testimonials[]{\n          quote,\n          authorName,\n          authorTitleOrCompany,\n          "authorImage": authorImage.asset->url,\n          rating\n        }\n      },\n      _type == "videoEmbedSection" => {\n        heading,\n        videoUrl,\n        caption,\n        "placeholderImage": placeholderImage.asset->url\n      },\n      _type == "ctaSection" => {\n        heading,\n        subheading,\n        ctaButton,\n        secondaryCtaButton,\n        "backgroundImage": backgroundImage.asset->url\n      },\n      _type == "contactFormSection" => {\n        heading,\n        subheading,\n        formId,\n        submitButtonText\n      },\n      _type == "richTextSection" => {\n        heading,\n        content\n      },\n      _type == "imageGallerySection" => {\n        heading,\n        images[]{\n          "url": asset->url,\n          caption,\n          alt\n        },\n        layout\n      }\n    }\n  }': LANDING_PAGE_QUERYResult;
   }
 }
