@@ -5,6 +5,8 @@ interface StepBlockProps {
   data: StepSection;
 }
 
+// Component to render either an icon or text/number
+
 export default function StepBlock({ data }: StepBlockProps) {
   const { heading, steps } = data;
 
@@ -32,13 +34,7 @@ export default function StepBlock({ data }: StepBlockProps) {
                 >
                   <CardContent className="p-0">
                     <div className="grid gap-4">
-                      <div className="flex items-center justify-center w-16 h-16 mx-auto text-white bg-red-600 rounded-full">
-                        {step.numberOrIcon && (
-                          <span className="text-xl font-bold">
-                            {step.numberOrIcon}
-                          </span>
-                        )}
-                      </div>
+                      <div className="flex items-center justify-center w-16 h-16 mx-auto text-white bg-red-600 rounded-full"></div>
                       <div className="space-y-2">
                         {step.title && (
                           <h3 className="text-xl font-bold text-slate-800">
@@ -46,7 +42,7 @@ export default function StepBlock({ data }: StepBlockProps) {
                           </h3>
                         )}
                         {step.description && (
-                          <p className="text-sm text-gray-500 transition-all duration-300 group-hover:font-medium">
+                          <p className="text-lg text-gray-500 transition-all duration-300 group-hover:font-medium">
                             {step.description}
                           </p>
                         )}
@@ -66,13 +62,7 @@ export default function StepBlock({ data }: StepBlockProps) {
                   >
                     <CardContent className="p-0">
                       <div className="grid gap-4">
-                        <div className="flex items-center justify-center w-16 h-16 mx-auto text-white bg-red-600 rounded-full">
-                          {step.numberOrIcon && (
-                            <span className="text-xl font-bold">
-                              {step.numberOrIcon}
-                            </span>
-                          )}
-                        </div>
+                        <div className="flex items-center justify-center w-16 h-16 mx-auto text-white bg-red-600 rounded-full"></div>
                         <div className="space-y-2">
                           {step.title && (
                             <h3 className="text-xl font-bold text-slate-800">
@@ -80,7 +70,7 @@ export default function StepBlock({ data }: StepBlockProps) {
                             </h3>
                           )}
                           {step.description && (
-                            <p className="text-sm text-gray-500 transition-all duration-300 group-hover:font-medium">
+                            <p className="text-lg text-gray-500 transition-all duration-300 group-hover:font-medium">
                               {step.description}
                             </p>
                           )}
@@ -101,13 +91,7 @@ export default function StepBlock({ data }: StepBlockProps) {
                   >
                     <CardContent className="p-0">
                       <div className="grid gap-4">
-                        <div className="flex items-center justify-center w-16 h-16 mx-auto text-white bg-red-600 rounded-full">
-                          {step.numberOrIcon && (
-                            <span className="text-xl font-bold">
-                              {step.numberOrIcon}
-                            </span>
-                          )}
-                        </div>
+                        <div className="flex items-center justify-center w-16 h-16 mx-auto text-white bg-red-600 rounded-full"></div>
                         <div className="space-y-2">
                           {step.title && (
                             <h3 className="text-xl font-bold text-slate-800">
@@ -115,7 +99,7 @@ export default function StepBlock({ data }: StepBlockProps) {
                             </h3>
                           )}
                           {step.description && (
-                            <p className="text-sm text-gray-500 transition-all duration-300 group-hover:font-medium">
+                            <p className="text-lg text-gray-500 transition-all duration-300 group-hover:font-medium">
                               {step.description}
                             </p>
                           )}

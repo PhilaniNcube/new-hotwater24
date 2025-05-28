@@ -8,6 +8,9 @@ interface LandingPageDocument extends SanityDocument {
   };
   seoTitle?: string;
   seoDescription?: string;
+  navigationText?: string;
+  includeInTopNavigation?: boolean;
+  includeInFooterNavigation?: boolean;
   pageBuilder?: Array<
     | HeroSectionType
     | TextWithImageSectionType
@@ -25,6 +28,7 @@ interface LandingPageDocument extends SanityDocument {
 interface HeroSectionType {
   _type: "heroSection";
   heading: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
   subheading?: string;
   backgroundImage?: any; // Sanity image type
   ctaButton?: CtaType;
@@ -35,6 +39,7 @@ interface HeroSectionType {
 interface TextWithImageSectionType {
   _type: "textWithImageSection";
   heading?: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
   textContent?: any[]; // Sanity block content
   image: any; // Sanity image type
   imagePosition: "left" | "right";
@@ -44,6 +49,7 @@ interface TextWithImageSectionType {
 interface FeatureListSectionType {
   _type: "featureListSection";
   heading?: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
   subheading?: string;
   features?: FeatureItemType[];
   layout: "grid" | "list";
@@ -60,6 +66,7 @@ interface FeatureItemType {
 interface StepSectionType {
   _type: "stepSection";
   heading: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
   steps?: StepItemType[];
 }
 
@@ -73,6 +80,7 @@ interface StepItemType {
 interface TestimonialSectionType {
   _type: "testimonialSection";
   heading?: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
   testimonials?: TestimonialItemType[];
 }
 
@@ -88,6 +96,7 @@ interface TestimonialItemType {
 interface VideoEmbedSectionType {
   _type: "videoEmbedSection";
   heading?: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
   videoUrl: string;
   caption?: string;
   placeholderImage?: any; // Sanity image type
@@ -96,6 +105,7 @@ interface VideoEmbedSectionType {
 interface CtaSectionType {
   _type: "ctaSection";
   heading: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
   subheading?: string;
   ctaButton: CtaType;
   secondaryCtaButton?: CtaType;
@@ -105,6 +115,7 @@ interface CtaSectionType {
 interface ContactFormSectionType {
   _type: "contactFormSection";
   heading?: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
   subheading?: string;
   formId?: string;
   submitButtonText?: string;
@@ -113,12 +124,14 @@ interface ContactFormSectionType {
 interface RichTextSectionType {
   _type: "richTextSection";
   heading?: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
   content: any[]; // Sanity block content
 }
 
 interface ImageGallerySectionType {
   _type: "imageGallerySection";
   heading?: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
   images: Array<{
     _type: "image";
     caption?: string;
@@ -177,6 +190,29 @@ export default {
       validation: (Rule: Rule) => Rule.max(160),
     },
     {
+      name: "navigationText",
+      title: "Navigation Text",
+      description:
+        "Text to display in navigation menus. If not provided, the page title will be used.",
+      type: "string",
+      validation: (Rule: Rule) => Rule.max(50),
+    },
+    {
+      name: "includeInTopNavigation",
+      title: "Include in Top Navigation",
+      description:
+        "Show this page in the main navigation menu at the top of the site.",
+      type: "boolean",
+      initialValue: false,
+    },
+    {
+      name: "includeInFooterNavigation",
+      title: "Include in Footer Navigation",
+      description: "Show this page in the footer navigation links.",
+      type: "boolean",
+      initialValue: false,
+    },
+    {
       name: "pageBuilder",
       title: "Page Sections",
       description: "Add, edit, and reorder sections to build the landing page.",
@@ -218,6 +254,23 @@ export const heroSection = {
       validation: (Rule: Rule) => Rule.required(),
     },
     {
+      name: "headingTag",
+      title: "Heading Tag",
+      description:
+        "Choose the HTML heading tag for the headline (h1, h2, h3, or h4)",
+      type: "string",
+      options: {
+        list: [
+          { title: "H1", value: "h1" },
+          { title: "H2", value: "h2" },
+          { title: "H3", value: "h3" },
+          { title: "H4", value: "h4" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "h1",
+    },
+    {
       name: "subheading",
       title: "Subheadline",
       type: "text",
@@ -235,11 +288,11 @@ export const heroSection = {
       title: "Call to Action Button",
       type: "cta", // Reusable CTA object
     },
-    {
-      name: "secondaryCtaButton",
-      title: "Secondary Call to Action Button (Optional)",
-      type: "cta",
-    },
+    // {
+    //   name: "secondaryCtaButton",
+    //   title: "Secondary Call to Action Button (Optional)",
+    //   type: "cta",
+    // },
     // Example of adding a small image/logo over the hero
     {
       name: "overlayImage",
@@ -273,6 +326,23 @@ export const textWithImageSection = {
       name: "heading",
       title: "Heading",
       type: "string",
+    },
+    {
+      name: "headingTag",
+      title: "Heading Tag",
+      description: "Choose the HTML heading tag for the section heading",
+      type: "string",
+      options: {
+        list: [
+          { title: "H1", value: "h1" },
+          { title: "H2", value: "h2" },
+          { title: "H3", value: "h3" },
+          { title: "H4", value: "h4" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "h2",
+      hidden: ({ parent }: { parent: any }) => !parent?.heading,
     },
     {
       name: "textContent",
@@ -333,6 +403,23 @@ export const featureListSection = {
       name: "heading",
       title: "Section Heading",
       type: "string",
+    },
+    {
+      name: "headingTag",
+      title: "Heading Tag",
+      description: "Choose the HTML heading tag for the section heading",
+      type: "string",
+      options: {
+        list: [
+          { title: "H1", value: "h1" },
+          { title: "H2", value: "h2" },
+          { title: "H3", value: "h3" },
+          { title: "H4", value: "h4" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "h2",
+      hidden: ({ parent }: { parent: any }) => !parent?.heading,
     },
     {
       name: "subheading",
@@ -422,6 +509,22 @@ export const stepSection = {
       validation: (Rule: Rule) => Rule.required(),
     },
     {
+      name: "headingTag",
+      title: "Heading Tag",
+      description: "Choose the HTML heading tag for the section heading",
+      type: "string",
+      options: {
+        list: [
+          { title: "H1", value: "h1" },
+          { title: "H2", value: "h2" },
+          { title: "H3", value: "h3" },
+          { title: "H4", value: "h4" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "h2",
+    },
+    {
       name: "steps",
       title: "Steps",
       type: "array",
@@ -495,6 +598,23 @@ export const testimonialSection = {
       name: "heading",
       title: "Section Heading (Optional)",
       type: "string",
+    },
+    {
+      name: "headingTag",
+      title: "Heading Tag",
+      description: "Choose the HTML heading tag for the section heading",
+      type: "string",
+      options: {
+        list: [
+          { title: "H1", value: "h1" },
+          { title: "H2", value: "h2" },
+          { title: "H3", value: "h3" },
+          { title: "H4", value: "h4" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "h2",
+      hidden: ({ parent }: { parent: any }) => !parent?.heading,
     },
     {
       name: "testimonials",
@@ -577,6 +697,23 @@ export const videoEmbedSection = {
       type: "string",
     },
     {
+      name: "headingTag",
+      title: "Heading Tag",
+      description: "Choose the HTML heading tag for the section heading",
+      type: "string",
+      options: {
+        list: [
+          { title: "H1", value: "h1" },
+          { title: "H2", value: "h2" },
+          { title: "H3", value: "h3" },
+          { title: "H4", value: "h4" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "h2",
+      hidden: ({ parent }: { parent: any }) => !parent?.heading,
+    },
+    {
       name: "videoUrl",
       title: "Video URL",
       description: "Enter the URL of the video (e.g., YouTube, Vimeo).",
@@ -625,6 +762,22 @@ export const ctaSection = {
       validation: (Rule: Rule) => Rule.required(),
     },
     {
+      name: "headingTag",
+      title: "Heading Tag",
+      description: "Choose the HTML heading tag for the headline",
+      type: "string",
+      options: {
+        list: [
+          { title: "H1", value: "h1" },
+          { title: "H2", value: "h2" },
+          { title: "H3", value: "h3" },
+          { title: "H4", value: "h4" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "h2",
+    },
+    {
       name: "subheading",
       title: "Subheadline (Optional)",
       type: "text",
@@ -670,6 +823,23 @@ export const contactFormSection = {
       name: "heading",
       title: "Heading",
       type: "string",
+    },
+    {
+      name: "headingTag",
+      title: "Heading Tag",
+      description: "Choose the HTML heading tag for the section heading",
+      type: "string",
+      options: {
+        list: [
+          { title: "H1", value: "h1" },
+          { title: "H2", value: "h2" },
+          { title: "H3", value: "h3" },
+          { title: "H4", value: "h4" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "h2",
+      hidden: ({ parent }: { parent: any }) => !parent?.heading,
     },
     {
       name: "subheading",
@@ -725,6 +895,23 @@ export const richTextSection = {
       name: "heading",
       title: "Heading (Optional)",
       type: "string",
+    },
+    {
+      name: "headingTag",
+      title: "Heading Tag",
+      description: "Choose the HTML heading tag for the section heading",
+      type: "string",
+      options: {
+        list: [
+          { title: "H1", value: "h1" },
+          { title: "H2", value: "h2" },
+          { title: "H3", value: "h3" },
+          { title: "H4", value: "h4" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "h2",
+      hidden: ({ parent }: { parent: any }) => !parent?.heading,
     },
     {
       name: "content",
@@ -820,6 +1007,23 @@ export const imageGallerySection = {
       name: "heading",
       title: "Heading (Optional)",
       type: "string",
+    },
+    {
+      name: "headingTag",
+      title: "Heading Tag",
+      description: "Choose the HTML heading tag for the section heading",
+      type: "string",
+      options: {
+        list: [
+          { title: "H1", value: "h1" },
+          { title: "H2", value: "h2" },
+          { title: "H3", value: "h3" },
+          { title: "H4", value: "h4" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "h2",
+      hidden: ({ parent }: { parent: any }) => !parent?.heading,
     },
     {
       name: "images",
