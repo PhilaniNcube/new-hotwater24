@@ -136,7 +136,7 @@ export const LANDING_PAGES_QUERY = defineQuery(
         heading,
         headingTag,
         steps[]{
-          numberOrIcon,
+          "icon": icon.asset->url,
           title,
           description
         }
@@ -236,9 +236,8 @@ export const LANDING_PAGE_QUERY = defineQuery(
       },
       _type == "stepSection" => {
         heading,
-        headingTag,
-        steps[]{
-          numberOrIcon,
+        headingTag,        steps[]{
+          "icon": icon.asset->url,
           title,
           description
         }

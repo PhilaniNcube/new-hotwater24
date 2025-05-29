@@ -72,7 +72,7 @@ interface StepSectionType {
 
 interface StepItemType {
   _type: "stepItem";
-  numberOrIcon?: string;
+  icon?: any; // Sanity image type
   title: string;
   description: string;
 }
@@ -535,11 +535,13 @@ export const stepSection = {
           title: "Step",
           fields: [
             {
-              name: "numberOrIcon",
-              title: "Step Number or Icon",
-              type: "string",
-              description:
-                "e.g., '01', 'Step 1', or use an icon class if applicable",
+              name: "icon",
+              title: "Icon",
+              type: "image",
+              description: "Upload an icon image for this step",
+              options: {
+                hotspot: true,
+              },
             },
             {
               name: "title",
@@ -557,17 +559,12 @@ export const stepSection = {
           preview: {
             select: {
               title: "title",
-              subtitle: "numberOrIcon",
+              media: "icon",
             },
-            prepare({
-              title,
-              subtitle,
-            }: {
-              title?: string;
-              subtitle?: string;
-            }) {
+            prepare({ title, media }: { title?: string; media?: any }) {
               return {
-                title: `${subtitle ? subtitle + ": " : ""}${title}`,
+                title: title,
+                media: media,
               };
             },
           },
