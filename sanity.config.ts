@@ -1,6 +1,4 @@
 import { defineConfig } from "sanity";
-import { deskTool } from "sanity/desk";
-import article from "./sanity/schemas/article-schema";
 import schemas from "./sanity/schemas";
 import { structureTool } from "sanity/structure";
 import { presentationTool } from "sanity/presentation";

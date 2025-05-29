@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star } from "lucide-react";
 import { urlFor } from "@/sanity/lib/image";
+import SectionHeading from "@/components/ui/section-heading";
 
 interface TestimonialBlockProps {
   data: TestimonialSection;
@@ -28,18 +29,17 @@ function StarRating({ rating }: StarRatingProps) {
 }
 
 export default function TestimonialBlock({ data }: TestimonialBlockProps) {
-  const { heading, testimonials } = data;
+  const { heading, headingTag, testimonials } = data;
 
   if (!testimonials || testimonials.length === 0) return null;
-
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 py-8 mx-auto max-w-7xl">
-        {heading && (
-          <h2 className="mb-6 text-2xl font-bold text-center text-slate-800">
-            {heading}
-          </h2>
-        )}
+        <SectionHeading
+          heading={heading}
+          headingTag={headingTag}
+          className="mb-6 text-2xl font-bold text-center text-slate-800"
+        />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <Card key={index}>

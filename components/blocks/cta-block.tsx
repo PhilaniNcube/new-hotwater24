@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import { Section } from "lucide-react";
+import SectionHeading from "../ui/section-heading";
 
 interface CtaBlockProps {
   data: CtaSection;
@@ -16,6 +18,7 @@ export default function CtaBlock({ data }: CtaBlockProps) {
     ctaButton,
     secondaryCtaButton,
     backgroundImage,
+    headingTag,
   } = data;
 
   const renderCtaButton = (button: any, isPrimary: boolean = true) => {
@@ -23,13 +26,13 @@ export default function CtaBlock({ data }: CtaBlockProps) {
 
     const buttonContent = (
       <Button
-        className={`flex items-center justify-center h-12 text-sm text-white rounded-full shadow-lg min-w-[190px] ${
+        className={`flex items-center justify-center h-12 text-sm text-white rounded-none shadow-lg min-w-[190px] ${
           isPrimary
-            ? "bg-red-600 hover:bg-red-700"
-            : "bg-brand hover:bg-brand/90"
+            ? "bg-orange-600 hover:bg-orange-700"
+            : "bg-brand hover:bg-sky-700"
         }`}
       >
-        {button.text}
+        {button.buttonText}
       </Button>
     );
 
@@ -61,7 +64,7 @@ export default function CtaBlock({ data }: CtaBlockProps) {
   };
 
   return (
-    <section className="relative w-full py-12 md:py-24 lg:py-32 min-h-[400px] flex items-center justify-center">
+    <section className="relative w-full mb-10 rounded-lg min-h-[400px] flex items-center justify-center max-w-7xl mx-auto">
       {backgroundImage && (
         <Image
           src={urlFor(backgroundImage).url()}
@@ -71,25 +74,27 @@ export default function CtaBlock({ data }: CtaBlockProps) {
         />
       )}
       <div
-        className={`absolute inset-0 ${backgroundImage ? "bg-black/50" : "bg-red-600"} z-[-1]`}
+        className={`absolute rounded-2xl inset-0 ${backgroundImage ? "bg-black/50" : "bg-slate-200"} z-[-1]`}
       />
 
-      <div className="container relative z-10 px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+      <div className="container relative z-10 flex items-end justify-between px-4 md:px-12">
+        <div className="flex flex-col space-y-4">
           {heading && (
-            <h2 className="text-3xl font-bold tracking-tighter text-white sm:text-5xl">
-              {heading}
-            </h2>
+            <SectionHeading
+              heading={heading}
+              headingTag={headingTag || "h2"}
+              className="text-3xl font-bold tracking-tighter sm:text-5xl"
+            />
           )}
           {subheading && (
-            <p className="max-w-[900px] text-white/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[900px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               {subheading}
             </p>
           )}
-          <div className="flex flex-col gap-4 min-[400px]:flex-row items-center justify-center pt-6">
-            {renderCtaButton(ctaButton, true)}
-            {renderCtaButton(secondaryCtaButton, false)}
-          </div>
+        </div>
+        <div className="flex flex-col gap-4 min-[400px]:flex-row items-center justify-center pt-6">
+          {renderCtaButton(ctaButton, true)}
+          {renderCtaButton(secondaryCtaButton, false)}
         </div>
       </div>
     </section>

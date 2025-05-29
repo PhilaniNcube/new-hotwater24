@@ -5,6 +5,7 @@ import landingPageSchema, {
   ctaSection,
   featureItem,
   featureListSection,
+  fullWidthImageSection,
   heroSection,
   imageGallerySection,
   richTextSection,
@@ -32,6 +33,7 @@ const schemas = [
   contactFormSection,
   richTextSection,
   imageGallerySection,
+  fullWidthImageSection,
   cta,
 ];
 

@@ -116,6 +116,7 @@ export const LANDING_PAGES_QUERY = defineQuery(
         heading,
         headingTag,
         textContent,
+        subheading,
         "image": image.asset->url,
         imagePosition,
         ctaButton
@@ -178,8 +179,7 @@ export const LANDING_PAGES_QUERY = defineQuery(
         heading,
         headingTag,
         content
-      },
-      _type == "imageGallerySection" => {
+      },      _type == "imageGallerySection" => {
         heading,
         headingTag,
         images[]{
@@ -188,6 +188,13 @@ export const LANDING_PAGES_QUERY = defineQuery(
           alt
         },
         layout
+      },
+      _type == "fullWidthImageSection" => {
+        "image": image.asset->url,
+        alt,
+        caption,
+        height,
+        overlay
       }
     }
   }`
@@ -279,8 +286,7 @@ export const LANDING_PAGE_QUERY = defineQuery(
         heading,
         headingTag,
         content
-      },
-      _type == "imageGallerySection" => {
+      },      _type == "imageGallerySection" => {
         heading,
         headingTag,
         images[]{
@@ -289,6 +295,13 @@ export const LANDING_PAGE_QUERY = defineQuery(
           alt
         },
         layout
+      },
+      _type == "fullWidthImageSection" => {
+        "image": image.asset->url,
+        alt,
+        caption,
+        height,
+        overlay
       }
     }
   }`

@@ -4,6 +4,7 @@ import { PortableText } from "@portabletext/react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { urlFor } from "@/sanity/lib/image";
+import SectionHeading from "@/components/ui/section-heading";
 
 interface TextWithImageBlockProps {
   data: TextWithImageSection;
@@ -12,7 +13,9 @@ interface TextWithImageBlockProps {
 export default function TextWithImageBlock({ data }: TextWithImageBlockProps) {
   const {
     heading,
+    headingTag,
     textContent,
+    subheading,
     image,
     imagePosition = "right",
     ctaButton,
@@ -78,50 +81,15 @@ export default function TextWithImageBlock({ data }: TextWithImageBlockProps) {
           )}{" "}
           <div className="flex flex-col justify-center flex-1 space-y-4">
             <div className="relative inline-block w-fit">
-              <p className="relative z-10 px-4 py-2 text-xl font-medium text-orange-600">
-                What We Do
+              <p className="relative z-10 py-2 text-xl font-medium text-orange-600">
+                {subheading || "Discover our features"}
               </p>{" "}
-              <svg
-                className="absolute inset-0 w-full h-full"
-                viewBox="0 0 154 44"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <ellipse
-                  cx="77"
-                  cy="22"
-                  rx="71.5"
-                  ry="16.5"
-                  stroke="#ea580c"
-                  strokeWidth="2"
-                  fill="none"
-                  transform="rotate(-2 77 22)"
-                  style={{
-                    filter: "url(#roughPaper)",
-                  }}
-                />
-                <defs>
-                  <filter id="roughPaper">
-                    <feTurbulence
-                      baseFrequency="0.04"
-                      numOctaves="3"
-                      result="noise"
-                      seed="1"
-                    />
-                    <feDisplacementMap
-                      in="SourceGraphic"
-                      in2="noise"
-                      scale="1"
-                    />
-                  </filter>
-                </defs>
-              </svg>
             </div>
-            {heading && (
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                {heading}
-              </h2>
-            )}
+            <SectionHeading
+              heading={heading}
+              headingTag={headingTag}
+              className="text-3xl font-bold tracking-tighter sm:text-5xl"
+            />
             {textContent && (
               <div className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed prose prose-slate">
                 <PortableText value={textContent} />

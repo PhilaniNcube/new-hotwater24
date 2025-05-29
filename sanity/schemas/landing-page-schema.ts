@@ -22,6 +22,7 @@ interface LandingPageDocument extends SanityDocument {
     | ContactFormSectionType
     | RichTextSectionType
     | ImageGallerySectionType
+    | FullWidthImageSectionType
   >;
 }
 
@@ -72,7 +73,7 @@ interface StepSectionType {
 
 interface StepItemType {
   _type: "stepItem";
-  icon?: any; // Sanity image type
+  icon?: string; // URL string from GROQ query: icon.asset->url
   title: string;
   description: string;
 }
@@ -138,6 +139,19 @@ interface ImageGallerySectionType {
     alt?: string;
   }>;
   layout: "grid" | "masonry" | "carousel";
+}
+
+interface FullWidthImageSectionType {
+  _type: "fullWidthImageSection";
+  image: any; // Sanity image type
+  alt?: string;
+  caption?: string;
+  height?: "small" | "medium" | "large" | "viewport";
+  overlay?: {
+    enabled: boolean;
+    opacity?: number;
+    color?: string;
+  };
 }
 
 interface CtaType {
@@ -228,6 +242,7 @@ export default {
         { type: "contactFormSection" },
         { type: "richTextSection" }, // A generic rich text section for flexible content
         { type: "imageGallerySection" }, // For showcasing multiple images
+        { type: "fullWidthImageSection" }, // For full-width hero images or visual breaks
         // Add other section types as needed
       ],
     },
@@ -343,6 +358,13 @@ export const textWithImageSection = {
       },
       initialValue: "h2",
       hidden: ({ parent }: { parent: any }) => !parent?.heading,
+    },
+    {
+      name: "subheading",
+      title: "Subheading (Optional)",
+      type: "text",
+      description: "Optional subheading for additional context or description.",
+      validation: (Rule: Rule) => Rule.max(100),
     },
     {
       name: "textContent",
@@ -1073,6 +1095,109 @@ export const imageGallerySection = {
         title: `Gallery: ${title || "Image Gallery"}`,
         subtitle: `${imageCount} image(s)`,
         media: images && images.length > 0 ? images[0] : undefined,
+      };
+    },
+  },
+};
+
+export const fullWidthImageSection = {
+  name: "fullWidthImageSection",
+  title: "Full Width Image Section",
+  type: "object",
+  fields: [
+    {
+      name: "image",
+      title: "Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      name: "alt",
+      title: "Alternative Text",
+      type: "string",
+      description: "Describe the image for screen readers and SEO",
+    },
+    {
+      name: "caption",
+      title: "Caption (Optional)",
+      type: "string",
+      description: "Optional caption text to display below the image",
+    },
+    {
+      name: "height",
+      title: "Image Height",
+      type: "string",
+      options: {
+        list: [
+          { title: "Small (300px)", value: "small" },
+          { title: "Medium (500px)", value: "medium" },
+          { title: "Large (700px)", value: "large" },
+          { title: "Viewport Height", value: "viewport" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "medium",
+    },
+    {
+      name: "overlay",
+      title: "Overlay Settings (Optional)",
+      type: "object",
+      fields: [
+        {
+          name: "enabled",
+          title: "Enable Overlay",
+          type: "boolean",
+          initialValue: false,
+        },
+        {
+          name: "opacity",
+          title: "Overlay Opacity",
+          type: "number",
+          options: {
+            range: { min: 0, max: 100, step: 10 },
+          },
+          initialValue: 50,
+          hidden: ({ parent }: { parent: any }) => !parent?.enabled,
+        },
+        {
+          name: "color",
+          title: "Overlay Color",
+          type: "string",
+          options: {
+            list: [
+              { title: "Black", value: "black" },
+              { title: "White", value: "white" },
+              { title: "Dark Gray", value: "gray-900" },
+              { title: "Brand Color", value: "brand" },
+            ],
+          },
+          initialValue: "black",
+          hidden: ({ parent }: { parent: any }) => !parent?.enabled,
+        },
+      ],
+    },
+  ],
+  preview: {
+    select: {
+      title: "alt",
+      media: "image",
+      caption: "caption",
+    },
+    prepare({
+      title,
+      media,
+      caption,
+    }: {
+      title?: string;
+      media?: any;
+      caption?: string;
+    }) {
+      return {
+        title: `Full Width Image: ${title || caption || "Untitled"}`,
+        media: media,
       };
     },
   },
