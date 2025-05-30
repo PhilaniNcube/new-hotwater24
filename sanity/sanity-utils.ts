@@ -187,14 +187,23 @@ export const LANDING_PAGES_QUERY = defineQuery(
           caption,
           alt
         },
-        layout
-      },
+        layout      },
       _type == "fullWidthImageSection" => {
         "image": image.asset->url,
         alt,
         caption,
         height,
         overlay
+      },
+      _type == "trustSection" => {
+        heading,
+        headingTag,
+        features[]{
+          text
+        },
+        "image": image.asset->url,
+        imagePosition,
+        ctaButton
       }
     }
   }`
@@ -293,8 +302,7 @@ export const LANDING_PAGE_QUERY = defineQuery(
           "url": asset->url,
           caption,
           alt
-        },
-        layout
+        },        layout
       },
       _type == "fullWidthImageSection" => {
         "image": image.asset->url,
@@ -302,6 +310,16 @@ export const LANDING_PAGE_QUERY = defineQuery(
         caption,
         height,
         overlay
+      },
+      _type == "trustSection" => {
+        heading,
+        headingTag,
+        features[]{
+          text
+        },
+        "image": image.asset->url,
+        imagePosition,
+        ctaButton
       }
     }
   }`

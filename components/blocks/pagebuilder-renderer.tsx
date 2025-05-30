@@ -10,6 +10,7 @@ import ContactFormBlock from "./contact-form-block";
 import RichTextBlock from "./rich-text-block";
 import ImageGalleryBlock from "./image-gallery-block";
 import FullWidthImageBlock from "./full-width-image-block";
+import TrustBlock from "./trust-block";
 import { LANDING_PAGE_QUERYResult } from "@/sanity/types";
 
 interface PagebuilderRendererProps {
@@ -57,9 +58,11 @@ const PagebuilderRenderer: React.FC<PagebuilderRendererProps> = ({
             return <RichTextBlock key={key} data={section} />;
           case "imageGallerySection":
             return <ImageGalleryBlock key={key} data={section} />;
-
           case "fullWidthImageSection":
             return <FullWidthImageBlock key={key} data={section} />;
+
+          case "trustSection":
+            return <TrustBlock key={key} data={section} />;
 
           default:
             // Handle unknown section types gracefully

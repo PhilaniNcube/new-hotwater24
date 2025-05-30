@@ -13,6 +13,7 @@ import landingPageSchema, {
   testimonialItem,
   testimonialSection,
   textWithImageSection,
+  trustSection,
   videoEmbedSection,
 } from "./landing-page-schema";
 import geysers from "./packages-schema";
@@ -34,6 +35,7 @@ const schemas = [
   richTextSection,
   imageGallerySection,
   fullWidthImageSection,
+  trustSection,
   cta,
 ];
 

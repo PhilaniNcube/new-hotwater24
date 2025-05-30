@@ -21,7 +21,7 @@ export default function FeatureListBlock({ data }: FeatureListBlockProps) {
   if (!features || features.length === 0) return null;
 
   return (
-    <section className="w-full py-12 mx-auto max-w-7xl md:py-24 lg:py-32">
+    <section className="w-full py-12 mx-auto max-w-7xl">
       {" "}
       <div className="container ">
         <div className="flex flex-col space-y-4">

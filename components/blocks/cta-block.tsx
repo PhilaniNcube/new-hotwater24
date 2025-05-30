@@ -64,7 +64,7 @@ export default function CtaBlock({ data }: CtaBlockProps) {
   };
 
   return (
-    <section className="relative w-full mb-10 rounded-lg min-h-[400px] flex items-center justify-center max-w-7xl mx-auto">
+    <section className="relative w-full rounded-lg min-h-[400px] flex items-center justify-center max-w-7xl mx-auto">
       {backgroundImage && (
         <Image
           src={urlFor(backgroundImage).url()}

@@ -23,6 +23,7 @@ interface LandingPageDocument extends SanityDocument {
     | RichTextSectionType
     | ImageGallerySectionType
     | FullWidthImageSectionType
+    | TrustSectionType
   >;
 }
 
@@ -154,6 +155,19 @@ interface FullWidthImageSectionType {
   };
 }
 
+interface TrustSectionType {
+  _type: "trustSection";
+  heading: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
+  features: Array<{
+    _type: "trustFeature";
+    text: string;
+  }>;
+  image: any; // Sanity image type
+  imagePosition: "left" | "right";
+  ctaButton?: CtaType;
+}
+
 interface CtaType {
   _type: "cta";
   buttonText: string;
@@ -243,6 +257,7 @@ export default {
         { type: "richTextSection" }, // A generic rich text section for flexible content
         { type: "imageGallerySection" }, // For showcasing multiple images
         { type: "fullWidthImageSection" }, // For full-width hero images or visual breaks
+        { type: "trustSection" }, // For displaying trust signals, logos, etc.
         // Add other section types as needed
       ],
     },
@@ -1198,6 +1213,100 @@ export const fullWidthImageSection = {
       return {
         title: `Full Width Image: ${title || caption || "Untitled"}`,
         media: media,
+      };
+    },
+  },
+};
+
+export const trustSection = {
+  name: "trustSection",
+  title: "Trust Section",
+  type: "object",
+  fields: [
+    {
+      name: "heading",
+      title: "Section Heading",
+      type: "string",
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      name: "headingTag",
+      title: "Heading Tag",
+      description: "Choose the HTML heading tag for the section heading",
+      type: "string",
+      options: {
+        list: [
+          { title: "H1", value: "h1" },
+          { title: "H2", value: "h2" },
+          { title: "H3", value: "h3" },
+          { title: "H4", value: "h4" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "h2",
+    },
+    {
+      name: "features",
+      title: "Trust Features",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "trustFeature",
+          title: "Trust Feature",
+          fields: [
+            {
+              name: "text",
+              title: "Feature Text",
+              type: "string",
+              validation: (Rule: Rule) => Rule.required(),
+            },
+          ],
+          preview: {
+            select: {
+              title: "text",
+            },
+          },
+        },
+      ],
+    },
+    {
+      name: "image",
+      title: "Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      name: "imagePosition",
+      title: "Image Position",
+      type: "string",
+      options: {
+        list: [
+          { title: "Left", value: "left" },
+          { title: "Right", value: "right" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "right",
+    },
+    {
+      name: "ctaButton",
+      title: "Call to Action Button (Optional)",
+      type: "cta",
+    },
+  ],
+  preview: {
+    select: {
+      title: "heading",
+      subtitle: "features.length",
+    },
+    prepare({ title, subtitle }: { title?: string; subtitle?: number }) {
+      return {
+        title: `Trust Section: ${title || "Untitled"}`,
+        subtitle: `${subtitle || 0} feature(s)`,
       };
     },
   },
