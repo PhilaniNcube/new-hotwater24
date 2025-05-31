@@ -10,6 +10,7 @@ import ContactFormBlock from "./contact-form-block";
 import RichTextBlock from "./rich-text-block";
 import ImageGalleryBlock from "./image-gallery-block";
 import FullWidthImageBlock from "./full-width-image-block";
+import FullWidthHeroBlock from "./full-width-hero-block";
 import TrustBlock from "./trust-block";
 import { LANDING_PAGE_QUERYResult } from "@/sanity/types";
 
@@ -61,13 +62,16 @@ const PagebuilderRenderer: React.FC<PagebuilderRendererProps> = ({
           case "fullWidthImageSection":
             return <FullWidthImageBlock key={key} data={section} />;
 
+          case "fullWidthHeroSection":
+            return <FullWidthHeroBlock key={key} data={section} />;
+
           case "trustSection":
             return <TrustBlock key={key} data={section} />;
 
           default:
             // Handle unknown section types gracefully
             return (
-              <div key={key} className="py-8 px-4">
+              <div key={key} className="px-4 py-8">
                 <div className="container mx-auto">
                   <p className="text-gray-500">
                     Unknown section type: {(section as any)._type}

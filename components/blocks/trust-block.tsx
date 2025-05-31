@@ -3,6 +3,7 @@ import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
+import SectionHeading from "../ui/section-heading";
 
 interface TrustFeature {
   text: string;
@@ -11,7 +12,7 @@ interface TrustFeature {
 interface TrustBlockData {
   _type: "trustSection";
   heading?: string;
-  headingTag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  headingTag?: "h1" | "h2" | "h3" | "h4";
   subheading?: string;
   features?: TrustFeature[];
   image?: string;
@@ -34,7 +35,7 @@ interface TrustBlockProps {
 const TrustBlock: React.FC<TrustBlockProps> = ({ data }) => {
   const {
     heading,
-    headingTag = "h2",
+    headingTag,
     subheading,
     features = [],
     image,
@@ -44,7 +45,6 @@ const TrustBlock: React.FC<TrustBlockProps> = ({ data }) => {
 
   console.log("TrustBlock data:", data);
 
-  const HeadingTag = headingTag;
   return (
     <section className="relative py-16 mx-auto overflow-hidden bg-white max-w-7xl">
       <div className="container px-4 mx-auto">
@@ -70,9 +70,11 @@ const TrustBlock: React.FC<TrustBlockProps> = ({ data }) => {
 
                 {/* Heading */}
                 {heading && (
-                  <HeadingTag className="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
-                    {heading}
-                  </HeadingTag>
+                  <SectionHeading
+                    heading={heading}
+                    headingTag={headingTag}
+                    className="text-3xl font-bold tracking-tighter sm:text-5xl"
+                  />
                 )}
 
                 {/* Subheading */}
@@ -135,9 +137,11 @@ const TrustBlock: React.FC<TrustBlockProps> = ({ data }) => {
               <div className="space-y-6">
                 {/* Heading */}
                 {heading && (
-                  <HeadingTag className="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
-                    {heading}
-                  </HeadingTag>
+                  <SectionHeading
+                    heading={heading}
+                    headingTag={headingTag}
+                    className="text-3xl font-bold tracking-tighter sm:text-5xl"
+                  />
                 )}
 
                 {/* Features List */}

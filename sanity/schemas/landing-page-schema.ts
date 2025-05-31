@@ -24,6 +24,7 @@ interface LandingPageDocument extends SanityDocument {
     | ImageGallerySectionType
     | FullWidthImageSectionType
     | TrustSectionType
+    | FullWidthHeroSectionType
   >;
 }
 
@@ -168,6 +169,17 @@ interface TrustSectionType {
   ctaButton?: CtaType;
 }
 
+interface FullWidthHeroSectionType {
+  _type: "fullWidthHeroSection";
+  backgroundImage?: any; // Sanity image type
+  backgroundColor?: string;
+  smallText?: string;
+  heading: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
+  featuredImage?: any; // Sanity image type
+  ctaButton?: CtaType;
+}
+
 interface CtaType {
   _type: "cta";
   buttonText: string;
@@ -258,6 +270,7 @@ export default {
         { type: "imageGallerySection" }, // For showcasing multiple images
         { type: "fullWidthImageSection" }, // For full-width hero images or visual breaks
         { type: "trustSection" }, // For displaying trust signals, logos, etc.
+        { type: "fullWidthHeroSection" }, // For full-width hero sections with background and featured image
         // Add other section types as needed
       ],
     },
@@ -1396,6 +1409,121 @@ export const cta = {
       return {
         title: title || "Untitled CTA",
         subtitle: `Type: ${subtitle || "Not set"}`,
+      };
+    },
+  },
+};
+
+export const fullWidthHeroSection = {
+  name: "fullWidthHeroSection",
+  title: "Full Width Hero Section",
+  description:
+    "A full-width section with background image/color, small text, large heading, and featured image",
+  type: "object",
+  fields: [
+    {
+      name: "backgroundImage",
+      title: "Background Image (Optional)",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      description: "Background image for the full-width section",
+    },
+    {
+      name: "backgroundColor",
+      title: "Background Color (Optional)",
+      type: "string",
+      options: {
+        list: [
+          { title: "White", value: "white" },
+          { title: "Light Gray", value: "gray-100" },
+          { title: "Dark Gray", value: "gray-900" },
+          { title: "Black", value: "black" },
+          { title: "Brand Primary", value: "primary" },
+          { title: "Brand Secondary", value: "secondary" },
+          { title: "Orange", value: "orange-500" },
+          { title: "Blue", value: "blue-500" },
+        ],
+        layout: "dropdown",
+      },
+      description: "Background color if no background image is used",
+      hidden: ({ parent }: { parent: any }) => !!parent?.backgroundImage,
+    },
+    {
+      name: "smallText",
+      title: "Small Text (Optional)",
+      type: "string",
+      description: "Small text that appears above the main heading",
+      validation: (Rule: Rule) => Rule.max(100),
+    },
+    {
+      name: "heading",
+      title: "Main Heading",
+      type: "string",
+      validation: (Rule: Rule) => Rule.required(),
+      description: "The main large heading for this section",
+    },
+    {
+      name: "headingTag",
+      title: "Heading Tag",
+      description: "Choose the HTML heading tag for the main heading",
+      type: "string",
+      options: {
+        list: [
+          { title: "H1", value: "h1" },
+          { title: "H2", value: "h2" },
+          { title: "H3", value: "h3" },
+          { title: "H4", value: "h4" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "h1",
+    },
+    {
+      name: "featuredImage",
+      title: "Featured Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      validation: (Rule: Rule) => Rule.required(),
+      description: "The main featured image for this section",
+    },
+    {
+      name: "featuredImageAlt",
+      title: "Featured Image Alt Text",
+      type: "string",
+      description:
+        "Alternative text for the featured image (for SEO & accessibility)",
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      name: "ctaButton",
+      title: "Call to Action Button (Optional)",
+      type: "cta",
+      description: "Optional CTA button for the full-width hero section",
+    },
+  ],
+  preview: {
+    select: {
+      title: "heading",
+      subtitle: "smallText",
+      media: "featuredImage",
+    },
+    prepare({
+      title,
+      subtitle,
+      media,
+    }: {
+      title?: string;
+      subtitle?: string;
+      media?: any;
+    }) {
+      return {
+        title: `Full Width Hero: ${title || "Untitled"}`,
+        subtitle: subtitle || "No small text",
+        media: media,
       };
     },
   },

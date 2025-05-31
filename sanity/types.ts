@@ -71,6 +71,46 @@ export type TrustSection = {
   ctaButton?: Cta;
 };
 
+export type FullWidthHeroSection = {
+  _type: "fullWidthHeroSection";
+  backgroundImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  backgroundColor?:
+    | "white"
+    | "gray-100"
+    | "gray-900"
+    | "black"
+    | "primary"
+    | "secondary"
+    | "orange-500"
+    | "blue-500";
+  smallText?: string;
+  heading?: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
+  featuredImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  featuredImageAlt?: string;
+  ctaButton?: Cta;
+};
+
 export type FullWidthImageSection = {
   _type: "fullWidthImageSection";
   image?: {
@@ -423,10 +463,10 @@ export type LandingPage = {
       } & ImageGallerySection)
     | ({
         _key: string;
-      } & FullWidthImageSection)
+      } & TrustSection)
     | ({
         _key: string;
-      } & TrustSection)
+      } & FullWidthHeroSection)
   >;
 };
 
@@ -631,6 +671,7 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | Geopoint
   | TrustSection
+  | FullWidthHeroSection
   | FullWidthImageSection
   | ImageGallerySection
   | RichTextSection
@@ -828,7 +869,7 @@ export type GEYSER_QUERYResult = {
   image: string | null;
 } | null;
 // Variable: LANDING_PAGES_QUERY
-// Query: *[_type == "landingPage"] | order(_createdAt desc){    _id,    _createdAt,    title,    "slug": slug.current,    seoTitle,    seoDescription,    navigationText,    includeInTopNavigation,    includeInFooterNavigation,    pageBuilder[]{      _type,      _type == "heroSection" => {        heading,        headingTag,        subheading,        "backgroundImage": backgroundImage.asset->url,        "overlayImage": overlayImage.asset->url,        ctaButton,      },      _type == "textWithImageSection" => {        heading,        headingTag,        textContent,        subheading,        "image": image.asset->url,        imagePosition,        ctaButton      },      _type == "featureListSection" => {        heading,        headingTag,        subheading,        features[]{          "icon": icon.asset->url,          title,          description,          link        },        layout      },      _type == "stepSection" => {        heading,        headingTag,        steps[]{          "icon": icon.asset->url,          title,          description        }      },      _type == "testimonialSection" => {        heading,        headingTag,        testimonials[]{          quote,          authorName,          authorTitleOrCompany,          "authorImage": authorImage.asset->url,          rating        }      },      _type == "videoEmbedSection" => {        heading,        headingTag,        videoUrl,        caption,        "placeholderImage": placeholderImage.asset->url      },      _type == "ctaSection" => {        heading,        headingTag,        subheading,        ctaButton,        secondaryCtaButton,        "backgroundImage": backgroundImage.asset->url      },      _type == "contactFormSection" => {        heading,        headingTag,        subheading,        formId,        submitButtonText      },      _type == "richTextSection" => {        heading,        headingTag,        content      },      _type == "imageGallerySection" => {        heading,        headingTag,        images[]{          "url": asset->url,          caption,          alt        },        layout      },      _type == "fullWidthImageSection" => {        "image": image.asset->url,        alt,        caption,        height,        overlay      },      _type == "trustSection" => {        heading,        headingTag,        subheading,        features[]{          text        },        "image": image.asset->url,        imagePosition,        ctaButton      }    }  }
+// Query: *[_type == "landingPage"] | order(_createdAt desc){    _id,    _createdAt,    title,    "slug": slug.current,    seoTitle,    seoDescription,    navigationText,    includeInTopNavigation,    includeInFooterNavigation,    pageBuilder[]{      _type,      _type == "heroSection" => {        heading,        headingTag,        subheading,        "backgroundImage": backgroundImage.asset->url,        "overlayImage": overlayImage.asset->url,        ctaButton,      },      _type == "textWithImageSection" => {        heading,        headingTag,        textContent,        subheading,        "image": image.asset->url,        imagePosition,        ctaButton      },      _type == "featureListSection" => {        heading,        headingTag,        subheading,        features[]{          "icon": icon.asset->url,          title,          description,          link        },        layout      },      _type == "stepSection" => {        heading,        headingTag,        steps[]{          "icon": icon.asset->url,          title,          description        }      },      _type == "testimonialSection" => {        heading,        headingTag,        testimonials[]{          quote,          authorName,          authorTitleOrCompany,          "authorImage": authorImage.asset->url,          rating        }      },      _type == "videoEmbedSection" => {        heading,        headingTag,        videoUrl,        caption,        "placeholderImage": placeholderImage.asset->url      },      _type == "ctaSection" => {        heading,        headingTag,        subheading,        ctaButton,        secondaryCtaButton,        "backgroundImage": backgroundImage.asset->url      },      _type == "contactFormSection" => {        heading,        headingTag,        subheading,        formId,        submitButtonText      },      _type == "richTextSection" => {        heading,        headingTag,        content      },      _type == "imageGallerySection" => {        heading,        headingTag,        images[]{          "url": asset->url,          caption,          alt        },        layout      },      _type == "fullWidthImageSection" => {        "image": image.asset->url,        alt,        caption,        height,        overlay      },      _type == "fullWidthHeroSection" => {        "backgroundImage": backgroundImage.asset->url,        backgroundColor,        smallText,        heading,        headingTag,        "featuredImage": featuredImage.asset->url,        featuredImageAlt,        ctaButton{          buttonText,          linkType,          "internalLink": internalLink->slug.current,          externalUrl,          "fileLink": fileLink.asset->url,          buttonStyle        }      },      _type == "trustSection" => {        heading,        headingTag,        subheading,        features[]{          text        },        "image": image.asset->url,        imagePosition,        ctaButton      }    }  }
 export type LANDING_PAGES_QUERYResult = Array<{
   _id: string;
   _createdAt: string;
@@ -871,15 +912,30 @@ export type LANDING_PAGES_QUERYResult = Array<{
         layout: "grid" | "list" | null;
       }
     | {
-        _type: "fullWidthImageSection";
-        image: string | null;
-        alt: string | null;
-        caption: string | null;
-        height: "large" | "medium" | "small" | "viewport" | null;
-        overlay: {
-          enabled?: boolean;
-          opacity?: number;
-          color?: "black" | "brand" | "gray-900" | "white";
+        _type: "fullWidthHeroSection";
+        backgroundImage: string | null;
+        backgroundColor:
+          | "black"
+          | "blue-500"
+          | "gray-100"
+          | "gray-900"
+          | "orange-500"
+          | "primary"
+          | "secondary"
+          | "white"
+          | null;
+        smallText: string | null;
+        heading: string | null;
+        headingTag: "h1" | "h2" | "h3" | "h4" | null;
+        featuredImage: string | null;
+        featuredImageAlt: string | null;
+        ctaButton: {
+          buttonText: string | null;
+          linkType: "external" | "file" | "internal" | null;
+          internalLink: string | null;
+          externalUrl: string | null;
+          fileLink: string | null;
+          buttonStyle: "outline" | "primary" | "secondary" | null;
         } | null;
       }
     | {
@@ -1020,7 +1076,7 @@ export type LANDING_PAGES_QUERYResult = Array<{
   > | null;
 }>;
 // Variable: LANDING_PAGE_QUERY
-// Query: *[_type == "landingPage" && slug.current == $slug][0]{    _id,    _createdAt,    title,    "slug": slug.current,    seoTitle,    seoDescription,    navigationText,    includeInTopNavigation,    includeInFooterNavigation,    pageBuilder[]{      _type,      _type == "heroSection" => {        heading,        headingTag,        subheading,        "backgroundImage": backgroundImage.asset->url,        "overlayImage": overlayImage.asset->url,        ctaButton      },      _type == "textWithImageSection" => {        heading,        headingTag,        textContent,        "image": image.asset->url,        imagePosition,        ctaButton      },      _type == "featureListSection" => {        heading,        headingTag,        subheading,        features[]{          "icon": icon.asset->url,          title,          description,          link        },        layout      },      _type == "stepSection" => {        heading,        headingTag,        steps[]{          "icon": icon.asset->url,          title,          description        }      },      _type == "testimonialSection" => {        heading,        headingTag,        testimonials[]{          quote,          authorName,          authorTitleOrCompany,          "authorImage": authorImage.asset->url,          rating        }      },      _type == "videoEmbedSection" => {        heading,        headingTag,        videoUrl,        caption,        "placeholderImage": placeholderImage.asset->url      },      _type == "ctaSection" => {        heading,        headingTag,        subheading,        ctaButton,        secondaryCtaButton,        "backgroundImage": backgroundImage.asset->url      },      _type == "contactFormSection" => {        heading,        headingTag,        subheading,        formId,        submitButtonText      },      _type == "richTextSection" => {        heading,        headingTag,        content      },      _type == "imageGallerySection" => {        heading,        headingTag,        images[]{          "url": asset->url,          caption,          alt        },        layout      },      _type == "fullWidthImageSection" => {        "image": image.asset->url,        alt,        caption,        height,        overlay      },      _type == "trustSection" => {        heading,        headingTag,        subheading,        features[]{          text        },        "image": image.asset->url,        imagePosition,        ctaButton      }    }  }
+// Query: *[_type == "landingPage" && slug.current == $slug][0]{    _id,    _createdAt,    title,    "slug": slug.current,    seoTitle,    seoDescription,    navigationText,    includeInTopNavigation,    includeInFooterNavigation,    pageBuilder[]{      _type,      _type == "heroSection" => {        heading,        headingTag,        subheading,        "backgroundImage": backgroundImage.asset->url,        "overlayImage": overlayImage.asset->url,        ctaButton      },      _type == "textWithImageSection" => {        heading,        headingTag,        textContent,        "image": image.asset->url,        imagePosition,        ctaButton      },      _type == "featureListSection" => {        heading,        headingTag,        subheading,        features[]{          "icon": icon.asset->url,          title,          description,          link        },        layout      },      _type == "stepSection" => {        heading,        headingTag,        steps[]{          "icon": icon.asset->url,          title,          description        }      },      _type == "testimonialSection" => {        heading,        headingTag,        testimonials[]{          quote,          authorName,          authorTitleOrCompany,          "authorImage": authorImage.asset->url,          rating        }      },      _type == "videoEmbedSection" => {        heading,        headingTag,        videoUrl,        caption,        "placeholderImage": placeholderImage.asset->url      },      _type == "ctaSection" => {        heading,        headingTag,        subheading,        ctaButton,        secondaryCtaButton,        "backgroundImage": backgroundImage.asset->url      },      _type == "contactFormSection" => {        heading,        headingTag,        subheading,        formId,        submitButtonText      },      _type == "richTextSection" => {        heading,        headingTag,        content      },      _type == "imageGallerySection" => {        heading,        headingTag,        images[]{          "url": asset->url,          caption,          alt        },                layout      },      _type == "fullWidthImageSection" => {        "image": image.asset->url,        alt,        caption,        height,        overlay      },      _type == "fullWidthHeroSection" => {        "backgroundImage": backgroundImage.asset->url,        backgroundColor,        smallText,        heading,        headingTag,        "featuredImage": featuredImage.asset->url,        featuredImageAlt,        ctaButton{          buttonText,          linkType,          "internalLink": internalLink->slug.current,          externalUrl,          "fileLink": fileLink.asset->url,          buttonStyle        }      },      _type == "trustSection" => {        heading,        headingTag,        subheading,        features[]{          text        },        "image": image.asset->url,        imagePosition,        ctaButton      }    }  }
 export type LANDING_PAGE_QUERYResult = {
   _id: string;
   _createdAt: string;
@@ -1063,15 +1119,30 @@ export type LANDING_PAGE_QUERYResult = {
         layout: "grid" | "list" | null;
       }
     | {
-        _type: "fullWidthImageSection";
-        image: string | null;
-        alt: string | null;
-        caption: string | null;
-        height: "large" | "medium" | "small" | "viewport" | null;
-        overlay: {
-          enabled?: boolean;
-          opacity?: number;
-          color?: "black" | "brand" | "gray-900" | "white";
+        _type: "fullWidthHeroSection";
+        backgroundImage: string | null;
+        backgroundColor:
+          | "black"
+          | "blue-500"
+          | "gray-100"
+          | "gray-900"
+          | "orange-500"
+          | "primary"
+          | "secondary"
+          | "white"
+          | null;
+        smallText: string | null;
+        heading: string | null;
+        headingTag: "h1" | "h2" | "h3" | "h4" | null;
+        featuredImage: string | null;
+        featuredImageAlt: string | null;
+        ctaButton: {
+          buttonText: string | null;
+          linkType: "external" | "file" | "internal" | null;
+          internalLink: string | null;
+          externalUrl: string | null;
+          fileLink: string | null;
+          buttonStyle: "outline" | "primary" | "secondary" | null;
         } | null;
       }
     | {
@@ -1233,8 +1304,8 @@ declare module "next-sanity" {
     '*[_type == "article" && slug.current == $slug][0]{\n      _id,\n      _createdAt,\n      title,\n      meta_title,\n      meta_description,\n      "slug": slug.current,\n      "image": image.asset->url,\n      link,\n      content\n    }': ARTICLE_QUERYResult;
     '*[_type == "geysers"] | order(_createdAt asc){\n      _id,\n      _createdAt,\n      title,\n      "slug": slug.current,\n      subTitle,\n      description,\n      outlets,\n     geyser,\n     plumbing,\n     price,\n     composition,\n     certificateOfCompliance,\n     installation,\n      warranty,\n      specifications,\n      maxFlowRate,\n      minFlowRate,\n      minWaterPressure,\n      maxWaterPressure,\n      dimensions,\n      brand,\n      "image": image.asset->url,\n    }': GEYSERS_QUERYResult;
     '*[_type == "geysers" && slug.current == $slug][0]{\n     _id,\n      _createdAt,\n      title,\n      "slug": slug.current,\n      price,\n      subTitle,\n      composition,\n      description,\n      outlets,\n      geyser,\n     plumbing,\n     certificateOfCompliance,\n     installation,\n      warranty,\n      specifications,\n      maxFlowRate,\n      minFlowRate,\n      minWaterPressure,\n      maxWaterPressure,\n      dimensions,\n      brand,\n      "image": image.asset->url,\n    }': GEYSER_QUERYResult;
-    '*[_type == "landingPage"] | order(_createdAt desc){\n    _id,\n    _createdAt,\n    title,\n    "slug": slug.current,\n    seoTitle,\n    seoDescription,\n    navigationText,\n    includeInTopNavigation,\n    includeInFooterNavigation,\n    pageBuilder[]{\n      _type,\n      _type == "heroSection" => {\n        heading,\n        headingTag,\n        subheading,\n        "backgroundImage": backgroundImage.asset->url,\n        "overlayImage": overlayImage.asset->url,\n        ctaButton,\n      },\n      _type == "textWithImageSection" => {\n        heading,\n        headingTag,\n        textContent,\n        subheading,\n        "image": image.asset->url,\n        imagePosition,\n        ctaButton\n      },\n      _type == "featureListSection" => {\n        heading,\n        headingTag,\n        subheading,\n        features[]{\n          "icon": icon.asset->url,\n          title,\n          description,\n          link\n        },\n        layout\n      },\n      _type == "stepSection" => {\n        heading,\n        headingTag,\n        steps[]{\n          "icon": icon.asset->url,\n          title,\n          description\n        }\n      },\n      _type == "testimonialSection" => {\n        heading,\n        headingTag,\n        testimonials[]{\n          quote,\n          authorName,\n          authorTitleOrCompany,\n          "authorImage": authorImage.asset->url,\n          rating\n        }\n      },\n      _type == "videoEmbedSection" => {\n        heading,\n        headingTag,\n        videoUrl,\n        caption,\n        "placeholderImage": placeholderImage.asset->url\n      },\n      _type == "ctaSection" => {\n        heading,\n        headingTag,\n        subheading,\n        ctaButton,\n        secondaryCtaButton,\n        "backgroundImage": backgroundImage.asset->url\n      },\n      _type == "contactFormSection" => {\n        heading,\n        headingTag,\n        subheading,\n        formId,\n        submitButtonText\n      },\n      _type == "richTextSection" => {\n        heading,\n        headingTag,\n        content\n      },      _type == "imageGallerySection" => {\n        heading,\n        headingTag,\n        images[]{\n          "url": asset->url,\n          caption,\n          alt\n        },\n        layout      },\n      _type == "fullWidthImageSection" => {\n        "image": image.asset->url,\n        alt,\n        caption,\n        height,\n        overlay\n      },\n      _type == "trustSection" => {\n        heading,\n        headingTag,\n        subheading,\n        features[]{\n          text\n        },\n        "image": image.asset->url,\n        imagePosition,\n        ctaButton\n      }\n    }\n  }': LANDING_PAGES_QUERYResult;
-    '*[_type == "landingPage" && slug.current == $slug][0]{\n    _id,\n    _createdAt,\n    title,\n    "slug": slug.current,\n    seoTitle,\n    seoDescription,\n    navigationText,\n    includeInTopNavigation,\n    includeInFooterNavigation,\n    pageBuilder[]{\n      _type,\n      _type == "heroSection" => {\n        heading,\n        headingTag,\n        subheading,\n        "backgroundImage": backgroundImage.asset->url,\n        "overlayImage": overlayImage.asset->url,\n        ctaButton\n      },\n      _type == "textWithImageSection" => {\n        heading,\n        headingTag,\n        textContent,\n        "image": image.asset->url,\n        imagePosition,\n        ctaButton\n      },\n      _type == "featureListSection" => {\n        heading,\n        headingTag,\n        subheading,\n        features[]{\n          "icon": icon.asset->url,\n          title,\n          description,\n          link\n        },\n        layout\n      },\n      _type == "stepSection" => {\n        heading,\n        headingTag,        steps[]{\n          "icon": icon.asset->url,\n          title,\n          description\n        }\n      },\n      _type == "testimonialSection" => {\n        heading,\n        headingTag,\n        testimonials[]{\n          quote,\n          authorName,\n          authorTitleOrCompany,\n          "authorImage": authorImage.asset->url,\n          rating\n        }\n      },\n      _type == "videoEmbedSection" => {\n        heading,\n        headingTag,\n        videoUrl,\n        caption,\n        "placeholderImage": placeholderImage.asset->url\n      },\n      _type == "ctaSection" => {\n        heading,\n        headingTag,\n        subheading,\n        ctaButton,\n        secondaryCtaButton,\n        "backgroundImage": backgroundImage.asset->url\n      },\n      _type == "contactFormSection" => {\n        heading,\n        headingTag,\n        subheading,\n        formId,\n        submitButtonText\n      },\n      _type == "richTextSection" => {\n        heading,\n        headingTag,\n        content\n      },      _type == "imageGallerySection" => {\n        heading,\n        headingTag,\n        images[]{\n          "url": asset->url,\n          caption,\n          alt\n        },        layout\n      },\n      _type == "fullWidthImageSection" => {\n        "image": image.asset->url,\n        alt,\n        caption,\n        height,\n        overlay\n      },\n      _type == "trustSection" => {\n        heading,\n        headingTag,\n        subheading,\n        features[]{\n          text\n        },\n        "image": image.asset->url,\n        imagePosition,\n        ctaButton\n      }\n    }\n  }': LANDING_PAGE_QUERYResult;
+    '*[_type == "landingPage"] | order(_createdAt desc){\n    _id,\n    _createdAt,\n    title,\n    "slug": slug.current,\n    seoTitle,\n    seoDescription,\n    navigationText,\n    includeInTopNavigation,\n    includeInFooterNavigation,\n    pageBuilder[]{\n      _type,\n      _type == "heroSection" => {\n        heading,\n        headingTag,\n        subheading,\n        "backgroundImage": backgroundImage.asset->url,\n        "overlayImage": overlayImage.asset->url,\n        ctaButton,\n      },\n      _type == "textWithImageSection" => {\n        heading,\n        headingTag,\n        textContent,\n        subheading,\n        "image": image.asset->url,\n        imagePosition,\n        ctaButton\n      },\n      _type == "featureListSection" => {\n        heading,\n        headingTag,\n        subheading,\n        features[]{\n          "icon": icon.asset->url,\n          title,\n          description,\n          link\n        },\n        layout\n      },\n      _type == "stepSection" => {\n        heading,\n        headingTag,\n        steps[]{\n          "icon": icon.asset->url,\n          title,\n          description\n        }\n      },\n      _type == "testimonialSection" => {\n        heading,\n        headingTag,\n        testimonials[]{\n          quote,\n          authorName,\n          authorTitleOrCompany,\n          "authorImage": authorImage.asset->url,\n          rating\n        }\n      },\n      _type == "videoEmbedSection" => {\n        heading,\n        headingTag,\n        videoUrl,\n        caption,\n        "placeholderImage": placeholderImage.asset->url\n      },\n      _type == "ctaSection" => {\n        heading,\n        headingTag,\n        subheading,\n        ctaButton,\n        secondaryCtaButton,\n        "backgroundImage": backgroundImage.asset->url\n      },\n      _type == "contactFormSection" => {\n        heading,\n        headingTag,\n        subheading,\n        formId,\n        submitButtonText\n      },\n      _type == "richTextSection" => {\n        heading,\n        headingTag,\n        content\n      },      _type == "imageGallerySection" => {\n        heading,\n        headingTag,\n        images[]{\n          "url": asset->url,\n          caption,\n          alt\n        },        layout      },\n      _type == "fullWidthImageSection" => {\n        "image": image.asset->url,\n        alt,\n        caption,\n        height,        overlay\n      },\n      _type == "fullWidthHeroSection" => {\n        "backgroundImage": backgroundImage.asset->url,\n        backgroundColor,\n        smallText,\n        heading,\n        headingTag,\n        "featuredImage": featuredImage.asset->url,\n        featuredImageAlt,\n        ctaButton{\n          buttonText,\n          linkType,\n          "internalLink": internalLink->slug.current,\n          externalUrl,\n          "fileLink": fileLink.asset->url,\n          buttonStyle\n        }\n      },\n      _type == "trustSection" => {\n        heading,\n        headingTag,\n        subheading,\n        features[]{\n          text\n        },\n        "image": image.asset->url,\n        imagePosition,\n        ctaButton\n      }\n    }\n  }': LANDING_PAGES_QUERYResult;
+    '*[_type == "landingPage" && slug.current == $slug][0]{\n    _id,\n    _createdAt,\n    title,\n    "slug": slug.current,\n    seoTitle,\n    seoDescription,\n    navigationText,\n    includeInTopNavigation,\n    includeInFooterNavigation,\n    pageBuilder[]{\n      _type,\n      _type == "heroSection" => {\n        heading,\n        headingTag,\n        subheading,\n        "backgroundImage": backgroundImage.asset->url,\n        "overlayImage": overlayImage.asset->url,\n        ctaButton\n      },\n      _type == "textWithImageSection" => {\n        heading,\n        headingTag,\n        textContent,\n        "image": image.asset->url,\n        imagePosition,\n        ctaButton\n      },\n      _type == "featureListSection" => {\n        heading,\n        headingTag,\n        subheading,\n        features[]{\n          "icon": icon.asset->url,\n          title,\n          description,\n          link\n        },\n        layout\n      },\n      _type == "stepSection" => {\n        heading,\n        headingTag,        steps[]{\n          "icon": icon.asset->url,\n          title,\n          description\n        }\n      },\n      _type == "testimonialSection" => {\n        heading,\n        headingTag,\n        testimonials[]{\n          quote,\n          authorName,\n          authorTitleOrCompany,\n          "authorImage": authorImage.asset->url,\n          rating\n        }\n      },\n      _type == "videoEmbedSection" => {\n        heading,\n        headingTag,\n        videoUrl,\n        caption,\n        "placeholderImage": placeholderImage.asset->url\n      },\n      _type == "ctaSection" => {\n        heading,\n        headingTag,\n        subheading,\n        ctaButton,\n        secondaryCtaButton,\n        "backgroundImage": backgroundImage.asset->url\n      },\n      _type == "contactFormSection" => {\n        heading,\n        headingTag,\n        subheading,\n        formId,\n        submitButtonText\n      },\n      _type == "richTextSection" => {\n        heading,\n        headingTag,\n        content\n      },      _type == "imageGallerySection" => {\n        heading,\n        headingTag,\n        images[]{\n          "url": asset->url,\n          caption,\n          alt\n        },        \n        layout\n      },      _type == "fullWidthImageSection" => {\n        "image": image.asset->url,\n        alt,\n        caption,\n        height,\n        overlay\n      },\n      _type == "fullWidthHeroSection" => {\n        "backgroundImage": backgroundImage.asset->url,\n        backgroundColor,\n        smallText,\n        heading,\n        headingTag,\n        "featuredImage": featuredImage.asset->url,\n        featuredImageAlt,\n        ctaButton{\n          buttonText,\n          linkType,\n          "internalLink": internalLink->slug.current,\n          externalUrl,\n          "fileLink": fileLink.asset->url,\n          buttonStyle\n        }\n      },\n      _type == "trustSection" => {\n        heading,\n        headingTag,\n        subheading,\n        features[]{\n          text\n        },\n        "image": image.asset->url,\n        imagePosition,\n        ctaButton\n      }\n    }\n  }': LANDING_PAGE_QUERYResult;
     '*[_type == "landingPage" && includeInTopNavigation == true] {\n    title,\n    slug,\n    navigationText\n  }': TOP_NAVIGATION_QUERYResult;
     '*[_type == "landingPage" && includeInFooterNavigation == true] {\n    title,\n    slug,\n    navigationText\n  }': FOOTER_NAVIGATION_QUERYResult;
   }

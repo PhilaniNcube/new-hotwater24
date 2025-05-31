@@ -186,14 +186,29 @@ export const LANDING_PAGES_QUERY = defineQuery(
           "url": asset->url,
           caption,
           alt
-        },
-        layout      },
+        },        layout      },
       _type == "fullWidthImageSection" => {
         "image": image.asset->url,
         alt,
         caption,
-        height,
-        overlay
+        height,        overlay
+      },
+      _type == "fullWidthHeroSection" => {
+        "backgroundImage": backgroundImage.asset->url,
+        backgroundColor,
+        smallText,
+        heading,
+        headingTag,
+        "featuredImage": featuredImage.asset->url,
+        featuredImageAlt,
+        ctaButton{
+          buttonText,
+          linkType,
+          "internalLink": internalLink->slug.current,
+          externalUrl,
+          "fileLink": fileLink.asset->url,
+          buttonStyle
+        }
       },
       _type == "trustSection" => {
         heading,
@@ -303,14 +318,31 @@ export const LANDING_PAGE_QUERY = defineQuery(
           "url": asset->url,
           caption,
           alt
-        },        layout
-      },
-      _type == "fullWidthImageSection" => {
+        },        
+        layout
+      },      _type == "fullWidthImageSection" => {
         "image": image.asset->url,
         alt,
         caption,
         height,
         overlay
+      },
+      _type == "fullWidthHeroSection" => {
+        "backgroundImage": backgroundImage.asset->url,
+        backgroundColor,
+        smallText,
+        heading,
+        headingTag,
+        "featuredImage": featuredImage.asset->url,
+        featuredImageAlt,
+        ctaButton{
+          buttonText,
+          linkType,
+          "internalLink": internalLink->slug.current,
+          externalUrl,
+          "fileLink": fileLink.asset->url,
+          buttonStyle
+        }
       },
       _type == "trustSection" => {
         heading,
