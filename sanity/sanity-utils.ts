@@ -198,6 +198,7 @@ export const LANDING_PAGES_QUERY = defineQuery(
       _type == "trustSection" => {
         heading,
         headingTag,
+        subheading,
         features[]{
           text
         },
@@ -314,6 +315,7 @@ export const LANDING_PAGE_QUERY = defineQuery(
       _type == "trustSection" => {
         heading,
         headingTag,
+        subheading,
         features[]{
           text
         },

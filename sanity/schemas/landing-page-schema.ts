@@ -1246,6 +1246,13 @@ export const trustSection = {
       initialValue: "h2",
     },
     {
+      name: "subheading",
+      title: "Subheading (Optional)",
+      type: "text",
+      description: "Optional subheading to provide context or additional info.",
+      validation: (Rule: Rule) => Rule.max(100),
+    },
+    {
       name: "features",
       title: "Trust Features",
       type: "array",

@@ -234,6 +234,13 @@
           },
           "optional": true
         },
+        "subheading": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "features": {
           "type": "objectAttribute",
           "value": {
