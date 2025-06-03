@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { createBrowserClient } from "@supabase/ssr";
 import { sendGTMEvent } from "@next/third-parties/google";
 import { Textarea } from "@/components/ui/textarea";
+import type { Database } from "@/schema";
 
 const libraries = ["places"];
 
@@ -98,6 +99,10 @@ const PersonalDetails = ({
     financing,
     source,
     borehole_water,
+    bathrooms,
+    cottage_bathrooms,
+    cottageIncluded,
+    electric_geysers,
   } = quoteInfo;
 
   // const [open, setOpen] = useState(false);
@@ -161,6 +166,10 @@ const PersonalDetails = ({
             financing: financing,
             source: source ?? undefined,
             borehole_water: borehole_water,
+            bathrooms: bathrooms,
+            cottage_bathrooms: cottage_bathrooms,
+            cottageIncluded: cottageIncluded,
+            electric_geysers: electric_geysers,
           },
         ])
         .select("*")
@@ -214,6 +223,10 @@ const PersonalDetails = ({
             comments: comments,
             financing: financing,
             borehole_water: borehole_water,
+            bathrooms: bathrooms,
+            cottage_bathrooms: cottage_bathrooms,
+            cottageIncluded: cottageIncluded,
+            electric_geysers: electric_geysers,
           }),
         });
       }
@@ -604,7 +617,6 @@ const PersonalDetails = ({
               >
                 {loading ? "Saving..." : "Continue"}
               </button>
-
             </Fragment>
           ) : (
             <Fragment>

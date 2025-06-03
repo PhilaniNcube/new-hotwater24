@@ -11,6 +11,7 @@ import GasSupply from "./Steps/GasSupply";
 import GasUse from "./Steps/GasUse";
 import WaterHeating from "./Steps/WaterHeating";
 import WaterOutlets from "./Steps/WaterOutlests";
+import BathroomDetails from "./Steps/BathroomDetails";
 import OffGridStep from "./Steps/OffGridStep";
 
 import { sendGTMEvent } from "@next/third-parties/google";
@@ -66,6 +67,10 @@ export type LeadStageProps = {
     comments: string;
     source: string | null;
     borehole_water: boolean;
+    bathrooms: number | null;
+    cottage_bathrooms: number | null;
+    cottageIncluded: boolean | null;
+    electric_geysers: number | null;
   };
   page: number;
   nextPage: () => void;
@@ -80,7 +85,6 @@ const NewLead = ({ geysers }: { geysers: GEYSERS_QUERYResult }) => {
   const [page, setPage] = useState(1);
 
   //write a useEffect function to set the document.refferer value to the source value in the quoteInfo object
-
   const [quoteInfo, setQuoteInfo] = useState({
     children: 0,
     teenagers: 0,
@@ -129,6 +133,10 @@ const NewLead = ({ geysers }: { geysers: GEYSERS_QUERYResult }) => {
     comments: "",
     source: source,
     borehole_water: false,
+    bathrooms: null,
+    cottage_bathrooms: null,
+    cottageIncluded: null,
+    electric_geysers: null,
   });
 
   useEffect(() => {
@@ -137,7 +145,6 @@ const NewLead = ({ geysers }: { geysers: GEYSERS_QUERYResult }) => {
       setQuoteInfo({ ...quoteInfo, source: document.referrer });
     }
   }, []);
-
   const nextPage = () => {
     if (page === 13) return;
 
@@ -216,8 +223,7 @@ const NewLead = ({ geysers }: { geysers: GEYSERS_QUERYResult }) => {
             prevPage={prevPage}
             page={page}
           />
-        )}
-
+        )}{" "}
         {page === 8 && (
           <WaterOutlets
             quoteInfo={quoteInfo}
@@ -227,9 +233,8 @@ const NewLead = ({ geysers }: { geysers: GEYSERS_QUERYResult }) => {
             page={page}
           />
         )}
-
         {page === 9 && (
-          <OffGridStep
+          <BathroomDetails
             quoteInfo={quoteInfo}
             setQuoteInfo={setQuoteInfo}
             nextPage={nextPage}
@@ -238,6 +243,15 @@ const NewLead = ({ geysers }: { geysers: GEYSERS_QUERYResult }) => {
           />
         )}
         {page === 10 && (
+          <OffGridStep
+            quoteInfo={quoteInfo}
+            setQuoteInfo={setQuoteInfo}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            page={page}
+          />
+        )}
+        {page === 11 && (
           <Recommendations
             quoteInfo={quoteInfo}
             setQuoteInfo={setQuoteInfo}
@@ -247,8 +261,7 @@ const NewLead = ({ geysers }: { geysers: GEYSERS_QUERYResult }) => {
             geysers={geysers}
           />
         )}
-
-        {page === 11 && (
+        {page === 12 && (
           <PersonalDetails
             quoteInfo={quoteInfo}
             setQuoteInfo={setQuoteInfo}
@@ -258,7 +271,6 @@ const NewLead = ({ geysers }: { geysers: GEYSERS_QUERYResult }) => {
             page={page}
           />
         )}
-
         {/*page === 10 && (
         <Summary
           quoteInfo={quoteInfo}
@@ -268,7 +280,7 @@ const NewLead = ({ geysers }: { geysers: GEYSERS_QUERYResult }) => {
           page={page}
         />
       )*/}
-        {page === 12 && (
+        {page === 13 && (
           <Confirm
             quoteInfo={quoteInfo}
             setQuoteInfo={setQuoteInfo}
