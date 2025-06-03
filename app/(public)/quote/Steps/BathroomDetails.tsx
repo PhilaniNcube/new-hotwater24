@@ -12,19 +12,11 @@ const BathroomDetails = ({
 }: LeadStageProps) => {
   console.log("Step", page, quoteInfo);
   const [interaction, setInteraction] = useState(false);
-
   // Check if we can proceed to next page
   const canProceed =
     quoteInfo.bathrooms !== null && quoteInfo.electric_geysers !== null;
 
-  useEffect(() => {
-    if (interaction && canProceed) {
-      const timer = setTimeout(() => {
-        nextPage();
-      }, 800);
-      return () => clearTimeout(timer);
-    }
-  }, [interaction, canProceed, nextPage]);
+  // Removed automatic progression - users must manually click Continue
 
   const handleBathroomsChange = (value: number) => {
     setQuoteInfo({
