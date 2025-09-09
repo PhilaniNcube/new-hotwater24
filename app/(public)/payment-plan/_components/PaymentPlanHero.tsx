@@ -59,7 +59,6 @@ export default function PaymentPlanHero() {
                     cylinders, gas supply or gas cage.
                   </p>
                 </CardContent>
-                <CardFooter></CardFooter>
               </Card>
             </div>
           </div>
