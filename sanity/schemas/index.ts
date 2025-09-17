@@ -1,5 +1,6 @@
 import article from "./article-schema";
 import landingPageSchema, {
+  brandGridSection,
   contactFormSection,
   cta,
   ctaSection,
@@ -38,6 +39,7 @@ const schemas = [
   fullWidthImageSection,
   fullWidthHeroSection,
   trustSection,
+  brandGridSection,
   cta,
 ];
 

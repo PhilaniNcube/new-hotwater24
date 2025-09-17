@@ -13,6 +13,7 @@ interface LandingPageDocument extends SanityDocument {
   includeInFooterNavigation?: boolean;
   pageBuilder?: Array<
     | HeroSectionType
+    | CenteredHeroSectionType
     | TextWithImageSectionType
     | FeatureListSectionType
     | StepSectionType
@@ -25,6 +26,7 @@ interface LandingPageDocument extends SanityDocument {
     | FullWidthImageSectionType
     | TrustSectionType
     | FullWidthHeroSectionType
+    | BrandGridSectionType
   >;
 }
 
@@ -47,6 +49,16 @@ interface TextWithImageSectionType {
   image: any; // Sanity image type
   imagePosition: "left" | "right";
   ctaButton?: CtaType;
+}
+
+interface CenteredHeroSectionType {
+  _type: "centeredHeroSection";
+  heading: string;
+  headingTag: "h1" | "h2" | "h3" | "h4";
+  subheading: string;
+  smallText?: string;
+  buttonText?: string;
+  buttonUrl?: string;
 }
 
 interface FeatureListSectionType {
@@ -180,6 +192,25 @@ interface FullWidthHeroSectionType {
   ctaButton?: CtaType;
 }
 
+interface BrandGridSectionType {
+  _type: "brandGridSection";
+  heading?: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
+  subheading?: string;
+  brands?: BrandItemType[];
+  gridColumns: "2" | "3" | "4";
+}
+
+interface BrandItemType {
+  _type: "brandItem";
+  title: string;
+  description: string;
+  tags?: string[];
+  image?: any; // Sanity image type
+  imageAlt?: string;
+  link?: string;
+}
+
 interface CtaType {
   _type: "cta";
   buttonText: string;
@@ -259,6 +290,78 @@ export default {
       type: "array",
       of: [
         { type: "heroSection" },
+        {
+          name: "centeredHeroSection",
+          title: "Centered Hero Section",
+          type: "object",
+          fields: [
+            {
+              name: "heading",
+              title: "Headline",
+              type: "string",
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: "headingTag",
+              title: "Heading Tag",
+              description:
+                "Choose the HTML heading tag for the headline (h1, h2, h3, or h4)",
+              type: "string",
+              options: {
+                list: [
+                  { title: "H1", value: "h1" },
+                  { title: "H2", value: "h2" },
+                  { title: "H3", value: "h3" },
+                  { title: "H4", value: "h4" },
+                ],
+                layout: "radio",
+              },
+              initialValue: "h1",
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: "subheading",
+              title: "Subheadline",
+              type: "text",
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: "smallText",
+              title: "Small Text (Optional)",
+              type: "text",
+            },
+            {
+              name: "buttonText",
+              title: "Main Call to Action Button",
+              type: "string",
+              // validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: "buttonUrl",
+              title: "Main Call to Action Button URL",
+              type: "string",
+              // validation: (Rule: Rule) => Rule.required(),
+            },
+          ],
+          preview: {
+            select: {
+              title: "heading",
+              subtitle: "subheading",
+            },
+            prepare({
+              title,
+              subtitle,
+            }: {
+              title?: string;
+              subtitle?: string;
+            }) {
+              return {
+                title: `Centered Hero: ${title || "Untitled"}`,
+                subtitle: subtitle || "No subheading",
+              };
+            },
+          },
+        },
         { type: "textWithImageSection" },
         { type: "featureListSection" }, // For "Services" or "How It Works" with icons
         { type: "stepSection" }, // For numbered/ordered steps like "How It Works"
@@ -271,6 +374,7 @@ export default {
         { type: "fullWidthImageSection" }, // For full-width hero images or visual breaks
         { type: "trustSection" }, // For displaying trust signals, logos, etc.
         { type: "fullWidthHeroSection" }, // For full-width hero sections with background and featured image
+        { type: "brandGridSection" }, // For displaying a grid of gas geyser brands
         // Add other section types as needed
       ],
     },
@@ -1524,6 +1628,164 @@ export const fullWidthHeroSection = {
         title: `Full Width Hero: ${title || "Untitled"}`,
         subtitle: subtitle || "No small text",
         media: media,
+      };
+    },
+  },
+};
+
+export const brandGridSection = {
+  name: "brandGridSection",
+  title: "Brand Grid Section",
+  description:
+    "A grid layout displaying gas geyser brands with optional images and tags",
+  type: "object",
+  fields: [
+    {
+      name: "heading",
+      title: "Section Heading (Optional)",
+      type: "string",
+    },
+    {
+      name: "headingTag",
+      title: "Heading Tag",
+      description: "Choose the HTML heading tag for the section heading",
+      type: "string",
+      options: {
+        list: [
+          { title: "H1", value: "h1" },
+          { title: "H2", value: "h2" },
+          { title: "H3", value: "h3" },
+          { title: "H4", value: "h4" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "h2",
+      hidden: ({ parent }: { parent: any }) => !parent?.heading,
+    },
+    {
+      name: "subheading",
+      title: "Section Subheading (Optional)",
+      type: "text",
+    },
+    {
+      name: "brands",
+      title: "Gas Geyser Brands",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "brandItem",
+          title: "Brand Item",
+          fields: [
+            {
+              name: "title",
+              title: "Brand Name/Title",
+              type: "string",
+              validation: (Rule: Rule) =>
+                Rule.required().error("Brand name is required"),
+            },
+            {
+              name: "description",
+              title: "Description",
+              type: "text",
+              validation: (Rule: Rule) =>
+                Rule.required().error("Description is required"),
+            },
+            {
+              name: "tags",
+              title: "Tags (Optional)",
+              type: "array",
+              of: [{ type: "string" }],
+              description:
+                "Add tags to categorize or highlight features of this brand",
+              options: {
+                layout: "tags",
+              },
+            },
+            {
+              name: "image",
+              title: "Brand Image (Optional)",
+              type: "image",
+              options: {
+                hotspot: true,
+              },
+              description: "Brand logo or representative image",
+            },
+            {
+              name: "imageAlt",
+              title: "Image Alt Text",
+              type: "string",
+              description:
+                "Alternative text for the brand image (for SEO & accessibility)",
+              hidden: ({ parent }: { parent: any }) => !parent?.image,
+            },
+            {
+              name: "link",
+              title: "Brand Link (Optional)",
+              type: "url",
+              description: "Optional link to brand page or external website",
+            },
+          ],
+          preview: {
+            select: {
+              title: "title",
+              subtitle: "description",
+              media: "image",
+              tags: "tags",
+            },
+            prepare({
+              title,
+              subtitle,
+              media,
+              tags,
+            }: {
+              title?: string;
+              subtitle?: string;
+              media?: any;
+              tags?: string[];
+            }) {
+              const tagText =
+                tags && tags.length > 0
+                  ? ` • ${tags.slice(0, 2).join(", ")}${
+                      tags.length > 2 ? "..." : ""
+                    }`
+                  : "";
+              return {
+                title: title || "Untitled Brand",
+                subtitle: (subtitle || "No description") + tagText,
+                media: media,
+              };
+            },
+          },
+        },
+      ],
+      validation: (Rule: Rule) =>
+        Rule.min(1).error("At least one brand is required"),
+    },
+    {
+      name: "gridColumns",
+      title: "Grid Columns",
+      type: "string",
+      options: {
+        list: [
+          { title: "2 Columns", value: "2" },
+          { title: "3 Columns", value: "3" },
+          { title: "4 Columns", value: "4" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "3",
+    },
+  ],
+  preview: {
+    select: {
+      title: "heading",
+      subtitle: "brands.length",
+    },
+    prepare({ title, subtitle }: { title?: string; subtitle?: number }) {
+      return {
+        title: `Brand Grid: ${title || "Gas Geyser Brands"}`,
+        subtitle: `${subtitle || 0} brand(s)`,
       };
     },
   },

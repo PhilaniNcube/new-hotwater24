@@ -1,5 +1,6 @@
 import React from "react";
 import HeroBlock from "./hero-block";
+import CenteredHeroBlock from "./centered-hero-block";
 import TextWithImageBlock from "./text-with-image-block";
 import FeatureListBlock from "./feature-list-block";
 import StepBlock from "./step-block";
@@ -12,6 +13,7 @@ import ImageGalleryBlock from "./image-gallery-block";
 import FullWidthImageBlock from "./full-width-image-block";
 import FullWidthHeroBlock from "./full-width-hero-block";
 import TrustBlock from "./trust-block";
+import BrandGridBlock from "./brand-grid-block";
 import { LANDING_PAGE_QUERYResult } from "@/sanity/types";
 
 interface PagebuilderRendererProps {
@@ -33,6 +35,9 @@ const PagebuilderRenderer: React.FC<PagebuilderRendererProps> = ({
         switch (section._type) {
           case "heroSection":
             return <HeroBlock key={key} data={section} />;
+
+          case "centeredHeroSection":
+            return <CenteredHeroBlock key={key} data={section} />;
 
           case "textWithImageSection":
             return <TextWithImageBlock key={key} data={section} />;
@@ -67,6 +72,9 @@ const PagebuilderRenderer: React.FC<PagebuilderRendererProps> = ({
 
           case "trustSection":
             return <TrustBlock key={key} data={section} />;
+
+          case "brandGridSection":
+            return <BrandGridBlock key={key} data={section} />;
 
           default:
             // Handle unknown section types gracefully

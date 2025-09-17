@@ -246,6 +246,14 @@ export const LANDING_PAGE_QUERY = defineQuery(
         "overlayImage": overlayImage.asset->url,
         ctaButton
       },
+      _type == "centeredHeroSection" => {
+        heading,
+        headingTag,
+        subheading,
+        smallText,
+        buttonText,
+        buttonUrl
+      },
       _type == "textWithImageSection" => {
         heading,
         headingTag,
@@ -354,6 +362,20 @@ export const LANDING_PAGE_QUERY = defineQuery(
         "image": image.asset->url,
         imagePosition,
         ctaButton
+      },
+      _type == "brandGridSection" => {
+        heading,
+        headingTag,
+        subheading,
+        brands[]{
+          title,
+          description,
+          tags,
+          "image": image.asset->url,
+          imageAlt,
+          link
+        },
+        gridColumns
       }
     }
   }`
