@@ -5,13 +5,14 @@ import React, { type FormEvent, Fragment, useState } from "react";
 import { motion } from "framer-motion";
 import type { LeadStageProps } from "../NewLead";
 import usePlacesAutocomplete from "use-places-autocomplete";
-import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { createBrowserClient } from "@supabase/ssr";
 import { sendGTMEvent } from "@next/third-parties/google";
 import { Textarea } from "@/components/ui/textarea";
-import type { Database } from "@/schema";
+import {
+  submitQuoteAction,
+  type QuoteActionResult,
+} from "@/actions/quote-action";
 
 const libraries = ["places"];
 
@@ -44,12 +45,8 @@ const PersonalDetails = ({
 
   console.log({ ready, value, status, data });
 
-  const supabase = createBrowserClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL || "",
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ""
-  );
-
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const {
     children,
@@ -113,156 +110,78 @@ const PersonalDetails = ({
     sendGTMEvent({ event: "generate_lead" });
 
     setLoading(true);
+    setError(null);
 
     try {
-      const quote = await supabase
-        .from("quotes")
-        .insert([
-          {
-            children: children || 0,
-            adults: adults || 0,
-            teenagers: teenagers || 0,
-            houseType: houseType,
-            ownership: ownership ?? undefined,
-            gasSupply: gasSupply,
-            gasStove: gasStove ?? undefined,
-            gasWaterHeating: gasWaterHeating ?? undefined,
-            gasHeating: gasHeating ?? undefined,
-            otherGasUse: otherGasUse ?? undefined,
-            locateOutside: locateOutside ?? undefined,
-            gasGeyser: gasGeyser ?? undefined,
-            electricGeyser: electricGeyser ?? undefined,
-            solarGeyser: solarGeyser ?? undefined,
-            otherGeyser: otherGeyser ?? undefined,
-            standardShower: standardShower ?? undefined,
-            rainShower: rainShower ?? undefined,
-            bathtub: bathtub ?? undefined,
-            kitchenSink: kitchenSink ?? undefined,
-            bathroomSink: bathroomSink ?? undefined,
-            dishwasher: dishwasher ?? undefined,
-            washingmachine: washingmachine ?? undefined,
-            flowRate: flowRate ?? undefined,
-            offGrid: offGrid ?? undefined,
-            firstName: firstName ?? undefined,
-            lastName: lastName ?? undefined,
-            email: email ?? undefined,
-            streetAddress: streetAddress ?? undefined,
-            city: city ?? undefined,
-            suburb: suburb ?? undefined,
-            telephoneNumber: telephoneNumber ?? undefined,
-            postalCode: postalCode ?? undefined,
-            completeSolution: completeSolution ?? undefined,
-            product_id: product_id ?? undefined,
-            installation: installation,
-            contactDay: contactDay,
-            contactTime: contactTime,
-            geyserPrice: geyserPrice,
-            monthlySavings: monthlySavings,
-            yearlySavings: yearlySavings,
-            geyserSize: geyserSize ? geyserSize : 26,
-            installationCost: installationCost,
-            plumbingCost: plumbingCost ? plumbingCost : 5000,
-            comments: comments,
-            financing: financing,
-            source: source ?? undefined,
-            borehole_water: borehole_water,
-            bathrooms: bathrooms,
-            cottage_bathrooms: cottage_bathrooms,
-            cottageIncluded: cottageIncluded,
-            electric_geysers: electric_geysers,
-          },
-        ])
-        .select("*")
-        .single();
+      // Prepare the quote data for the server action
+      const quoteData = {
+        children: children || 0,
+        adults: adults || 0,
+        teenagers: teenagers || 0,
+        houseType,
+        ownership,
+        gasSupply,
+        gasStove,
+        gasWaterHeating,
+        gasHeating,
+        otherGasUse,
+        locateOutside,
+        gasGeyser,
+        electricGeyser,
+        solarGeyser,
+        otherGeyser,
+        standardShower,
+        rainShower,
+        bathtub,
+        kitchenSink,
+        bathroomSink,
+        dishwasher,
+        washingmachine,
+        flowRate,
+        offGrid,
+        firstName,
+        lastName,
+        email,
+        streetAddress,
+        suburb,
+        city,
+        telephoneNumber,
+        postalCode,
+        completeSolution,
+        product_id: product_id || null,
+        installation,
+        contactDay,
+        contactTime,
+        geyserPrice,
+        monthlySavings,
+        yearlySavings,
+        geyserSize: geyserSize || 26,
+        installationCost,
+        plumbingCost: plumbingCost || 5000,
+        comments,
+        financing,
+        source,
+        borehole_water,
+        bathrooms,
+        cottage_bathrooms,
+        cottageIncluded,
+        electric_geysers,
+      };
 
-      if (quote) {
-        await fetch("/api/mail/leads", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            houseType: houseType,
-            ownership: ownership,
-            gasSupply: gasSupply,
-            gasStove: gasStove,
-            gasWaterHeating: gasWaterHeating,
-            gasHeating: gasHeating,
-            otherGasUse: otherGasUse,
-            locateOutside: locateOutside,
-            gasGeyser: gasGeyser,
-            electricGeyser: electricGeyser,
-            solarGeyser: solarGeyser,
-            otherGeyser: otherGeyser,
-            standardShower: standardShower,
-            rainShower: rainShower,
-            bathtub: bathtub,
-            kitchenSink: kitchenSink,
-            bathroomSink: bathroomSink,
-            dishwasher: dishwasher,
-            washingmachine: washingmachine,
-            flowRate: flowRate,
-            offGrid: offGrid,
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            streetAddress: streetAddress,
-            suburb: suburb,
-            city: city,
-            telephoneNumber: telephoneNumber,
-            postalCode: postalCode,
-            completeSolution: completeSolution,
-            product_id: product_id || null,
-            installation: installation,
-            contactDay: contactDay,
-            contactTime: contactTime,
-            geyserPrice: geyserPrice,
-            monthlySavings: monthlySavings,
-            yearlySavings: yearlySavings,
-            geyserSize: geyserSize,
-            installationCost: installationCost,
-            plumbingCost: plumbingCost,
-            comments: comments,
-            financing: financing,
-            borehole_water: borehole_water,
-            bathrooms: bathrooms,
-            cottage_bathrooms: cottage_bathrooms,
-            cottageIncluded: cottageIncluded,
-            electric_geysers: electric_geysers,
-          }),
-        });
+      const result = await submitQuoteAction(quoteData);
+
+      if (result.success) {
+        setLoading(false);
+        nextPage();
+      } else {
+        setError(result.message);
+        setLoading(false);
       }
-
-      const url = new URL("https://www.hotwater24.com/api/simvoly");
-
-      // const crmRes = await fetch(url, {
-      // 				method: "POST",
-
-      // 				headers: {
-      // 					"Content-Type": "application/json",
-      // 					"Access-Control-Allow-Origin": "*",
-      // 					"Access-Control-Allow-Headers": "*",
-      // 					"Access-Control-Allow-Methods": "GET,POST,PUT,DELETE",
-      // 					"Access-Control-Max-Age": "3600",
-      // 				},
-      // 				body: JSON.stringify({
-      // 					first_name: firstName,
-      // 					last_name: lastName,
-      // 					email: email,
-      // 					address: "",
-      // 					city: city,
-      // 					phone: telephoneNumber,
-      // 				}),
-      // 			});
-
-      // const result = await crmRes.json();
-
-      setLoading(false);
-      nextPage();
     } catch (error) {
-      console.log(error);
+      console.error("Quote submission error:", error);
+      setError("An unexpected error occurred. Please try again.");
       setLoading(false);
-      nextPage();
     }
-    setLoading(false);
   };
 
   return (
@@ -287,6 +206,12 @@ const PersonalDetails = ({
         Please fill in this form to complete the process so we can get in touch
         with you with the recommended solution for your home.
       </p>
+
+      {error && (
+        <div className="max-w-5xl px-6 py-4 mx-auto mb-4 bg-red-100 border border-red-400 rounded-md">
+          <p className="text-red-700">{error}</p>
+        </div>
+      )}
 
       <div className="max-w-5xl px-6 py-8 mx-auto mb-6 bg-gray-200 rounded shadow-lg lg:px-16 h-1/2">
         <div className="flex flex-col my-4 md:flex-row md:justify-between md:space-x-24">

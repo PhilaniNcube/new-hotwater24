@@ -1,18 +1,16 @@
-"use client"
+"use client";
 /* eslint-disable @next/next/no-img-element */
 import React, { type FormEvent, Fragment, useState } from "react";
 import { useRouter } from "next/navigation";
 import LeadCard from "@/components/Quote/LeadCard";
-import { createBrowserClient } from "@supabase/ssr";
 import { createClient } from "@/utils/supabase/client";
 
 type LeadProps = {
-  lead: Database['public']['Tables']['quotes']['Row'];
-}
+  lead: Database["public"]["Tables"]["quotes"]["Row"];
+};
 
-function QuoteData({ lead }:LeadProps) {
-
-   const supabase = createClient()
+function QuoteData({ lead }: LeadProps) {
+  const supabase = createClient();
   const router = useRouter();
 
   const {
@@ -53,7 +51,7 @@ function QuoteData({ lead }:LeadProps) {
     installation,
     contactTime,
     contactDay,
-    borehole_water
+    borehole_water,
   } = lead;
 
   const [receipient, setReceipient] = useState("");
@@ -64,53 +62,53 @@ function QuoteData({ lead }:LeadProps) {
   const [confirm, setConfirm] = useState(false);
   const [show, setShow] = useState(false);
 
-  const handleSubmit = async (e:FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const mail = await fetch("/api/mail/installers", {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({
-						children: children,
-						teenagers: teenagers,
-						adults: adults,
-						houseType: houseType,
-						ownership: ownership,
-						gasSupply: gasSupply,
-						gasStove: gasStove,
-						gasWaterHeating: gasWaterHeating,
-						gasHeating: gasHeating,
-						otherGasUse: otherGasUse,
-						locateOutside: locateOutside,
-						gasGeyser: gasGeyser,
-						electricGeyser: electricGeyser,
-						solarGeyser: solarGeyser,
-						otherGeyser: otherGeyser,
-						standardShower: standardShower,
-						rainShower: rainShower,
-						bathtub: bathtub,
-						kitchenSink: kitchenSink,
-						bathroomSink: bathroomSink,
-						dishwasher: dishwasher,
-						washingmachine: washingmachine,
-						flowRate: flowRate,
-						offGrid: offGrid,
-						firstName: firstName,
-						lastName: lastName,
-						email: email,
-						streetAddress: streetAddress,
-						suburb: suburb,
-						city: city,
-						telephoneNumber: telephoneNumber,
-						postalCode: postalCode,
-						completeSolution: completeSolution,
-						installation: installation,
-						messages: messages,
-						receipient: receipient,
-						secondary: secondary,
-            borehole_water: borehole_water,
-					}),
-				});
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        children: children,
+        teenagers: teenagers,
+        adults: adults,
+        houseType: houseType,
+        ownership: ownership,
+        gasSupply: gasSupply,
+        gasStove: gasStove,
+        gasWaterHeating: gasWaterHeating,
+        gasHeating: gasHeating,
+        otherGasUse: otherGasUse,
+        locateOutside: locateOutside,
+        gasGeyser: gasGeyser,
+        electricGeyser: electricGeyser,
+        solarGeyser: solarGeyser,
+        otherGeyser: otherGeyser,
+        standardShower: standardShower,
+        rainShower: rainShower,
+        bathtub: bathtub,
+        kitchenSink: kitchenSink,
+        bathroomSink: bathroomSink,
+        dishwasher: dishwasher,
+        washingmachine: washingmachine,
+        flowRate: flowRate,
+        offGrid: offGrid,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        streetAddress: streetAddress,
+        suburb: suburb,
+        city: city,
+        telephoneNumber: telephoneNumber,
+        postalCode: postalCode,
+        completeSolution: completeSolution,
+        installation: installation,
+        messages: messages,
+        receipient: receipient,
+        secondary: secondary,
+        borehole_water: borehole_water,
+      }),
+    });
 
     console.log(mail);
 
@@ -119,7 +117,7 @@ function QuoteData({ lead }:LeadProps) {
     }
   };
 
-  const deleteLead = async (id:number) => {
+  const deleteLead = async (id: number) => {
     console.log("delete");
     const { data, error } = await supabase
       .from("quotes")
@@ -133,32 +131,36 @@ function QuoteData({ lead }:LeadProps) {
   };
 
   const createLink = async () => {
-    const { data, error } = await supabase
-      .from("invoice")
-      .insert([
-        {
-          first_name: lead.firstName,
-          last_name: lead.lastName,
-          email: lead.email,
-        },
-      ])
-      .select("*")
-      .single();
+    try {
+      const { data, error } = await supabase
+        .from("invoice")
+        .insert([
+          {
+            first_name: lead.firstName,
+            last_name: lead.lastName,
+            email: lead.email,
+          },
+        ] as any)
+        .select("*")
+        .single();
 
-    if (error) {
-      throw new Error(error.details);
+      if (error) {
+        throw new Error(error.message);
+      }
+
+      // router.push(`/admin/invoices/${data.id}`);
+    } catch (error) {
+      console.error("Error creating invoice:", error);
+      alert("There was an error creating the invoice. Please try again.");
     }
-
-    router.push(`/admin/invoices/${data.id}`);
   };
 
   return (
     <Fragment>
-
       <div className="relative w-full py-10 bg-gray-200">
         <div className="flex flex-col max-w-6xl gap-8 px-6 mx-auto md:flex-row lg:px-0">
           <button
-          type="button"
+            type="button"
             onClick={() => {
               setShow(true);
             }}
@@ -256,7 +258,7 @@ function QuoteData({ lead }:LeadProps) {
               />
             </div>
             <button
-            type="submit"
+              type="submit"
               disabled={loading}
               className="py-2 mt-4 text-white rounded-md bg-sky-700"
             >
@@ -276,8 +278,8 @@ type AlertProps = {
   confirm: boolean;
   setConfirm: (confirm: boolean) => void;
   deleteLead: (id: number) => Promise<void>;
-  lead: Database['public']['Tables']['quotes']['Row'];
-}
+  lead: Database["public"]["Tables"]["quotes"]["Row"];
+};
 
 const Alert = ({
   show,

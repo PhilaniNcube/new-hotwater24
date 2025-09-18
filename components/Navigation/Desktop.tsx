@@ -29,7 +29,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "../ui/input";
-import { semanticSearch } from "@/lib/queries/embedding";
+import { semanticSearch } from "@/lib/queries/embeddings";
 import { ScrollArea } from "../ui/scroll-area";
 
 const Desktop = () => {
@@ -273,8 +273,8 @@ const SearchDialog = () => {
                         result.type === "article"
                           ? `/news/${result.slug}`
                           : result.type === "product"
-                            ? `/packages/${result.slug}`
-                            : `/${result.slug}`
+                          ? `/packages/${result.slug}`
+                          : `/${result.slug}`
                       }
                       className="flex flex-col "
                     >
