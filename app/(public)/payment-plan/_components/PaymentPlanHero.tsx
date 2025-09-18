@@ -54,7 +54,7 @@ export default function PaymentPlanHero() {
                       CoC.
                     </li>
                   </ol>
-                  <p className="flex items-start justify-start px-6 space-x-2 font-medium text-left list-decimal gap-y-2 text-md text-slate-700">
+                  <p className="flex items-start justify-start px-2 mt-3 space-x-2 font-medium text-left list-decimal gap-y-2 text-md text-slate-700">
                     <strong>Note:</strong> This plan excludes the cost for gas
                     cylinders, gas supply or gas cage.
                   </p>
