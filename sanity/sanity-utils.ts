@@ -220,6 +220,39 @@ export const LANDING_PAGES_QUERY = defineQuery(
         "image": image.asset->url,
         imagePosition,
         ctaButton
+      },
+      _type == "brandGridSection" => {
+        heading,
+        headingTag,
+        subheading,
+        brands[]{
+          title,
+          description,
+          tags,
+          "image": image.asset->url,
+          imageAlt,
+          link
+        },
+        gridColumns
+      },
+      _type == "comparisonTableSection" => {
+        heading,
+        headingTag,
+        subheading,
+        columns[]{
+          key,
+          title,
+          width
+        },
+        tableData[]{
+          brand,
+          knownFor,
+          strengths,
+          priceRange,
+          bestFor,
+          "image": image.asset->url,
+          link
+        }
       }
     }
   }`
@@ -376,6 +409,25 @@ export const LANDING_PAGE_QUERY = defineQuery(
           link
         },
         gridColumns
+      },
+      _type == "comparisonTableSection" => {
+        heading,
+        headingTag,
+        subheading,
+        columns[]{
+          key,
+          title,
+          width
+        },
+        tableData[]{
+          brand,
+          knownFor,
+          strengths,
+          priceRange,
+          bestFor,
+          "image": image.asset->url,
+          link
+        }
       }
     }
   }`

@@ -14,6 +14,7 @@ import FullWidthImageBlock from "./full-width-image-block";
 import FullWidthHeroBlock from "./full-width-hero-block";
 import TrustBlock from "./trust-block";
 import BrandGridBlock from "./brand-grid-block";
+import ComparisonTableBlock from "./comparison-table-block";
 import { LANDING_PAGE_QUERYResult } from "@/sanity/types";
 
 interface PagebuilderRendererProps {
@@ -75,6 +76,9 @@ const PagebuilderRenderer: React.FC<PagebuilderRendererProps> = ({
 
           case "brandGridSection":
             return <BrandGridBlock key={key} data={section} />;
+
+          case "comparisonTableSection":
+            return <ComparisonTableBlock key={key} data={section} />;
 
           default:
             // Handle unknown section types gracefully

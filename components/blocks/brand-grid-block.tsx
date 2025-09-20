@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import SectionHeading from "@/components/ui/section-heading";
 import { ExternalLink } from "lucide-react";
 
 // Type for brand item data coming from GROQ queries
@@ -32,11 +33,11 @@ const BrandCard: React.FC<{ brand: BrandItemData }> = ({ brand }) => {
   const { title, description, tags, image, imageAlt, link } = brand;
 
   const cardContent = (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6 h-full flex flex-col">
+    <div className="flex flex-col h-full p-6 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
       {/* Brand Image */}
       {image && (
-        <div className="mb-4 flex justify-center">
-          <div className="relative w-24 h-24 flex-shrink-0">
+        <div className="flex justify-center mb-4">
+          <div className="relative flex-shrink-0 w-24 h-24">
             <Image
               src={image}
               alt={imageAlt || title || "Brand logo"}
@@ -49,25 +50,25 @@ const BrandCard: React.FC<{ brand: BrandItemData }> = ({ brand }) => {
 
       {/* Brand Title */}
       {title && (
-        <h3 className="text-xl font-semibold text-slate-900 mb-2 text-center">
+        <h3 className="mb-2 text-lg font-semibold text-center text-slate-900">
           {title}
         </h3>
       )}
 
       {/* Brand Description */}
       {description && (
-        <p className="text-slate-600 mb-4 flex-grow text-center leading-relaxed">
+        <p className="flex-grow mb-4 text-sm leading-relaxed text-center text-slate-600">
           {description}
         </p>
       )}
 
       {/* Tags */}
       {tags && tags.length > 0 && (
-        <div className="flex flex-wrap gap-2 justify-center mt-auto">
+        <div className="flex flex-wrap justify-center gap-2 mt-auto">
           {tags.map((tag, index) => (
             <span
               key={index}
-              className="px-2 py-1 bg-orange-100 text-orange-800 text-xs font-medium rounded-full"
+              className="px-2 py-1 text-xs font-medium text-orange-800 bg-orange-100 rounded-full"
             >
               {tag}
             </span>
@@ -91,7 +92,7 @@ const BrandCard: React.FC<{ brand: BrandItemData }> = ({ brand }) => {
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        className="block transform hover:scale-105 transition-transform duration-200"
+        className="block transition-transform duration-200 transform hover:scale-105"
       >
         {cardContent}
       </a>
@@ -110,9 +111,6 @@ const BrandGridBlock: React.FC<BrandGridBlockProps> = ({ data }) => {
     gridColumns = "3",
   } = data;
 
-  // Determine the heading component based on headingTag
-  const HeadingComponent = headingTag || "h2";
-
   // Generate grid classes based on column count
   const getGridClasses = (columns: string) => {
     switch (columns) {
@@ -120,6 +118,8 @@ const BrandGridBlock: React.FC<BrandGridBlockProps> = ({ data }) => {
         return "grid-cols-1 md:grid-cols-2";
       case "4":
         return "grid-cols-1 md:grid-cols-2 lg:grid-cols-4";
+      case "5":
+        return "grid-cols-1 md:grid-cols-2 lg:grid-cols-5";
       default: // "3"
         return "grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
     }
@@ -131,16 +131,18 @@ const BrandGridBlock: React.FC<BrandGridBlockProps> = ({ data }) => {
 
   return (
     <section className="py-16 lg:py-20 bg-slate-50">
-      <div className="container mx-auto px-4">
+      <div className="container px-4 mx-auto max-w-7xl">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="mb-12 text-center">
           {heading && (
-            <HeadingComponent className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              {heading}
-            </HeadingComponent>
+            <SectionHeading
+              heading={heading}
+              headingTag={headingTag || "h2"}
+              className="mb-4 text-3xl font-bold md:text-4xl text-slate-900"
+            />
           )}
           {subheading && (
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            <p className="max-w-3xl mx-auto text-lg text-slate-600">
               {subheading}
             </p>
           )}

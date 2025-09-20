@@ -11,38 +11,38 @@ export default function RichTextBlock({ data }: RichTextBlockProps) {
   if (!content) return null;
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32">
+    <section className="w-full py-12">
       <div className="container px-4 md:px-6">
-        <div className="mx-auto max-w-4xl">
+        <div className="max-w-4xl mx-auto">
           {heading && (
-            <div className="text-center mb-12">
+            <div className="mb-12 text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-slate-800">
                 {heading}
               </h2>
             </div>
           )}
-          <div className="prose prose-slate prose-lg max-w-none">
+          <div className="prose prose-lg prose-slate max-w-none">
             <PortableText
               value={content}
               components={{
                 block: {
                   h1: ({ children }) => (
-                    <h1 className="text-4xl font-bold mb-6 text-slate-800">
+                    <h1 className="mb-6 text-4xl font-bold text-slate-800">
                       {children}
                     </h1>
                   ),
                   h2: ({ children }) => (
-                    <h2 className="text-3xl font-bold mb-4 text-slate-800">
+                    <h2 className="mb-4 text-3xl font-bold text-slate-800">
                       {children}
                     </h2>
                   ),
                   h3: ({ children }) => (
-                    <h3 className="text-2xl font-bold mb-3 text-slate-800">
+                    <h3 className="mb-3 text-2xl font-bold text-slate-800">
                       {children}
                     </h3>
                   ),
                   h4: ({ children }) => (
-                    <h4 className="text-xl font-bold mb-2 text-slate-800">
+                    <h4 className="mb-2 text-xl font-bold text-slate-800">
                       {children}
                     </h4>
                   ),
@@ -50,19 +50,19 @@ export default function RichTextBlock({ data }: RichTextBlockProps) {
                     <p className="mb-4 text-gray-700">{children}</p>
                   ),
                   blockquote: ({ children }) => (
-                    <blockquote className="border-l-4 border-red-600 pl-4 italic text-gray-600 my-6">
+                    <blockquote className="pl-4 my-6 italic text-gray-600 border-l-4 border-red-600">
                       {children}
                     </blockquote>
                   ),
                 },
                 list: {
                   bullet: ({ children }) => (
-                    <ul className="list-disc pl-6 mb-4 space-y-2">
+                    <ul className="pl-6 mb-4 space-y-2 list-disc">
                       {children}
                     </ul>
                   ),
                   number: ({ children }) => (
-                    <ol className="list-decimal pl-6 mb-4 space-y-2">
+                    <ol className="pl-6 mb-4 space-y-2 list-decimal">
                       {children}
                     </ol>
                   ),
@@ -79,7 +79,7 @@ export default function RichTextBlock({ data }: RichTextBlockProps) {
                   link: ({ children, value }) => (
                     <a
                       href={value.href}
-                      className="text-red-600 hover:text-red-800 underline"
+                      className="text-red-600 underline hover:text-red-800"
                       target={
                         value.href.startsWith("http") ? "_blank" : "_self"
                       }

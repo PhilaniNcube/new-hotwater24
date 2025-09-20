@@ -27,6 +27,7 @@ interface LandingPageDocument extends SanityDocument {
     | TrustSectionType
     | FullWidthHeroSectionType
     | BrandGridSectionType
+    | ComparisonTableSectionType
   >;
 }
 
@@ -211,6 +212,33 @@ interface BrandItemType {
   link?: string;
 }
 
+interface ComparisonTableSectionType {
+  _type: "comparisonTableSection";
+  heading?: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
+  subheading?: string;
+  tableData?: ComparisonTableRowType[];
+  columns?: ComparisonTableColumnType[];
+}
+
+interface ComparisonTableRowType {
+  _type: "comparisonTableRow";
+  brand: string;
+  knownFor: string;
+  strengths: string;
+  priceRange: string;
+  bestFor: string;
+  image?: any; // Sanity image type
+  link?: string;
+}
+
+interface ComparisonTableColumnType {
+  _type: "comparisonTableColumn";
+  key: string;
+  title: string;
+  width?: "sm" | "md" | "lg" | "auto";
+}
+
 interface CtaType {
   _type: "cta";
   buttonText: string;
@@ -375,6 +403,7 @@ export default {
         { type: "trustSection" }, // For displaying trust signals, logos, etc.
         { type: "fullWidthHeroSection" }, // For full-width hero sections with background and featured image
         { type: "brandGridSection" }, // For displaying a grid of gas geyser brands
+        { type: "comparisonTableSection" }, // For displaying comparison tables (e.g., brand comparisons)
         // Add other section types as needed
       ],
     },
@@ -1786,6 +1815,198 @@ export const brandGridSection = {
       return {
         title: `Brand Grid: ${title || "Gas Geyser Brands"}`,
         subtitle: `${subtitle || 0} brand(s)`,
+      };
+    },
+  },
+};
+
+export const comparisonTableSection = {
+  name: "comparisonTableSection",
+  title: "Comparison Table Section",
+  type: "object",
+  fields: [
+    {
+      name: "heading",
+      title: "Section Heading",
+      type: "string",
+      description: "Main heading for the comparison table section",
+    },
+    {
+      name: "headingTag",
+      title: "Heading Tag",
+      description: "Choose the HTML heading tag for the section heading",
+      type: "string",
+      options: {
+        list: [
+          { title: "H1", value: "h1" },
+          { title: "H2", value: "h2" },
+          { title: "H3", value: "h3" },
+          { title: "H4", value: "h4" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "h2",
+      hidden: ({ parent }: { parent: any }) => !parent?.heading,
+    },
+    {
+      name: "subheading",
+      title: "Subheading (Optional)",
+      type: "text",
+      description: "Optional subheading for additional context",
+    },
+    {
+      name: "columns",
+      title: "Table Columns",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "comparisonTableColumn",
+          title: "Column",
+          fields: [
+            {
+              name: "key",
+              title: "Column Key",
+              type: "string",
+              description:
+                "Internal key for this column (e.g., 'brand', 'knownFor')",
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: "title",
+              title: "Column Title",
+              type: "string",
+              description: "Display title for this column",
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: "width",
+              title: "Column Width",
+              type: "string",
+              options: {
+                list: [
+                  { title: "Small", value: "sm" },
+                  { title: "Medium", value: "md" },
+                  { title: "Large", value: "lg" },
+                  { title: "Auto", value: "auto" },
+                ],
+                layout: "radio",
+              },
+              initialValue: "auto",
+            },
+          ],
+          preview: {
+            select: {
+              title: "title",
+              subtitle: "key",
+            },
+          },
+        },
+      ],
+      validation: (Rule: Rule) =>
+        Rule.min(1).error("At least one column is required"),
+    },
+    {
+      name: "tableData",
+      title: "Table Rows",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "comparisonTableRow",
+          title: "Table Row",
+          fields: [
+            {
+              name: "brand",
+              title: "Brand/Product Name",
+              type: "string",
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: "knownFor",
+              title: "Known For",
+              type: "text",
+              description: "What this brand/product is known for",
+            },
+            {
+              name: "strengths",
+              title: "Strengths",
+              type: "text",
+              description: "Key strengths and features",
+            },
+            {
+              name: "priceRange",
+              title: "Price Range",
+              type: "string",
+              options: {
+                list: [
+                  { title: "Lower", value: "Lower" },
+                  { title: "Lower to Mid", value: "Lower to Mid" },
+                  { title: "Mid", value: "Mid" },
+                  { title: "Higher", value: "Higher" },
+                  { title: "Premium", value: "Premium" },
+                ],
+                layout: "dropdown",
+              },
+            },
+            {
+              name: "bestFor",
+              title: "Best For",
+              type: "text",
+              description: "What situations or users this is best suited for",
+            },
+            {
+              name: "image",
+              title: "Product/Brand Image (Optional)",
+              type: "image",
+              options: {
+                hotspot: true,
+              },
+            },
+            {
+              name: "link",
+              title: "Product Link (Optional)",
+              type: "url",
+              description: "Optional link to product page or more information",
+            },
+          ],
+          preview: {
+            select: {
+              title: "brand",
+              subtitle: "priceRange",
+              media: "image",
+            },
+            prepare({
+              title,
+              subtitle,
+              media,
+            }: {
+              title?: string;
+              subtitle?: string;
+              media?: any;
+            }) {
+              return {
+                title: title || "Untitled Product",
+                subtitle: subtitle ? `Price: ${subtitle}` : "No price range",
+                media: media,
+              };
+            },
+          },
+        },
+      ],
+      validation: (Rule: Rule) =>
+        Rule.min(1).error("At least one table row is required"),
+    },
+  ],
+  preview: {
+    select: {
+      title: "heading",
+      subtitle: "tableData.length",
+    },
+    prepare({ title, subtitle }: { title?: string; subtitle?: number }) {
+      return {
+        title: `Comparison Table: ${title || "Untitled"}`,
+        subtitle: `${subtitle || 0} row(s)`,
       };
     },
   },
