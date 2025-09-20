@@ -34,12 +34,12 @@ const page = async () => {
 
   if (!news || news.length === 0) {
     return (
-      <main className="container py-10 mx-auto max-w-7xl">
-        <h1 className="text-3xl font-bold text-slate-800 sm:text-4xl md:text-5xl">
+      <main className="container px-4 py-8 mx-auto sm:px-6 lg:px-8 sm:py-12 lg:py-16 max-w-7xl">
+        <h1 className="text-3xl font-bold text-slate-800 sm:text-4xl md:text-5xl lg:text-6xl">
           No News Articles Found
         </h1>
-        <Separator className="my-2" />
-        <p className="text-slate-700">
+        <Separator className="my-4 sm:my-6" />
+        <p className="text-base sm:text-lg text-slate-700">
           There are currently no news articles available.
         </p>
       </main>
@@ -47,42 +47,56 @@ const page = async () => {
   }
 
   return (
-    <main className="container py-10 mx-auto max-w-7xl">
+    <main className="container px-4 py-8 mx-auto sm:px-6 lg:px-8 sm:py-12 lg:py-16 max-w-7xl">
       <h1
         className={cn(
-          "text-3xl text-slate-800 font-bold  sm:text-4xl md:text-5xl flex flex-col gap-2",
+          "text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-slate-800 font-bold flex flex-col gap-2 mb-4 sm:mb-6",
           antonio.className
         )}
       >
         News Articles
       </h1>
-      <Separator className="my-2" />{" "}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+      <Separator className="my-4 sm:my-6" />
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-6 lg:gap-8">
         {news.map((article: Article, index: number) => (
           <Link
             href={`/news/${article.slug}`}
-            className="first:col-span-2 @container col-span-1"
+            className={cn(
+              "col-span-1 @container group",
+              index === 0 && news.length > 1
+                ? "sm:col-span-2 lg:col-span-2"
+                : ""
+            )}
             key={article._id}
           >
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3 sm:gap-4 h-full transition-transform duration-200 group-hover:scale-[1.02]">
               <Image
                 src={article.image!}
                 width={1280}
                 height={768}
                 alt={article.title!}
                 className={cn(
-                  "w-full object-center object-cover",
-                  index === 0 ? "" : "aspect-video"
+                  "w-full object-center object-cover rounded-lg shadow-sm",
+                  index === 0 && news.length > 1
+                    ? "aspect-[16/10] sm:aspect-[21/9] lg:aspect-[2/1]"
+                    : "aspect-video"
                 )}
               />
-              <div className="flex flex-col flex-1 w-full gap-2">
-                <h2 className="text-lg font-medium text-slate-700 line-clamp-1">
+              <div className="flex flex-col flex-1 w-full gap-2 sm:gap-3">
+                <h2
+                  className={cn(
+                    "font-medium text-slate-700 line-clamp-2",
+                    index === 0 && news.length > 1
+                      ? "text-xl sm:text-2xl lg:text-3xl"
+                      : "text-lg sm:text-xl"
+                  )}
+                >
                   {article.title}
                 </h2>
-                <small className="text-slate-700">
+                <small className="text-sm sm:text-base text-slate-600">
                   {format(new Date(article._createdAt), "PPPP")}
                 </small>
-                <Button className="text-white rounded-none bg-slate-800 hover:bg-slate-700">
+                <Button className="mt-auto text-sm text-white transition-colors duration-200 rounded-none bg-slate-800 hover:bg-slate-700 sm:text-base">
                   Read Article
                 </Button>
               </div>

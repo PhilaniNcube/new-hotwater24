@@ -10,8 +10,8 @@ import Link from "next/link";
 
 export default function NotSure() {
   return (
-    <section className="w-full py-12 px-8 max-w-7xl mx-auto lg:px-0">
-      <div className="container flex p-6 md:p-8 shadow-sm justify-center lg:p-12 rounded-full bg-red-600 items-center gap-4 ">
+    <section className="w-full px-8 py-12 mx-auto max-w-7xl lg:px-0">
+      <div className="container flex flex-col items-center justify-center gap-4 p-6 bg-red-600 rounded-full shadow-sm md:flex-row md:p-8 lg:p-12 ">
         <div className="space-y-3 text-center">
           <h2
             className={cn(

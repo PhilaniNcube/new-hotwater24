@@ -1,10 +1,10 @@
 import Script from "next/script";
 import Footer from "./Footer";
 import "../globals.css";
-import Desktop from "@/components/Navigation/Desktop";
+import DesktopWrapper from "@/components/Navigation/DesktopWrapper";
 import { lato } from "../../fonts";
 import GasGenius from "@/components/Homepage/GasGenius";
-import Mobile from "@/components/Navigation/Mobile";
+import MobileWrapper from "@/components/Navigation/MobileWrapper";
 
 import { GoogleTagManager } from "@next/third-parties/google";
 
@@ -27,9 +27,9 @@ export default async function Public({
       <body className={lato.className}>
         <GasGenius />
 
-        <Desktop />
+        <DesktopWrapper />
 
-        <Mobile />
+        <MobileWrapper />
         {children}
         <Footer />
         {/* @ts-ignore */}

@@ -1,6 +1,16 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { AwardIcon, CarIcon, Clock2Icon, Droplet, DropletIcon, HelpCircle, LucideDroplets, PenLine, Shovel } from "lucide-react";
+import {
+  AwardIcon,
+  CarIcon,
+  Clock2Icon,
+  Droplet,
+  DropletIcon,
+  HelpCircle,
+  LucideDroplets,
+  PenLine,
+  Shovel,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { antonio } from "@/fonts";
 
@@ -10,7 +20,7 @@ import { antonio } from "@/fonts";
  */
 export default function InstallationTimeline() {
   return (
-    <div className="container max-w-7xl mx-auto relative py-4 overflow-auto isolate">
+    <div className="container relative px-4 py-4 mx-auto overflow-auto max-w-7xl lg:px-0 isolate">
       <h2
         className={cn(
           "text-3xl lg:text-4xl font-bold text-center text-slate-800 py-6",
@@ -122,9 +132,13 @@ export default function InstallationTimeline() {
         </div>
       </div>
 
-      <Link prefetch={false} href="/quote/start" className="flex justify-center w-full">
+      <Link
+        prefetch={false}
+        href="/quote/start"
+        className="flex justify-center w-full"
+      >
         <Button
-          className="mx-auto mt-3 text-center bg-red-600 rounded-full w-44 text-white"
+          className="mx-auto mt-3 text-center text-white bg-red-600 rounded-full w-44"
           type="button"
         >
           Get Started

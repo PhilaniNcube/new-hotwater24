@@ -24,11 +24,11 @@ export default function PaymentPlanHero() {
             >
               Payment Plan
             </h1>
-            <p className="max-w-[900px] text-lg mt-4 text-slate-800">
+            <p className="max-w-[900px] text-lg mt-4 px-4 lg:px-0 text-slate-800">
               At Hotwater24 we understand that upfront costs can be challenging,
               which is why we offer a convenient payment plan option.
             </p>
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center px-4">
               <Card className="">
                 <CardContent className="px-3 py-4">
                   {/***List the steps in a payment plan */}

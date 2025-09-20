@@ -5,6 +5,8 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import Image from "next/image";
@@ -31,8 +33,13 @@ import {
 import { Input } from "../ui/input";
 import { semanticSearch } from "@/lib/queries/embeddings";
 import { ScrollArea } from "../ui/scroll-area";
+import { TOP_NAVIGATION_QUERYResult } from "@/sanity/types";
 
-const Desktop = () => {
+interface DesktopProps {
+  landingPages: TOP_NAVIGATION_QUERYResult;
+}
+
+const Desktop = ({ landingPages }: DesktopProps) => {
   return (
     <section className="sticky top-0 left-0 right-0 z-50 hidden pb-3 shadow-md lg:block bg-white/80 backdrop-blur-sm">
       <div className="flex items-center justify-between px-10 py-2 mb-2 lg:px-20 md:flex-row bg-brand">
@@ -127,15 +134,31 @@ const Desktop = () => {
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
-              <NavigationMenuItem asChild>
-                <NavigationMenuLink
-                  className={navigationMenuTriggerStyle()}
-                  asChild
-                >
-                  <Link href="/why-us" passHref>
-                    Why Choose Us
-                  </Link>
-                </NavigationMenuLink>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Why Choose Us</NavigationMenuTrigger>
+                <NavigationMenuContent className="bg-white">
+                  <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                    <Link
+                      href="/why-us"
+                      className="flex flex-col justify-start p-3 space-y-1 no-underline transition-colors rounded-md outline-none select-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                    >
+                      <div className="text-sm font-medium leading-none">
+                        Why Choose Us
+                      </div>
+                    </Link>
+                    {landingPages.map((page) => (
+                      <Link
+                        key={page.slug?.current}
+                        href={`/why-us/${page.slug?.current}`}
+                        className="flex flex-col justify-start p-3 space-y-1 no-underline transition-colors rounded-md outline-none select-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                      >
+                        <div className="text-sm font-medium leading-none">
+                          {page.navigationText || page.title}
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem asChild>
                 <NavigationMenuLink
@@ -190,6 +213,7 @@ const Desktop = () => {
     </section>
   );
 };
+
 export default Desktop;
 
 // create a search dialog component that will be used for semantic search

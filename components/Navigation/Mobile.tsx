@@ -11,14 +11,25 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { MenuIcon } from "lucide-react";
+import { MenuIcon, ChevronDown, ChevronRight } from "lucide-react";
+import { TOP_NAVIGATION_QUERYResult } from "@/sanity/types";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
-const Mobile = () => {
+interface MobileProps {
+  landingPages: TOP_NAVIGATION_QUERYResult;
+}
+
+const Mobile = ({ landingPages }: MobileProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isWhyChooseUsOpen, setIsWhyChooseUsOpen] = useState(false);
 
   return (
     <header className="sticky top-0 left-0 right-0 flex bg-white shadow-sm lg:hidden">
-      <div className="container flex items-center justify-between py-3">
+      <div className="container flex items-center justify-between px-4 py-3">
         <Link href="/">
           <div className="flex items-center space-x-2 cursor-pointer">
             <Image
@@ -63,11 +74,50 @@ const Mobile = () => {
                     Payment Plan
                   </Button>
                 </Link>
-                <Link href="/why-us" passHref>
-                  <Button onClick={() => setIsOpen(false)} variant="link">
-                    Why choose us
-                  </Button>
-                </Link>
+                <Collapsible
+                  open={isWhyChooseUsOpen}
+                  onOpenChange={setIsWhyChooseUsOpen}
+                >
+                  <CollapsibleTrigger asChild>
+                    <Button
+                      variant="link"
+                      className="flex items-center justify-between w-full p-0"
+                    >
+                      <span>Why choose us</span>
+                      {isWhyChooseUsOpen ? (
+                        <ChevronDown className="w-4 h-4" />
+                      ) : (
+                        <ChevronRight className="w-4 h-4" />
+                      )}
+                    </Button>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="pl-4 space-y-2">
+                    <Link href="/why-us" passHref>
+                      <Button
+                        onClick={() => setIsOpen(false)}
+                        variant="link"
+                        className="block w-full text-sm text-left"
+                      >
+                        Why Choose Us
+                      </Button>
+                    </Link>
+                    {landingPages.map((page) => (
+                      <Link
+                        key={page.slug?.current}
+                        href={`/why-us/${page.slug?.current}`}
+                        passHref
+                      >
+                        <Button
+                          onClick={() => setIsOpen(false)}
+                          variant="link"
+                          className="block w-full text-sm text-left"
+                        >
+                          {page.navigationText || page.title}
+                        </Button>
+                      </Link>
+                    ))}
+                  </CollapsibleContent>
+                </Collapsible>
                 <Link href="/our-approach" passHref>
                   <Button onClick={() => setIsOpen(false)} variant="link">
                     Our approach

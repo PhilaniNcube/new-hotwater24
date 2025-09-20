@@ -21,7 +21,7 @@ export default async function GeyserPackages() {
 
   return (
     <section
-      className="container py-8 mx-auto max-w-7xl -scroll-p-20"
+      className="container px-4 py-8 mx-auto lg:px-0 max-w-7xl -scroll-p-20"
       id="packages"
     >
       <h2
