@@ -28,6 +28,7 @@ interface LandingPageDocument extends SanityDocument {
     | FullWidthHeroSectionType
     | BrandGridSectionType
     | ComparisonTableSectionType
+    | QuoteButtonSectionType
   >;
 }
 
@@ -239,6 +240,16 @@ interface ComparisonTableColumnType {
   width?: "sm" | "md" | "lg" | "auto";
 }
 
+interface QuoteButtonSectionType {
+  _type: "quoteButtonSection";
+  heading?: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
+  subheading?: string;
+  buttonText: string;
+  backgroundColor?: string;
+  textColor?: string;
+}
+
 interface CtaType {
   _type: "cta";
   buttonText: string;
@@ -404,6 +415,7 @@ export default {
         { type: "fullWidthHeroSection" }, // For full-width hero sections with background and featured image
         { type: "brandGridSection" }, // For displaying a grid of gas geyser brands
         { type: "comparisonTableSection" }, // For displaying comparison tables (e.g., brand comparisons)
+        { type: "quoteButtonSection" }, // For displaying a prominent quote button
         // Add other section types as needed
       ],
     },
@@ -2012,6 +2024,100 @@ export const comparisonTableSection = {
   },
 };
 
+export const quoteButtonSection = {
+  name: "quoteButtonSection",
+  title: "Quote Button Section",
+  description: "A prominent section with a call-to-action button to get a quote",
+  type: "object",
+  fields: [
+    {
+      name: "heading",
+      title: "Heading (Optional)",
+      type: "string",
+      description: "Optional heading above the quote button",
+    },
+    {
+      name: "headingTag",
+      title: "Heading Tag",
+      description: "Choose the HTML heading tag for the section heading",
+      type: "string",
+      options: {
+        list: [
+          { title: "H1", value: "h1" },
+          { title: "H2", value: "h2" },
+          { title: "H3", value: "h3" },
+          { title: "H4", value: "h4" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "h2",
+      hidden: ({ parent }: { parent: any }) => !parent?.heading,
+    },
+    {
+      name: "subheading",
+      title: "Subheading (Optional)",
+      type: "text",
+      description: "Optional subheading or description text",
+      validation: (Rule: Rule) => Rule.max(200),
+    },
+    {
+      name: "buttonText",
+      title: "Button Text",
+      type: "string",
+      description: "Text to display on the quote button",
+      initialValue: "Get Your Quote",
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      name: "backgroundColor",
+      title: "Background Color",
+      type: "string",
+      options: {
+        list: [
+          { title: "White", value: "white" },
+          { title: "Light Gray", value: "gray-50" },
+          { title: "Dark Gray", value: "gray-900" },
+          { title: "Orange", value: "orange-500" },
+          { title: "Blue", value: "blue-600" },
+          { title: "Green", value: "green-600" },
+          { title: "Red", value: "red-600" },
+        ],
+        layout: "dropdown",
+      },
+      initialValue: "orange-500",
+      description: "Background color for the section",
+    },
+    {
+      name: "textColor",
+      title: "Text Color",
+      type: "string",
+      options: {
+        list: [
+          { title: "White", value: "white" },
+          { title: "Black", value: "black" },
+          { title: "Dark Gray", value: "gray-900" },
+          { title: "Light Gray", value: "gray-100" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "white",
+      description: "Text color for the section",
+    },
+  ],
+  preview: {
+    select: {
+      title: "heading",
+      subtitle: "buttonText",
+    },
+    prepare({ title, subtitle }: { title?: string; subtitle?: string }) {
+      return {
+        title: `Quote Button: ${title || "Get Quote Section"}`,
+        subtitle: `Button: ${subtitle || "Get Your Quote"}`,
+      };
+    },
+  },
+};
+
 // To use these in your Sanity project (e.g., in sanity.config.js or schemas/index.js):
 // import landingPage, * as sections from './landingPageSchema'; // Assuming file is landingPageSchema.js
 //
@@ -2030,5 +2136,6 @@ export const comparisonTableSection = {
 //   sections.richTextSection,
 //   sections.imageGallerySection,
 //   sections.cta,
+//   sections.quoteButtonSection,
 //   // ... other schemas
 // ];

@@ -443,6 +443,14 @@ export const LANDING_PAGE_QUERY = defineQuery(
           "image": image.asset->url,
           link
         }
+      },
+      _type == "quoteButtonSection" => {
+        heading,
+        headingTag,
+        subheading,
+        buttonText,
+        backgroundColor,
+        textColor
       }
     }
   }`

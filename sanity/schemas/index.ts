@@ -11,6 +11,7 @@ import landingPageSchema, {
   fullWidthImageSection,
   heroSection,
   imageGallerySection,
+  quoteButtonSection,
   richTextSection,
   stepSection,
   testimonialItem,
@@ -42,6 +43,7 @@ const schemas = [
   trustSection,
   brandGridSection,
   comparisonTableSection,
+  quoteButtonSection,
   cta,
 ];
 
