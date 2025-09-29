@@ -5,8 +5,32 @@ import Image from "next/image";
 import { useState } from "react";
 import { urlFor } from "@/sanity/lib/image";
 
+// Custom interface that matches the GROQ query response
+interface ImageGalleryBlockData {
+  _type: "imageGallerySection";
+  heading?: string;
+  headingTag?: "h1" | "h2" | "h3" | "h4";
+  images?: Array<{
+    asset?: {
+      _id: string;
+      _type: "sanity.imageAsset";
+      url: string;
+      metadata?: {
+        dimensions?: {
+          width: number;
+          height: number;
+          aspectRatio: number;
+        };
+      };
+    };
+    caption?: string;
+    alt?: string;
+  }>;
+  layout?: "grid" | "masonry" | "carousel";
+}
+
 interface ImageGalleryBlockProps {
-  data: ImageGallerySection;
+  data: ImageGalleryBlockData;
 }
 
 export default function ImageGalleryBlock({ data }: ImageGalleryBlockProps) {
@@ -26,6 +50,19 @@ export default function ImageGalleryBlock({ data }: ImageGalleryBlockProps) {
     }
   };
 
+  const getCarouselStyles = (image: NonNullable<ImageGalleryBlockData['images']>[number]) => {
+    if (layout !== "carousel" || !image?.asset?.metadata?.dimensions) {
+      return {};
+    }
+    
+    const { width, height } = image.asset.metadata.dimensions;
+    const aspectRatio = width / height;
+    
+    // Calculate width based on fixed height of 240px (h-60)
+    const containerWidth = Math.round(240 * aspectRatio);
+    return { width: `${containerWidth}px` };
+  };
+
   const handleImageClick = (imageUrl: string) => {
     setSelectedImage(imageUrl);
   };
@@ -35,7 +72,7 @@ export default function ImageGalleryBlock({ data }: ImageGalleryBlockProps) {
   };
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32">
+    <section className="w-full py-12 mx-auto max-w-7xl">
       <div className="container px-4 md:px-6">
         {heading && (
           <div className="mb-12 text-center">
@@ -49,8 +86,9 @@ export default function ImageGalleryBlock({ data }: ImageGalleryBlockProps) {
             <div
               key={index}
               className={`relative overflow-hidden rounded-lg cursor-pointer group ${
-                layout === "carousel" ? "flex-shrink-0 w-80" : ""
+                layout === "carousel" ? "flex-shrink-0" : ""
               } ${layout === "masonry" ? "break-inside-avoid mb-4" : ""}`}
+              style={getCarouselStyles(image)}
               onClick={() =>
                 image.asset && handleImageClick(urlFor(image).url())
               }
@@ -61,10 +99,14 @@ export default function ImageGalleryBlock({ data }: ImageGalleryBlockProps) {
                   alt={
                     image.alt || image.caption || `Gallery image ${index + 1}`
                   }
-                  width={layout === "carousel" ? 320 : 400}
-                  height={layout === "carousel" ? 240 : 300}
-                  className={`object-cover w-full transition-transform duration-300 group-hover:scale-105 ${
-                    layout === "masonry" ? "h-auto" : "h-64"
+                  width={image.asset.metadata?.dimensions?.width || 400}
+                  height={image.asset.metadata?.dimensions?.height || 300}
+                  className={`w-full transition-transform duration-300 group-hover:scale-105 ${
+                    layout === "masonry" 
+                      ? "h-auto object-cover" 
+                      : layout === "carousel"
+                      ? "h-60 object-cover"
+                      : "h-64 object-cover"
                   }`}
                 />
               )}

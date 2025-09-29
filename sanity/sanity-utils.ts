@@ -179,14 +179,22 @@ export const LANDING_PAGES_QUERY = defineQuery(
         heading,
         headingTag,
         content
-      },      _type == "imageGallerySection" => {
+      },
+      _type == "imageGallerySection" => {
         heading,
         headingTag,
         images[]{
-          "url": asset->url,
+          asset->{
+            ...,
+            metadata {
+              dimensions
+            }
+          },
           caption,
           alt
-        },        layout      },
+        },
+        layout
+      },
       _type == "fullWidthImageSection" => {
         "image": image.asset->url,
         alt,
@@ -352,16 +360,23 @@ export const LANDING_PAGE_QUERY = defineQuery(
         heading,
         headingTag,
         content
-      },      _type == "imageGallerySection" => {
+      },
+      _type == "imageGallerySection" => {
         heading,
         headingTag,
         images[]{
-          "url": asset->url,
+          asset->{
+            ...,
+            metadata {
+              dimensions
+            }
+          },
           caption,
           alt
-        },        
+        },
         layout
-      },      _type == "fullWidthImageSection" => {
+      },
+      _type == "fullWidthImageSection" => {
         "image": image.asset->url,
         alt,
         caption,
