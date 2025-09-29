@@ -1219,8 +1219,8 @@ export type FOOTER_NAVIGATION_QUERYResult = Array<{
 }>;
 
 // Query TypeMap
-import "@sanity/client";
-declare module "@sanity/client" {
+import "next-sanity";
+declare module "next-sanity" {
   interface SanityQueries {
     "*[_type == \"article\"] | order(_createdAt desc){\n      _id,\n      _createdAt,\n      title,\n      meta_title,\n      meta_description,\n      \"slug\": slug.current,\n      \"image\": image.asset->url,\n      link,\n      content\n    }": ARTICLES_QUERYResult;
     "*[_type == \"article\" && slug.current == $slug][0]{\n      _id,\n      _createdAt,\n      title,\n      meta_title,\n      meta_description,\n      \"slug\": slug.current,\n      \"image\": image.asset->url,\n      link,\n      content\n    }": ARTICLE_QUERYResult;
