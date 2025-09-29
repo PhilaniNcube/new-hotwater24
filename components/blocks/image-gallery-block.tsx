@@ -4,6 +4,7 @@ import { ImageGallerySection } from "@/sanity/types";
 import Image from "next/image";
 import { useState } from "react";
 import { urlFor } from "@/sanity/lib/image";
+import { cn } from "@/lib/utils";
 
 // Custom interface that matches the GROQ query response
 interface ImageGalleryBlockData {
@@ -37,6 +38,8 @@ export default function ImageGalleryBlock({ data }: ImageGalleryBlockProps) {
   const { heading, images, layout = "grid" } = data;
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
+  console.log("data:", data);
+
   if (!images || images.length === 0) return null;
 
   const getGridClass = () => {
@@ -50,17 +53,24 @@ export default function ImageGalleryBlock({ data }: ImageGalleryBlockProps) {
     }
   };
 
-  const getCarouselStyles = (image: NonNullable<ImageGalleryBlockData['images']>[number]) => {
-    if (layout !== "carousel" || !image?.asset?.metadata?.dimensions) {
+  // Fixed portrait aspect ratio for all images
+  const PORTRAIT_ASPECT_RATIO = "3/4"; // Consistent portrait ratio (width/height)
+  const FIXED_HEIGHT = {
+    grid: "h-80",    // 320px height
+    masonry: "h-auto", // Auto height for masonry
+    carousel: "h-80"   // 320px height
+  };
+
+  const getCarouselStyles = () => {
+    if (layout !== "carousel") {
       return {};
     }
-    
-    const { width, height } = image.asset.metadata.dimensions;
-    const aspectRatio = width / height;
-    
-    // Calculate width based on fixed height of 240px (h-60)
-    const containerWidth = Math.round(240 * aspectRatio);
-    return { width: `${containerWidth}px` };
+
+    // Fixed portrait dimensions for carousel items
+    const aspectRatio = 3/4; // Portrait ratio
+    const fixedHeight = 320;
+    const containerWidth = Math.round(fixedHeight * aspectRatio);
+    return { width: `${containerWidth}px`, height: `${fixedHeight}px` };
   };
 
   const handleImageClick = (imageUrl: string) => {
@@ -85,10 +95,17 @@ export default function ImageGalleryBlock({ data }: ImageGalleryBlockProps) {
           {images.map((image, index) => (
             <div
               key={index}
-              className={`relative overflow-hidden rounded-lg cursor-pointer group ${
-                layout === "carousel" ? "flex-shrink-0" : ""
-              } ${layout === "masonry" ? "break-inside-avoid mb-4" : ""}`}
-              style={getCarouselStyles(image)}
+              className={cn(
+                `relative overflow-hidden w-full rounded-lg cursor-pointer group flex items-center justify-center ${
+                  layout === "carousel" ? "flex-shrink-0" : ""
+                } ${layout === "masonry" ? "break-inside-avoid mb-4" : ""} ${
+                  FIXED_HEIGHT[layout as keyof typeof FIXED_HEIGHT]
+                }`
+              )}
+              style={{
+                ...getCarouselStyles(),
+                aspectRatio: layout !== "masonry" ? PORTRAIT_ASPECT_RATIO : undefined
+              }}
               onClick={() =>
                 image.asset && handleImageClick(urlFor(image).url())
               }
@@ -99,23 +116,18 @@ export default function ImageGalleryBlock({ data }: ImageGalleryBlockProps) {
                   alt={
                     image.alt || image.caption || `Gallery image ${index + 1}`
                   }
-                  width={image.asset.metadata?.dimensions?.width || 400}
-                  height={image.asset.metadata?.dimensions?.height || 300}
-                  className={`w-full transition-transform duration-300 group-hover:scale-105 ${
-                    layout === "masonry" 
-                      ? "h-auto object-cover" 
-                      : layout === "carousel"
-                      ? "h-60 object-cover"
-                      : "h-64 object-cover"
-                  }`}
+                  fill
+                  className="object-contain transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               )}
+
               {image.caption && (
-                <div className="absolute bottom-0 left-0 right-0 p-2 text-white bg-black/70">
-                  <p className="text-sm">{image.caption}</p>
+                <div className="absolute bottom-0 left-0 right-0 p-3 text-white transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/70 to-transparent group-hover:opacity-100">
+                  <p className="text-sm font-medium">{image.caption}</p>
                 </div>
               )}
-              <div className="absolute inset-0 transition-colors duration-300 bg-black/0 group-hover:bg-black/20" />
+              <div className="absolute inset-0 transition-colors duration-300 bg-black/0 group-hover:bg-black/10" />
             </div>
           ))}
         </div>
@@ -125,17 +137,17 @@ export default function ImageGalleryBlock({ data }: ImageGalleryBlockProps) {
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90"
             onClick={closeLightbox}
           >
-            <div className="relative max-w-4xl max-h-full">
+            <div className="relative w-full max-w-4xl h-[60vh] flex items-center justify-center">
               <Image
                 src={selectedImage}
                 alt="Selected image"
-                width={1200}
-                height={800}
-                className="object-contain max-w-full max-h-full"
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, 100vw"
               />
               <button
                 onClick={closeLightbox}
-                className="absolute text-2xl text-white top-4 right-4 hover:text-gray-300"
+                className="absolute z-10 text-2xl text-white top-4 right-4 hover:text-gray-300"
               >
                 ×
               </button>
