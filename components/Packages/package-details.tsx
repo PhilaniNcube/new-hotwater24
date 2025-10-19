@@ -114,7 +114,7 @@ export default function PackageDetails({
       <div className="flex items-center justify-center w-full">
         <Image
           alt="Gas Geyser"
-          className="object-cover w-full overflow-hidden border rounded-lg aspect-auto md:w-1/2 border-zinc-200 dark:border-zinc-800"
+          className="object-cover w-full overflow-hidden rounded-lg aspect-auto md:w-1/2 "
           height="600"
           src={geyser?.image!}
           width="1000"
