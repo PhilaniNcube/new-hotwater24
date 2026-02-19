@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { HouseTypesChart } from "@/components/charts/HouseTypesChart";
+import LogoutButton from "@/components/LogoutButton";
 
 import { getLeads } from "@/lib/queries/leads";
 import { Database } from "@/schema";
@@ -176,28 +176,116 @@ const page = async () => {
   const quotes = await getLeads();
   const analytics = calculateAnalytics(quotes);
 
+  const formatPercent = (value: number) => `${value.toFixed(1)}%`;
+
+  const formatCurrency = (value: number) =>
+    new Intl.NumberFormat("en-ZA", {
+      style: "currency",
+      currency: "ZAR",
+      maximumFractionDigits: 0,
+    }).format(value);
+
   return (
     <main className="container py-10 mx-auto max-w-7xl min-h-[70vh]">
       <div className="flex items-center justify-between w-full mb-8">
         <h1 className="text-3xl font-medium">Admin Dashboard</h1>
-        <Link
-          href={{
-            pathname: "/admin/leads",
-            query: {
-              page: "1",
-              page_size: "500",
-              search: "",
-            },
-          }}
-        >
-          <Button type="button" className="text-white bg-brand">
-            Leads
-          </Button>
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            href={{
+              pathname: "/admin/leads",
+              query: {
+                page: "1",
+                page_size: "500",
+                search: "",
+              },
+            }}
+          >
+            <Button type="button" className="text-white bg-brand">
+              Leads
+            </Button>
+          </Link>
+          <LogoutButton />
+        </div>
       </div>
 
-      {/* House Types Chart */}
-      {/* <HouseTypesChart data={analytics.houseTypes} /> */}
+      <section className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="p-4 border rounded-lg">
+          <p className="text-sm text-muted-foreground">Total leads</p>
+          <p className="text-2xl font-semibold">{analytics.totalLeads}</p>
+        </div>
+        <div className="p-4 border rounded-lg">
+          <p className="text-sm text-muted-foreground">Contacted leads</p>
+          <p className="text-2xl font-semibold">{analytics.contactedLeads}</p>
+        </div>
+        <div className="p-4 border rounded-lg">
+          <p className="text-sm text-muted-foreground">Contact rate</p>
+          <p className="text-2xl font-semibold">
+            {formatPercent(analytics.conversionRate)}
+          </p>
+        </div>
+        <div className="p-4 border rounded-lg">
+          <p className="text-sm text-muted-foreground">Complete solution rate</p>
+          <p className="text-2xl font-semibold">
+            {formatPercent(analytics.completeSolutionRate)}
+          </p>
+        </div>
+      </section>
+
+      <section className="grid grid-cols-1 gap-4 mt-6 md:grid-cols-3">
+        <div className="p-4 border rounded-lg">
+          <h2 className="mb-3 text-lg font-medium">Averages</h2>
+          <div className="space-y-2 text-sm">
+            <p>
+              Avg geyser price: <span className="font-medium">{formatCurrency(analytics.avgGeyserPrice)}</span>
+            </p>
+            <p>
+              Avg bathrooms: <span className="font-medium">{analytics.avgBathrooms.toFixed(1)}</span>
+            </p>
+            <p>
+              Avg electric geysers: <span className="font-medium">{analytics.avgElectricGeysers.toFixed(1)}</span>
+            </p>
+          </div>
+        </div>
+
+        <div className="p-4 border rounded-lg">
+          <h2 className="mb-3 text-lg font-medium">Top cities</h2>
+          <ul className="space-y-2 text-sm">
+            {analytics.cities.slice(0, 5).map((city) => (
+              <li key={city.name} className="flex items-center justify-between">
+                <span>{city.name}</span>
+                <span className="font-medium">{city.value}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="p-4 border rounded-lg">
+          <h2 className="mb-3 text-lg font-medium">House types</h2>
+          <ul className="space-y-2 text-sm">
+            {analytics.houseTypes.slice(0, 5).map((houseType) => (
+              <li
+                key={houseType.name}
+                className="flex items-center justify-between"
+              >
+                <span>{houseType.name}</span>
+                <span className="font-medium">{houseType.value}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="p-4 mt-6 border rounded-lg">
+        <h2 className="mb-3 text-lg font-medium">Lead trend (last 6 months)</h2>
+        <div className="grid grid-cols-2 gap-2 text-sm md:grid-cols-6">
+          {analytics.monthlyData.map((monthData) => (
+            <div key={monthData.month} className="p-3 border rounded-md">
+              <p className="text-muted-foreground">{monthData.month}</p>
+              <p className="text-lg font-semibold">{monthData.leads}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </main>
   );
 };

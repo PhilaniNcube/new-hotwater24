@@ -1,7 +1,8 @@
-import { cookies } from "next/headers";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import LeadsTable from "./LeadsTable";
-import { createServerClient } from "@supabase/ssr";
 import { createClient } from "@/utils/supabase/server";
+import LogoutButton from "@/components/LogoutButton";
 
 export const dynamic = "force-dynamic";
 
@@ -66,8 +67,16 @@ const page = async (props: {searchParams:SearchParams}) => {
   const isTherePreviousPage = await hasPreviousPage(Number(page));
 
   return (
-			<div className="container max-w-7xl mx-auto">
-				<h1>Admin Page</h1>
+      <div className="container py-10 mx-auto max-w-7xl">
+        <div className="flex items-center justify-between w-full mb-6">
+          <h1 className="text-3xl font-medium">Admin Leads</h1>
+          <div className="flex items-center gap-3">
+            <Link href="/admin">
+              <Button type="button" variant="outline">Dashboard</Button>
+            </Link>
+            <LogoutButton />
+          </div>
+        </div>
 				{leadsError || !leads ? (
 					<p>Error fetching leads</p>
 				) : (
