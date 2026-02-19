@@ -27,8 +27,51 @@ export async function updateSession(request: NextRequest) {
     }
   )
 
+  const pathname = request.nextUrl.pathname
+  const isProtectedAdminRoute =
+    pathname.startsWith('/admin') || pathname.startsWith('/dashboard')
+
   // refreshing the auth token
-  await supabase.auth.getUser()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  const redirectWithCookies = (target: string) => {
+    const url = request.nextUrl.clone()
+    url.pathname = target
+    if (target !== '/login') {
+      url.search = ''
+    }
+
+    const redirectResponse = NextResponse.redirect(url)
+
+    supabaseResponse.cookies.getAll().forEach((cookie) => {
+      redirectResponse.cookies.set(cookie)
+    })
+
+    return redirectResponse
+  }
+
+  if (isProtectedAdminRoute) {
+    if (!user) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/login'
+      url.searchParams.set('next', pathname)
+
+      const redirectResponse = NextResponse.redirect(url)
+      supabaseResponse.cookies.getAll().forEach((cookie) => {
+        redirectResponse.cookies.set(cookie)
+      })
+
+      return redirectResponse
+    }
+
+    const { data: isAdmin, error: isAdminError } = await supabase.rpc('is_admin')
+
+    if (isAdminError || !isAdmin) {
+      return redirectWithCookies('/')
+    }
+  }
 
   return supabaseResponse
 }
