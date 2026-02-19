@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import { login } from "@/actions/login";
+import { loginWithMagicLink, loginWithPassword } from "@/actions/login";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -16,7 +16,19 @@ const initialState = {
 };
 
 export default function LoginForm() {
-  const [state, formAction, isPending] = useActionState(login, null);
+  const [method, setMethod] = useState<"password" | "magic-link">("password");
+  const [passwordState, passwordAction, isPasswordPending] = useActionState(
+    loginWithPassword,
+    initialState
+  );
+  const [magicState, magicAction, isMagicPending] = useActionState(
+    loginWithMagicLink,
+    initialState
+  );
+
+  const state = method === "password" ? passwordState : magicState;
+  const isPending = method === "password" ? isPasswordPending : isMagicPending;
+  const formAction = method === "password" ? passwordAction : magicAction;
 
 
 
@@ -24,7 +36,28 @@ export default function LoginForm() {
     <div className="w-full max-w-md space-y-6 p-6 bg-white rounded-lg shadow-md">
       <div className="space-y-2 text-center">
         <h1 className="text-3xl font-bold">Login</h1>
-        <p className="text-gray-500">Enter your credentials to access your account</p>
+        <p className="text-gray-500">Use password or a magic link to access your account</p>
+      </div>
+
+      <div className="grid grid-cols-2 gap-2 p-1 rounded-md bg-muted">
+        <Button
+          type="button"
+          variant={method === "password" ? "default" : "ghost"}
+          className="w-full"
+          onClick={() => setMethod("password")}
+          disabled={isPending}
+        >
+          Password
+        </Button>
+        <Button
+          type="button"
+          variant={method === "magic-link" ? "default" : "ghost"}
+          className="w-full"
+          onClick={() => setMethod("magic-link")}
+          disabled={isPending}
+        >
+          Magic Link
+        </Button>
       </div>
 
       {state?.error && (
@@ -53,30 +86,32 @@ export default function LoginForm() {
           />
         </div>
 
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <Label htmlFor="password">Password</Label>
-            <Link href="/forgot-password" className="text-sm text-brand hover:underline">
-              Forgot password?
-            </Link>
+        {method === "password" && (
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <Label htmlFor="password">Password</Label>
+              <Link href="/forgot-password" className="text-sm text-brand hover:underline">
+                Forgot password?
+              </Link>
+            </div>
+            <Input
+              id="password"
+              name="password"
+              type="password"
+              required
+              disabled={isPending}
+            />
           </div>
-          <Input
-            id="password"
-            name="password"
-            type="password"
-            required
-            disabled={isPending}
-          />
-        </div>
+        )}
 
         <Button type="submit" className="w-full bg-brand text-white" disabled={isPending}>
           {isPending ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Logging in...
+              {method === "password" ? "Logging in..." : "Sending magic link..."}
             </>
           ) : (
-            "Sign In"
+            method === "password" ? "Sign In" : "Send Magic Link"
           )}
         </Button>
       </form>
