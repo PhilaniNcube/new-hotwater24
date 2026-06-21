@@ -7,14 +7,11 @@ import { createBrowserClient } from '@supabase/ssr'
 export default function LogoutButton() {
   const router = useRouter()
 
-  // Create a Supabase client configured to use cookies
+  const signOut = async () => {
     const supabase = createBrowserClient<Database>(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
     );
-
-
-  const signOut = async () => {
     await supabase.auth.signOut()
     router.push('/')
   }

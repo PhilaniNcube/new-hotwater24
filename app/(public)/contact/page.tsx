@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 	},
 };
 
-export const dynamic = 'force-static'
+
 
 const page = () => {
   return <ContactPage />;

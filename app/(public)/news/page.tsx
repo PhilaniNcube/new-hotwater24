@@ -1,4 +1,3 @@
-import { ARTICLES_QUERY } from "@/sanity/sanity-utils";
 import { antonio, bebas } from "../../../fonts";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
@@ -7,7 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { sanityFetch } from "@/sanity/live";
+import { getArticles } from "@/features/articles/articles-queries";
 import { ARTICLES_QUERYResult } from "@/sanity/types";
 
 type Article = ARTICLES_QUERYResult[0];
@@ -25,12 +24,10 @@ export const metadata: Metadata = {
   },
 };
 
-export const dynamic = "force-static";
+
 
 const page = async () => {
-  const { data: news } = await sanityFetch({
-    query: ARTICLES_QUERY,
-  });
+  const news = await getArticles();
 
   if (!news || news.length === 0) {
     return (

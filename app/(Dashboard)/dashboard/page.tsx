@@ -1,13 +1,13 @@
-import { getAdmin } from "@/lib/queries/auth";
-import { getLeads } from "@/lib/queries/leads";
-import LeadsTable from "../_components/leads-table";
+import { Suspense } from "react";
+import { LeadsContent } from "../_components/leads-content";
+import { LeadsSkeleton } from "../_components/leads-skeleton";
 
-const DashboardPage = async () => {
-
-  const leads = await getLeads();
-
-  return <div>
-    <LeadsTable leads={leads} />
-  </div>;
-};
-export default DashboardPage;
+export default function DashboardPage() {
+  return (
+    <div>
+      <Suspense fallback={<LeadsSkeleton />}>
+        <LeadsContent />
+      </Suspense>
+    </div>
+  );
+}

@@ -1,20 +1,15 @@
 
-import { createClient } from "@/utils/supabase/server";
-import { CookieOptions, createServerClient } from "@supabase/ssr";
-import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
+export async function POST(req: Request) {
+  revalidateTag("articles", { expire: 0 });
+  revalidateTag("geysers", { expire: 0 });
+  revalidateTag("landing-pages", { expire: 0 });
+  revalidateTag("navigation", { expire: 0 });
 
-export async function POST(req:Request) {
+  revalidatePath("/news", "layout");
+  revalidatePath("/", "layout");
 
-
-
-  revalidatePath('/news', "layout")
-  revalidatePath('/', "layout")
-
-	return NextResponse.json(
-		{ status: 200 },
-	);
+  return NextResponse.json({ status: 200 });
 }

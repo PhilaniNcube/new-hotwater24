@@ -1,12 +1,9 @@
 import Script from "next/script";
 import NewLead from "./NewLead";
-import { GEYSERS_QUERY } from "@/sanity/sanity-utils";
-import { sanityFetch } from "@/sanity/live";
+import { getGeysers } from "@/features/geysers/geysers-queries";
 
 const page = async () => {
-  const { data: products } = await sanityFetch({
-    query: GEYSERS_QUERY,
-  });
+  const products = await getGeysers();
 
   return (
     <main className="container min-h-screen py-10 mx-auto max-w-7xl">

@@ -2,17 +2,12 @@
 
 import { z } from "zod";
 import { createClient } from "@/utils/supabase/server";
-import { revalidatePath } from "next/cache";
 import { sendLeadEmail } from "@/lib/send-lead-email";
 
-// Define the quote schema for validation
 const QuoteSchema = z.object({
-  // Family details
   children: z.number().min(0).default(0),
   adults: z.number().min(0).default(0),
   teenagers: z.number().min(0).default(0),
-
-  // Property details
   houseType: z.string().min(1, "House type is required"),
   ownership: z.boolean().nullable().default(null),
   gasSupply: z.string().min(1, "Gas supply information is required"),
@@ -21,14 +16,10 @@ const QuoteSchema = z.object({
   gasHeating: z.boolean().nullable().default(null),
   otherGasUse: z.string().nullable().default(null),
   locateOutside: z.boolean().nullable().default(null),
-
-  // Current geyser setup
   gasGeyser: z.boolean().nullable().default(null),
   electricGeyser: z.boolean().nullable().default(null),
   solarGeyser: z.boolean().nullable().default(null),
   otherGeyser: z.string().nullable().default(null),
-
-  // Water outlets
   standardShower: z.number().nullable().default(null),
   rainShower: z.number().nullable().default(null),
   bathtub: z.number().nullable().default(null),
@@ -37,12 +28,8 @@ const QuoteSchema = z.object({
   dishwasher: z.number().nullable().default(null),
   washingmachine: z.number().nullable().default(null),
   flowRate: z.number().nullable().default(null),
-
-  // Off grid and utilities
   offGrid: z.boolean().nullable().default(null),
   borehole_water: z.boolean().default(false),
-
-  // Personal details
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Valid email is required"),
@@ -51,8 +38,6 @@ const QuoteSchema = z.object({
   city: z.string().min(1, "City is required"),
   telephoneNumber: z.string().min(1, "Phone number is required"),
   postalCode: z.string().nullable().default(null),
-
-  // Quote details
   completeSolution: z.boolean().nullable().default(null),
   product_id: z.string().nullable().default(null),
   installation: z.string().default(""),
@@ -67,8 +52,6 @@ const QuoteSchema = z.object({
   comments: z.string().default(""),
   financing: z.string().default(""),
   source: z.string().nullable().default(null),
-
-  // Additional bathroom details
   bathrooms: z.number().nullable().default(null),
   cottage_bathrooms: z.number().nullable().default(null),
   cottageIncluded: z.boolean().nullable().default(null),
@@ -87,13 +70,9 @@ export async function submitQuoteAction(
   formData: QuoteFormData
 ): Promise<QuoteActionResult> {
   try {
-    // Validate the input data
     const validatedData = QuoteSchema.parse(formData);
-
-    // Create Supabase client
     const supabase = await createClient();
 
-    // Insert quote into database
     const { data: quote, error: dbError } = await (supabase as any)
       .from("quotes")
       .insert([
@@ -162,9 +141,8 @@ export async function submitQuoteAction(
       };
     }
 
-    // Send email notification
     try {
-      const emailSuccess = await sendLeadEmail({
+      await sendLeadEmail({
         houseType: validatedData.houseType,
         ownership: validatedData.ownership,
         gasSupply: validatedData.gasSupply,
@@ -213,18 +191,9 @@ export async function submitQuoteAction(
         cottageIncluded: validatedData.cottageIncluded,
         electric_geysers: validatedData.electric_geysers,
       });
-
-      if (!emailSuccess) {
-        console.error("Email sending failed");
-        // Don't fail the entire process if email fails
-      }
     } catch (emailError) {
       console.error("Email error:", emailError);
-      // Don't fail the entire process if email fails
     }
-
-    // Revalidate any relevant paths
-    revalidatePath("/quote");
 
     return {
       success: true,

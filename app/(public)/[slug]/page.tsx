@@ -1,55 +1,38 @@
-import { sanityFetch } from "@/sanity/live";
-import { LANDING_PAGE_QUERY } from "@/sanity/sanity-utils";
-import PagebuilderRenderer from "@/components/blocks/pagebuilder-renderer";
+import { Suspense } from "react";
 import type { Metadata } from "next";
-
-export const dynamic = "force-static";
+import { getLandingPageBySlug } from "@/features/landing-pages/landing-pages-queries";
+import { LandingPageContent } from "./_components/landing-page-content";
+import { LandingPageSkeleton } from "./_components/landing-page-skeleton";
 
 type Params = Promise<{ slug: string }>;
 
-export async function generateMetadata(props: {
+export async function generateMetadata({
+  params,
+}: {
   params: Params;
 }): Promise<Metadata> {
-  const { slug } = await props.params;
+  const { slug } = await params;
+  const landingPage = await getLandingPageBySlug(slug);
 
-  const { data } = await sanityFetch({
-    query: LANDING_PAGE_QUERY,
-    params: { slug },
-  });
-
-  if (!data) {
+  if (!landingPage) {
     return {
       title: "Page Not Found",
     };
   }
 
   return {
-    title: data.seoTitle || data.title || "Hotwater24",
+    title: landingPage.seoTitle || landingPage.title || "Hotwater24",
     description:
-      data.seoDescription || "Expert gas geyser installations and services",
+      landingPage.seoDescription || "Expert gas geyser installations and services",
   };
 }
 
-export default async function Page({ params }: { params: Params }) {
-  const { slug } = await params;
-
-  const { data } = await sanityFetch({
-    query: LANDING_PAGE_QUERY,
-    params: { slug },
-  });
-
-  if (!data) {
-    return (
-      <div className="container mx-auto py-16 px-4 text-center">
-        <h1 className="text-2xl font-bold mb-4">Page Not Found</h1>
-        <p>The page you're looking for doesn't exist.</p>
-      </div>
-    );
-  }
-
+export default function LandingPage({ params }: { params: Params }) {
   return (
-    <div>
-      <PagebuilderRenderer sections={data.pageBuilder} />
-    </div>
+    <Suspense fallback={<LandingPageSkeleton />}>
+      {params.then(({ slug }) => (
+        <LandingPageContent slug={slug} />
+      ))}
+    </Suspense>
   );
 }

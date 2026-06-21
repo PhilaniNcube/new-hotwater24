@@ -6,7 +6,7 @@ import roundUp from '@/lib/roundUp';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-export const dynamic = 'force-dynamic'
+
 
 export async function POST(req:NextRequest) {
   // Create a Supabase client configured to use cookies

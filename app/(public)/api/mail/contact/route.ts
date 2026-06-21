@@ -6,7 +6,7 @@ import { createClient } from '@/utils/supabase/server';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-export const dynamic = 'force-dynamic'
+
 
 export async function POST(req:NextRequest) {
 

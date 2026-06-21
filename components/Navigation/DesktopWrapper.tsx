@@ -1,11 +1,8 @@
-import { sanityFetch } from "@/sanity/live";
-import { TOP_NAVIGATION_QUERY } from "@/sanity/sanity-utils";
+import { getTopNavigation } from "@/features/landing-pages/landing-pages-queries";
 import Desktop from "./Desktop";
 
 const DesktopWrapper = async () => {
-  const { data: landingPages } = await sanityFetch({
-    query: TOP_NAVIGATION_QUERY,
-  });
+  const landingPages = await getTopNavigation();
 
   return <Desktop landingPages={landingPages || []} />;
 };

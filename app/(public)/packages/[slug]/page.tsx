@@ -1,26 +1,18 @@
-import PackageDetails from "@/components/Packages/package-details";
-import { sanityFetch } from "@/sanity/live";
-import { GEYSER_QUERY } from "@/sanity/sanity-utils";
+import { Suspense } from "react";
 import type { Metadata } from "next";
+import { getGeyserBySlug } from "@/features/geysers/geysers-queries";
+import { PackageContent } from "./_components/package-content";
+import { PackageSkeleton } from "./_components/package-skeleton";
 
-export const dynamic = "force-static";
+type Params = Promise<{ slug: string }>;
 
-type Props = {
-  params: { slug: string };
-};
-
-export async function generateMetadata(props: {
-  params: Promise<{ slug: string }>;
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
 }): Promise<Metadata> {
-  const params = await props.params;
-
-  // read route params
-  const slug = params.slug;
-
-  const { data: geyser } = await sanityFetch({
-    query: GEYSER_QUERY,
-    params,
-  });
+  const { slug } = await params;
+  const geyser = await getGeyserBySlug(slug);
 
   if (!geyser) {
     return {
@@ -59,18 +51,12 @@ export async function generateMetadata(props: {
   };
 }
 
-const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
-  const { slug } = await params;
-
-  const { data: geyser } = await sanityFetch({
-    query: GEYSER_QUERY,
-    params,
-  });
-
+export default function PackagePage({ params }: { params: Params }) {
   return (
-    <main className="container py-10 mx-auto max-w-7xl">
-      <PackageDetails geyser={geyser} />
-    </main>
+    <Suspense fallback={<PackageSkeleton />}>
+      {params.then(({ slug }) => (
+        <PackageContent slug={slug} />
+      ))}
+    </Suspense>
   );
-};
-export default page;
+}

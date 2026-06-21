@@ -12,7 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import {
   submitQuoteAction,
   type QuoteActionResult,
-} from "@/actions/quote-action";
+} from "@/features/leads/leads-actions";
 
 const libraries = ["places"];
 

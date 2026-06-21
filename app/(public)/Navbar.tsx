@@ -2,20 +2,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { RiWhatsappLine } from "react-icons/ri";
-import { User } from "lucide-react";
 import MobileNav from "./MobileNav";
-import LogoutButton from "@/components/LogoutButton";
-import { createClient } from "@/utils/supabase/server";
+import { getIsAdmin } from "@/features/auth/auth-queries";
 
 const Navbar = async () => {
-
-
-
-    const supabase = await createClient();
-
-    const {data, error} = await supabase.rpc("is_admin").single();
-
-    const {data: {session}} = await supabase.auth.getSession()
+    const isAdmin = await getIsAdmin();
 
   
 
@@ -58,7 +49,7 @@ const Navbar = async () => {
      
         {/* Mobile Nav Starts */}
         <div className="container flex items-center justify-between lg:hidden">
-          <MobileNav is_admin={data!} />
+          <MobileNav is_admin={isAdmin!} />
         </div>
         {/* Mobile Nav Ends */}
       </div>

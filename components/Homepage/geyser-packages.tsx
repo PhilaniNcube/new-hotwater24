@@ -4,8 +4,7 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import { antonio } from "@/fonts";
-import { sanityFetch } from "@/sanity/live";
-import { GEYSERS_QUERY } from "@/sanity/sanity-utils";
+import { getGeysers } from "@/features/geysers/geysers-queries";
 import { GEYSERS_QUERYResult } from "@/sanity/types";
 
 type Geyser = GEYSERS_QUERYResult[0];
@@ -15,9 +14,7 @@ type Geyser = GEYSERS_QUERYResult[0];
  * @see https://v0.dev/t/CyTRvnK5pbJ
  */
 export default async function GeyserPackages() {
-  const { data: packages } = await sanityFetch({
-    query: GEYSERS_QUERY,
-  });
+  const packages = await getGeysers();
 
   return (
     <section

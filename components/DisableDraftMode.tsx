@@ -4,7 +4,7 @@
 
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { disableDraftMode } from "@/actions/draftModeAction";
+import { disableDraftMode } from "@/features/landing-pages/landing-pages-actions";
 
 export function DisableDraftMode() {
   const router = useRouter();

@@ -1,19 +1,15 @@
-import { GEYSERS_QUERY } from "@/sanity/sanity-utils";
-
 import Link from "next/link";
 import Image from "next/image";
 import { formatCurrency } from "@/utils/format";
 import { cn } from "@/lib/utils";
 import { antonio } from "@/fonts";
-import { sanityFetch } from "@/sanity/live";
+import { getGeysers } from "@/features/geysers/geysers-queries";
 import { GEYSERS_QUERYResult } from "@/sanity/types";
 
 type Geyser = GEYSERS_QUERYResult[0];
 
 const PackagesGrid = async () => {
-  const { data: packages } = await sanityFetch({
-    query: GEYSERS_QUERY,
-  });
+  const packages = await getGeysers();
 
   return (
     <div className="w-full">

@@ -1,14 +1,13 @@
-import LeadDetailsPage from "@/app/(Dashboard)/_components/lead-details";
-import { getLead } from "@/lib/queries/leads";
+import { Suspense } from "react";
+import { LeadContent } from "../../../_components/lead-content";
+import { LeadSkeleton } from "../../../_components/lead-skeleton";
 
-const LeadPage = async ({params}:{params:Promise<{id:number}>}) => {
-
-  const { id } = await params;
-
-  const lead = await getLead(id);
-
-  return <div>
-    <LeadDetailsPage leadDetails={lead} />
-  </div>;
-};
-export default LeadPage;
+export default function LeadPage({ params }: { params: Promise<{ id: string }> }) {
+  return (
+    <Suspense fallback={<LeadSkeleton />}>
+      {params.then(({ id }) => (
+        <LeadContent id={Number(id)} />
+      ))}
+    </Suspense>
+  );
+}

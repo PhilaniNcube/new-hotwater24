@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import Link from "next/link";
 import { Loader2, AlertCircle } from "lucide-react";
-import { signup } from "@/actions/signup";
+import { signup } from "@/features/auth/auth-actions";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

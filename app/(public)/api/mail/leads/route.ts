@@ -1,10 +1,10 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { EmailTemplate } from "@/actions/lead-email";
+import { EmailTemplate } from "@/features/leads/components/lead-email";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export const dynamic = "force-dynamic";
+
 
 export async function POST(req: NextRequest) {
   const body = await req.json();

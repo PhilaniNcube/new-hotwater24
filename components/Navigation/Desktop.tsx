@@ -31,7 +31,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "../ui/input";
-import { semanticSearch } from "@/lib/queries/embeddings";
+import { semanticSearch } from "@/features/search/search-queries";
 import { ScrollArea } from "../ui/scroll-area";
 import { TOP_NAVIGATION_QUERYResult } from "@/sanity/types";
 

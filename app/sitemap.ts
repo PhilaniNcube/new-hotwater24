@@ -1,18 +1,13 @@
-import { sanityFetch } from "@/sanity/live";
-import { ARTICLES_QUERY, GEYSERS_QUERY } from "@/sanity/sanity-utils";
+import { getArticles } from "@/features/articles/articles-queries";
+import { getGeysers } from "@/features/geysers/geysers-queries";
 import { ARTICLE_QUERYResult, GEYSER_QUERYResult } from "@/sanity/types";
 import { MetadataRoute } from "next";
 
 const BASE_URL = "https://hotwater24.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const { data: articles } = await sanityFetch({
-    query: ARTICLES_QUERY,
-  });
-
-  const { data: packages } = await sanityFetch({
-    query: GEYSERS_QUERY,
-  });
+  const articles = await getArticles();
+  const packages = await getGeysers();
 
   // create a sitemap object for each article
   const articleSitemaps = articles.map((article: ARTICLE_QUERYResult) => ({

@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Star, StarHalf } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { format, formatDistance,  intlFormatDistance,  parseISO } from "date-fns";
+import { ReviewDate } from "./review-date";
 
 interface Review {
   id: number;
@@ -71,7 +71,7 @@ export default function Testimonials() {
                   <div>
                     <h3 className="font-semibold">{review.name}</h3>
                     <p className="text-sm text-gray-500">
-                      {intlFormatDistance(new Date(), review.date)}
+                      <ReviewDate date={review.date} />
                     </p>
                   </div>
                 </div>

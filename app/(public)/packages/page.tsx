@@ -3,7 +3,7 @@ import { type Metadata } from "next";
 
 const BASE_URL = "https://htowater24.com";
 
-export const dynamic = "force-static";
+
 
 export const metadata: Metadata = {
   title: "Hotwater24 | Gas Geyser Packages",
