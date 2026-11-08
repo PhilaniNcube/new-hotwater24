@@ -22,7 +22,7 @@ export default function PaymentPlanHero() {
                 antonio.className
               )}
             >
-              Interest Free Payment Plan
+              Interest-free payment plan
             </h1>
             <p className="max-w-[900px] text-lg mt-4 px-4 lg:px-0 text-slate-800">
               At Hotwater24 we understand that upfront costs can be challenging, which is why we offer a convenient <strong>interest-free</strong> payment plan option
