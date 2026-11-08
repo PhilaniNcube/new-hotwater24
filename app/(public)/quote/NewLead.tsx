@@ -12,7 +12,6 @@ import GasUse from "./Steps/GasUse";
 import WaterHeating from "./Steps/WaterHeating";
 import WaterOutlets from "./Steps/WaterOutlests";
 import BathroomDetails from "./Steps/BathroomDetails";
-import OffGridStep from "./Steps/OffGridStep";
 
 import { sendGTMEvent } from "@next/third-parties/google";
 import BoreholeWater from "./Steps/BoreholeWater";
@@ -118,7 +117,7 @@ const NewLead = ({ geysers }: { geysers: GEYSERS_QUERYResult }) => {
     city: "",
     telephoneNumber: "",
     postalCode: "",
-    completeSolution: null,
+    completeSolution: false,
     product_id: undefined,
     installation: "",
     contactDay: "",
@@ -146,7 +145,7 @@ const NewLead = ({ geysers }: { geysers: GEYSERS_QUERYResult }) => {
     }
   }, []);
   const nextPage = () => {
-    if (page === 13) return;
+    if (page === 12) return;
 
     sendGTMEvent({ event: `step_${page}` });
     setPage((page) => page + 1);
@@ -243,15 +242,6 @@ const NewLead = ({ geysers }: { geysers: GEYSERS_QUERYResult }) => {
           />
         )}
         {page === 10 && (
-          <OffGridStep
-            quoteInfo={quoteInfo}
-            setQuoteInfo={setQuoteInfo}
-            nextPage={nextPage}
-            prevPage={prevPage}
-            page={page}
-          />
-        )}
-        {page === 11 && (
           <Recommendations
             quoteInfo={quoteInfo}
             setQuoteInfo={setQuoteInfo}
@@ -261,7 +251,7 @@ const NewLead = ({ geysers }: { geysers: GEYSERS_QUERYResult }) => {
             geysers={geysers}
           />
         )}
-        {page === 12 && (
+        {page === 11 && (
           <PersonalDetails
             quoteInfo={quoteInfo}
             setQuoteInfo={setQuoteInfo}
@@ -280,7 +270,7 @@ const NewLead = ({ geysers }: { geysers: GEYSERS_QUERYResult }) => {
           page={page}
         />
       )*/}
-        {page === 13 && (
+        {page === 12 && (
           <Confirm
             quoteInfo={quoteInfo}
             setQuoteInfo={setQuoteInfo}

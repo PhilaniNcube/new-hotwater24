@@ -33,7 +33,7 @@ export default async function Index() {
 	return (
 		<main>
 			<NewHero />
-			<Bosch />
+			{/* <Bosch /> */}
 			<WhyGoGas />
 			<WhatAreYouWaitingFor />
 			<GeyserPackages />

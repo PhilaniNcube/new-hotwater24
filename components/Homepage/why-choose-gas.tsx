@@ -11,7 +11,7 @@ import { FlameIcon } from "lucide-react";
 
 export default function WhyGoGas() {
 	return (
-		<section className="container max-w-7xl mx-auto">
+		<section className="container max-w-7xl mx-auto py-12 lg:py-16">
 			<div className="px-6 py-12 bg-white lg:px-4 rounded-md dark:bg-gray-800 px-4">
 				<div className="pb-10 text-center">
 					<h1
@@ -22,7 +22,7 @@ export default function WhyGoGas() {
 					>
 						Why go gas?
 					</h1>
-					<p className="text-3xl font-bold text-gray-600">
+					<p className="text-3xl font-bold text-gray-100">
 						Save up to 25% on your monthly electricity bill!
 					</p>
 				</div>

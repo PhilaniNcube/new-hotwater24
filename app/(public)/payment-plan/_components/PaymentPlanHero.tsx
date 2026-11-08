@@ -22,17 +22,16 @@ export default function PaymentPlanHero() {
                 antonio.className
               )}
             >
-              Payment Plan
+              Interest Free Payment Plan
             </h1>
             <p className="max-w-[900px] text-lg mt-4 px-4 lg:px-0 text-slate-800">
-              At Hotwater24 we understand that upfront costs can be challenging,
-              which is why we offer a convenient payment plan option.
+              At Hotwater24 we understand that upfront costs can be challenging, which is why we offer a convenient <strong>interest-free</strong> payment plan option
             </p>
             <div className="flex flex-col items-center justify-center px-4">
               <Card className="">
                 <CardContent className="px-3 py-4">
                   {/***List the steps in a payment plan */}
-                  <ol className="flex flex-col items-start justify-start px-6 font-medium text-left list-decimal gap-y-2 text-md text-slate-700 ">
+                  <ol className="flex flex-col items-start justify-start px-6 font-medium text-left list-decimal gap-y-2 text-sm text-slate-700 ">
                     <li>
                       We require only 50% deposit upon approval of the quotation
                       (where we normally require 75% deposit payment).
@@ -54,7 +53,7 @@ export default function PaymentPlanHero() {
                       CoC.
                     </li>
                   </ol>
-                  <p className="flex items-start justify-start px-2 mt-3 space-x-2 font-medium text-left list-decimal gap-y-2 text-md text-slate-700">
+                  <p className="flex items-start italic justify-start px-2 mt-3 space-x-2 font-medium text-left list-decimal gap-y-2 text-sm text-slate-700">
                     <strong className="pr-1.5">Note: </strong> This plan
                     excludes the cost for gas cylinders, gas supply or gas cage.
                   </p>
